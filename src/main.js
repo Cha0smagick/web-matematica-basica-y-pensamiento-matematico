@@ -1,5 +1,6 @@
 // Bootstrap principal - Inicialización de la aplicación
 console.log('main.js loaded');
+document.getElementById('app').innerHTML = '<h1 style="color: blue;">main.js is executing...</h1>';
 
 // Simplified test - just try to import router
 (async function() {
