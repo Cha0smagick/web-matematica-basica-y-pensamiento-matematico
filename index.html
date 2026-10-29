@@ -34,7 +34,10 @@
 </head>
 <body>
   <div id="app"></div>
-  <script>console.log('HTML loaded, app element:', document.getElementById('app'));</script>
+  <script>
+    console.log('HTML loaded, app element:', document.getElementById('app'));
+    document.getElementById('app').innerHTML = '<h1 style="color: red; font-size: 48px;">TEST: JavaScript is running!</h1>';
+  </script>
   
   <!-- Critical inline script for theme initialization (prevents flash) -->
   <script>
