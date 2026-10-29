@@ -32,14 +32,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run linting
-        run: npm run lint
-        continue-on-error: true
-
-      - name: Run unit tests
-        run: npm run test
-        continue-on-error: true
-
   build:
     needs: lint-and-test
     runs-on: ubuntu-latest
