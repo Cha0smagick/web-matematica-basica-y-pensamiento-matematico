@@ -52,13 +52,13 @@
   
   <script type="module" src="/src/main.js"></script>
   
-  <!-- Service Worker Registration -->
+  <!-- Service Worker disabled for debugging -->
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js').catch(function(err) {
-          console.log('SW registration failed:', err);
-        });
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for (var i = 0; i < registrations.length; i++) {
+          registrations[i].unregister();
+        }
       });
     }
   </script>
