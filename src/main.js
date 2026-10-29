@@ -1,6 +1,4 @@
 // Bootstrap principal - Inicialización de la aplicación
-console.log('main.js loaded');
-
 import { Router } from './router.js';
 import { Store } from './store/index.js';
 import { Layout } from './components/layout/Layout.js';
@@ -20,44 +18,26 @@ import { SettingsPage } from './pages/SettingsPage.js';
 import './styles/globals.css';
 
 // Inicializar store global
-let store;
-try {
-  store = new Store();
-  window.__APP_STORE__ = store;
-  console.log('Store initialized');
-} catch (e) {
-  console.error('Store init error:', e);
-  document.getElementById('app').innerHTML = '<h1 style="color: red;">Store error: ' + e.message + '</h1>';
-  throw e;
-}
+const store = new Store();
+window.__APP_STORE__ = store;
 
 // Registrar componentes de layout
-try {
-  customElements.define('app-layout', Layout);
-  customElements.define('app-header', Header);
-  customElements.define('app-sidebar', Sidebar);
-  customElements.define('app-footer', Footer);
-  console.log('Layout components registered');
-} catch (e) {
-  console.error('Layout registration error:', e);
-}
+customElements.define('app-layout', Layout);
+customElements.define('app-header', Header);
+customElements.define('app-sidebar', Sidebar);
+customElements.define('app-footer', Footer);
 
 // Registrar páginas
-try {
-  customElements.define('page-home', HomePage);
-  customElements.define('page-dashboard', DashboardPage);
-  customElements.define('page-phase', PhasePage);
-  customElements.define('page-module', ModulePage);
-  customElements.define('page-lesson', LessonPage);
-  customElements.define('page-quiz', QuizPage);
-  customElements.define('page-practice', PracticePage);
-  customElements.define('page-diploma', DiplomaPage);
-  customElements.define('page-profile', ProfilePage);
-  customElements.define('page-settings', SettingsPage);
-  console.log('Pages registered');
-} catch (e) {
-  console.error('Page registration error:', e);
-}
+customElements.define('page-home', HomePage);
+customElements.define('page-dashboard', DashboardPage);
+customElements.define('page-phase', PhasePage);
+customElements.define('page-module', ModulePage);
+customElements.define('page-lesson', LessonPage);
+customElements.define('page-quiz', QuizPage);
+customElements.define('page-practice', PracticePage);
+customElements.define('page-diploma', DiplomaPage);
+customElements.define('page-profile', ProfilePage);
+customElements.define('page-settings', SettingsPage);
 
 // Configurar rutas
 const routes = [
@@ -74,16 +54,8 @@ const routes = [
 ];
 
 // Inicializar router
-let router;
-try {
-  router = new Router(routes, store);
-  window.__APP_ROUTER__ = router;
-  console.log('Router initialized');
-} catch (e) {
-  console.error('Router init error:', e);
-  document.getElementById('app').innerHTML = '<h1 style="color: red;">Router error: ' + e.message + '</h1>';
-  throw e;
-}
+const router = new Router(routes, store);
+window.__APP_ROUTER__ = router;
 
 // Montar app
 const app = document.getElementById('app');
@@ -95,7 +67,6 @@ app.innerHTML = `
     <app-footer slot="footer"></app-footer>
   </app-layout>
 `;
-console.log('App mounted');
 
 // Escuchar cambios de ruta
 router.on('route', ({ component, params, match }) => {
@@ -105,16 +76,17 @@ router.on('route', ({ component, params, match }) => {
   if (page && page.init) {
     page.init(params, match);
   }
+  // Scroll to top
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Update document title
   const route = routes.find(r => r.path === match.route);
   document.title = route ? `${route.title} | Matemática Básica` : 'Matemática Básica';
 });
 
 // Iniciar router
 router.start();
-console.log('Router started');
 
 // Exponer para debugging
 window.__APP__ = { store, router };
 
-console.log('🎓 App initialized successfully');
+console.log('🎓 Matemática Básica y Pensamiento Matemático - Iniciado');
