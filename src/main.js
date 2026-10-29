@@ -1,4 +1,5 @@
 // Bootstrap principal - Inicialización de la aplicación
+console.log('main.js loaded');
 import { Router } from './router.js';
 import { Store } from './store/index.js';
 import { Layout } from './components/layout/Layout.js';
