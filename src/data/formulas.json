@@ -1,0 +1,215 @@
+{
+  "quadratic-formula": {
+    "id": "quadratic-formula",
+    "name": "Fórmula General (Ecuación Cuadrática)",
+    "latex": "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
+    "category": "Álgebra",
+    "phase": "2",
+    "module": "M2.3",
+    "tags": ["ecuaciones", "cuadráticas", "fórmula-general", "discriminante"],
+    "description": "Resuelve cualquier ecuación cuadrática de la forma ax² + bx + c = 0. El discriminante Δ = b² - 4ac determina la naturaleza de las soluciones: Δ > 0 (dos reales distintas), Δ = 0 (una real doble), Δ < 0 (dos complejas conjugadas).",
+    "analogy": "Como una llave maestra para todas las cerraduras cuadráticas. No necesitas factorizar ni completar cuadrados: solo identificas a, b, c y aplicas la fórmula.",
+    "derivation": "Paso 1: ax² + bx + c = 0\nPaso 2: Dividir por a: x² + (b/a)x + c/a = 0\nPaso 3: Mover c/a: x² + (b/a)x = -c/a\nPaso 4: Completar cuadrado: x² + (b/a)x + (b/2a)² = (b/2a)² - c/a\nPaso 5: (x + b/2a)² = (b² - 4ac)/4a²\nPaso 6: x + b/2a = ±√(b² - 4ac)/2a\nPaso 7: x = (-b ± √(b² - 4ac))/2a",
+    "variations": [
+      { "latex": "x = \\frac{-b + \\sqrt{\\Delta}}{2a}, \\quad x = \\frac{-b - \\sqrt{\\Delta}}{2a}", "description": "Separando las dos soluciones" },
+      { "latex": "x_1 + x_2 = -\\frac{b}{a}, \\quad x_1 x_2 = \\frac{c}{a}", "description": "Relaciones de Viète (suma y producto de raíces)" },
+      { "latex": "a(x - x_1)(x - x_2) = 0", "description": "Forma factorizada usando las raíces" }
+    ],
+    "applications": [
+      { "context": "Física - Tiro parabólico", "description": "Calcular cuándo un proyectil toca el suelo: h(t) = -½gt² + v₀t + h₀ = 0" },
+      { "context": "Economía - Punto de equilibrio", "description": "Igualar ingresos = costos: ax² + bx + c = 0 da cantidades de equilibrio" },
+      { "context": "Geometría - Rectángulo", "description": "Área fija A, perímetro P: x(P/2 - x) = A → -x² + (P/2)x - A = 0" },
+      { "context": "Optimización", "description": "Vértice de parábola en x = -b/2a (máx/mín de función cuadrática)" }
+    ],
+    "history": [
+      { "year": "2000 AC", "event": "Babilonios resuelven ecuaciones cuadráticas geométricamente" },
+      { "year": "628 DC", "event": "Brahmagupta (India) da fórmula general para ax²+bx=c" },
+      { "year": "820 DC", "event": "Al-Juarismi (Persia) sistematiza en 'Al-Kitab al-mukhtasar'" },
+      { "year": "1545", "event": "Cardano publica 'Ars Magna' con casos complejos" },
+      { "year": "1637", "event": "Descartes introduce notación moderna x, y, a, b, c en 'La Géométrie'" }
+    ]
+  },
+  "derivative-definition": {
+    "id": "derivative-definition",
+    "name": "Definición de Derivada (Límite del Cociente Incremental)",
+    "latex": "f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}",
+    "category": "Cálculo",
+    "phase": "4",
+    "module": "M4.3",
+    "tags": ["derivada", "límite", "cociente-incremental", "tangente", "velocidad-instantanea"],
+    "description": "La derivada de f en x es el límite del cociente incremental cuando h tiende a 0. Geométricamente: pendiente de la recta tangente. Físicamente: velocidad instantánea. Existe si el límite existe y es finito.",
+    "analogy": "Tomar una foto de alta velocidad del movimiento. La secante (h grande) da velocidad promedio; la tangente (h→0) da velocidad EN ESE INSTANTE.",
+    "derivation": "1. Recta secante por (x, f(x)) y (x+h, f(x+h)): pendiente = (f(x+h)-f(x))/h\n2. Acercar el segundo punto: h → 0\n3. La secante se vuelve tangente\n4. Pendiente de la tangente = derivada",
+    "variations": [
+      { "latex": "f'(x) = \\lim_{x \\to a} \\frac{f(x) - f(a)}{x - a}", "description": "Definición alternativa usando x→a" },
+      { "latex": "\\frac{dy}{dx} = \\lim_{\\Delta x \\to 0} \\frac{\\Delta y}{\\Delta x}", "description": "Notación de Leibniz (diferenciales)" },
+      { "latex": "f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x-h)}{2h}", "description": "Derivada simétrica (más precisa numéricamente)" }
+    ],
+    "applications": [
+      { "context": "Física - Velocidad y aceleración", "description": "v(t) = x'(t), a(t) = v'(t) = x''(t)" },
+      { "context": "Economía - Costo marginal", "description": "C'(x) = costo de producir una unidad adicional" },
+      { "context": "Biología - Crecimiento poblacional", "description": "P'(t) = tasa de crecimiento instantánea" },
+      { "context": "Machine Learning - Gradiente descendente", "description": "∇J(θ) guía la optimización de funciones de costo" }
+    ],
+    "history": [
+      { "year": "1665", "event": "Newton desarrolla 'flucciones' (cálculo diferencial) durante la peste" },
+      { "year": "1675", "event": "Leibniz publica notación dx, dy, ∫ independientemente" },
+      { "year": "1684", "event": "Leibniz publica 'Nova Methodus' con reglas de derivación" },
+      { "year": "1700s", "event": "Bernoulli, Euler, Lagrange formalizan y extienden el cálculo" },
+      { "year": "1821", "event": "Cauchy define límite rigurosamente con ε-δ, fundamentando la derivada" }
+    ]
+  },
+  "integral-fundamental": {
+    "id": "integral-fundamental",
+    "name": "Teorema Fundamental del Cálculo",
+    "latex": "\\int_a^b f(x) \\, dx = F(b) - F(a) \\quad \\text{si } F' = f",
+    "category": "Cálculo",
+    "phase": "4",
+    "module": "M4.4",
+    "tags": ["integral", "teorema-fundamental", "antiderivada", "area", "newton-leibniz"],
+    "description": "Conecta derivación e integración: son operaciones inversas. Parte 1: Si F(x) = ∫ₐˣ f(t)dt, entonces F'(x) = f(x). Parte 2: ∫ₐᵇ f(x)dx = F(b) - F(a) donde F es cualquier antiderivada de f. Permite calcular áreas SIN sumas de Riemann.",
+    "analogy": "La derivada pregunta '¿cuánto cambia AHORA?'. La integral pregunta '¿cuánto se ACUMULÓ?'. El TFC dice: para saber lo acumulado, basta saber cómo cambia y evaluar en los extremos.",
+    "derivation": "1. Definir A(x) = ∫ₐˣ f(t)dt (área acumulada desde a hasta x)\n2. A(x+h) - A(x) ≈ f(x)·h (rectángulo ancho h, alto f(x))\n3. (A(x+h)-A(x))/h ≈ f(x)\n4. Límite h→0: A'(x) = f(x) → A es antiderivada de f\n5. Cualquier antiderivada F difiere en constante: F(x) = A(x) + C\n6. F(b) - F(a) = A(b) - A(a) = ∫ₐᵇ f(t)dt",
+    "variations": [
+      { "latex": "\\frac{d}{dx} \\int_a^x f(t) \\, dt = f(x)", "description": "Parte 1: Derivada de la integral con límite variable" },
+      { "latex": "\\int_a^b f'(x) \\, dx = f(b) - f(a)", "description": "Forma simétrica: integral de la derivada" },
+      { "latex": "\\int_a^b f(x) \\, dx = -\\int_b^a f(x) \\, dx", "description": "Cambiar límites cambia el signo" }
+    ],
+    "applications": [
+      { "context": "Física - Trabajo variable", "description": "W = ∫ F(x)dx (fuerza variable a lo largo de distancia)" },
+      { "context": "Probabilidad - Densidad continua", "description": "P(a ≤ X ≤ b) = ∫ₐᵇ f(x)dx donde f es densidad de probabilidad" },
+      { "context": "Economía - Superávit del consumidor", "description": "Área bajo curva de demanda menos precio pagado × cantidad" },
+      { "context": "Ingeniería - Centro de masa", "description": "x̄ = (1/M)∫ x·ρ(x)dx" }
+    ],
+    "history": [
+      { "year": "1666", "event": "Newton descubre la relación inversa entre tangentes y cuadraturas" },
+      { "year": "1675", "event": "Leibniz descubre independientemente ∫ y d como operaciones inversas" },
+      { "year": "1686", "event": "Leibniz publica demostración geométrica del TFC" },
+      { "year": "1823", "event": "Cauchy da prueba rigurosa usando sumas de Riemann" },
+      { "year": "1900s", "event": "Lebesgue generaliza la integral para funciones más irregulares" }
+    ]
+  },
+  "pythagorean": {
+    "id": "pythagorean",
+    "name": "Teorema de Pitágoras",
+    "latex": "a^2 + b^2 = c^2",
+    "category": "Geometría",
+    "phase": "3",
+    "module": "M3.1",
+    "tags": ["pitágoras", "triángulo-rectángulo", "hipotenusa", "catetos", "distancia"],
+    "description": "En un triángulo rectángulo, el cuadrado de la hipotenusa (lado opuesto al ángulo recto) es igual a la suma de los cuadrados de los catetos. Base de la distancia euclídea en ℝⁿ: d = √(Σ(xᵢ-yᵢ)²).",
+    "analogy": "Un carpintero verifica esquinas de 90° midiendo 3m, 4m, 5m. Si la diagonal mide 5, el ángulo es recto. ¡La regla del 3-4-5!",
+    "derivation": "Demostración por áreas (Euclides I.47):\n1. Construir cuadrados sobre los tres lados\n2. El cuadrado grande (c²) se divide en dos rectángulos\n3. Cada rectángulo tiene área igual a uno de los cuadrados pequeños (a², b²)\n4. Por transitividad: a² + b² = c²",
+    "variations": [
+      { "latex": "c = \\sqrt{a^2 + b^2}", "description": "Para encontrar la hipotenusa" },
+      { "latex": "a = \\sqrt{c^2 - b^2}", "description": "Para encontrar un cateto" },
+      { "latex": "d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}", "description": "Fórmula de distancia en el plano (generalización)" },
+      { "latex": "a^2 + b^2 = c^2 \\iff \\angle C = 90^\\circ", "description": "Recíproco: si se cumple, el triángulo es rectángulo" }
+    ],
+    "applications": [
+      { "context": "Navegación GPS", "description": "Distancia entre dos coordenadas (lat, lon) proyectadas" },
+      { "context": "Construcción - Esquinas cuadradas", "description": "Regla 3-4-5 para verificar 90° sin transportador" },
+      { "context": "Gráficos 3D - Distancia euclídea", "description": "d = √((x₂-x₁)² + (y₂-y₁)² + (z₂-z₁)²)" },
+      { "context": "Trigonometría - Identidad fundamental", "description": "sin²θ + cos²θ = 1 (radio=1 en círculo unitario)" }
+    ],
+    "history": [
+      { "year": "1800 AC", "event": "Tabletas babilónicas (Plimpton 322) con ternas pitagóricas" },
+      { "year": "570 AC", "event": "Pitágoras de Samos y su escuela demuestran el teorema" },
+      { "year": "300 AC", "event": "Euclides incluye demostración en 'Elementos' I.47" },
+      { "year": "1200s", "event": "Bhaskara II (India) da prueba visual '¡Mira!'" },
+      { "year": "1876", "event": "James Garfield (presidente EE.UU.) descubre nueva demostración" }
+    ]
+  },
+  "euler-identity": {
+    "id": "euler-identity",
+    "name": "Identidad de Euler",
+    "latex": "e^{i\\pi} + 1 = 0",
+    "category": "Análisis Complejo",
+    "phase": "6",
+    "module": "M6.4",
+    "tags": ["euler", "números-complejos", "identidad", "belleza-matemática", "constantes-fundamentales"],
+    "description": "Considerada la fórmula más bella de las matemáticas: une 5 constantes fundamentales (0, 1, e, i, π) con 3 operaciones básicas (+, ×, exponenciación). Caso especial de la fórmula de Euler: e^{ix} = cos x + i sin x, evaluada en x = π.",
+    "analogy": "Como una sinfonía donde 5 instrumentos (constantes) tocan juntos en perfecta armonía. El 0 y 1 (identidades), e (crecimiento continuo), i (rotación 90°), π (círculo).",
+    "derivation": "1. Serie de Taylor: e^x = 1 + x + x²/2! + x³/3! + ...\n2. Sustituir x = iθ: e^{iθ} = 1 + iθ - θ²/2! - iθ³/3! + θ⁴/4! + ...\n3. Agrupar reales e imaginarios: (1 - θ²/2! + θ⁴/4! - ...) + i(θ - θ³/3! + θ⁵/5! - ...)\n4. Reconocer series: cos θ + i sin θ\n5. Evaluar en θ = π: e^{iπ} = cos π + i sin π = -1 + 0 = -1\n6. e^{iπ} + 1 = 0",
+    "variations": [
+      { "latex": "e^{ix} = \\cos x + i \\sin x", "description": "Fórmula de Euler (general)" },
+      { "latex": "e^{i\\pi/2} = i", "description": "Rotación de 90° en el plano complejo" },
+      { "latex": "e^{i2\\pi} = 1", "description": "Rotación completa (período 2π)" },
+      { "latex": "\\cos x = \\frac{e^{ix} + e^{-ix}}{2}, \\quad \\sin x = \\frac{e^{ix} - e^{-ix}}{2i}", "description": "Definiciones exponenciales de trigonométricas" }
+    ],
+    "applications": [
+      { "context": "Señales - Transformada de Fourier", "description": "Descomponer señales en senoidales: F(ω) = ∫ f(t)e^{-iωt}dt" },
+      { "context": "Mecánica Cuántica - Función de onda", "description": "ψ(x,t) = A e^{i(kx-ωt)} describe partículas" },
+      { "context": "Ingeniería Eléctrica - Fasores", "description": "Corriente alterna: V = V₀e^{iωt}, impedancia compleja" },
+      { "context": "Gráficos 3D - Rotaciones", "description": "Cuaterniones e^{θ/2 u} para rotaciones suaves sin gimbal lock" }
+    ],
+    "history": [
+      { "year": "1748", "event": "Euler publica 'Introductio in analysin infinitorum' con la fórmula" },
+      { "year": "1749", "event": "Euler deriva e^{ix} = cos x + i sin x usando series" },
+      { "year": "1800s", "event": "Gauss, Cauchy, Riemann desarrollan análisis complejo" },
+      { "year": "1988", "event": "Encuesta de 'Mathematical Intelligencer': fórmula más bella" },
+      { "year": "2004", "event": "Estudio neurocientífico: activa centros de belleza como arte/música" }
+    ]
+  },
+  "bayes-theorem": {
+    "id": "bayes-theorem",
+    "name": "Teorema de Bayes",
+    "latex": "P(A|B) = \\frac{P(B|A) P(A)}{P(B)}",
+    "category": "Probabilidad",
+    "phase": "5",
+    "module": "M5.2",
+    "tags": ["bayes", "probabilidad-condicional", "inferencia", "actualizacion-creencias", "test-medico"],
+    "description": "Actualiza la probabilidad de una hipótesis A dado nueva evidencia B. P(A) = prior (creencia inicial), P(B|A) = verosimilitud (probabilidad de ver B si A es cierto), P(B) = evidencia total, P(A|B) = posterior (creencia actualizada). Base del aprendizaje bayesiano y IA.",
+    "analogy": "Test médico: enfermedad rara (1%), test 99% preciso. ¿Positivo = enfermo? NO. P(enfermo|positivo) = (0.99×0.01)/(0.99×0.01 + 0.01×0.99) = 50%. La rareza (prior) domina.",
+    "derivation": "1. Definición probabilidad condicional: P(A|B) = P(A∩B)/P(B)\n2. Simétricamente: P(B|A) = P(A∩B)/P(A)\n3. Igualar P(A∩B): P(A|B)P(B) = P(B|A)P(A)\n4. Despejar: P(A|B) = P(B|A)P(A)/P(B)\n5. P(B) = P(B|A)P(A) + P(B|¬A)P(¬A) (ley probabilidad total)",
+    "variations": [
+      { "latex": "P(A|B) = \\frac{P(B|A) P(A)}{P(B|A) P(A) + P(B|\\neg A) P(\\neg A)}", "description": "Forma expandida con ley de probabilidad total" },
+      { "latex": "\\frac{P(A|B)}{P(\\neg A|B)} = \\frac{P(B|A)}{P(B|\\neg A)} \\cdot \\frac{P(A)}{P(\\neg A)}", "description": "Forma de odds (razón de probabilidades)" },
+      { "latex": "P(H|D) \\propto P(D|H) P(H)", "description": "Proporcionalidad: posterior ∝ verosimilitud × prior" }
+    ],
+    "applications": [
+      { "context": "Diagnóstico médico", "description": "Interpretar tests: sensibilidad, especificidad, prevalencia" },
+      { "context": "Filtro antispam", "description": "P(spam|palabras) = P(palabras|spam)P(spam)/P(palabras)" },
+      { "context": "IA - Clasificación bayesiana", "description": "Naive Bayes: P(clase|features) ∝ P(clase)∏P(feature|clase)" },
+      { "context": "Búsqueda y rescate", "description": "Actualizar zona de búsqueda con cada pista nueva" }
+    ],
+    "history": [
+      { "year": "1763", "event": "Thomas Bayes (postumo): 'An Essay towards solving a Problem in the Doctrine of Chances'" },
+      { "year": "1774", "event": "Laplace redescubre y generaliza independientemente" },
+      { "year": "1812", "event": "Laplace 'Théorie analytique des probabilités' sistematiza inferencia bayesiana" },
+      { "year": "1950s", "event": "Renacimiento bayesiano: Savage, Lindley, de Finetti" },
+      { "year": "1990s", "event": "MCMC y computación hacen viable Bayes en modelos complejos" }
+    ]
+  },
+  "compound-interest": {
+    "id": "compound-interest",
+    "name": "Interés Compuesto",
+    "latex": "A = P \\left(1 + \\frac{r}{n}\\right)^{nt}",
+    "category": "Aplicaciones Financieras",
+    "phase": "1",
+    "module": "M1.2",
+    "tags": ["interés-compuesto", "finanzas", "crecimiento-exponencial", "ahorro", "inversión"],
+    "description": "Crecimiento de un capital P con tasa r compuesta n veces al año durante t años. A = monto final. Si n→∞ (continuo): A = Pe^{rt}. La 'octava maravilla del mundo' según Einstein: el tiempo multiplica el dinero exponencialmente.",
+    "analogy": "Una bola de nieve rodando: cada vuelta recoge más nieve porque es más grande. El interés genera interés. $100 al 10%: año 1=$110, año 2=$121 (ganas $11, no $10), año 30=$1745.",
+    "derivation": "1. Después de 1 período: A₁ = P(1 + r/n)\n2. Después de 2: A₂ = A₁(1 + r/n) = P(1 + r/n)²\n3. Después de k: Aₖ = P(1 + r/n)ᵏ\n4. En t años con n períodos/año: k = nt\n5. A = P(1 + r/n)^{nt}\n6. Límite n→∞: A = Pe^{rt} (definición de e)",
+    "variations": [
+      { "latex": "A = P e^{rt}", "description": "Interés compuesto continuo" },
+      { "latex": "P = \\frac{A}{(1 + r/n)^{nt}}", "description": "Valor presente (descuento)" },
+      { "latex": "t = \\frac{\\ln(A/P)}{n \\ln(1 + r/n)}", "description": "Tiempo para alcanzar un monto" },
+      { "latex": "r = n \\left[\\left(\\frac{A}{P}\\right)^{1/nt} - 1\\right]", "description": "Tasa necesaria para un objetivo" }
+    ],
+    "applications": [
+      { "context": "Ahorro para jubilación", "description": "$200/mes al 7% desde 25 años = ~$500k a los 65" },
+      { "context": "Préstamos hipotecarios", "description": "Cuota fija = P·r(1+r)ⁿ/((1+r)ⁿ-1) (fórmula de anualidad)" },
+      { "context": "Inflación", "description": "Poder adquisitivo real: r_real ≈ r_nominal - inflación" },
+      { "context": "Crecimiento poblacional/bacterias", "description": "Mismo modelo: P(t) = P₀e^{rt}" }
+    ],
+    "history": [
+      { "year": "2400 AC", "event": "Tabletas sumerias con cálculos de interés compuesto" },
+      { "year": "1202", "event": "Fibonacci 'Liber Abaci' difunde matemáticas financieras en Europa" },
+      { "year": "1613", "event": "Richard Witt 'Arithmetical Questions' primeras tablas de interés compuesto" },
+      { "year": "1700s", "event": "De Moivre aplica distribución normal a anuidades" },
+      { "year": "1900s", "event": "Black-Scholes usa interés continuo para opciones financieras" }
+    ]
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "id": "m0-1",
+  "phaseId": "phase-0",
+  "number": "0.1",
+  "title": "Conteo y Cantidad",
+  "description": "Subitizing, correspondencia 1-a-1, cardinalidad, comparar, ordinales",
+  "lessons": 5,
+  "lessons": [
+    {
+      "id": "l0-1-1",
+      "title": "Reconoce Cantidad Sin Contar (Subitizing)",
+      "objective": "Identificar cantidades pequeñas (1-5) de un vistazo, sin contar uno por uno",
+      "type": "conceptual",
+      "durationMin": 5,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Mira estos dados. ¿Cuántos puntos hay? No cuentes uno por uno, ¡mira el dibujo!"
+        },
+        {
+          "type": "explanation",
+          "text": "El <strong>subitizing</strong> es reconocer cantidades pequeñas (1-5) de inmediato, sin contar. Tu cerebro ve el patrón completo, no los puntos individuales.",
+          "latex": "\\text{subitizing}: \\text{cantidad reconocida de vista, sin contar}",
+          "visual": "assets/subitizing-dots.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Como reconocer la cara de un amigo a distancia: no analizas nariz, ojos y boca por separado, ¡ves la cara completa!",
+          "conceptId": "variable"
+        },
+        {
+          "type": "interactive",
+          "component": "SubitizingGame",
+          "description": "Juego de dados: aparecen puntos 1-5 por 1 segundo, elige la cantidad correcta"
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-1-1-1",
+              "type": "conceptual-click",
+              "question": "¿Cuántos puntos ves?",
+              "image": "assets/dots-3.svg",
+              "options": [2, 3, 4, 5],
+              "correct": 3,
+              "feedback": "¡Correcto! 3 puntos forman un triángulo."
+            },
+            {
+              "id": "q0-1-1-2",
+              "type": "multiple-choice",
+              "question": "¿Qué es subitizing?",
+              "options": [
+                "Contar uno por uno muy rápido",
+                "Reconocer cantidad de vista sin contar",
+                "Sumar números grandes",
+                "Escribir números en orden"
+              ],
+              "correct": 1,
+              "explanation": "Subitizing = ver la cantidad completa de un vistazo, como los puntos de un dado."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-1-2",
+      "title": "Emparejar Uno a Uno",
+      "objective": "Entender que cada objeto cuenta una vez y solo una vez",
+      "type": "conceptual",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Tienes 5 manzanas y 5 niños. ¿Cada niño recibe una manzana?"
+        },
+        {
+          "type": "explanation",
+          "text": "La <strong>correspondencia 1-a-1</strong> significa emparejar cada objeto de un grupo con exactamente uno de otro grupo. Si sobran o faltan, las cantidades no son iguales.",
+          "latex": "\\text{1-a-1}: \\text{ cada objeto del grupo A se empareja con exactamente 1 del grupo B}",
+          "visual": "assets/correspondence-apples.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "DragMatch",
+          "description": "Arrastra cada zapato a un pie. ¿Sobran zapatos o pies?"
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-1-2-1",
+              "type": "drag-drop",
+              "question": "Empareja cada animal con su comida",
+              "items": ["perro", "gato", "pájaro"],
+              "targets": ["hueso", "pez", "semilla"],
+              "correct": ["perro-hueso", "gato-pez", "pájaro-semilla"]
+            },
+            {
+              "id": "q0-1-2-2",
+              "type": "multiple-choice",
+              "question": "Si hay 4 sillas y 3 personas, ¿qué sobra?",
+              "options": ["Personas", "Sillas", "Nada"],
+              "correct": 1,
+              "explanation": "4 sillas > 3 personas. Sobran 1 silla. La correspondencia 1-a-1 no es perfecta."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-1-3",
+      "title": "Cardinalidad: El Último Número Es la Cantidad",
+      "objective": "Entender que al contar, el último número dicho indica el total",
+      "type": "conceptual",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Cuenta estos bloques: 1, 2, 3, 4, 5. ¿Cuántos hay en total?"
+        },
+        {
+          "type": "explanation",
+          "text": "La <strong>cardinalidad</strong> es la idea de que el último número al contar representa la cantidad total del grupo. No es solo el último número dicho, ¡es la respuesta a '¿cuántos hay?'!",
+          "latex": "\\text{cardinalidad}: \\text{último número al contar} = \\text{cantidad total}",
+          "visual": "assets/cardinality-blocks.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Como correr una carrera: el último puesto que cruzas es tu posición final. Si cruzas el 5º, eres el 5º en llegar.",
+          "conceptId": "variable"
+        },
+        {
+          "type": "interactive",
+          "component": "CountToTotal",
+          "description": "Arrastra objetos uno por uno, el contador sube. Detente: el número final es la cantidad."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-1-3-1",
+              "type": "multiple-choice",
+              "question": "Cuenta: 🍎🍎🍎🍎. ¿Cuántas manzanas hay?",
+              "options": ["3", "4", "5", "6"],
+              "correct": 4,
+              "explanation": "El último número al contar es 4, por eso hay 4 manzanas."
+            },
+            {
+              "id": "q0-1-3-2",
+              "type": "fill-in",
+              "question": "Si cuentas hasta 7, la cantidad total es __",
+              "answer": "7",
+              "explanation": "Cardinalidad: el último número (7) = cantidad total (7)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-1-4",
+      "title": "Más, Menos e Igual",
+      "objective": "Comparar dos cantidades y decir cuál es mayor, menor o si son iguales",
+      "type": "conceptual",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Tienes 3 caramelos y tu amigo tiene 5. ¿Quién tiene más?"
+        },
+        {
+          "type": "explanation",
+          "text": "Compara cantidades usando <strong>más</strong> (mayor), <strong>menos</strong> (menor) e <strong>igual</strong> (misma cantidad). Usa una balanza visual: el lado más pesado tiene más.",
+          "latex": "A > B \\text{ (A es más que B)}, \\quad A < B \\text{ (A es menos que B)}, \\quad A = B \\text{ (A es igual a B)}",
+          "visual": "assets/compare-balance.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "BalanceScale",
+          "description": "Arrastra pesos a cada plato. ¿Cuál lado se inclina hacia abajo?"
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-1-4-1",
+              "type": "comparison",
+              "question": "Compara: 7 vs 4",
+              "options": ["7 > 4", "7 < 4", "7 = 4"],
+              "correct": 0,
+              "explanation": "7 es más que 4, así que 7 > 4."
+            },
+            {
+              "id": "q0-1-4-2",
+              "type": "multiple-choice",
+              "question": "¿Cuál grupo tiene MENOS?",
+              "options": ["5 estrellas", "3 estrellas", "8 estrellas"],
+              "correct": 1,
+              "explanation": "3 < 5 < 8. El grupo con 3 estrellas tiene menos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-1-5",
+      "title": "Números Ordinales (1º, 2º, 3º...)",
+      "objective": "Entender la diferencia entre cantidad (cardinal) y posición (ordinal)",
+      "type": "conceptual",
+      "durationMin": 5,
+      "content": [
+        {
+          "type": "hook",
+          "text": "En una carrera, ¿quién gana: el que corre más rápido o el que llega en 1er lugar?"
+        },
+        {
+          "type": "explanation",
+          "text": "Los <strong>números ordinales</strong> indican POSICIÓN o ORDEN: 1º (primero), 2º (segundo), 3º (tercero). Los <strong>cardinales</strong> indican CANTIDAD: uno, dos, tres.",
+          "latex": "\\text{cardinal}: \\text{cuántos} \\quad \\text{vs} \\quad \\text{ordinal}: \\text{en qué posición}",
+          "visual": "assets/ordinal-race.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "En una fila para helado: el 1º recibe primero, el 2º segundo... La posición importa más que cuántos hay en total.",
+          "conceptId": "variable"
+        },
+        {
+          "type": "interactive",
+          "component": "RaceOrdinal",
+          "description": "5 personajes corren. ¿Quién llegó 1º? ¿3º? ¿5º?"
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-1-5-1",
+              "type": "multiple-choice",
+              "question": "¿Cuál es ordinal?",
+              "options": ["5 manzanas", "5º lugar", "5 kg", "5 metros"],
+              "correct": 1,
+              "explanation": "'5º lugar' indica posición (ordinal). '5 manzanas' indica cantidad (cardinal)."
+            },
+            {
+              "id": "q0-1-5-2",
+              "type": "fill-in",
+              "question": "Si llegas 3º a la meta, dos personas llegaron antes que tú. ¿Verdadero o Falso?",
+              "answer": "Verdadero",
+              "explanation": "3º significa que hay 2 personas delante (1º y 2º)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

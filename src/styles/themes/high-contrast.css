@@ -1,0 +1,95 @@
+/* High Contrast Theme - WCAG 2.1 AAA */
+[data-theme="high-contrast"] {
+  --bg-primary: #000000;
+  --bg-secondary: #000000;
+  --bg-tertiary: #1a1a1a;
+  --bg-quaternary: #333333;
+  --bg-code: #ffffff;
+
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #999999;
+  --text-inverse: #000000;
+  --text-link: #ffff00;
+  --text-link-hover: #ffff00;
+
+  --border-color: #ffffff;
+  --border-color-strong: #ffffff;
+  --border-focus: #ffff00;
+  --border-error: #ff0000;
+  --border-success: #00ff00;
+
+  --primary: #00ffff;
+  --primary-light: #004444;
+  --primary-dark: #00cccc;
+  --primary-text: #000000;
+
+  --success: #00ff00;
+  --success-light: #003300;
+  --success-600: #00cc00;
+
+  --warning: #ffff00;
+  --warning-light: #333300;
+  --warning-600: #cccc00;
+
+  --error: #ff0000;
+  --error-light: #330000;
+  --error-600: #cc0000;
+
+  --shadow-xs: 0 0 0 1px #ffffff;
+  --shadow-sm: 0 0 0 1px #ffffff;
+  --shadow-md: 0 0 0 2px #ffffff;
+  --shadow-lg: 0 0 0 3px #ffffff;
+  --shadow-xl: 0 0 0 4px #ffffff;
+  --shadow-inner: inset 0 0 0 1px #ffffff;
+
+  --math-bg-graph: #000000;
+  --math-grid-color: #444444;
+  --math-axis-color: #ffffff;
+  --math-point-size: 8px;
+  --math-line-width: 3px;
+}
+
+/* Force focus styles in high contrast */
+[data-theme="high-contrast"] *:focus-visible {
+  outline: 3px solid #ffff00 !important;
+  outline-offset: 2px !important;
+}
+
+/* Ensure all interactive elements have visible borders */
+[data-theme="high-contrast"] button,
+[data-theme="high-contrast"] .btn,
+[data-theme="high-contrast"] .card,
+[data-theme="high-contrast"] .input-field,
+[data-theme="high-contrast"] select,
+[data-theme="high-contrast"] textarea {
+  border: 2px solid currentColor !important;
+}
+
+[data-theme="high-contrast"] .btn-primary {
+  background: #00ffff !important;
+  color: #000000 !important;
+  border-color: #00ffff !important;
+}
+
+[data-theme="high-contrast"] .btn-secondary {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+[data-theme="high-contrast"] .nav-item.active {
+  background: #00ffff !important;
+  color: #000000 !important;
+  border-color: #00ffff !important;
+}
+
+/* KaTeX high contrast */
+[data-theme="high-contrast"] .katex { color: #ffffff !important; }
+[data-theme="high-contrast"] .katex .katex-html { color: #ffffff !important; }
+
+/* Graphs high contrast */
+[data-theme="high-contrast"] .function-plot path,
+[data-theme="high-contrast"] .function-plot line {
+  stroke-width: 3px !important;
+}

@@ -1,0 +1,255 @@
+{
+  "id": "m0-3",
+  "phaseId": "phase-0",
+  "number": "0.3",
+  "title": "Fracciones y Partes",
+  "description": "Fracciones visuales (área, recta, conjunto), equivalentes, comparar",
+  "lessons": 5,
+  "lessons": [
+    {
+      "id": "l0-3-1",
+      "title": "¿Qué es una Fracción?",
+      "objective": "Entender que una fracción representa una parte de un todo dividido en partes iguales",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Divides una pizza en 8 partes iguales y tomas 3. ¿Cuánta pizza comiste?"
+        },
+        {
+          "type": "explanation",
+          "text": "Una <strong>fracción</strong> expresa una parte de un todo dividido en partes IGUALES. El numerador (arriba) dice cuántas partes tomas. El denominador (abajo) dice en cuántas partes se dividió el todo.",
+          "latex": "\\frac{3}{8} \\quad \\text{num=3 (partes tomadas), den=8 (partes totales iguales)}",
+          "visual": "assets/fraction-pizza.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Un chocolate de 12 cuadritos. Si rompes en 3 partes iguales, cada parte tiene 4 cuadritos. Te comes 1 parte = 4/12 = 1/3 del chocolate.",
+          "conceptId": "fraction"
+        },
+        {
+          "type": "interactive",
+          "component": "FractionPizza",
+          "description": "Corta una pizza en partes iguales y selecciona cuántas te comes."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-3-1-1",
+              "type": "multiple-choice",
+              "question": "En 3/8, el 8 es:",
+              "options": ["Partes tomadas", "Partes totales iguales", "El resultado", "El numerador"],
+              "correct": 1,
+              "explanation": "El denominador (8) indica en cuántas partes iguales se dividió el todo."
+            },
+            {
+              "id": "q0-3-1-2",
+              "type": "fill-in",
+              "question": "En 5/6, el numerador es __",
+              "answer": "5",
+              "explanation": "El numerador es el número de arriba: 5."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-3-2",
+      "title": "Fracciones en la Recta Numérica",
+      "objective": "Ubicar fracciones entre 0 y 1 en una recta numérica",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Dónde queda 1/2 en una recta de 0 a 1? ¿Y 1/4? ¿Y 3/4?"
+        },
+        {
+          "type": "explanation",
+          "text": "En la recta numérica, 1/2 está a la mitad entre 0 y 1. 1/4 está al cuarto de camino. 3/4 está a tres cuartos de camino. Las fracciones son NÚMEROS que ubican puntos entre los enteros.",
+          "latex": "0 < \\frac{1}{4} < \\frac{1}{2} < \\frac{3}{4} < 1",
+          "visual": "assets/fraction-numberline.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Como marcar medidas en una regla: 1/2 pulgada está justo en medio entre 0 y 1 pulgada.",
+          "conceptId": "fraction"
+        },
+        {
+          "type": "interactive",
+          "component": "FractionNumberLine",
+          "description": "Arrastra una marca a la posición correcta de la fracción en la recta."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-3-2-1",
+              "type": "multiple-choice",
+              "question": "¿Dónde queda 1/2 entre 0 y 1?",
+              "options": ["Al principio", "En el medio", "Al final", "Más cerca de 1"],
+              "correct": 1,
+              "explanation": "1/2 está exactamente a la mitad entre 0 y 1."
+            },
+            {
+              "id": "q0-3-2-2",
+              "type": "fill-in",
+              "question": "1/4 está más cerca de: __ (0 o 1)",
+              "answer": "0",
+              "explanation": "1/4 = 0.25, está más cerca de 0 que de 1."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-3-3",
+      "title": "Fracciones Equivalentes",
+      "objective": "Reconocer que diferentes fracciones pueden representar la misma cantidad",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Es lo mismo 1/2 de pizza que 2/4 de pizza? ¿Y que 4/8?"
+        },
+        {
+          "type": "explanation",
+          "text": "Fracciones <strong>equivalentes</strong> representan la misma cantidad aunque se vean diferentes. 1/2 = 2/4 = 3/6 = 4/8. Si cortas la pizza en más partes, tomas más partes, pero comes lo mismo.",
+          "latex": "\\frac{1}{2} = \\frac{2}{4} = \\frac{3}{6} = \\frac{4}{8}",
+          "visual": "assets/equivalent-fractions.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Un billete de $100 es lo mismo que dos billetes de $50, o cuatro de $25. Diferente forma, mismo valor.",
+          "conceptId": "fraction"
+        },
+        {
+          "type": "interactive",
+          "component": "EquivalentFractions",
+          "description": "Corta la misma pizza de distintas formas y encuentra fracciones equivalentes."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-3-3-1",
+              "type": "multiple-choice",
+              "question": "¿Cuál es equivalente a 1/2?",
+              "options": ["1/3", "2/4", "3/5", "1/4"],
+              "correct": 1,
+              "explanation": "1/2 = 2/4 (multiplica arriba y abajo por 2)."
+            },
+            {
+              "id": "q0-3-3-2",
+              "type": "fill-in",
+              "question": "1/3 = 2/__",
+              "answer": "6",
+              "explanation": "Multiplica arriba y abajo por 2: 1×2=2, 3×2=6."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-3-4",
+      "title": "Comparar Fracciones",
+      "objective": "Comparar fracciones con mismo numerador o mismo denominador",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Cuál es más grande: 3/8 o 3/5? ¿Y 2/5 o 4/5?"
+        },
+        {
+          "type": "explanation",
+          "text": "Reglas para comparar: (1) Mismo denominador: mayor numerador = mayor fracción. (2) Mismo numerador: menor denominador = mayor fracción (el todo se divide en menos partes, cada parte es más grande).",
+          "latex": "\\text{Mismo den: } \\frac{3}{8} < \\frac{3}{5} \\quad \\text{Mismo num: } \\frac{2}{5} < \\frac{4}{5}",
+          "visual": "assets/compare-fractions.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "3/8 vs 3/5: ambas toman 3 partes, pero en 3/5 el todo se divide en menos partes (5), así que cada parte es más grande que en 3/8 (donde se divide en 8).",
+          "conceptId": "fraction"
+        },
+        {
+          "type": "interactive",
+          "component": "CompareFractions",
+          "description": "Visualiza dos fracciones lado a lado y decide cuál es mayor."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-3-4-1",
+              "type": "multiple-choice",
+              "question": "¿Cuál es mayor: 3/8 o 3/5?",
+              "options": ["3/8", "3/5", "Son iguales"],
+              "correct": 1,
+              "explanation": "Mismo numerador (3), menor denominador (5 < 8) = fracción mayor. 3/5 > 3/8."
+            },
+            {
+              "id": "q0-3-4-2",
+              "type": "multiple-choice",
+              "question": "¿Cuál es mayor: 2/7 o 5/7?",
+              "options": ["2/7", "5/7", "Son iguales"],
+              "correct": 1,
+              "explanation": "Mismo denominador (7), mayor numerador (5 > 2) = fracción mayor. 5/7 > 2/7."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-3-5",
+      "title": "Fracciones en la Vida Real",
+      "objective": "Aplicar fracciones a situaciones cotidianas (cocina, tiempo, dinero)",
+      "type": "application",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Una receta pide 1/2 taza de azúcar. ¿Cómo mides eso sin una taza de 1/2?"
+        },
+        {
+          "type": "explanation",
+          "text": "Las fracciones aparecen en todas partes: cocina (1/2 taza, 3/4 cucharadita), tiempo (1/4 de hora = 15 min, 1/2 hora = 30 min), dinero (50 centavos = 1/2 dólar). Entender fracciones te ayuda en la vida cotidiana.",
+          "visual": "assets/fraction-real-life.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Media hora = 30 minutos = 1/2 de 60 minutos. Un cuarto de hora = 15 minutos = 1/4 de 60 minutos.",
+          "conceptId": "fraction"
+        },
+        {
+          "type": "interactive",
+          "component": "FractionClock",
+          "description": "Un reloj donde puedes ver 1/4, 1/2, 3/4 de hora en minutos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-3-5-1",
+              "type": "multiple-choice",
+              "question": "1/4 de hora = cuántos minutos?",
+              "options": ["15", "30", "45", "60"],
+              "correct": 0,
+              "explanation": "1/4 de 60 min = 60 ÷ 4 = 15 minutos."
+            },
+            {
+              "id": "q0-3-5-2",
+              "type": "fill-in",
+              "question": "3/4 de un dólar = __ centavos",
+              "answer": "75",
+              "explanation": "3/4 de 100 centavos = 75 centavos."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

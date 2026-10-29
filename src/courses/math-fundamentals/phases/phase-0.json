@@ -1,0 +1,20 @@
+{
+  "id": "phase-0",
+  "number": 0,
+  "title": "Los Números Son Tus Amigos",
+  "subtitle": "Puente preuniversitario - Intuición numérica y operaciones básicas",
+  "description": "Construye una base sólida y sin miedo. Subitizing, significado de operaciones, fracciones visuales, decimales y porcentajes con dinero real. 4 módulos, 20 lecciones.",
+  "icon": "🌉",
+  "color": "#3b82f6",
+  "estimatedHours": 5,
+  "prerequisites": [],
+  "modules": ["m0-1", "m0-2", "m0-3", "m0-4"],
+  "projectIntegrator": {
+    "id": "phase0-project",
+    "title": "Mi Presupuesto Mensual",
+    "description": "Aplica fracciones, porcentajes y operaciones para planear un presupuesto realista.",
+    "estimatedMinutes": 30
+  },
+  "unlockCondition": "always",
+  "lessons": {}
+}

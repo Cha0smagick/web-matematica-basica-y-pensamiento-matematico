@@ -1,0 +1,247 @@
+{
+  "limit": {
+    "term": "Límite",
+    "symbol": "lim",
+    "short": "Valor al que se acerca una expresión cuando la variable tiende a un valor",
+    "long": "El límite de una función f(x) cuando x se acerca a a es el valor L al que f(x) se aproxima arbitrariamente, sin necesidad de que f(a) exista o sea igual a L. Es la base del cálculo diferencial e integral.",
+    "analogy": "Como acercarte a una pared: puedes estar a 1 metro, 10 cm, 1 mm, 0.1 mm... pero nunca la tocas. El límite es 'dónde estarías si pudieras tocarla'.",
+    "visual": "assets/limit-animation.svg",
+    "related": ["epsilon-delta", "continuity", "derivative", "infinity"],
+    "level": "phase-4",
+    "commonMisconceptions": [
+      "El límite es el valor de la función en el punto",
+      "Si la función no está definida, no hay límite",
+      "El límite siempre existe"
+    ]
+  },
+  "derivative": {
+    "term": "Derivada",
+    "symbol": "f'",
+    "short": "Velocidad instantánea de cambio; pendiente de la recta tangente",
+    "long": "La derivada de una función en un punto mide qué tan rápido cambia la función en ese preciso instante. Geométricamente es la pendiente de la recta tangente a la curva en ese punto. Se define como el límite del cociente incremental cuando h tiende a 0.",
+    "analogy": "Como el velocímetro de un auto: te dice la velocidad AHORA, no el promedio del viaje. Si frenas, la derivada es negativa (desaceleración).",
+    "visual": "assets/derivative-tangent.svg",
+    "related": ["limit", "tangent", "rate-of-change", "differentiation-rules", "optimization"],
+    "level": "phase-4",
+    "commonMisconceptions": [
+      "La derivada es la pendiente de la secante",
+      "Todas las funciones son derivables",
+      "Derivar es solo aplicar reglas sin entender"
+    ]
+  },
+  "integral": {
+    "term": "Integral",
+    "symbol": "∫",
+    "short": "Área acumulada bajo una curva; inversa de la derivada",
+    "long": "La integral definida calcula el área neta bajo una curva entre dos puntos. La integral indefinida (antiderivada) es una función cuya derivada es la función original. El Teorema Fundamental del Cálculo conecta ambas: derivar e integrar son operaciones inversas.",
+    "analogy": "Como sumar la velocidad instante a instante para saber la distancia total recorrida. Si la derivada es 'velocímetro', la integral es 'odómetro'.",
+    "visual": "assets/integral-area.svg",
+    "related": ["riemann-sum", "fundamental-theorem", "antiderivative", "area-under-curve"],
+    "level": "phase-4",
+    "commonMisconceptions": [
+      "La integral siempre es área positiva",
+      "Integral indefinida = integral definida",
+      "El +C es opcional"
+    ]
+  },
+  "function": {
+    "term": "Función",
+    "symbol": "f(x)",
+    "short": "Regla que asigna a cada entrada exactamente una salida",
+    "long": "Una función es una relación entre dos conjuntos (dominio y codominio) donde cada elemento del dominio se corresponde con exactamente un elemento del codominio. Es una 'máquina' que transforma entradas en salidas de forma determinista.",
+    "analogy": "Como una máquina expendedora: pones un código (entrada) y SIEMPRE sale el mismo producto (salida). No puede darte refresco y agua a la vez con el mismo botón.",
+    "visual": "assets/function-machine.svg",
+    "related": ["domain", "range", "composition", "inverse", "graph"],
+    "level": "phase-1",
+    "commonMisconceptions": [
+      "Toda ecuación es una función",
+      "La gráfica de una función siempre es una línea continua",
+      "f(x) significa f multiplicado por x"
+    ]
+  },
+  "variable": {
+    "term": "Variable",
+    "symbol": "x, y, z",
+    "short": "Símbolo que representa un número que puede cambiar o que no conocemos",
+    "long": "En matemáticas, una variable es un símbolo (generalmente una letra) que representa un valor que puede variar o que es desconocido. Permite generalizar patrones y resolver problemas sin conocer los números exactos.",
+    "analogy": "Como una 'caja misteriosa' con una etiqueta 'x'. No sabes qué hay dentro, pero sabes que lo que sea, se comporta igual en toda la ecuación. Si x = 3, entonces 2x = 6.",
+    "visual": "assets/variable-box.svg",
+    "related": ["constant", "coefficient", "expression", "equation"],
+    "level": "phase-0",
+    "commonMisconceptions": [
+      "x siempre es el número que buscas",
+      "Las variables solo pueden ser x e y",
+      "Una variable tiene un solo valor fijo"
+    ]
+  },
+  "equation": {
+    "term": "Ecuación",
+    "symbol": "=",
+    "short": "Igualdad entre dos expresiones que contiene una o más variables",
+    "long": "Una ecuación es una igualdad que se cumple solo para ciertos valores de las variables (soluciones). Resolver una ecuación significa encontrar todos los valores que la hacen verdadera. Es como una balanza: lo que hagas a un lado, debes hacerlo al otro para mantener el equilibrio.",
+    "analogy": "Una balanza perfectamente equilibrada. Si quitas 3 kg del plato izquierdo, debes quitar 3 kg del derecho. La 'x' es el peso desconocido que equilibra la balanza.",
+    "visual": "assets/equation-balance.svg",
+    "related": ["solution", "linear-equation", "quadratic-equation", "system", "identity"],
+    "level": "phase-1",
+    "commonMisconceptions": [
+      "El signo = significa 'la respuesta es'",
+      "Puedes mover términos cambiando el signo sin más",
+      "Todas las ecuaciones tienen solución"
+    ]
+  },
+  "fraction": {
+    "term": "Fracción",
+    "symbol": "a/b",
+    "short": "Parte de un todo; división de dos números",
+    "long": "Una fracción representa una parte de una unidad dividida en partes iguales. El numerador (arriba) indica cuántas partes tomamos; el denominador (abajo) indica en cuántas partes se dividió el todo. Es una forma de escribir divisiones que no son exactas.",
+    "analogy": "Una pizza cortada en 8 rebanadas. Si comes 3, comiste 3/8 de la pizza. El 8 (denominador) son las partes totales; el 3 (numerador) son las que comiste.",
+    "visual": "assets/fraction-pizza.svg",
+    "related": ["numerator", "denominator", "equivalent-fractions", "decimal", "percentage"],
+    "level": "phase-0",
+    "commonMisconceptions": [
+      "El denominador más grande significa fracción más grande",
+      "No se pueden sumar fracciones con distinto denominador",
+      "La fracción es el numerador dividido el denominador solo como cálculo"
+    ]
+  },
+  "power": {
+    "term": "Potencia",
+    "symbol": "aⁿ",
+    "short": "Multiplicación repetida de un número por sí mismo",
+    "long": "Una potencia aⁿ significa multiplicar la base 'a' por sí misma 'n' veces (el exponente). Permite escribir multiplicaciones largas de forma compacta. Las leyes de los exponentes (producto, cociente, potencia de potencia) simplifican cálculos enormemente.",
+    "analogy": "Como doblar un papel: 1 doble = 2 capas (2¹), 2 dobles = 4 capas (2²), 3 dobles = 8 capas (2³)... Cada doble multiplica por 2. 10 dobles = 1024 capas.",
+    "visual": "assets/power-folding.svg",
+    "related": ["exponent", "base", "laws-of-exponents", "scientific-notation", "roots"],
+    "level": "phase-1",
+    "commonMisconceptions": [
+      "2³ = 2 × 3 = 6",
+      "a⁰ = 0",
+      "(-2)² = -4"
+    ]
+  },
+  "root": {
+    "term": "Raíz",
+    "symbol": "√",
+    "short": "Operación inversa de la potencia; número que elevado al índice da el radicando",
+    "long": "La raíz n-ésima de un número 'a' es el número que elevado a 'n' da 'a'. La raíz cuadrada (√) es la más común: √a = b significa b² = a. Las raíces permiten 'deshacer' potencias y aparecen en fórmulas geométricas (teorema de Pitágoras, fórmula general).",
+    "analogy": "Si 3² = 9, entonces √9 = 3. Es la pregunta: '¿Qué número multiplicado por sí mismo da 9?'. Como preguntar: '¿Qué lado tiene un cuadrado de área 9?'.",
+    "visual": "assets/root-square.svg",
+    "related": ["square-root", "cube-root", "radical", "rationalizing", "quadratic-formula"],
+    "level": "phase-1",
+    "commonMisconceptions": [
+      "√(a+b) = √a + √b",
+      "√9 = ±3 (la raíz principal es solo 3)",
+      "No se pueden sumar raíces distintas"
+    ]
+  },
+  "derivative": {
+    "term": "Derivada",
+    "symbol": "f'(x) o dy/dx",
+    "short": "Tasa de cambio instantánea; pendiente de la tangente",
+    "long": "La derivada mide cómo cambia una función en un punto exacto. Es el límite del cociente (f(x+h)-f(x))/h cuando h→0. Reglas: potencia (nxⁿ⁻¹), producto, cociente, cadena. Aplicaciones: máximos/mínimos, velocidad, aceleración, optimización.",
+    "analogy": "Velocímetro vs odómetro. La derivada es el velocímetro (velocidad AHORA). La integral es el odómetro (distancia total).",
+    "visual": "assets/derivative-tangent.svg",
+    "related": ["limit", "tangent", "differentiation", "optimization", "velocity"],
+    "level": "phase-4"
+  },
+  "integral": {
+    "term": "Integral",
+    "symbol": "∫ f(x) dx",
+    "short": "Área bajo la curva; antiderivada; acumulación",
+    "long": "La integral definida ∫ₐᵇ f(x)dx es el área neta bajo f(x) entre a y b. La integral indefinida ∫f(x)dx = F(x)+C donde F'=f. Teorema Fundamental: ∫ₐᵇ f(x)dx = F(b)-F(a). Técnicas: sustitución, partes, fracciones parciales.",
+    "analogy": "Sumar rectángulos infinitesimalmente finos bajo la curva. Como calcular distancia sumando velocidad × tiempo infinitesimal.",
+    "visual": "assets/integral-riemann.svg",
+    "related": ["antiderivative", "riemann-sum", "fundamental-theorem", "area", "substitution"],
+    "level": "phase-4"
+  },
+  "matrix": {
+    "term": "Matriz",
+    "symbol": "A = [aᵢⱼ]",
+    "short": "Arreglo rectangular de números; transforma vectores",
+    "long": "Una matriz m×n es una tabla con m filas y n columnas. Representa transformaciones lineales: rotaciones, escalados, proyecciones. Operaciones: suma, multiplicación (composición de transformaciones), determinante (factor de área/volumen), inversa (deshacer transformación).",
+    "analogy": "Una 'máquina' que toma vectores de entrada y produce vectores de salida. Multiplicar matrices = encadenar máquinas. El determinante dice cuánto estira/encoge el espacio.",
+    "visual": "assets/matrix-transformation.svg",
+    "related": ["vector", "linear-transformation", "determinant", "eigenvalue", "system-of-equations"],
+    "level": "phase-2"
+  },
+  "vector": {
+    "term": "Vector",
+    "symbol": "→v",
+    "short": "Magnitud con dirección y sentido; flecha en el espacio",
+    "long": "Un vector tiene magnitud (longitud), dirección (línea) y sentido (hacia dónde). En ℝⁿ es una n-tupla ordenada. Operaciones: suma (paralelogramo), producto escalar (ángulo), producto vectorial (perpendicular en ℝ³). Base de la geometría analítica y física.",
+    "analogy": "Como una instrucción de GPS: 'camina 5 km al norte'. La magnitud es 5 km, la dirección es norte. Sumar vectores = seguir instrucciones en secuencia.",
+    "visual": "assets/vector-arrow.svg",
+    "related": ["magnitude", "direction", "dot-product", "cross-product", "linear-combination"],
+    "level": "phase-2"
+  },
+  "probability": {
+    "term": "Probabilidad",
+    "symbol": "P(A)",
+    "short": "Medida de la posibilidad de que ocurra un evento (0 a 1)",
+    "long": "La probabilidad cuantifica la incertidumbre. P(A) = casos favorables / casos posibles (equiprobables). Propiedades: 0 ≤ P ≤ 1, P(seguro)=1, P(imposible)=0. Regla suma: P(A∪B)=P(A)+P(B)-P(A∩B). Independencia: P(A∩B)=P(A)P(B).",
+    "analogy": "Lanzar un dado: 6 caras equiprobables. P(sacar 3) = 1/6 ≈ 16.7%. P(sacar par) = 3/6 = 50%. La probabilidad NO predice el siguiente lanzamiento, describe tendencia a largo plazo.",
+    "visual": "assets/probability-dice.svg",
+    "related": ["sample-space", "event", "independence", "conditional", "bayes", "distribution"],
+    "level": "phase-5"
+  },
+  "normal-distribution": {
+    "term": "Distribución Normal (Gauss)",
+    "symbol": "N(μ, σ²)",
+    "short": "Campana de Gauss; modelo de muchos fenómenos naturales",
+    "long": "Distribución continua simétrica definida por media μ y desviación σ. 68% datos en μ±σ, 95% en μ±2σ, 99.7% en μ±3σ (regla empírica). Central en estadística: Teorema Límite Central dice que medias muestrales tienden a normal.",
+    "analogy": "Alturas de personas: la mayoría cerca del promedio, pocas muy altas/bajas. Notas de examen: campana centrada en la media. Errores de medición: se distribuyen normalmente alrededor de 0.",
+    "visual": "assets/normal-curve.svg",
+    "related": ["mean", "standard-deviation", "z-score", "central-limit", "confidence-interval"],
+    "level": "phase-5"
+  },
+  "set": {
+    "term": "Conjunto",
+    "symbol": "A = {x | P(x)}",
+    "short": "Colección bien definida de objetos distintos",
+    "long": "Un conjunto es una agrupación de elementos (números, objetos, incluso otros conjuntos) donde el orden no importa y no hay repetidos. Notación: {1,2,3} o {x | x>0}. Operaciones: unión (∪), intersección (∩), diferencia (\), complemento. Base de toda la matemática moderna (ZFC).",
+    "analogy": "Una bolsa de canicas: {roja, azul, verde}. No importa el orden en que las metas. Unión = juntar bolsas. Intersección = canicas que están en AMBAS bolsas.",
+    "visual": "assets/set-venn.svg",
+    "related": ["element", "subset", "union", "intersection", "complement", "cardinality", "power-set"],
+    "level": "phase-6"
+  },
+  "proof": {
+    "term": "Demostración",
+    "symbol": "□ (Q.E.D.)",
+    "short": "Argumento lógico que establece la verdad de una afirmación",
+    "long": "Una demostración es una secuencia finita de pasos lógicos que parte de axiomas, definiciones y teoremas previos para llegar a una conclusión. Tipos: directa, contrapositiva, por contradicción, por inducción, por casos. Una demostración correcta convence a cualquier matemático competente.",
+    "analogy": "Como un juicio: las premisas son las pruebas, los pasos lógicos son el razonamiento del abogado, la conclusión es el veredicto. Si los jurados (matemáticos) aceptan la lógica, el teorema queda probado.",
+    "visual": "assets/proof-structure.svg",
+    "related": ["axiom", "theorem", "lemma", "corollary", "induction", "contradiction", "contrapositive"],
+    "level": "phase-6"
+  },
+  "induction": {
+    "term": "Inducción Matemática",
+    "symbol": "P(n) ⇒ P(n+1)",
+    "short": "Método para probar afirmaciones para todos los naturales",
+    "long": "Principio de inducción: Si P(1) es verdadero (base) y P(k) ⇒ P(k+1) para todo k (paso inductivo), entonces P(n) es verdadero para todo n∈ℕ. Es como derribar fichas de dominó: si la primera cae y cada una derriba a la siguiente, todas caen.",
+    "analogy": "Escalera infinita: (1) Puedes subir al primer peldaño. (2) Si estás en el peldaño k, puedes subir al k+1. Conclusión: puedes subir a CUALQUIER peldaño.",
+    "visual": "assets/induction-domino.svg",
+    "related": ["base-case", "inductive-step", "strong-induction", "well-ordering", "recursion"],
+    "level": "phase-6"
+  },
+  "eigenvalue": {
+    "term": "Autovalor / Valor Propio",
+    "symbol": "λ",
+    "short": "Factor de escala de un vector que no cambia dirección bajo una transformación",
+    "long": "Para una matriz A, λ es autovalor si existe vector v≠0 tal que Av = λv. El vector v es autovector. Geométricamente: la transformación A estira/encoge v por factor λ sin rotarlo. Clave en: vibraciones, PageRank, compresión de imágenes, ecuaciones diferenciales.",
+    "analogy": "Estirar una goma elástica: la dirección de la goma no cambia, solo su longitud. El autovalor dice CUÁNTO se estira (λ=2: doble, λ=0.5: mitad, λ=-1: invierte).",
+    "visual": "assets/eigenvector-stretch.svg",
+    "related": ["eigenvector", "diagonalization", "characteristic-polynomial", "spectral-theorem", "pagerank"],
+    "level": "phase-2"
+  },
+  "taylor-series": {
+    "term": "Serie de Taylor",
+    "symbol": "∑ f⁽ⁿ⁾(a)/n! (x-a)ⁿ",
+    "short": "Aproximación de funciones con polinomios infinitos",
+    "long": "Cualquier función 'suave' puede aproximarse cerca de un punto a por un polinomio infinito usando sus derivadas en a. Serie de Maclaurin: a=0. eˣ = 1+x+x²/2!+x³/3!+... sin x = x-x³/3!+x⁵/5!-... Base de calculadoras y computadoras para evaluar funciones trascendentes.",
+    "analogy": "Como dibujar una curva compleja uniendo muchos segmentos de recta (polinomios). Cuantos más términos, mejor la aproximación. Los polinomios son 'fáciles' de calcular para las máquinas.",
+    "visual": "assets/taylor-approximation.svg",
+    "related": ["maclaurin", "polynomial-approximation", "radius-of-convergence", "analytic-function", "calculator-algorithms"],
+    "level": "phase-4"
+  }
+}

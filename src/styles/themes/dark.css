@@ -1,0 +1,33 @@
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-primary: var(--neutral-950);
+  --bg-secondary: var(--neutral-900);
+  --bg-tertiary: var(--neutral-800);
+  --bg-quaternary: var(--neutral-700);
+  --bg-code: var(--neutral-100);
+
+  --text-primary: var(--neutral-50);
+  --text-secondary: var(--neutral-300);
+  --text-muted: var(--neutral-500);
+  --text-inverse: var(--neutral-900);
+  --text-link: var(--primary-400);
+  --text-link-hover: var(--primary-300);
+
+  --border-color: var(--neutral-700);
+  --border-color-strong: var(--neutral-600);
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+
+  --math-bg-graph: var(--neutral-900);
+  --math-grid-color: var(--neutral-700);
+  --math-axis-color: var(--neutral-500);
+}
+
+/* KaTeX dark mode adjustments */
+[data-theme="dark"] .katex { color: var(--text-primary); }
+[data-theme="dark"] .katex .katex-html { color: var(--text-primary); }

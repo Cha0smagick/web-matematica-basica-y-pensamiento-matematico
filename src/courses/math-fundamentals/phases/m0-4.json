@@ -1,0 +1,254 @@
+{
+  "id": "m0-4",
+  "phaseId": "phase-0",
+  "number": "0.4",
+  "title": "Decimales y Porcentajes",
+  "description": "Dinero, medidas, regla de 3, descuentos, intereses simples",
+  "lessons": 5,
+  "lessons": [
+    {
+      "id": "l0-4-1",
+      "title": "Decimales: Partes de un Entero",
+      "objective": "Entender que los decimales son fracciones con denominador 10, 100, 1000...",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Cuánto es 0.5? ¿Y 0.25? ¿Cómo se relacionan con fracciones?"
+        },
+        {
+          "type": "explanation",
+          "text": "Un <strong>decimal</strong> es otra forma de escribir fracciones con denominador 10, 100, 1000... 0.5 = 5/10 = 1/2. 0.25 = 25/100 = 1/4. El punto decimal separa la parte entera de la parte fraccionaria.",
+          "latex": "0.5 = \\frac{5}{10} = \\frac{1}{2}, \\quad 0.25 = \\frac{25}{100} = \\frac{1}{4}, \\quad 0.75 = \\frac{75}{100} = \\frac{3}{4}",
+          "visual": "assets/decimal-grid.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "El dinero es decimal: $1.50 = 1 dólar y 50 centavos. 50 centavos = 0.50 dólar = 1/2 dólar.",
+          "conceptId": "decimal"
+        },
+        {
+          "type": "interactive",
+          "component": "DecimalGrid",
+          "description": "Colorea cuadros de una cuadrícula 10x10 para representar decimales."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-4-1-1",
+              "type": "multiple-choice",
+              "question": "0.5 es equivalente a:",
+              "options": ["1/5", "1/2", "1/50", "5/100"],
+              "correct": 1,
+              "explanation": "0.5 = 5/10 = 1/2."
+            },
+            {
+              "id": "q0-4-1-2",
+              "type": "fill-in",
+              "question": "0.25 = __/100",
+              "answer": "25",
+              "explanation": "0.25 tiene dos decimales, así que va sobre 100: 25/100."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-4-2",
+      "title": "Porcentajes: Partes por Ciento",
+      "objective": "Entender que porcentaje significa 'de cada 100'",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Una tienda dice '50% de descuento'. ¿Cuánto pagas de un producto de $100?"
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Porcentaje</strong> significa 'por cada 100' (per centum en latín). 50% = 50/100 = 1/2 = 0.5. Un porcentaje es solo una fracción con denominador 100 escrita de otra forma.",
+          "latex": "50\\% = \\frac{50}{100} = \\frac{1}{2} = 0.5 \\quad 25\\% = \\frac{25}{100} = \\frac{1}{4} = 0.25",
+          "visual": "assets/percent-hundred.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Si 100 estudiantes hacen un examen y 75 aprueban, entonces 75% aprobaron. Es como decir '75 de cada 100'.",
+          "conceptId": "percentage"
+        },
+        {
+          "type": "interactive",
+          "component": "PercentGrid",
+          "description": "Colorea cuadros de una cuadrícula 10x10 para representar porcentajes."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-4-2-1",
+              "type": "multiple-choice",
+              "question": "25% equivale a:",
+              "options": ["1/4", "1/2", "1/5", "3/4"],
+              "correct": 0,
+              "explanation": "25% = 25/100 = 1/4."
+            },
+            {
+              "id": "q0-4-2-2",
+              "type": "fill-in",
+              "question": "50% = __/100",
+              "answer": "50",
+              "explanation": "50% significa 50 de cada 100, así que 50/100."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-4-3",
+      "title": "Convertir entre Fracciones, Decimales y Porcentajes",
+      "objective": "Moverse fluidamente entre las tres representaciones de la misma cantidad",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Es lo mismo 1/2, 0.5 y 50%? ¡Sí! Tres formas de decir lo mismo.",
+        },
+        {
+          "type": "explanation",
+          "text": "Una misma cantidad se puede escribir de tres formas: fracción, decimal y porcentaje. Son como tres idiomas que dicen lo mismo. Convertir de uno a otro es una habilidad clave.",
+          "latex": "\\frac{1}{2} = 0.5 = 50\\% \\quad \\frac{3}{4} = 0.75 = 75\\% \\quad \\frac{1}{4} = 0.25 = 25\\%",
+          "visual": "assets/conversion-triangle.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Como decir 'hola' en inglés, español y francés: tres palabras, mismo significado.",
+          "conceptId": "decimal"
+        },
+        {
+          "type": "interactive",
+          "component": "ConversionTable",
+          "description": "Completa una tabla dando una forma y pidiendo las otras dos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-4-3-1",
+              "type": "multiple-choice",
+              "question": "3/4 como porcentaje es:",
+              "options": ["25%", "50%", "75%", "100%"],
+              "correct": 2,
+              "explanation": "3/4 = 0.75 = 75%."
+            },
+            {
+              "id": "q0-4-3-2",
+              "type": "fill-in",
+              "question": "0.2 como porcentaje = __%",
+              "answer": "20",
+              "explanation": "0.2 = 20/100 = 20%."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-4-4",
+      "title": "Porcentajes con Dinero",
+      "objective": "Calcular descuentos, propinas e impuestos usando porcentajes",
+      "type": "application",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Una camisa cuesta $1000 y tiene 20% de descuento. ¿Cuánto pagas?"
+        },
+        {
+          "type": "explanation",
+          "text": "Para calcular un porcentaje de una cantidad: convierte el porcentaje a decimal y multiplica. 20% de $1000 = 0.20 × 1000 = $200 de descuento. Precio final = $1000 - $200 = $800.",
+          "latex": "\\text{descuento} = \\text{precio} \\times \\frac{\\text{\\% descuento}}{100} \\quad \\text{precio final} = \\text{precio} - \\text{descuento}",
+          "visual": "assets/percent-money.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "20% de descuento significa que pagas 80% del precio original. O: pagas 4 de cada 5 partes del precio.",
+          "conceptId": "percentage"
+        },
+        {
+          "type": "interactive",
+          "component": "DiscountCalculator",
+          "description": "Ingresa precio y porcentaje de descuento, ve el precio final."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-4-4-1",
+              "type": "fill-in",
+              "question": "20% de $500 = $__",
+              "answer": "100",
+              "explanation": "0.20 × 500 = 100."
+            },
+            {
+              "id": "q0-4-4-2",
+              "type": "multiple-choice",
+              "question": "Producto $200 con 25% de descuento. Precio final:",
+              "options": ["$50", "$150", "$175", "$250"],
+              "correct": 1,
+              "explanation": "25% de 200 = 50. 200 - 50 = 150."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-4-5",
+      "title": "Regla de 3 Simple",
+      "objectivo": "Resolver problemas de proporcionalidad directa usando la regla de 3",
+      "type": "application",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Si 5 manzanas cuestan $100, ¿cuánto cuestan 8 manzanas al mismo precio?"
+        },
+        {
+          "type": "explanation",
+          "text": "La <strong>regla de 3 simple</strong> resuelve proporcionalidad directa: si A corresponde a B, ¿cuánto corresponde a C? Se resuelve hallando el valor unitario primero, luego multiplicando. (A→B, C→X) → X = (B × C) / A.",
+          "latex": "\\frac{A}{B} = \\frac{C}{X} \\implies X = \\frac{B \\times C}{A}",
+          "visual": "assets/rule-of-three.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Primero averigua cuánto cuesta UNO (valor unitario), luego multiplica por cuántos quieres. Es como saber el precio unitario en el supermercado.",
+          "conceptId": "proportion"
+        },
+        {
+          "type": "interactive",
+          "component": "RuleOfThree",
+          "description": "Ingresa tres valores y calcula el cuarto de una proporcionalidad."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-4-5-1",
+              "type": "fill-in",
+              "question": "5 manzanas = $100. 1 manzana = $__",
+              "answer": "20",
+              "explanation": "100 ÷ 5 = 20 por manzana."
+            },
+            {
+              "id": "q0-4-5-2",
+              "type": "fill-in",
+              "question": "Si 1 manzana = $20, 8 manzanas = $__",
+              "answer": "160",
+              "explanation": "20 × 8 = 160."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

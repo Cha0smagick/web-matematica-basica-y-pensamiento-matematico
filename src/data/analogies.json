@@ -1,0 +1,218 @@
+{
+  "variable": {
+    "analogies": [
+      {
+        "title": "La Caja Misteriosa",
+        "description": "Imagina una caja cerrada con una etiqueta 'x'. No sabes qué hay dentro, pero sabes que ES ALGO CONCRETO. Si la ecuación dice 2x = 10, significa: 'dos cajas idénticas pesan 10 kg en total'. ¿Cuánto pesa una caja? 5 kg. Por tanto, x = 5.",
+        "visual": "assets/analogy-variable-box.svg",
+        "targetConcept": "variable",
+        "phase": "phase-0"
+      },
+      {
+        "title": "El Comodín de Cartas",
+        "description": "En muchos juegos de cartas, el comodín puede ser CUALQUIER carta que necesites. Una variable es como un comodín matemático: puede tomar diferentes valores, pero en una partida (ecuación) tiene UN valor fijo que hace que todo funcione.",
+        "visual": "assets/analogy-variable-joker.svg",
+        "targetConcept": "variable",
+        "phase": "phase-0"
+      }
+    ]
+  },
+  "equation": {
+    "analogies": [
+      {
+        "title": "La Balanza Perfecta",
+        "description": "Una ecuación es una balanza en perfecto equilibrio. El signo '=' es el punto de apoyo. Lo que está a la izquierda PESA LO MISMO que lo de la derecha. Si quitas 3 del plato izquierdo, DEBES quitar 3 del derecho, o la balanza se inclina. Resolver es encontrar el peso misterioso (x) que equilibra todo.",
+        "visual": "assets/analogy-equation-balance.svg",
+        "targetConcept": "equation",
+        "phase": "phase-1"
+      },
+      {
+        "title": "El Detective y el Testigo",
+        "description": "La ecuación es una pista: 'el culpable (x) más 5 iguala 12'. El detective (tú) debe averiguar quién es x. Restas 5 a ambos lados de la igualdad (interrogas al testigo de la misma forma) y descubres: x = 7. Verificas: 7 + 5 = 12 ✓",
+        "visual": "assets/analogy-equation-detective.svg",
+        "targetConcept": "equation",
+        "phase": "phase-1"
+      }
+    ]
+  },
+  "function": {
+    "analogies": [
+      {
+        "title": "La Máquina Expendedora",
+        "description": "Una función es como una máquina expendedora: introduces un código (entrada x) y SIEMPRE sale el mismo producto (salida f(x)). No puede darte refresco hoy y agua mañana con el mismo botón. Cada entrada tiene EXACTAMENTE UNA salida. Si metes 1 y sale 3, entonces f(1)=3 siempre.",
+        "visual": "assets/analogy-function-machine.svg",
+        "targetConcept": "function",
+        "phase": "phase-1"
+      },
+      {
+        "title": "La Receta de Cocina",
+        "description": "Una función es una receta: ingredientes (entradas) → pasos fijos → plato final (salida). La receta 'multiplica por 2 y suma 3' (f(x)=2x+3) siempre produce el mismo resultado con los mismos ingredientes. Si cambias la receta, cambias la función.",
+        "visual": "assets/analogy-function-recipe.svg",
+        "targetConcept": "function",
+        "phase": "phase-1"
+      }
+    ]
+  },
+  "derivative": {
+    "analogies": [
+      {
+        "title": "Velocímetro vs Odómetro",
+        "description": "Conduces un auto. El odómetro (integral) marca KILÓMETROS TOTALES recorridos. El velocímetro (derivada) marca VELOCIDAD AHORA MISMO. La derivada es 'qué tan rápido cambia la posición EN ESTE INSTANTE'. No es promedio, es INSTANTÁNEO.",
+        "visual": "assets/analogy-derivative-speedometer.svg",
+        "targetConcept": "derivative",
+        "phase": "phase-4"
+      },
+      {
+        "title": "La Pendiente de la Montaña",
+        "description": "Caminas por una montaña. La derivada en tu posición exacta es la PENDIENTE del suelo bajo tus pies NOW. Si subes empinado, derivada grande positiva. Si bajas, negativa. Si estás en la cima (llano), derivada = 0. No importa la altura total, solo la inclinación LOCAL.",
+        "visual": "assets/analogy-derivative-slope.svg",
+        "targetConcept": "derivative",
+        "phase": "phase-4"
+      }
+    ]
+  },
+  "integral": {
+    "analogies": [
+      {
+        "title": "Sumar Velocímetro × Tiempo",
+        "description": "Quieres saber cuánto recorriste. Miras el velocímetro cada segundo: 50 km/h × 1/3600 h = 0.014 km. Lo sumas TODO: Σ v(t)Δt. Al hacer los intervalos infinitesimalmente pequeños (Δt→0), la suma se vuelve INTEGRAL ∫v(t)dt. La integral SUMA productos infinitesimales.",
+        "visual": "assets/analogy-integral-sum.svg",
+        "targetConcept": "integral",
+        "phase": "phase-4"
+      },
+      {
+        "title": "Pintar Debajo de la Curva",
+        "description": "Imagina la gráfica de una función como una valla. La integral definida es la CANTIDAD DE PINTURA que necesitas para pintar el área entre la valla y el suelo, desde x=a hasta x=b. Si la valla baja del suelo (valores negativos), esa pintura 'resta' (área neta).",
+        "visual": "assets/analogy-integral-paint.svg",
+        "targetConcept": "integral",
+        "phase": "phase-4"
+      }
+    ]
+  },
+  "limit": {
+    "analogies": [
+      {
+        "title": "Acercarse a la Pared Sin Tocarla",
+        "description": "Estás a 1 metro de una pared. Das un paso a la mitad (50 cm), luego a la mitad de lo que queda (25 cm), luego 12.5 cm, 6.25 cm... NUNCA tocas la pared, pero te acercas ARBITRARIAMENTE. El límite es 'dónde ESTARÍAS si pudieras tocarla'. No necesitas LLEGAR, solo ACERCARNOS.",
+        "visual": "assets/analogy-limit-wall.svg",
+        "targetConcept": "limit",
+        "phase": "phase-4"
+      },
+      {
+        "title": "Adivinar el Final de la Película",
+        "description": "Ves una película y pausas a 1 min del final, luego a 30 seg, 10 seg, 1 seg... Predices el final basándote en la tendencia. El límite es tu PREDICCIÓN del final basada en lo que ves ACERCÁNDOTE. No necesitas VER el último fotograma para saber cómo termina.",
+        "visual": "assets/analogy-limit-movie.svg",
+        "targetConcept": "limit",
+        "phase": "phase-4"
+      }
+    ]
+  },
+  "fraction": {
+    "analogies": [
+      {
+        "title": "La Pizza Compartida",
+        "description": "Una pizza cortada en 8 partes iguales. El denominador (8) = cuántas partes TOTALES. El numerador (3) = cuántas partes TOMASTE. 3/8 = 'tres octavos de pizza'. Si cortas la MISMA pizza en 16 partes, tomaste 6/16. ¡MISMA CANTIDAD! Fracciones equivalentes = misma pizza, cortes distintos.",
+        "visual": "assets/analogy-fraction-pizza.svg",
+        "targetConcept": "fraction",
+        "phase": "phase-0"
+      },
+      {
+        "title": "El Chocolate Roto",
+        "description": "Una barra de chocolate de 12 cuadritos. La rompes en 3 partes iguales (4 cuadritos cada una). Te comes 1 parte = 4/12 = 1/3. El denominador dice 'en cuántas partes rompí el todo', el numerador 'cuántas partes me comí'.",
+        "visual": "assets/analogy-fraction-chocolate.svg",
+        "targetConcept": "fraction",
+        "phase": "phase-0"
+      }
+    ]
+  },
+  "power": {
+    "analogies": [
+      {
+        "title": "Doblar Papel",
+        "description": "Una hoja de papel: 1 doble = 2 capas (2¹). 2 dobles = 4 capas (2²). 3 dobles = 8 capas (2³). 10 dobles = 1024 capas (2¹⁰). Cada doble MULTIPLICA por 2. El exponente cuenta CUÁNTAS VECES multiplicas la base por sí misma. ¡Crecimiento EXPLOSIVO!",
+        "visual": "assets/analogy-power-folding.svg",
+        "targetConcept": "power",
+        "phase": "phase-1"
+      },
+      {
+        "title": "El Secreto que se Propaga",
+        "description": "Cuentas un secreto a 2 amigos (2¹). Cada uno se lo cuenta a 2 más: 4 personas lo saben (2²). Esos 4 se lo cuentan a 2: 8 personas (2³). En 10 rondas: 1024 personas (2¹⁰). La base (2) = cuántos se lo cuenta cada uno. El exponente = rondas de propagación.",
+        "visual": "assets/analogy-power-secret.svg",
+        "targetConcept": "power",
+        "phase": "phase-1"
+      }
+    ]
+  },
+  "probability": {
+    "analogies": [
+      {
+        "title": "El Dado Justo",
+        "description": "Un dado de 6 caras perfectas. Cada cara tiene LA MISMA oportunidad de salir. P(sacar 3) = 1 caso favorable / 6 casos posibles = 1/6 ≈ 16.7%. La probabilidad NO dice 'qué saldrá AHORA', dice 'qué TENDENCIA habrá en MUCHOS lanzamientos'. En 600 lanzamientos, esperarías ~100 treses.",
+        "visual": "assets/analogy-probability-dice.svg",
+        "targetConcept": "probability",
+        "phase": "phase-5"
+      },
+      {
+        "title": "La Bolsa de Canicas",
+        "description": "Bolsa con 3 canicas rojas y 2 azules. Sacas una al azar. P(roja) = 3/5 = 60%. P(azul) = 2/5 = 40%. Si sacas, miras, y VUELVES A METER (con reposición), las probabilidades NO CAMBIAN. Si NO la vuelves a meter (sin reposición), cambian para el siguiente saque.",
+        "visual": "assets/analogy-probability-marbles.svg",
+        "targetConcept": "probability",
+        "phase": "phase-5"
+      }
+    ]
+  },
+  "normal-distribution": {
+    "analogies": [
+      {
+        "title": "Alturas en una Multitud",
+        "description": "Mides la altura de 10,000 personas. La mayoría estarán cerca del promedio (ej. 170 cm). Pocas muy bajas (150 cm) o muy altas (195 cm). Al graficar: forma de CAMPANA simétrica. 68% entre 165-175 cm (μ±σ), 95% entre 160-180 (μ±2σ). La 'curva de Gauss' aparece EN TODAS PARTES naturalmente.",
+        "visual": "assets/analogy-normal-heights.svg",
+        "targetConcept": "normal-distribution",
+        "phase": "phase-5"
+      },
+      {
+        "title": "Notas de un Examen Justo",
+        "description": "Examen bien calibrado: la mayoría saca nota media (6-7), pocos sacan 10 o 0. El profesor ve la campana y sabe: el examen fue justo. Si la campana está sesgada a la derecha (muchos 9-10), fue FÁCIL. Si sesgada a izquierda (muchos 1-3), fue DIFÍCIL. La forma de la campana CUENTA LA HISTORIA.",
+        "visual": "assets/analogy-normal-grades.svg",
+        "targetConcept": "normal-distribution",
+        "phase": "phase-5"
+      }
+    ]
+  },
+  "matrix": {
+    "analogies": [
+      {
+        "title": "La Máquina de Transformar Espacio",
+        "description": "Una matriz 2×2 es una máquina que toma cualquier punto (x,y) del plano y lo mueve a una nueva posición. [[2,0],[0,2]] = estira todo al doble (zoom 2x). [[0,-1],[1,0]] = rota 90° antihorario. [[1,0],[0,-1]] = refleja horizontalmente. Multiplicar matrices = ENCADENÁR máquinas: primero A, luego B = BA.",
+        "visual": "assets/analogy-matrix-transform.svg",
+        "targetConcept": "matrix",
+        "phase": "phase-2"
+      },
+      {
+        "title": "La Hoja de Cálculo",
+        "description": "Una matriz es como una hoja Excel: filas y columnas de números. Pero con SUPERPODERES: puedes 'multiplicar' hojas enteras (composición de transformaciones), 'invertir' una hoja (deshacer lo que hizo), y el 'determinante' te dice cuánto cambió el área total. Es álgebra de hojas de cálculo.",
+        "visual": "assets/analogy-matrix-spreadsheet.svg",
+        "targetConcept": "matrix",
+        "phase": "phase-2"
+      }
+    ]
+  },
+  "proof": {
+    "analogies": [
+      {
+        "title": "El Juicio Matemático",
+        "description": "Una demostración es un juicio: las PREMISAS (axiomas, teoremas previos) son las PRUEBAS. El RAZONAMIENTO lógico es la argumentación del abogado. La CONCLUSIÓN es el VEREDICTO. El jurado son OTROS MATEMÁTICOS: si siguen tu lógica paso a paso y están de acuerdo, el teorema queda PROBADO para siempre.",
+        "visual": "assets/analogy-proof-trial.svg",
+        "targetConcept": "proof",
+        "phase": "phase-6"
+      },
+      {
+        "title": "Construir un Puente",
+        "description": "Demostrar un teorema es construir un puente: los AXIOMAS son el suelo firme. Cada PASO LÓGICO es una viga apoyada en las anteriores. No puedes saltar vigas (falacias). El TEOREMA es el otro lado del río. Si el puente aguanta el peso del escrutinio, CRUZARON todos los matemáticos.",
+        "visual": "assets/analogy-proof-bridge.svg",
+        "targetConcept": "proof",
+        "phase": "phase-6"
+      }
+    ]
+  }
+}

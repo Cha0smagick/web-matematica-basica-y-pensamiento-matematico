@@ -1,0 +1,253 @@
+{
+  "id": "m0-2",
+  "phaseId": "phase-0",
+  "number": "0.2",
+  "title": "Operaciones Básicas",
+  "description": "Significado de suma/resta/multiplicación/división, no solo algoritmos",
+  "lessons": 5,
+  "lessons": [
+    {
+      "id": "l0-2-1",
+      "title": "Suma: Juntar Grupos",
+      "objective": "Entender la suma como combinar dos o más grupos en uno solo",
+      "type": "conceptual",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Tienes 2 caramelos y te regalan 3 más. ¿Cuántos tienes ahora?"
+        },
+        {
+          "type": "explanation",
+          "text": "La <strong>suma</strong> combina cantidades. No es solo un símbolo '+', es la acción de JUNTAR. 2 + 3 = 5 significa: 'un grupo de 2 y otro de 3 hacen un grupo de 5'.",
+          "latex": "2 + 3 = 5 \\quad \\text{(2 unidades + 3 unidades = 5 unidades totales)}",
+          "visual": "assets/addition-groups.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Como dos charcos de agua que se unen: el charco resultante es más grande que cada uno por separado.",
+          "conceptId": "operation"
+        },
+        {
+          "type": "interactive",
+          "component": "AddGroups",
+          "description": "Arrastra bloques de dos colores a una caja. Cuenta el total."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-2-1-1",
+              "type": "visual-count",
+              "question": "🍎🍎 + 🍎🍎🍎 = ?",
+              "options": ["4", "5", "6", "7"],
+              "correct": 5,
+              "explanation": "2 manzanas + 3 manzanas = 5 manzanas en total."
+            },
+            {
+              "id": "q0-2-1-2",
+              "type": "multiple-choice",
+              "question": "¿Qué representa el símbolo '+'?",
+              "options": ["Separar", "Juntar", "Comparar", "Repetir"],
+              "correct": 1,
+              "explanation": "El '+' significa juntar, combinar, agregar grupos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-2-2",
+      "title": "Resta: Quitar o Comparar",
+      "objective": "Entender la resta como quitar una parte o encontrar la diferencia",
+      "type": "conceptual",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Tienes 5 galletas y te comes 2. ¿Cuántas te quedan?"
+        },
+        {
+          "type": "explanation",
+          "text": "La <strong>resta</strong> puede ser QUITAR (5 - 2 = 3 quedan) o COMPARAR (¿cuántas más tiene A que B?). Es la operación inversa de la suma.",
+          "latex": "5 - 2 = 3 \\quad \\text{(5 menos 2 es igual a 3)}",
+          "visual": "assets/subtraction-takeaway.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Como una mochila: pones libros (suma), sacas libros (resta). Cuántos quedan depende de cuántos sacaste.",
+          "conceptId": "operation"
+        },
+        {
+          "type": "interactive",
+          "component": "SubtractTakeaway",
+          "description": "Arrastra objetos fuera de una caja. Cuenta lo que queda dentro."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-2-2-1",
+              "type": "visual-count",
+              "question": "5 - 2 = ?",
+              "options": ["2", "3", "4", "7"],
+              "correct": 3,
+              "explanation": "Si quitas 2 de 5, quedan 3."
+            },
+            {
+              "id": "q0-2-2-2",
+              "type": "multiple-choice",
+              "question": "La resta es la inversa de:",
+              "options": ["Multiplicación", "Suma", "División", "Potencia"],
+              "correct": 1,
+              "explanation": "Suma y resta se deshacen mutuamente: 2 + 3 = 5, luego 5 - 3 = 2."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-2-3",
+      "title": "Multiplicación: Grupos Iguales",
+      "objective": "Entender la multiplicación como suma repetida de grupos iguales",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Tienes 3 cajas con 4 chocolates cada una. ¿Cuántos chocolates en total?"
+        },
+        {
+          "type": "explanation",
+          "text": "La <strong>multiplicación</strong> es suma repetida de grupos iguales. 3 × 4 = 4 + 4 + 4 = 12. No es 'magia', es una abreviatura de sumar lo mismo varias veces.",
+          "latex": "3 \\times 4 = 4 + 4 + 4 = 12 \\quad \\text{(3 grupos de 4)}",
+          "visual": "assets/multiplication-arrays.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Como huevos en una cartulina: 3 filas de 4 huevos = 12 huevos. No cuentas uno por uno, multiplicas filas × columnas.",
+          "conceptId": "operation"
+        },
+        {
+          "type": "interactive",
+          "component": "MultiplicationArray",
+          "description": "Crea grupos iguales con objetos. La multiplicación calcula el total."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-2-3-1",
+              "type": "multiple-choice",
+              "question": "3 × 4 es lo mismo que:",
+              "options": ["3 + 4", "4 + 4 + 4", "3 + 3 + 3 + 3", "12 - 4"],
+              "correct": 1,
+              "explanation": "3 × 4 = tres grupos de cuatro = 4 + 4 + 4 = 12."
+            },
+            {
+              "id": "q0-2-3-2",
+              "type": "fill-in",
+              "question": "2 × 5 = __",
+              "answer": "10",
+              "explanation": "2 grupos de 5 = 5 + 5 = 10."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-2-4",
+      "title": "División: Repartir Igual",
+      "objective": "Entender la división como repartir en partes iguales o formar grupos",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Tienes 12 galletas y 3 amigos. ¿Cuántas galletas le das a cada uno?"
+        },
+        {
+          "type": "explanation",
+          "text": "La <strong>división</strong> reparte una cantidad total en partes iguales. 12 ÷ 3 = 4 significa '12 repartido entre 3 da 4 cada uno'. Es la inversa de la multiplicación.",
+          "latex": "12 \\div 3 = 4 \\quad \\text{porque} \\quad 3 \\times 4 = 12",
+          "visual": "assets/division-sharing.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Como repartir cartas en un juego: repartes una a cada jugador hasta que se acaben. Todos reciben lo mismo.",
+          "conceptId": "operation"
+        },
+        {
+          "type": "interactive",
+          "component": "DivisionShare",
+          "description": "Reparte objetos equitativamente entre varios recipientes."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-2-4-1",
+              "type": "multiple-choice",
+              "question": "12 ÷ 3 = ?",
+              "options": ["3", "4", "36", "9"],
+              "correct": 4,
+              "explanation": "12 repartido entre 3 = 4 cada uno. Porque 3 × 4 = 12."
+            },
+            {
+              "id": "q0-2-4-2",
+              "type": "multiple-choice",
+              "question": "La división es la inversa de:",
+              "options": ["Suma", "Resta", "Multiplicación", "Potencia"],
+              "correct": 2,
+              "explanation": "Multiplicación y división se deshacen: 3 × 4 = 12, luego 12 ÷ 4 = 3."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l0-2-5",
+      "title": "Las Cuatro Operaciones Juntas",
+      "objective": "Reconocer qué operación usar en cada situación de la vida real",
+      "type": "application",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Cuándo sumas, restas, multiplicas o divides en tu día a día?"
+        },
+        {
+          "type": "explanation",
+          "text": "Cada operación tiene un propósito: SUMA (juntar), RESTA (quitar/comparar), MULTIPLICACIÓN (grupos iguales), DIVISIÓN (repartir igual). Identificar la operación correcta es más importante que calcular.",
+          "visual": "assets/operations-map.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "OperationChooser",
+          "description": "Lee el problema y elige qué operación usar (no calcules aún)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q0-2-5-1",
+              "type": "multiple-choice",
+              "question": "Tienes 20 caramelos y comes 5. ¿Qué operación?",
+              "options": ["Suma", "Resta", "Multiplicación", "División"],
+              "correct": 1,
+              "explanation": "Comes (quitas) 5 de 20 → resta: 20 - 5 = 15."
+            },
+            {
+              "id": "q0-2-5-2",
+              "type": "multiple-choice",
+              "question": "4 cajas con 6 lápices cada una. ¿Qué operación?",
+              "options": ["Suma", "Resta", "Multiplicación", "División"],
+              "correct": 2,
+              "explanation": "Grupos iguales: 4 grupos de 6 → multiplicación: 4 × 6 = 24."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

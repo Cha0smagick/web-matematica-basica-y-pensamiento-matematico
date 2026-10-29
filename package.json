@@ -1,0 +1,51 @@
+{
+  "name": "math-fundamentals-course",
+  "version": "1.0.0",
+  "description": "Curso profesional completo de Matemática Básica y Pensamiento Matemático - Para principiantes absolutos",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext js",
+    "lint:fix": "eslint src --ext js --fix",
+    "format": "prettier --write \"src/**/*.{js,css,html,json}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "mathematics",
+    "education",
+    "course",
+    "github-pages",
+    "katex",
+    "interactive"
+  ],
+  "author": "Adeptus Vinictus II",
+  "license": "MIT",
+  "dependencies": {
+    "dexie": "^4.0.7",
+    "function-plot": "^1.24.0",
+    "jspdf": "^2.5.1",
+    "jszip": "^3.10.1",
+    "katex": "^0.16.9",
+    "qrcode": "^1.5.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.42.0",
+    "eslint": "^8.57.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "stylelint": "^16.3.0",
+    "stylelint-config-standard": "^36.0.0",
+    "terser": "^5.51.2",
+    "vite": "^5.2.0",
+    "vitest": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

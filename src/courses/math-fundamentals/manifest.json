@@ -1,0 +1,188 @@
+{
+  "id": "math-fundamentals",
+  "title": "Matemática Básica y Pensamiento Matemático",
+  "subtitle": "Curso Profesional Completo - De Cero a Nivel Universitario",
+  "version": "1.0.0",
+  "description": "Curso interactivo, intuitivo y sin ansiedad para aprender matemáticas desde cero. Basado en los principales pensums universitarios mundiales (MIT, Harvard, Cambridge, ETH, etc.). Incluye 6 fases, 24 módulos, 180+ lecciones, 600+ ejercicios, gráficas interactivas, fórmulas LaTeX con explicaciones hover, y diplomas honorarios por cada logro.",
+  "author": "Adeptus Vinictus II",
+  "license": "CC-BY-SA-4.0",
+  "language": "es",
+  "estimatedHours": 60,
+  "phases": [
+    {
+      "id": "phase-0",
+      "number": 0,
+      "title": "Los Números Son Tus Amigos",
+      "subtitle": "Puente preuniversitario - Intuición numérica y operaciones básicas",
+      "description": "Construye una base sólida y sin miedo. Subitizing, significado de operaciones, fracciones visuales, decimales y porcentajes con dinero real. 4 módulos, 20 lecciones.",
+      "icon": "🌉",
+      "color": "#3b82f6",
+      "estimatedHours": 5,
+      "prerequisites": [],
+      "modules": ["m0-1", "m0-2", "m0-3", "m0-4"],
+      "projectIntegrator": {
+        "id": "phase0-project",
+        "title": "Mi Presupuesto Mensual",
+        "description": "Aplica fracciones, porcentajes y operaciones para planear un presupuesto realista.",
+        "estimatedMinutes": 30
+      },
+      "unlockCondition": "always"
+    },
+    {
+      "id": "phase-1",
+      "number": 1,
+      "title": "El Lenguaje de los Patrones",
+      "subtitle": "Fundamentos universitarios - Números, potencias, variables y ecuaciones lineales",
+      "description": "Domina el lenguaje algebraico: enteros, potencias, raíces, expresiones, ecuaciones lineales como balanzas. 4 módulos, 30 lecciones.",
+      "icon": "🔤",
+      "color": "#16a34a",
+      "estimatedHours": 8,
+      "prerequisites": ["phase-0"],
+      "modules": ["m1-1", "m1-2", "m1-3", "m1-4"],
+      "projectIntegrator": {
+        "id": "phase1-project",
+        "title": "Diseña tu Huerta",
+        "description": "Usa álgebra lineal, área, perímetro y costos para optimizar un huerto rectangular.",
+        "estimatedMinutes": 45
+      },
+      "unlockCondition": "phase-0-complete"
+    },
+    {
+      "id": "phase-2",
+      "number": 2,
+      "title": "Resolver Misterios",
+      "subtitle": "Álgebra - Sistemas, polinomios, cuadráticas y funciones",
+      "description": "Resuelve sistemas como intersecciones, factoriza polinomios como áreas, domina la fórmula general y entiende funciones como máquinas. 4 módulos, 30 lecciones.",
+      "icon": "🔍",
+      "color": "#f59e0b",
+      "estimatedHours": 10,
+      "prerequisites": ["phase-1"],
+      "modules": ["m2-1", "m2-2", "m2-3", "m2-4"],
+      "projectIntegrator": {
+        "id": "phase2-project",
+        "title": "El Misterio de la Parábola",
+        "description": "Diseña una fuente ornamental o un puente usando parábolas y sus propiedades (foco, directriz, vértice).",
+        "estimatedMinutes": 60
+      },
+      "unlockCondition": "phase-1-complete"
+    },
+    {
+      "id": "phase-3",
+      "number": 3,
+      "title": "Arquitecto de Formas",
+      "subtitle": "Geometría - Plana, analítica, transformaciones y trigonometría básica",
+      "description": "Geometría visual e interactiva: ángulos, triángulos, círculos, coordenadas GPS, simetrías, trigonometría con sombras y rampas. 4 módulos, 30 lecciones.",
+      "icon": "📐",
+      "color": "#ef4444",
+      "estimatedHours": 10,
+      "prerequisites": ["phase-2"],
+      "modules": ["m3-1", "m3-2", "m3-3", "m3-4"],
+      "projectIntegrator": {
+        "id": "phase3-project",
+        "title": "Arquitecto por un Día",
+        "description": "Diseña una casa completa: planta, alzados, cálculo de materiales, ángulos de techo, escaleras.",
+        "estimatedMinutes": 90
+      },
+      "unlockCondition": "phase-2-complete"
+    },
+    {
+      "id": "phase-4",
+      "number": 4,
+      "title": "Navegante del Cambio",
+      "subtitle": "Funciones y Cálculo Intuitivo - Límites, derivadas, integrales, optimización",
+      "description": "Cálculo sin ε-δ intimidante: límites como 'acercarse', derivadas como velocímetros, integrales como odómetros, optimización real. 4 módulos, 35 lecciones.",
+      "icon": "📈",
+      "color": "#8b5cf6",
+      "estimatedHours": 12,
+      "prerequisites": ["phase-3"],
+      "modules": ["m4-1", "m4-2", "m4-3", "m4-4"],
+      "projectIntegrator": {
+        "id": "phase4-project",
+        "title": "Optimiza tu Negocio",
+        "description": "Modela costos, ingresos y ganancia. Encuentra producción óptima con derivadas. Calcula área total con integrales.",
+        "estimatedMinutes": 90
+      },
+      "unlockCondition": "phase-3-complete"
+    },
+    {
+      "id": "phase-5",
+      "number": 5,
+      "title": "Analista de Datos",
+      "subtitle": "Estadística y Probabilidad - Descriptiva, inferencia, distribuciones, decisiones",
+      "description": "Datos reales, no abstractos: detecta mentiras en gráficas, entiende riesgos, usa la campana de Gauss, aprende inferencia con tests A/B. 4 módulos, 25 lecciones.",
+      "icon": "📊",
+      "color": "#06b6d4",
+      "estimatedHours": 10,
+      "prerequisites": ["phase-4"],
+      "modules": ["m5-1", "m5-2", "m5-3", "m5-4"],
+      "projectIntegrator": {
+        "id": "phase5-project",
+        "title": "Detective de Datos",
+        "description": "Analiza un dataset real anonimizado: limpia, visualiza, encuentra patrones, testea hipótesis, presenta hallazgos.",
+        "estimatedMinutes": 90
+      },
+      "unlockCondition": "phase-4-complete"
+    },
+    {
+      "id": "phase-6",
+      "number": 6,
+      "title": "Pensador Matemático",
+      "subtitle": "Pensamiento Avanzado - Lógica, conjuntos, demostraciones, modelado, matemáticas en el mundo",
+      "description": "Piensa como matemático: lógica formal, conjuntos, demostraciones por inducción/contradicción, modelado real, criptografía básica, redes neuronales simples. 4 módulos, 20 lecciones.",
+      "icon": "🧠",
+      "color": "#ec4899",
+      "estimatedHours": 8,
+      "prerequisites": ["phase-5"],
+      "modules": ["m6-1", "m6-2", "m6-3", "m6-4"],
+      "projectIntegrator": {
+        "id": "phase6-project",
+        "title": "Modela un Problema Real de Tu Vida",
+        "description": "Proyecto final integrador: elige un problema real, modelalo matemáticamente, resuélvelo, presenta la solución.",
+        "estimatedMinutes": 120
+      },
+      "unlockCondition": "phase-5-complete"
+    }
+  ],
+  "modules": {
+    "m0-1": { "id": "m0-1", "phaseId": "phase-0", "number": "0.1", "title": "Conteo y Cantidad", "lessons": 5, "description": "Subitizing, correspondencia 1-a-1, cardinalidad, comparar, ordinales" },
+    "m0-2": { "id": "m0-2", "phaseId": "phase-0", "number": "0.2", "title": "Operaciones Básicas", "lessons": 5, "description": "Significado de suma/resta/multiplicación/división, no solo algoritmos" },
+    "m0-3": { "id": "m0-3", "phaseId": "phase-0", "number": "0.3", "title": "Fracciones y Partes", "lessons": 5, "description": "Fracciones visuales (área, recta, conjunto), equivalentes, comparar" },
+    "m0-4": { "id": "m0-4", "phaseId": "phase-0", "number": "0.4", "title": "Decimales y Porcentajes", "lessons": 5, "description": "Dinero, medidas, regla de 3, descuentos, intereses simples" },
+    "m1-1": { "id": "m1-1", "phaseId": "phase-1", "number": "1.1", "title": "Números Enteros y Recta Numérica", "lessons": 8, "description": "Negativos, valor absoluto, distancia, orden, operaciones con signos" },
+    "m1-2": { "id": "m1-2", "phaseId": "phase-1", "number": "1.2", "title": "Potencias y Raíces", "lessons": 8, "description": "Crecimiento exponencial, notación científica, raíces como inversas, leyes" },
+    "m1-3": { "id": "m1-3", "phaseId": "phase-1", "number": "1.3", "title": "Expresiones Algebraicas", "lessons": 7, "description": "Variables= cajas, coeficientes, términos semejantes, evaluar, simplificar" },
+    "m1-4": { "id": "m1-4", "phaseId": "phase-1", "number": "1.4", "title": "Ecuaciones Lineales", "lessons": 7, "description": "Balanza, aislar variable, casos especiales, problemas de palabras" },
+    "m2-1": { "id": "m2-1", "phaseId": "phase-2", "number": "2.1", "title": "Sistemas de Ecuaciones", "lessons": 8, "description": "Gráficas (intersección), sustitución, igualación, reducción, 3×3 intro" },
+    "m2-2": { "id": "m2-2", "phaseId": "phase-2", "number": "2.2", "title": "Polinomios y Factorización", "lessons": 8, "description": "Suma/resta/multiplicación, factor común, diferencia cuadrados, trinomios" },
+    "m2-3": { "id": "m2-3", "phaseId": "phase-2", "number": "2.3", "title": "Ecuaciones Cuadráticas", "lessons": 7, "description": "Fórmula general, discriminante, vértice, gráfica parábola, problemas" },
+    "m2-4": { "id": "m2-4", "phaseId": "phase-2", "number": "2.4", "title": "Funciones", "lessons": 7, "description": "Máquina entrada-salida, dominio/rango, composición, inversa, gráficas" },
+    "m3-1": { "id": "m3-1", "phaseId": "phase-3", "number": "3.1", "title": "Geometría Plana", "lessons": 8, "description": "Ángulos, triángulos (clasificación, desigualdad), cuadriláteros, círculos" },
+    "m3-2": { "id": "m3-2", "phaseId": "phase-3", "number": "3.2", "title": "Geometría Analítica", "lessons": 7, "description": "Plano cartesiano, distancia, pendiente, ecuación recta, paralelas/perpendiculares" },
+    "m3-3": { "id": "m3-3", "phaseId": "phase-3", "number": "3.3", "title": "Transformaciones", "lessons": 8, "description": "Traslación, rotación, reflexión, dilatación, simetría, teselados, arte" },
+    "m3-4": { "id": "m3-4", "phaseId": "phase-3", "number": "3.4", "title": "Trigonometría Básica", "lessons": 7, "description": "Sen, cos, tan en triángulo rectángulo, círculo unitario, alturas, navegación" },
+    "m4-1": { "id": "m4-1", "phaseId": "phase-4", "number": "4.1", "title": "Tipos de Funciones", "lessons": 9, "description": "Lineal, cuadrática, exponencial, logarítmica, potencial, racional, trigonométrica" },
+    "m4-2": { "id": "m4-2", "phaseId": "phase-4", "number": "4.2", "title": "Límites Intuitivos", "lessons": 9, "description": "Acercarse sin tocar, lateral, infinito, indeterminaciones, continuidad" },
+    "m4-3": { "id": "m4-3", "phaseId": "phase-4", "number": "4.3", "title": "Derivada = Velocidad Instantánea", "lessons": 9, "description": "Tangente, reglas derivación, optimización, relacionados, física" },
+    "m4-4": { "id": "m4-4", "phaseId": "phase-4", "number": "4.4", "title": "Integral = Área Acumulada", "lessons": 8, "description": "Riemann, Teorema Fundamental, técnicas básicas, aplicaciones físicas" },
+    "m5-1": { "id": "m5-1", "phaseId": "phase-5", "number": "5.1", "title": "Estadística Descriptiva", "lessons": 7, "description": "Media, mediana, moda, desviación, cuartiles, boxplots, detectar mentiras" },
+    "m5-2": { "id": "m5-2", "phaseId": "phase-5", "number": "5.2", "title": "Probabilidad", "lessons": 6, "description": "Espacio muestral, eventos, reglas, condicional, Bayes, independencia" },
+    "m5-3": { "id": "m5-3", "phaseId": "phase-5", "number": "5.3", "title": "Distribuciones", "lessons": 6, "description": "Binomial, normal (campana), estandarización, Teorema Límite Central" },
+    "m5-4": { "id": "m5-4", "phaseId": "phase-5", "number": "5.4", "title": "Inferencia Básica", "lessons": 6, "description": "Muestreo, intervalos confianza, test hipótesis, correlación ≠ causalidad" },
+    "m6-1": { "id": "m6-1", "phaseId": "phase-6", "number": "6.1", "title": "Lógica y Argumentación", "lessons": 5, "description": "Proposiciones, conectivos, tablas verdad, falacias, pensamiento crítico" },
+    "m6-2": { "id": "m6-2", "phaseId": "phase-6", "number": "6.2", "title": "Conjuntos y Relaciones", "lessons": 5, "description": "Operaciones, diagramas Venn, relaciones, funciones como relaciones, cardinales" },
+    "m6-3": { "id": "m6-3", "phaseId": "phase-6", "number": "6.3", "title": "Demostraciones", "lessons": 5, "description": "Directa, contrapositiva, contradicción, inducción, contraejemplo" },
+    "m6-4": { "id": "m6-4", "phaseId": "phase-6", "number": "6.4", "title": "Matemáticas en el Mundo", "lessons": 5, "description": "Modelado, criptografía RSA, redes neuronales simples, arte matemático" }
+  },
+  "diplomas": {
+    "lesson": { "name": "Medalla de Lección", "description": "Completar una lección con ≥70% en práctica", "icon": "🥉", "color": "#cd7f32" },
+    "module": { "name": "Insignia de Módulo", "description": "Completar todas las lecciones + quiz módulo ≥75%", "icon": "🥈", "color": "#c0c0c0" },
+    "phase": { "name": "Certificado de Fase", "description": "Completar módulos + evaluación fase ≥80% + proyecto", "icon": "🥇", "color": "#ffd700" },
+    "course": { "name": "DIPLOMA DE HONOR", "description": "Completar 6 fases + evaluación final ≥85% + proyecto final", "icon": "🏅", "color": "#ffd700" }
+  },
+  "achievements": {
+    "totalLessons": 180,
+    "totalModules": 24,
+    "totalPhases": 6,
+    "estimatedTotalHours": 63
+  }
+}

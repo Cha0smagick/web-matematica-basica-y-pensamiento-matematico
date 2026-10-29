@@ -1,0 +1,188 @@
+{
+  "variable": {
+    "misconceptions": [
+      {
+        "statement": "x siempre es el número que estoy buscando",
+        "correction": "x es solo un NOMBRE para un valor desconocido. Podría ser 'a', 'n', 'caja', 'manzana'. Lo importante es que en UNA MISMA ecuación, la misma letra siempre representa el MISMO valor.",
+        "whyItArises": "En la escuela se usa casi siempre 'x' como incógnita principal, creando asociación automática.",
+        "correctExample": "En 2a + 3 = 11, la incógnita es 'a', no 'x'. En □ + 5 = 12, la incógnita es el cuadrado.",
+        "phase": "phase-0"
+      },
+      {
+        "statement": "Las variables solo pueden ser x e y",
+        "correction": "CUALQUIER símbolo puede ser variable: a, b, t, θ, λ, ★, 🍎. En física usamos t (tiempo), v (velocidad), m (masa), F (fuerza). En estadística: μ (media), σ (desviación), p (proporción).",
+        "whyItArises": "Ecuaciones lineales y cuadráticas escolares casi siempre usan x, y.",
+        "correctExample": "Ecuación de movimiento: x(t) = x₀ + vt + ½at². Variables: x, t, x₀, v, a.",
+        "phase": "phase-1"
+      },
+      {
+        "statement": "Una variable tiene un solo valor fijo para siempre",
+        "correction": "Una variable PUEDE cambiar de valor entre problemas. En f(x) = x², x toma TODOS los valores del dominio. En un sistema de ecuaciones, x tiene un valor específico que resuelve EL sistema. Contexto define si es fijo o variable.",
+        "whyItArises": "Confusión entre 'incógnita de una ecuación' (valor fijo) y 'variable de una función' (rango de valores).",
+        "correctExample": "En x + 3 = 7, x = 4 (fijo). En f(x) = x², x ∈ ℝ (variable).",
+        "phase": "phase-1"
+      }
+    ]
+  },
+  "equation": {
+    "misconceptions": [
+      {
+        "statement": "El signo = significa 'la respuesta es'",
+        "correction": "El signo = significa 'ES IGUAL A' / 'TIENE EL MISMO VALOR QUE'. 3 + 4 = 7 significa 'la suma de 3 y 4 TIENE EL MISMO VALOR que 7'. Es una RELACIÓN SIMÉTRICA: 7 = 3 + 4 también es verdadero.",
+        "whyItArises": "Calculadoras muestran resultado tras '='. Ejercicios escolares: '3+4=__' refuerzan dirección única.",
+        "correctExample": "7 = 3 + 4 ✓. 2x = 10 ⇔ x = 5 (equivalentes). No 'la respuesta es 5' sino 'x TIENE VALOR 5'.",
+        "phase": "phase-1"
+      },
+      {
+        "statement": "Puedo mover términos cambiando el signo sin más",
+        "correction": "'Mover términos' es una ABREVIATURA de: 'aplico la MISMA operación a AMBOS lados'. Para 'pasar -3 restando': x - 3 = 7 → x - 3 + 3 = 7 + 3 → x = 10. No 'cambias signo y listo', es 'SUMAS 3 a ambos lados para mantener igualdad'.",
+        "whyItArises": "Método de 'traspaso de términos' enseñado como regla mnemotécnica sin explicar la propiedad de igualdad.",
+        "correctExample": "x/2 = 5 → (x/2)×2 = 5×2 → x = 10. 'Multiplico ambos lados por 2', no 'el 2 pasa multiplicando'.",
+        "phase": "phase-1"
+      },
+      {
+        "statement": "Todas las ecuaciones tienen solución",
+        "correction": "Algunas ecuaciones NO TIENEN SOLUCIÓN (inconsistentes: x = x + 1), otras tienen INFINITAS (identidades: 2x = 2x), otras tienen soluciones COMPLEJAS (x² + 1 = 0). 'Resolver' incluye determinar QUÉ TIPO de solución existe.",
+        "whyItArises": "Ejercicios escolares siempre tienen solución única real.",
+        "correctExample": "x + 2 = x + 5 → 2 = 5 (falso) → SIN SOLUCIÓN. x² = -1 → x = ±i (complejos).",
+        "phase": "phase-1"
+      }
+    ]
+  },
+  "fraction": {
+    "misconceptions": [
+      {
+        "statement": "El denominador más grande significa fracción más grande",
+        "correction": "Para MISMO numerador, MAYOR denominador = MENOR fracción. 1/2 > 1/3 > 1/4 > 1/10. Piensa en pizza: más partes = cada parte MÁS PEQUEÑA. Comparar fracciones: mismo denominador → comparar numeradores; mismo numerador → comparar denominadores (inverso).",
+        "whyItArises": "Confusión con números enteros: 10 > 3, entonces 1/10 > 1/3 (FALSO).",
+        "correctExample": "¿Cuál es mayor: 3/8 o 3/5? Mismo numerador (3), 5 < 8, entonces 3/5 > 3/8.",
+        "phase": "phase-0"
+      },
+      {
+        "statement": "Para sumar fracciones, sumo numeradores y denominadores",
+        "correction": "a/b + c/d = (ad + bc)/bd, NO (a+c)/(b+d). La suma de fracciones NECESITA MISMO DENOMINADOR (parte igual de todo). 1/2 + 1/3 = 3/6 + 2/6 = 5/6. Sumar 'arriba y abajo' daría 2/5 = 0.4, pero 1/2 + 1/3 = 0.833... ≠ 0.4.",
+        "whyItArises": "Operación análoga a multiplicación (sí se multiplica arriba y abajo) o intuición aditiva simple.",
+        "correctExample": "2/5 + 3/7 = (2×7 + 3×5)/(5×7) = (14+15)/35 = 29/35.",
+        "phase": "phase-0"
+      },
+      {
+        "statement": "No se pueden sumar fracciones con distinto denominador",
+        "correction": "SÍ SE PUEDEN, solo hay que CONVERTIRLAS a mismo denominador primero (fracciones equivalentes). 1/2 + 1/3 = 3/6 + 2/6 = 5/6. El denominador común es el MCM (mínimo común múltiplo) o simplemente el producto.",
+        "whyItArises": "Enseñanza por pasos: 'primero igualar denominadores, luego sumar' se interpreta como 'si no son iguales, no se puede'.",
+        "correctExample": "5/6 + 7/8 = (5×8 + 7×6)/(6×8) = (40+42)/48 = 82/48 = 41/24.",
+        "phase": "phase-0"
+      }
+    ]
+  },
+  "power": {
+    "misconceptions": [
+      {
+        "statement": "2³ = 2 × 3 = 6",
+        "correction": "2³ = 2 × 2 × 2 = 8. El exponente indica CUÁNTAS VECES se multiplica la BASE por sí misma, NO por el exponente. aⁿ = a × a × ... × a (n veces). 2³ = 2×2×2 = 8. 3² = 3×3 = 9. El orden IMPORTA: 2³ ≠ 3².",
+        "whyItArises": "Confusión entre multiplicación (2×3) y potenciación (2³). Notación similar pero operación distinta.",
+        "correctExample": "5⁴ = 5×5×5×5 = 625. No 5×4=20.",
+        "phase": "phase-1"
+      },
+      {
+        "statement": "a⁰ = 0",
+        "correction": "a⁰ = 1 (para a ≠ 0). Por DEFINICIÓN y COHERENCIA con leyes de exponentes: aⁿ / aⁿ = aⁿ⁻ⁿ = a⁰. Pero aⁿ/aⁿ = 1. Por tanto a⁰ = 1. También: 2³=8, 2²=4, 2¹=2, 2⁰=1, 2⁻¹=1/2... patrón: dividir por 2 cada vez.",
+        "whyItArises": "Intuición: 'elevar a 0 es no multiplicar, entonces 0'. Pero 'no multiplicar' es elemento neutro = 1.",
+        "correctExample": "7⁰ = 1, (-3)⁰ = 1, (1/2)⁰ = 1, x⁰ = 1 (x≠0).",
+        "phase": "phase-1"
+      },
+      {
+        "statement": "(-2)² = -4",
+        "correction": "(-2)² = (-2) × (-2) = 4. El signo menos VA DENTRO del paréntesis: se eleva AL NÚMERO -2. Sin paréntesis: -2² = -(2²) = -4. LA DIFERENCIA: (-2)² eleva -2 al cuadrado. -2² niega el resultado de 2². Orden de operaciones: paréntesis → exponentes → signo menos.",
+        "whyItArises": "Confusión entre -x² (opuesto del cuadrado) y (-x)² (cuadrado del opuesto).",
+        "correctExample": "(-5)² = 25. -5² = -25. (-x)³ = -x³ (impar conserva signo).",
+        "phase": "phase-1"
+      }
+    ]
+  },
+  "derivative": {
+    "misconceptions": [
+      {
+        "statement": "La derivada es la pendiente de la secante",
+        "correction": "La derivada es el LÍMITE de las pendientes de secantes cuando los puntos se juntan (h→0). La secante da VELOCIDAD PROMEDIO entre dos puntos. La tangente (derivada) da VELOCIDAD INSTANTÁNEA en UN punto. Secante ≈ promedio; Tangente = instantáneo.",
+        "whyItArises": "Visualización de secantes acercándose sin tomar el límite formal.",
+        "correctExample": "f(x)=x² en x=2. Secante (2,4) a (3,9): pendiente=5. Tangente en x=2: f'(2)=4. 5≈4 pero 5≠4.",
+        "phase": "phase-4"
+      },
+      {
+        "statement": "Todas las funciones son derivables",
+        "correction": "Una función es derivable en x si: (1) es continua en x, (2) tiene tangente NO VERTICAL, (3) no tiene 'esquinas' ni 'cuspides'. Ejemplos NO derivables: |x| en x=0 (esquina), x^(1/3) en x=0 (tangente vertical), funciones con saltos.",
+        "whyItArises": "Funciones escolares (polinomios, senos, exponentes) son derivables en todo su dominio.",
+        "correctExample": "f(x)=|x|: f'(x)=1 si x>0, f'(x)=-1 si x<0, NO EXISTE en x=0.",
+        "phase": "phase-4"
+      },
+      {
+        "statement": "Derivar es solo aplicar reglas sin entender",
+        "correction": "Las reglas (potencia, producto, cociente, cadena) VIENEN DE la definición de límite. Entender el PORQUÉ permite: (1) derivar funciones nuevas, (2) detectar errores, (3) aplicar en contexto. Ej: d/dx[xⁿ] = nxⁿ⁻¹ viene de desarrollo binomial de (x+h)ⁿ y límite h→0.",
+        "whyItArises": "Enfoque procedural: memorizar tabla de derivadas sin conectar con definición.",
+        "correctExample": "Derivar √x = x^(1/2): (1/2)x^(-1/2) = 1/(2√x). Viene de regla potencia, que viene de límite.",
+        "phase": "phase-4"
+      }
+    ]
+  },
+  "integral": {
+    "misconceptions": [
+      {
+        "statement": "La integral siempre es área positiva",
+        "correction": "La integral DEFINIDA ∫ₐᵇ f(x)dx es ÁREA NETA (firmada). Por encima del eje x = positivo. Por debajo = negativo. Si f(x) = -1 en [0,1], ∫₀¹ -1 dx = -1. El ÁREA GEOMÉTRICA (siempre positiva) sería ∫|f(x)|dx. 'Área bajo la curva' es atajo solo para f≥0.",
+        "whyItArises": "Introducción geométrica inicial solo con funciones positivas.",
+        "correctExample": "∫₀² (x-1)dx = 0 (triángulo arriba + triángulo abajo se cancelan). Área geométrica = 1.",
+        "phase": "phase-4"
+      },
+      {
+        "statement": "Integral indefinida = integral definida",
+        "correction": "Integral INDEFINIDA ∫f(x)dx = F(x) + C es una FAMILIA de funciones (antiderivadas). Integral DEFINIDA ∫ₐᵇ f(x)dx = F(b)-F(a) es un NÚMERO (área neta). El +C desaparece en la definida: (F(b)+C)-(F(a)+C) = F(b)-F(a). Son OBJETOS DISTINTOS.",
+        "whyItArises": "Mismo símbolo ∫ para ambos conceptos. Enseñanza secuencial sin contrastar.",
+        "correctExample": "∫2x dx = x² + C (familia). ∫₀³ 2x dx = 3² - 0² = 9 (número).",
+        "phase": "phase-4"
+      },
+      {
+        "statement": "El +C es opcional / decorativo",
+        "correction": "El +C es ESENCIAL en integrales indefinidas. Indica que hay INFINITAS antiderivadas (todas paralelas verticalmente). Sin +C, la respuesta es INCOMPLETA. En problemas con condición inicial (ej. f(0)=5), el +C se DETERMINA: 0²+C=5 → C=5.",
+        "whyItArises": "En ejercicios de 'calcula la antiderivada' no se usa la condición inicial.",
+        "correctExample": "∫cos x dx = sin x + C. Si f'(x)=cos x y f(π)=2, entonces f(x)=sin x + 3.",
+        "phase": "phase-4"
+      }
+    ]
+  },
+  "probability": {
+    "misconceptions": [
+      {
+        "statement": "Si salió cara 5 veces, ahora toca cruz (Ley del promedio)",
+        "correction": "FALACIA DEL JUGADOR. Lanzamientos de moneda son INDEPENDIENTES. P(cara) = 0.5 SIEMPRE, sin importar historial. La moneda no tiene memoria. A LARGO PLAZO la frecuencia tiende a 50%, pero NO 'compensa' rachas pasadas.",
+        "whyItArises": "Intuición de 'equilibrio' o 'justicia' cósmica. Confusión entre frecuencia a largo plazo y evento individual.",
+        "correctExample": "10 caras seguidas → P(11ª cara) = 0.5. No 0.5¹¹ (eso es probabilidad de 11 caras DESDE EL INICIO).",
+        "phase": "phase-5"
+      },
+      {
+        "statement": "Probabilidad 0 = imposible, Probabilidad 1 = seguro",
+        "correction": "En espacios CONTINUOS: P(X = valor exacto) = 0 PERO no es imposible. Ej: P(altura = 1.700000... m exactos) = 0, pero SÍ es posible medir ≈1.70m. P(evento) = 1 no garantiza ocurrencia en espacios infinitos (casi seguro ≠ seguro).",
+        "whyItArises": "Experiencia con espacios discretos (dados, cartas) donde 0=imposible, 1=seguro.",
+        "correctExample": "Altura adulta ~ N(170, 10). P(X = 170.000000...) = 0. P(169.5 < X < 170.5) > 0.",
+        "phase": "phase-5"
+      }
+    ]
+  },
+  "limit": {
+    "misconceptions": [
+      {
+        "statement": "El límite es el valor de la función en el punto",
+        "correction": "El límite describe COMPORTAMIENTO CERCANO, no valor EN el punto. f(x) = (x²-1)/(x-1) no está definida en x=1 (0/0), pero lim_{x→1} f(x) = 2. El límite EXISTE aunque la función NO. f(1) y lim_{x→1}f(x) son CONCEPTOS DISTINTOS.",
+        "whyItArises": "En funciones continuas (polinomios, etc.), límite = valor. Generalización indebida.",
+        "correctExample": "f(x) = { x² si x≠1, 5 si x=1 }. lim_{x→1} f(x) = 1, pero f(1) = 5.",
+        "phase": "phase-4"
+      },
+      {
+        "statement": "Si la función no está definida, no hay límite",
+        "correction": "El límite IGNORA el valor en el punto (o si está definido). Solo importa valores CERCANOS. lim_{x→0} sin(x)/x = 1 aunque sin(0)/0 sea indefinido. De hecho, los límites MÁS INTERESANTES son donde la función NO está definida (indeterminaciones 0/0, ∞/∞).",
+        "whyItArises": "Pensar que 'evaluar en el punto' y 'calcular límite' son lo mismo.",
+        "correctExample": "lim_{x→2} (x²-4)/(x-2) = lim_{x→2} (x+2) = 4. f(2) no existe.",
+        "phase": "phase-4"
+      }
+    ]
+  }
+}
