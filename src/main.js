@@ -1,4 +1,9 @@
 // Bootstrap principal - Inicialización de la aplicación
+window.addEventListener('error', function(e) {
+  console.error('Global error:', e.error);
+  document.getElementById('app').innerHTML = '<h1 style="color: red;">Error: ' + (e.error ? e.error.message : e.message) + '</h1>';
+});
+
 import { Router } from './router.js';
 import { Store } from './store/index.js';
 import { Layout } from './components/layout/Layout.js';
@@ -18,8 +23,16 @@ import { SettingsPage } from './pages/SettingsPage.js';
 import './styles/globals.css';
 
 // Inicializar store global
-const store = new Store();
-window.__APP_STORE__ = store;
+let store;
+try {
+  store = new Store();
+  window.__APP_STORE__ = store;
+  console.log('Store initialized');
+} catch (e) {
+  console.error('Store init error:', e);
+  document.getElementById('app').innerHTML = '<h1 style="color: red;">Store error: ' + e.message + '</h1>';
+  throw e;
+}
 
 // Registrar componentes de layout
 customElements.define('app-layout', Layout);
