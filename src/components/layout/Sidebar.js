@@ -17,7 +17,8 @@ export class Sidebar extends HTMLElement {
 
   async _loadPhases() {
     try {
-      const res = await fetch('/src/courses/math-fundamentals/manifest.json');
+      const basePath = import.meta.env.BASE_URL || '/';
+const res = await fetch(`${basePath}courses/math-fundamentals/manifest.json`);
       if (res.ok) {
         const manifest = await res.json();
         this._phases = manifest.phases || [];
