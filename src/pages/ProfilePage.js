@@ -38,7 +38,7 @@ export class ProfilePage extends HTMLElement {
         .achievement-icon { font-size: var(--font-size-3xl); margin-bottom: var(--spacing-xs); display: block; }
         .achievement-title { font-weight: var(--font-weight-semibold); font-size: var(--font-size-sm); margin-bottom: var(--spacing-xs); }
         .achievement-desc { font-size: var(--font-size-xs); color: var(--text-muted); }
-        .tier-badge { display: inline-block; font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); padding: 2px 8px; border-radius: var-radius-md; margin-top: var(--spacing-xs); }
+        .tier-badge { display: inline-block; font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); padding: 2px 8px; border-radius: var(--radius-md); margin-top: var(--spacing-xs); }
         .tier-bronze { background: #cd7f32; color: white; }
         .tier-silver { background: #c0c0c0; color: #333; }
         .tier-gold { background: #ffd700; color: #333; }

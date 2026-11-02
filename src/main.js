@@ -27,6 +27,7 @@ import { ProfilePage } from './pages/ProfilePage.js';
 import { SettingsPage } from './pages/SettingsPage.js';
 import { LatexRenderer } from './components/math/LatexRenderer.js';
 import { InteractiveGraph } from './components/math/InteractiveGraph.js';
+import { FormulaExplorer } from './components/math/FormulaExplorer.js';
 import './styles/globals.css';
 
 console.log('Imports done');
@@ -61,6 +62,7 @@ registerComponent('page-profile', ProfilePage);
 registerComponent('page-settings', SettingsPage);
 registerComponent('latex-renderer', LatexRenderer);
 registerComponent('interactive-graph', InteractiveGraph);
+registerComponent('formula-explorer', FormulaExplorer);
 console.log('Pages registered');
 
 // Configurar rutas

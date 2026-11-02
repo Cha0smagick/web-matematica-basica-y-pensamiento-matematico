@@ -113,7 +113,6 @@ export class DiplomaPage extends HTMLElement {
     window.__APP_DIPLOMA__ = window.__APP_DIPLOMA__ || {};
     
     window.__APP_DIPLOMA__.downloadPDF = () => {
-      const { jsPDF } = window.jspdf || {};
       if (!jsPDF) {
         alert('PDF library cargándose... inténtalo de nuevo');
         return;

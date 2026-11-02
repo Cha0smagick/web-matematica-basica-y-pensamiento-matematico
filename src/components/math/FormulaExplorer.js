@@ -1,6 +1,6 @@
 // FormulaExplorer - Modal detallado para explorar fórmulas
-import { glossary } from '../../data/glossary.js';
-import { formulas } from '../../data/formulas.js';
+import glossary from '../../data/glossary.json';
+import formulas from '../../data/formulas.json';
 
 export class FormulaExplorer extends HTMLElement {
   constructor() {
@@ -215,11 +215,10 @@ export class FormulaExplorer extends HTMLElement {
     const tokens = [];
     const seen = new Set();
     
-    // Patrones comunes
+    // Patrón simple: comandos LaTeX (\comando) y letras sueltas
     const patterns = [
       /\\([a-zA-Z]+)/g,  // \comando
-      /([\+\-\=\<\>\≤\≥\≠\≈\∑\∫\∂\∞\∈\∉\⊂\⊃\∪\∩\∀\∃\¬\∧\∨\→\←\↔\⇒\⇐\⇔\·\×\÷\±\∓\√\∛\∜\∝\≡\≢\≮\≯\∥\∦\∴\∵\∶\∷\∸\∹\∺\∻\∼\∽\≂\≃\≄\≅\≆\≇\≈\≉\≊\≋\≌\≍\≎\≏\≐\≑\≒\≓\≔\≕\≖\≗\≘\≙\≚\≛\≜\≝\≞\≟\≠\≡\≢\≣\≤\≥\≦\≧\≨\≩\≪\≫\≬\≭\≮\≯\≰\≱\≲\≳\≴\≵\≶\≷\≸\≹\≺\≻\≼\≽\≾\≿\⊀\⊁\⊂\⊃\⊄\⊅\⊆\⊇\⊈\⊉\⊊\⊋\⊌\⊍\⊎\⊏\⊐\⊑\⊒\⊓\⊔\⊕\⊖\⊗\⊘\⊙\⊚\⊛\⊜\⊝\⊞\⊟\⊠\⊡\⊢\⊣\⊤\⊥\⊦\⊧\⊨\⊩\⊪\⊫\⊬\⊭\⊮\⊯\⊰\⊱\⊲\⊳\⊴\⊵\⊶\⊷\⊸\⊹\⊺\⊻\⊼\⊽\⊾\⊿\⋀\⋁\⋂\⋃\⋄\⋆\⋇\⋈\⋉\⋊\⋋\⋌\⋍\⋎\⋏\⋐\⋑\⋒\⋓\⋔\⋕\⋖\⋗\⋘\⋙\⋚\⋛\⋜\⋝\⋞\⋟\⋠\⋡\⋢\⋣\⋤\⋥\⋦\⋧\⋨\⋩\⋪\⋫\⋬\⋭\⋮\⋯\⋰\⋱\⋲\⋳\⋴\⋵\⋶\⋷\⋸\⋹\⋺\⋻\⋼\⋽\⋾\⋿)/g,  // Símbolos
-      /([a-zA-Z])/g  // Variables simples
+      /([a-zA-Z])/g     // Variables simples
     ];
     
     for (const pattern of patterns) {
@@ -314,7 +313,7 @@ export class FormulaExplorer extends HTMLElement {
   }
 
   _escapeHtml(str) {
-    return String(str).replace(/[&<>"']/g, c => ({ '&': '&', '<': '<', '>': '>', '"': '"', "'": ''' }[c]));
+    return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
   _copyLatex() {
