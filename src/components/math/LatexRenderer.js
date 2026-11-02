@@ -1,7 +1,7 @@
 // LatexRenderer - Render KaTeX con hover explicativo por token
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
-import { glossary } from '../../data/glossary.js';
+import glossary from '../../data/glossary.json';
 
 export class LatexRenderer extends HTMLElement {
   static get observedAttributes() {
@@ -196,7 +196,7 @@ export class LatexRenderer extends HTMLElement {
   }
 
   _escapeHtml(str) {
-    return String(str).replace(/[&<>"']/g, c => ({ '&': '&', '<': '<', '>': '>', '"': '"', "'": ''' }[c]));
+    return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
   _attachTokenListeners() {

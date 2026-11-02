@@ -198,7 +198,7 @@
     "term": "Conjunto",
     "symbol": "A = {x | P(x)}",
     "short": "Colección bien definida de objetos distintos",
-    "long": "Un conjunto es una agrupación de elementos (números, objetos, incluso otros conjuntos) donde el orden no importa y no hay repetidos. Notación: {1,2,3} o {x | x>0}. Operaciones: unión (∪), intersección (∩), diferencia (\), complemento. Base de toda la matemática moderna (ZFC).",
+    "long": "Un conjunto es una agrupación de elementos (números, objetos, incluso otros conjuntos) donde el orden no importa y no hay repetidos. Notación: {1,2,3} o {x | x>0}. Operaciones: unión (∪), intersección (∩), diferencia (\\\\), complemento. Base de toda la matemática moderna (ZFC).",
     "analogy": "Una bolsa de canicas: {roja, azul, verde}. No importa el orden en que las metas. Unión = juntar bolsas. Intersección = canicas que están en AMBAS bolsas.",
     "visual": "assets/set-venn.svg",
     "related": ["element", "subset", "union", "intersection", "complement", "cardinality", "power-set"],
