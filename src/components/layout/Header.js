@@ -46,7 +46,7 @@ export class Header extends HTMLElement {
     const btn = this.shadowRoot.getElementById('themeBtn');
     const theme = store.get('ui.theme') || 'system';
     const icons = { light: '☀️', dark: '🌙', system: '💻' };
-    if (btn) btn.textContent = icons[theme] || icons.system;
+    if (btn) {btn.textContent = icons[theme] || icons.system;}
   }
 
   _showProfileMenu() {
@@ -106,13 +106,7 @@ export class Header extends HTMLElement {
         </div>
         <div class="header-right">
           <button class="btn-icon" id="themeBtn" aria-label="Cambiar tema" title="Tema: ${theme}">${themeIcons[theme] || '💻'}</button>
-          ${user.authenticated ? `
-            <button class="user-avatar" id="profileBtn" aria-label="Perfil">${user.name?.[0]?.toUpperCase() || 'U'}</button>
-          ` : `
-            <a href="#/login" class="btn-icon" aria-label="Iniciar sesión">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </a>
-          `}
+          <button class="user-avatar" id="profileBtn" aria-label="Mi perfil">${user.name?.[0]?.toUpperCase() || 'E'}</button>
         </div>
       </header>
     `;

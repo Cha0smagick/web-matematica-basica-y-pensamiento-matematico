@@ -1,6 +1,9 @@
 // LatexRenderer - Render KaTeX con hover explicativo por token
 import katex from 'katex';
+// El CSS de KaTeX vive a nivel documento Y dentro del shadow root (los estilos del
+// documento no atraviesan el shadow boundary)
 import 'katex/dist/katex.min.css';
+import katexCss from 'katex/dist/katex.min.css?inline';
 import glossary from '../../data/glossary.json';
 
 export class LatexRenderer extends HTMLElement {
@@ -22,10 +25,17 @@ export class LatexRenderer extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldVal, newVal) {
-    if (oldVal !== newVal) {
-      this[`_${name.replace('-', '')}`] = name === 'display-mode' ? newVal !== null : newVal;
-      this.render();
-    }
+    if (oldVal === newVal) {return;}
+    const targets = {
+      'latex': '_latex',
+      'display-mode': '_displayMode',
+      'interactive': '_interactive',
+      'size': '_size'
+    };
+    const target = targets[name];
+    if (!target) {return;}
+    this[target] = name === 'display-mode' || name === 'interactive' ? newVal !== null : newVal;
+    this.render();
   }
 
   get latex() { return this._latex; }
@@ -62,6 +72,7 @@ export class LatexRenderer extends HTMLElement {
       const displayClass = this._displayMode ? 'latex-display' : 'latex-inline';
 
       this.shadowRoot.innerHTML = `
+        <style>${katexCss}</style>
         <style>
           :host { display: inline-block; }
           .latex-wrapper { position: relative; }
@@ -71,10 +82,21 @@ export class LatexRenderer extends HTMLElement {
           .latex-sm .katex { font-size: 0.9em !important; }
           .latex-lg .katex { font-size: 1.3em !important; }
           .latex-xl .katex { font-size: 1.5em !important; }
-          .latex-token { cursor: help; position: relative; transition: background var(--transition-fast); border-radius: 2px; }
-          .latex-token:hover { background: var(--primary-light); }
+          .latex-token { cursor: help; position: relative; border-radius: 2px; }
+          .latex-token:hover, .latex-token:focus-visible { background: var(--primary-light); }
           [data-theme="dark"] .latex-token:hover { background: var(--primary-900); }
           .latex-token:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+          .latex-token::after {
+            content: attr(data-tooltip);
+            position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+            background: var(--neutral-900); color: var(--neutral-0);
+            padding: 6px 10px; border-radius: 6px;
+            font-size: 12px; font-family: var(--font-sans); line-height: 1.4;
+            white-space: normal; width: max-content; max-width: 260px;
+            opacity: 0; pointer-events: none; transition: opacity var(--transition-fast);
+            z-index: var(--z-tooltip, 700); box-shadow: var(--shadow-lg);
+          }
+          .latex-token:hover::after, .latex-token:focus-visible::after { opacity: 1; }
           .latex-empty { color: var(--text-muted); font-style: italic; font-size: var(--font-size-sm); }
           .katex-error { color: var(--error); font-size: var(--font-size-sm); font-family: var(--font-mono); background: var(--error-light); padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-sm); }
         </style>
@@ -89,16 +111,16 @@ export class LatexRenderer extends HTMLElement {
 
   _injectTooltips(html) {
     // KaTeX genera spans con clases como .mord, .mop, .mbin, .mrel, .mpunct, .minner, .mopen, .mclose
-    // Inyectamos data-tooltip en tokens matemáticos significativos
+    // Se anotan los spans existentes (sin envolver, para no romper el layout de KaTeX)
     const tokenRegex = /<span class="([^"]*(?:mord|mop|mbin|mrel|mpunct|minner|mopen|mclose)[^"]*)"([^>]*)>([^<]+)<\/span>/g;
-    
+
     return html.replace(tokenRegex, (match, className, attrs, content) => {
       const token = this._normalizeToken(content);
       const glossaryEntry = glossary[token];
-      
+
       if (glossaryEntry) {
-        const shortDef = glossaryEntry.short || glossaryEntry.definition;
-        return `<span class="latex-token" data-tooltip="${this._escapeHtml(shortDef)}" data-token="${token}" tabindex="0"${attrs}>${content}</span>`;
+        const shortDef = this._escapeHtml(glossaryEntry.short || glossaryEntry.definition);
+        return `<span class="${className} latex-token"${attrs} data-tooltip="${shortDef}" data-token="${token}" tabindex="0">${content}</span>`;
       }
       return match;
     });
@@ -115,6 +137,15 @@ export class LatexRenderer extends HTMLElement {
     
     // Mapeos comunes
     const mappings = {
+      '+': 'addition',
+      '-': 'subtraction',
+      '−': 'subtraction',
+      '×': 'multiplication',
+      '÷': 'division',
+      '=': 'equality',
+      '>': 'greater-than',
+      '<': 'less-than',
+      '%': 'percentage',
       'lim': 'limit',
       'sum': 'summation',
       'int': 'integral',
@@ -149,12 +180,10 @@ export class LatexRenderer extends HTMLElement {
       'land': 'and',
       'lor': 'or',
       'lnot': 'not',
-      'Rightarrow': 'implies',
       'cdot': 'multiply',
       'times': 'multiply',
       'div': 'divide',
       'frac': 'fraction',
-      'sqrt': 'square-root',
       'sqrt': 'root',
       '^': 'power',
       '_': 'subscript',
@@ -196,7 +225,7 @@ export class LatexRenderer extends HTMLElement {
   }
 
   _escapeHtml(str) {
-    return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
   }
 
   _attachTokenListeners() {

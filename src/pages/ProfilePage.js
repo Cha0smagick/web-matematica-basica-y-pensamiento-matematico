@@ -1,5 +1,6 @@
 // ProfilePage - Perfil de usuario con estadísticas
 import { store } from '../store/index.js';
+import baseStyles from '../styles/shadow-base.css?inline';
 
 export class ProfilePage extends HTMLElement {
   constructor() {
@@ -18,6 +19,7 @@ export class ProfilePage extends HTMLElement {
     const locked = store.achievements.getLocked();
 
     this.shadowRoot.innerHTML = `
+      <style>${baseStyles}</style>
       <style>
         :host { display: block; }
         .profile-page { padding: var(--spacing-lg); max-width: 800px; margin: 0 auto; }
@@ -106,8 +108,8 @@ export class ProfilePage extends HTMLElement {
         </div>
         
         <div style="text-align: center; margin-top: var(--spacing-xl);">
-          <button class="btn btn-outline" onclick="window.__APP_ROUTER__.navigate('#/settings')">⚙️ Configuración</button>
-          <button class="btn btn-error" onclick="window.__APP__.resetProgress()">🗑️ Reiniciar Progreso</button>
+          <button class="btn btn-outline" onclick="window.__APP_ROUTER__.navigate('/settings')">⚙️ Configuración</button>
+          <button class="btn btn-danger" onclick="window.__APP__.resetProgress()">🗑️ Reiniciar Progreso</button>
         </div>
       </div>
     `;

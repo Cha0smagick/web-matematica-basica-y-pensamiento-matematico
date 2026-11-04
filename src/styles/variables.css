@@ -1,4 +1,7 @@
 /* Design Tokens - Variables CSS Centralizadas */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap');
+
 :root {
   /* ===== COLORES - Paleta Principal ===== */
   /* Primary - Azul confianza/educación */
@@ -20,24 +23,30 @@
   /* Secondary - Verde éxito/progreso */
   --success-50: #f0fdf4;
   --success-100: #dcfce7;
+  --success-200: #bbf7d0;
   --success-500: #22c55e;
   --success-600: #16a34a;
+  --success-900: #14532d;
   --success: var(--success-600);
   --success-light: var(--success-100);
 
   /* Warning - Naranja atención */
   --warning-50: #fffbeb;
   --warning-100: #fef3c7;
+  --warning-200: #fde68a;
   --warning-500: #f59e0b;
   --warning-600: #d97706;
+  --warning-900: #78350f;
   --warning: var(--warning-500);
   --warning-light: var(--warning-100);
 
   /* Error - Rojo error/peligro */
   --error-50: #fef2f2;
   --error-100: #fee2e2;
+  --error-200: #fecaca;
   --error-500: #ef4444;
   --error-600: #dc2626;
+  --error-900: #7f1d1d;
   --error: var(--error-600);
   --error-light: var(--error-100);
 
@@ -219,6 +228,8 @@
 }
 
 /* ===== ALTO CONTRASTE ===== */
+/* Se activa por clase (settings) o por data-theme */
+.high-contrast,
 [data-theme="high-contrast"] {
   --bg-primary: #000000;
   --bg-secondary: #000000;
@@ -268,7 +279,3 @@
 .dyslexia-font {
   --font-sans: 'OpenDyslexic', 'Lexend', 'Comic Sans MS', cursive;
 }
-
-/* ===== IMPORTAR FUENTES ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap');

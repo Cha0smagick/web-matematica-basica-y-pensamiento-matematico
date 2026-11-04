@@ -4,7 +4,6 @@
   "number": "0.3",
   "title": "Fracciones y Partes",
   "description": "Fracciones visuales (área, recta, conjunto), equivalentes, comparar",
-  "lessons": 5,
   "lessons": [
     {
       "id": "l0-3-1",

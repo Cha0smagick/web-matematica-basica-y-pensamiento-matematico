@@ -62,7 +62,7 @@ export class Store {
     const keys = path.split('.');
     let value = this._proxiedState;
     for (const key of keys) {
-      if (value === undefined || value === null) return undefined;
+      if (value === undefined || value === null) {return undefined;}
       value = value[key];
     }
     return value;
@@ -73,10 +73,11 @@ export class Store {
     const lastKey = keys.pop();
     let target = this._proxiedState;
     for (const key of keys) {
-      if (!(key in target)) target[key] = {};
+      if (!(key in target)) {target[key] = {};}
       target = target[key];
     }
     target[lastKey] = value;
+    this._notify(path, value);
   }
 
   // Reactive subscription
@@ -89,7 +90,7 @@ export class Store {
     // Return unsubscribe function
     return () => {
       const subs = this._subscribers.get(path);
-      if (subs) subs.delete(callback);
+      if (subs) {subs.delete(callback);}
     };
   }
 
@@ -108,6 +109,11 @@ export class Store {
         const parentValue = this.get(parentPath);
         parentSubs.forEach(cb => cb(parentValue, parentPath));
       }
+    }
+    // Root subscribers ('' / autosave) receive every nested change
+    const rootSubs = this._subscribers.get('');
+    if (rootSubs) {
+      rootSubs.forEach(cb => cb(this._state, ''));
     }
   }
 
@@ -128,7 +134,7 @@ export class Store {
   _deepMerge(target, source) {
     for (const key of Object.keys(source)) {
       if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
-        if (!target[key]) target[key] = {};
+        if (!target[key]) {target[key] = {};}
         this._deepMerge(target[key], source[key]);
       } else {
         target[key] = source[key];
@@ -150,7 +156,7 @@ export class Store {
 
     this.subscribe('', () => {
       clearTimeout(saveTimeout);
-      saveTimeout = setTimeout(save, 1000);
+      saveTimeout = setTimeout(save, 300);
     });
   }
 
@@ -178,10 +184,13 @@ export class Store {
     return { ...this._state };
   }
 
-  reset() {
+  async reset() {
     localStorage.removeItem('math-course-state');
     localStorage.removeItem('math-course-progress');
     localStorage.removeItem('math-course-achievements');
+    if (this.progress?.clearAll) {
+      await this.progress.clearAll();
+    }
     location.reload();
   }
 }

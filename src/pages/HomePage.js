@@ -1,6 +1,8 @@
-// HomePage - Landing con demo interactiva y marketing
+// HomePage - Landing con demo interactiva
 import { store } from '../store/index.js';
 import { navigateTo } from '../router.js';
+import { getCourseStats } from '../courses/math-fundamentals/index.js';
+import baseStyles from '../styles/shadow-base.css?inline';
 
 export class HomePage extends HTMLElement {
   constructor() {
@@ -33,7 +35,9 @@ export class HomePage extends HTMLElement {
   }
 
   render() {
+    const courseStats = getCourseStats();
     this.shadowRoot.innerHTML = `
+      <style>${baseStyles}</style>
       <style>
         :host { display: block; }
         .hero {
@@ -96,13 +100,13 @@ export class HomePage extends HTMLElement {
         </div>
       </section>
 
-      <!-- Stats -->
+      <!-- Stats: cifras reales derivadas del contenido publicado -->
       <section class="stats">
-        <div class="stat-card"><span class="stat-number">6</span><span class="stat-label">Fases del curso</span></div>
-        <div class="stat-card"><span class="stat-number">24</span><span class="stat-label">Módulos</span></div>
-        <div class="stat-card"><span class="stat-number">180+</span><span class="stat-label">Lecciones</span></div>
-        <div class="stat-card"><span class="stat-number">600+</span><span class="stat-label">Ejercicios</span></div>
-        <div class="stat-card"><span class="stat-number">6</span><span class="stat-label">Diplomas Honorarios</span></div>
+        <div class="stat-card"><span class="stat-number">${courseStats.phases}</span><span class="stat-label">Fase disponible (más en camino)</span></div>
+        <div class="stat-card"><span class="stat-number">${courseStats.modules}</span><span class="stat-label">Módulos</span></div>
+        <div class="stat-card"><span class="stat-number">${courseStats.lessons}</span><span class="stat-label">Lecciones</span></div>
+        <div class="stat-card"><span class="stat-number">${courseStats.questions}+</span><span class="stat-label">Ejercicios</span></div>
+        <div class="stat-card"><span class="stat-number">3</span><span class="stat-label">Niveles de logro</span></div>
         <div class="stat-card"><span class="stat-number">20 min</span><span class="stat-label">al día</span></div>
       </section>
 
@@ -122,17 +126,17 @@ export class HomePage extends HTMLElement {
           <div class="feature-card">
             <div class="feature-icon">📐</div>
             <div class="feature-title">Fórmulas con Hover</div>
-            <div class="feature-desc">Pasa el mouse sobre cualquier símbolo LaTeX para ver qué significa.</div>
+            <div class="feature-desc">Pasa el mouse sobre cualquier símbolo matemático para ver qué significa.</div>
           </div>
           <div class="feature-card">
             <div class="feature-icon">📊</div>
-            <div class="feature-title">Gráficas Interactivas</div>
-            <div class="feature-desc">Funciones, parábolas, integrales y más con deslizadores en tiempo real.</div>
+            <div class="feature-title">Aprendizaje Visual</div>
+            <div class="feature-desc">Ilustraciones, analogías cotidianas y ejercicios interactivos.</div>
           </div>
           <div class="feature-card">
             <div class="feature-icon">🏅</div>
-            <div class="feature-title">Diplomas Honorarios</div>
-            <div class="feature-desc">Certificados por lección, módulo, fase y curso completo. Verificables.</div>
+            <div class="feature-title">Constancias de Logro</div>
+            <div class="feature-desc">Reconocimientos por lección, módulo y fase completada.</div>
           </div>
           <div class="feature-card">
             <div class="feature-icon">💚</div>

@@ -18,6 +18,8 @@ export class Router {
 
   _handleHashChange() {
     const hash = window.location.hash.slice(1) || '/';
+    // Evitar re-render duplicado cuando el propio navigate() cambia el hash
+    if (hash === this._lastEmitted) {return;}
     this.navigate(hash, false);
   }
 
@@ -69,31 +71,46 @@ export class Router {
   }
 
   navigate(path, pushState = true) {
-    const matched = this._matchRoute(path);
-    
+    // Aceptar '#/ruta' o '/ruta'; descartar query para el matching
+    const cleanPath = (path || '/').replace(/^#/, '').split('?')[0] || '/';
+    const matched = this._matchRoute(cleanPath);
+
     if (!matched) {
-      // 404 - redirect to home
-      this.navigate('/', pushState);
+      this._notFound(cleanPath, pushState);
       return;
     }
 
     const { route, params, match } = matched;
 
-    // Check auth guard
+    // Sin backend: si una ruta protegida se pide sin sesión, crear invitado local
     if (route.auth && !this.store.get('user.authenticated')) {
-      this.navigate('/login?redirect=' + encodeURIComponent(path), pushState);
-      return;
+      this.store.set('user.name', 'Estudiante');
+      this.store.set('user.authenticated', true);
+      this.store.set('user.id', 'guest-' + Date.now());
     }
 
     this.currentRoute = route;
     this.currentParams = params;
     this.currentMatch = match;
+    this._lastEmitted = cleanPath;
 
-    if (pushState) {
-      window.location.hash = path;
+    if (pushState && window.location.hash.slice(1) !== cleanPath) {
+      window.location.hash = cleanPath;
     }
 
-    this._emit('route', { component: route.component, params, match });
+    this._emit('route', { component: route.component, params, match, route, path: cleanPath });
+  }
+
+  _notFound(path, pushState) {
+    const fallback = this.routes.find(r => r.path === '/404') || { path: '/404', component: 'page-not-found', title: 'No encontrado' };
+    this.currentRoute = fallback;
+    this.currentParams = { path };
+    this.currentMatch = null;
+    this._lastEmitted = '/404';
+    if (pushState && window.location.hash.slice(1) !== '/404') {
+      window.location.hash = '/404';
+    }
+    this._emit('route', { component: fallback.component, params: { path }, match: null, route: fallback, path: '/404' });
   }
 
   start() {
@@ -111,7 +128,7 @@ export class Router {
   // Helper para generar URLs
   urlFor(routePath, params = {}) {
     const route = this.routes.find(r => r.path === routePath);
-    if (!route) return '#';
+    if (!route) {return '#';}
     const path = this._generatePath(route, params);
     return `#${path}`;
   }

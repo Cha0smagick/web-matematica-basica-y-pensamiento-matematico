@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Curso profesional completo de Matemática Básica y Pensamiento Matemático. Aprende desde cero con método intuitivo, interactivo y sin ansiedad.">
+  <meta name="description" content="Curso gratuito de Matemática Básica y Pensamiento Matemático. Aprende desde cero con método intuitivo, interactivo y sin ansiedad.">
   <meta name="theme-color" content="#2563eb">
   <meta name="color-scheme" content="light dark">
-  
+
   <!-- Open Graph -->
-  <meta property="og:title" content="Matemática Básica y Pensamiento Matemático - Curso Completo Gratis">
-  <meta property="og:description" content="De 'odio las mates' a 'entiendo el mundo' en 20 min/día. Curso interactivo con diploma.">
+  <meta property="og:title" content="Matemática Básica y Pensamiento Matemático - Curso Gratis">
+  <meta property="og:description" content="De 'odio las mates' a 'entiendo el mundo' en 20 min/día. Curso interactivo para principiantes absolutos.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="/assets/og-image.png">
-  <meta property="og:url" content="https://Cha0smagick.github.io/web-matematica-basica-y-pensamiento-matematico/">
-  
+  <meta property="og:image" content="%BASE_URL%assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Matemática Básica y Pensamiento Matemático">
   <meta name="twitter:description" content="Curso interactivo gratis para principiantes absolutos.">
-  <meta name="twitter:image" content="/assets/og-image.png">
-  
-  <!-- PWA -->
-  <link rel="manifest" href="/web-matematica-basica-y-pensamiento-matematico/manifest.json">
-  <link rel="apple-touch-icon" href="/assets/icon-192.png">
-  <link rel="icon" type="image/svg+xml" href="/web-matematica-basica-y-pensamiento-matematico/assets/favicon.svg">
-  
+  <meta name="twitter:image" content="%BASE_URL%assets/og-image.png">
+
+  <!-- PWA (rutas relativas al base: funcionan en subpath de GitHub Pages) -->
+  <link rel="manifest" href="%BASE_URL%manifest.json">
+  <link rel="apple-touch-icon" href="%BASE_URL%assets/icon-192.png">
+  <link rel="icon" type="image/svg+xml" href="%BASE_URL%assets/favicon.svg">
+
+  <!-- Datos estructurados: recurso educativo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Matemática Básica y Pensamiento Matemático",
+    "description": "Fase 0 disponible: conteo, operaciones, fracciones y porcentajes para principiantes absolutos.",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "provider": { "@type": "Organization", "name": "Matemática Básica" },
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "courseWorkload": "PT5H"
+    }
+  }
+  </script>
+
   <title>Matemática Básica y Pensamiento Matemático</title>
 </head>
 <body>
   <div id="app"></div>
-  
-  <!-- Critical inline script for theme initialization (prevents flash) -->
+
+  <!-- Theme inline: evita flash de tema incorrecto -->
   <script>
     (function() {
       try {
@@ -47,18 +63,7 @@
       } catch (e) {}
     })();
   </script>
-  
+
   <script type="module" src="/src/main.js"></script>
-  
-  <!-- Service Worker disabled to prevent caching issues -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function(registrations) {
-        for (var i = 0; i < registrations.length; i++) {
-          registrations[i].unregister();
-        }
-      });
-    }
-  </script>
 </body>
 </html>

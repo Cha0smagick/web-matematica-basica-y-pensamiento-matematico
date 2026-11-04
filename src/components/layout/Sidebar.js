@@ -1,32 +1,24 @@
 // Sidebar - Navegación lateral con progreso
 import { store } from '../../store/index.js';
 import { navigateTo } from '../../router.js';
+import { courseManifest, isPhaseAvailable } from '../../courses/math-fundamentals/index.js';
 
 export class Sidebar extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this._phases = [];
+    this._phases = courseManifest.phases || [];
   }
 
   connectedCallback() {
-    this._loadPhases();
     this.render();
     this._setupEvents();
-  }
-
-  async _loadPhases() {
-    try {
-      const basePath = import.meta.env.BASE_URL || '/';
-const res = await fetch(`${basePath}courses/math-fundamentals/manifest.json`);
-      if (res.ok) {
-        const manifest = await res.json();
-        this._phases = manifest.phases || [];
-        this.render();
-      }
-    } catch (e) {
-      console.warn('Could not load phases:', e);
-    }
+    // Progreso real (async) -> re-render cuando llegue
+    store.progress.getGlobalStats().then(s => {
+      this._stats = s;
+      this.render();
+      this._setupEvents();
+    }).catch(() => {});
   }
 
   _setupEvents() {
@@ -34,7 +26,7 @@ const res = await fetch(`${basePath}courses/math-fundamentals/manifest.json`);
       el.addEventListener('click', (e) => {
         e.preventDefault();
         const href = el.getAttribute('href');
-        if (href) navigateTo(href);
+        if (href) {navigateTo(href);}
         // Close sidebar on mobile
         this.dispatchEvent(new CustomEvent('sidebar-close', { bubbles: true }));
       });
@@ -44,8 +36,9 @@ const res = await fetch(`${basePath}courses/math-fundamentals/manifest.json`);
   render() {
     const user = store.get('user');
     const currentPhase = store.get('course.currentPhase');
-    const stats = store.get('course.phases') || {};
+    const stats = this._stats || {};
     const streak = store.get('session.streak') || 0;
+    const availablePhases = this._phases.filter(p => isPhaseAvailable(p.id)).length;
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -98,7 +91,7 @@ const res = await fetch(`${basePath}courses/math-fundamentals/manifest.json`);
             </div>
             <div class="stat-row"><span class="stat-label">Racha</span><span class="stat-value">🔥 ${streak} días</span></div>
             <div class="stat-row"><span class="stat-label">Lecciones</span><span class="stat-value">${stats.lessonsCompleted || 0}</span></div>
-            <div class="stat-row"><span class="stat-label">Fases</span><span class="stat-value">${Object.values(stats).filter(p => p?.completed).length || 0}/6</span></div>
+            <div class="stat-row"><span class="stat-label">Fases</span><span class="stat-value">${stats.phasesCompleted || 0}/${availablePhases}</span></div>
           </div>
         </div>
 
@@ -106,29 +99,30 @@ const res = await fetch(`${basePath}courses/math-fundamentals/manifest.json`);
           <h2 class="sidebar-title">Fases del Curso</h2>
           <div class="nav-list" role="list">
             ${this._phases.map((phase, i) => {
-              const phaseStat = stats[phase.id] || {};
-              const progress = phaseStat.score || 0;
-              const isCurrent = currentPhase === phase.id;
-              const isCompleted = phaseStat.completed;
-              const bgColor = isCompleted ? 'var(--success)' : (isCurrent ? 'var(--primary)' : 'var(--bg-quaternary)');
-              const textColor = isCompleted || isCurrent ? 'white' : 'var(--text-primary)';
-              return `
+    const phaseStat = stats[phase.id] || {};
+    const progress = phaseStat.score || 0;
+    const isCurrent = currentPhase === phase.id;
+    const isCompleted = phaseStat.completed;
+    const available = isPhaseAvailable(phase.id);
+    const bgColor = !available ? 'var(--bg-quaternary)' : isCompleted ? 'var(--success)' : (isCurrent ? 'var(--primary)' : 'var(--bg-quaternary)');
+    const textColor = !available ? 'var(--text-muted)' : 'white';
+    return `
                 <a href="#/phase/${phase.id}" class="phase-card" data-nav>
                   <div class="phase-header">
-                    <div class="phase-number" style="background: ${bgColor}; color: ${textColor};">${i + 1}</div>
+                    <div class="phase-number" style="background: ${bgColor}; color: ${textColor};">${available ? i + 1 : '🔒'}</div>
                     <div class="phase-info">
                       <div class="phase-name">${phase.title}</div>
-                      <div class="phase-desc">${phase.description}</div>
+                      <div class="phase-desc">${available ? phase.description : 'En desarrollo'}</div>
                     </div>
                     <svg class="phase-progress" viewBox="0 0 48 48">
                       <circle cx="24" cy="24" r="20" fill="none" stroke="var(--border-color)" stroke-width="4"/>
-                      <circle cx="24" cy="24" r="20" fill="none" stroke="${isCompleted ? 'var(--success)' : 'var(--primary)'}" stroke-width="4" stroke-linecap="round" stroke-dasharray="${progress * 1.256} 125.6" transform="rotate(-90 24 24)" style="transition: stroke-dasharray 0.5s ease;"/>
-                      <text x="24" y="26" text-anchor="middle" font-size="10" fill="var(--text-primary)" font-weight="700">${progress}%</text>
+                      <circle cx="24" cy="24" r="20" fill="none" stroke="${available ? (isCompleted ? 'var(--success)' : 'var(--primary)') : 'transparent'}" stroke-width="4" stroke-linecap="round" stroke-dasharray="${progress * 1.256} 125.6" transform="rotate(-90 24 24)" style="transition: stroke-dasharray 0.5s ease;"/>
+                      <text x="24" y="26" text-anchor="middle" font-size="10" fill="var(--text-primary)" font-weight="700">${available ? `${progress}%` : '—'}</text>
                     </svg>
                   </div>
                 </a>
               `;
-            }).join('')}
+  }).join('')}
           </div>
         </div>
 

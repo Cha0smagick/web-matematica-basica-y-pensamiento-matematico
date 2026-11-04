@@ -1,5 +1,6 @@
 // Progress Store - Progreso del curso persistente en IndexedDB
 import Dexie from 'dexie';
+import { getModule, getPhaseModules } from '../courses/math-fundamentals/index.js';
 
 class ProgressDB extends Dexie {
   constructor() {
@@ -25,7 +26,7 @@ export class ProgressStore {
   }
 
   async init() {
-    if (this._initialized) return;
+    if (this._initialized) {return;}
     await db.open();
     this._initialized = true;
     await this._syncFromLocalStorage();
@@ -65,7 +66,7 @@ export class ProgressStore {
     };
     await db.lessons.put(record);
     this._invalidateCache('lesson', lessonId);
-    this._checkModuleCompletion(data.moduleId);
+    await this._checkModuleCompletion(data.moduleId);
     this._updateStreak();
     return record;
   }
@@ -75,7 +76,7 @@ export class ProgressStore {
       return this._cache.get(`lesson:${lessonId}`);
     }
     const record = await db.lessons.get(lessonId);
-    if (record) this._cache.set(`lesson:${lessonId}`, record);
+    if (record) {this._cache.set(`lesson:${lessonId}`, record);}
     return record || { id: lessonId, completed: false, score: 0, attempts: 0 };
   }
 
@@ -85,18 +86,20 @@ export class ProgressStore {
 
   // Módulos
   async completeModule(moduleId, data = {}) {
+    const existing = await db.modules.get(moduleId);
     const record = {
+      ...existing,
       id: moduleId,
-      phaseId: data.phaseId,
-      completed: true,
-      score: data.score || 0,
-      quizPassed: data.quizPassed || false,
-      projectCompleted: data.projectCompleted || false,
-      completedAt: Date.now()
+      phaseId: data.phaseId || existing?.phaseId,
+      completed: data.completed ?? existing?.completed ?? false,
+      score: data.score ?? existing?.score ?? 0,
+      quizPassed: data.quizPassed ?? existing?.quizPassed ?? false,
+      projectCompleted: data.projectCompleted ?? existing?.projectCompleted ?? false,
+      completedAt: (data.completed ?? existing?.completed) ? (existing?.completedAt || Date.now()) : existing?.completedAt
     };
     await db.modules.put(record);
     this._invalidateCache('module', moduleId);
-    this._checkPhaseCompletion(data.phaseId);
+    if (record.completed) {await this._checkPhaseCompletion(record.phaseId);}
     this.store.achievements.checkModuleAchievements(moduleId);
     return record;
   }
@@ -106,7 +109,7 @@ export class ProgressStore {
       return this._cache.get(`module:${moduleId}`);
     }
     const record = await db.modules.get(moduleId);
-    if (record) this._cache.set(`module:${moduleId}`, record);
+    if (record) {this._cache.set(`module:${moduleId}`, record);}
     return record || { id: moduleId, completed: false, score: 0 };
   }
 
@@ -131,7 +134,7 @@ export class ProgressStore {
       return this._cache.get(`phase:${phaseId}`);
     }
     const record = await db.phases.get(phaseId);
-    if (record) this._cache.set(`phase:${phaseId}`, record);
+    if (record) {this._cache.set(`phase:${phaseId}`, record);}
     return record || { id: phaseId, completed: false, score: 0 };
   }
 
@@ -187,29 +190,67 @@ export class ProgressStore {
   }
 
   async getAnalytics(days = 30) {
-    const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
-    return db.analytics.where('date').above(cutoff).toArray();
+    const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split('T')[0];
+    return db.analytics.where('date').aboveOrEqual(cutoff).toArray();
   }
 
   // Verificaciones de completitud
   async _checkModuleCompletion(moduleId) {
+    if (!moduleId) {return false;}
     const lessons = await this.getModuleLessonsProgress(moduleId);
-    const allCompleted = lessons.length > 0 && lessons.every(l => l.completed);
+    const expected = getModule(moduleId)?.lessons?.length || 0;
+    const allCompleted =
+      expected > 0 &&
+      lessons.length >= expected &&
+      lessons.every(l => l.completed);
     if (allCompleted) {
       const module = await this.getModuleProgress(moduleId);
       if (!module.completed) {
-        // Auto-complete module if all lessons done
-        await this.completeModule(moduleId, { 
+        await this.completeModule(moduleId, {
           phaseId: lessons[0]?.phaseId,
+          completed: true,
           score: Math.round(lessons.reduce((s, l) => s + l.score, 0) / lessons.length)
         });
       }
     }
+    return allCompleted;
   }
 
   async _checkPhaseCompletion(phaseId) {
-    // Would check all modules in phase
-    // Implementation depends on course manifest
+    if (!phaseId) {return false;}
+    const modules = getPhaseModules(phaseId);
+    if (!modules.length) {return false;}
+    const completed = await this.getCompletedModuleIds();
+    const allCompleted = modules.every(m => completed.includes(m.id));
+    if (allCompleted) {
+      const phase = await this.getPhaseProgress(phaseId);
+      if (!phase.completed) {
+        const records = await Promise.all(modules.map(m => this.getModuleProgress(m.id)));
+        const score = Math.round(
+          records.reduce((sum, r) => sum + (r.score || 0), 0) / records.length
+        );
+        await this.completePhase(phaseId, { score });
+      }
+    }
+    return allCompleted;
+  }
+
+  async getCompletedModuleIds() {
+    const modules = await db.modules.toArray();
+    return modules.filter(m => m.completed).map(m => m.id);
+  }
+
+  async getCompletedPhaseIds() {
+    const phases = await db.phases.toArray();
+    return phases.filter(p => p.completed).map(p => p.id);
+  }
+
+  async isModuleLessonsComplete(moduleId) {
+    const lessons = await this.getModuleLessonsProgress(moduleId);
+    const expected = getModule(moduleId)?.lessons?.length || 0;
+    return expected > 0 && lessons.length >= expected && lessons.every(l => l.completed);
   }
 
   async _updateStreak() {
@@ -283,5 +324,9 @@ export class ProgressStore {
     await db.delete();
     await db.open();
     this._cache.clear();
+  }
+
+  async reset() {
+    await this.clearAll();
   }
 }

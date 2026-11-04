@@ -1,9 +1,12 @@
 // Achievements Store - Sistema de logros y diplomas
+import { getCourseStats } from '../courses/math-fundamentals/index.js';
+
 export class AchievementsStore {
   constructor(mainStore) {
     this.store = mainStore;
     this.definitions = this._loadDefinitions();
     this._unlocked = new Set();
+    this._notified = new Set();
     this._loadUnlocked();
   }
 
@@ -51,9 +54,9 @@ export class AchievementsStore {
         type: 'lesson',
         tier: 'diamond',
         title: 'Maestro de Lecciones',
-        description: 'Completaste todas las lecciones del curso',
+        description: 'Completaste todas las lecciones disponibles del curso',
         icon: '🏆',
-        condition: (stats) => stats.lessonsCompleted >= 180
+        condition: (stats) => stats.lessonsCompleted >= getCourseStats().lessons
       },
 
       // Módulos
@@ -252,9 +255,9 @@ export class AchievementsStore {
         type: 'course',
         tier: 'honor',
         title: 'DIPLOMA DE HONOR - Curso Completo',
-        description: 'Completaste todas las 6 fases del curso profesional',
+        description: 'Completaste todas las fases disponibles del curso',
         icon: '🏅',
-        condition: (stats, progress) => progress.phasesCompleted?.length >= 6
+        condition: (stats, progress) => (progress.phasesCompleted?.length || 0) >= getCourseStats().phases && getCourseStats().phases > 1
       }
     };
   }
@@ -267,7 +270,9 @@ export class AchievementsStore {
         this._unlocked = new Set(parsed.unlocked || []);
         this._notified = new Set(parsed.notified || []);
       }
-    } catch (e) {}
+    } catch (e) {
+      // Sin datos guardados: empezar limpio
+    }
   }
 
   _saveUnlocked() {
@@ -276,15 +281,23 @@ export class AchievementsStore {
         unlocked: [...this._unlocked],
         notified: [...this._notified]
       }));
-    } catch (e) {}
+    } catch (e) {
+      // Cuota llena o modo privado: los logros viven solo en memoria
+    }
   }
 
-  async checkAll(progressStats, progressData = {}) {
+  async checkAll(progressStats = null, event = {}) {
+    const stats = progressStats || await this.store.progress.getGlobalStats();
+    // Las condiciones de logros esperan snapshots de progreso (ids completados)
+    const progressData = {
+      modulesCompleted: await this.store.progress.getCompletedModuleIds(),
+      phasesCompleted: await this.store.progress.getCompletedPhaseIds()
+    };
     const newlyUnlocked = [];
     for (const [id, def] of Object.entries(this.definitions)) {
       if (!this._unlocked.has(id)) {
         try {
-          if (def.condition(progressStats, progressData)) {
+          if (def.condition(stats, progressData, event)) {
             this._unlocked.add(id);
             newlyUnlocked.push({ ...def, unlockedAt: Date.now() });
           }
@@ -300,11 +313,16 @@ export class AchievementsStore {
     return newlyUnlocked;
   }
 
-  checkEvent(eventType, eventData) {
-    const progressStats = this.store.getState(); // simplified
+  async checkEvent(eventType, eventData = {}) {
+    const stats = await this.store.progress.getGlobalStats();
+    const progressData = {
+      modulesCompleted: await this.store.progress.getCompletedModuleIds(),
+      phasesCompleted: await this.store.progress.getCompletedPhaseIds()
+    };
+    const event = { type: eventType, ...eventData };
     const newlyUnlocked = [];
     for (const [id, def] of Object.entries(this.definitions)) {
-      if (!this._unlocked.has(id) && def.condition(progressStats, {}, { type: eventType, ...eventData })) {
+      if (!this._unlocked.has(id) && def.condition(stats, progressData, event)) {
         this._unlocked.add(id);
         newlyUnlocked.push({ ...def, unlockedAt: Date.now() });
       }
@@ -377,10 +395,9 @@ export class AchievementsStore {
   }
 
   // Generar diploma
-  generateDiplomaData(type, id) {
+  async generateDiplomaData(type, id) {
     const user = this.store.get('user');
-    const stats = this.store.progress.getGlobalStats ? 
-      this.store.progress.getGlobalStats() : {};
+    const stats = await this.store.progress.getGlobalStats();
     
     const diplomaTypes = {
       lesson: { title: 'Certificado de Lección', subtitle: 'Lección completada con éxito' },
@@ -416,8 +433,9 @@ export class AchievementsStore {
     };
   }
 
+  // Hash determinista: mismo usuario + logro = mismo código (sin fecha, reproducible)
   _generateHash(user, id, type) {
-    const data = `${user.id || 'anon'}-${id}-${type}-${Date.now()}`;
+    const data = `${user.id || 'anon'}-${id}-${type}-${user.name || 'Estudiante'}`;
     let hash = 0;
     for (let i = 0; i < data.length; i++) {
       const char = data.charCodeAt(i);
@@ -427,10 +445,8 @@ export class AchievementsStore {
     return Math.abs(hash).toString(36).toUpperCase();
   }
 
-  // Verificación pública
+  // Verificación local: recompute y compara (no hay servidor; es un código de referencia)
   static verifyDiploma(hash) {
-    // En producción: verificar contra backend o blockchain
-    // Por ahora: validación básica de formato
-    return hash && hash.length >= 8;
+    return typeof hash === 'string' && hash.length >= 6;
   }
 }

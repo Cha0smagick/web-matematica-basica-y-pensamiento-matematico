@@ -27,11 +27,9 @@
   "license": "MIT",
   "dependencies": {
     "dexie": "^4.0.7",
-    "function-plot": "^1.24.0",
-    "jspdf": "^2.5.1",
+    "jspdf": "^4.2.1",
     "jszip": "^3.10.1",
-    "katex": "^0.16.9",
-    "qrcode": "^1.5.3"
+    "katex": "^0.16.9"
   },
   "devDependencies": {
     "@playwright/test": "^1.42.0",

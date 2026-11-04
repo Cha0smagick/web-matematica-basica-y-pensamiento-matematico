@@ -1,11 +1,22 @@
 // Bootstrap principal - Inicialización de la aplicación
 console.log('main.js loaded');
 
-window.addEventListener('error', function(e) {
+// Error global NO destructivo: no borra la app, solo informa
+window.addEventListener('error', function (e) {
   console.error('Global error:', e.error || e.message);
-  const app = document.getElementById('app');
-  if (app) {
-    app.innerHTML = '<h1 style="color: red; padding: 20px;">Error: ' + (e.error ? e.error.message : e.message) + '</h1>';
+  let banner = document.getElementById('error-banner');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.id = 'error-banner';
+    banner.setAttribute('role', 'alert');
+    banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#dc2626;color:#fff;padding:10px 16px;font:14px sans-serif;display:flex;gap:12px;align-items:center;';
+    banner.innerHTML = '<span>⚠️ Ocurrió un error inesperado.</span>';
+    const dismiss = document.createElement('button');
+    dismiss.textContent = 'Cerrar';
+    dismiss.style.cssText = 'margin-left:auto;background:transparent;color:#fff;border:1px solid #fff;border-radius:4px;padding:2px 8px;cursor:pointer;';
+    dismiss.onclick = () => banner.remove();
+    banner.appendChild(dismiss);
+    document.body.appendChild(banner);
   }
 });
 
@@ -26,8 +37,8 @@ import { DiplomaPage } from './pages/DiplomaPage.js';
 import { ProfilePage } from './pages/ProfilePage.js';
 import { SettingsPage } from './pages/SettingsPage.js';
 import { LatexRenderer } from './components/math/LatexRenderer.js';
-import { InteractiveGraph } from './components/math/InteractiveGraph.js';
-import { FormulaExplorer } from './components/math/FormulaExplorer.js';
+import { NotFoundPage } from './pages/NotFoundPage.js';
+import { LegalPage } from './pages/LegalPage.js';
 import './styles/globals.css';
 
 console.log('Imports done');
@@ -61,8 +72,8 @@ registerComponent('page-diploma', DiplomaPage);
 registerComponent('page-profile', ProfilePage);
 registerComponent('page-settings', SettingsPage);
 registerComponent('latex-renderer', LatexRenderer);
-registerComponent('interactive-graph', InteractiveGraph);
-registerComponent('formula-explorer', FormulaExplorer);
+registerComponent('page-not-found', NotFoundPage);
+registerComponent('page-legal', LegalPage);
 console.log('Pages registered');
 
 // Configurar rutas
@@ -76,7 +87,9 @@ const routes = [
   { path: '/practice/:type', component: 'page-practice', title: 'Práctica' },
   { path: '/diploma/:type/:id', component: 'page-diploma', title: 'Diploma' },
   { path: '/profile', component: 'page-profile', title: 'Perfil', auth: true },
-  { path: '/settings', component: 'page-settings', title: 'Configuración' }
+  { path: '/settings', component: 'page-settings', title: 'Configuración' },
+  { path: '/legal', component: 'page-legal', title: 'Privacidad y Términos' },
+  { path: '/404', component: 'page-not-found', title: 'No encontrado' }
 ];
 
 // Inicializar router
@@ -97,22 +110,30 @@ app.innerHTML = `
 console.log('App mounted');
 
 // Escuchar cambios de ruta
-router.on('route', ({ component, params, match }) => {
+router.on('route', ({ component, params, route }) => {
   console.log('Route changed:', component);
   const main = document.getElementById('main-content');
   main.innerHTML = `<${component}></${component}>`;
   const page = main.querySelector(component);
   if (page && page.init) {
-    page.init(params, match);
+    page.init(params);
   }
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  const route = routes.find(r => r.path === match.route);
-  document.title = route ? `${route.title} | Matemática Básica` : 'Matemática Básica';
+  document.title = route?.title ? `${route.title} | Matemática Básica` : 'Matemática Básica';
 });
 
 // Iniciar router
 router.start();
 console.log('Router started');
+
+// Service Worker solo en producción (el dev server no debe cachear)
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch((e) => {
+      console.warn('No se pudo registrar el service worker:', e);
+    });
+  });
+}
 
 // Exponer para debugging
 window.__APP__ = { store, router };

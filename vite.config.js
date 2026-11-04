@@ -2,12 +2,14 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   root: '.',
-  base: '/web-matematica-basica-y-pensamiento-matematico/',
+  // Base sobreescribible: BASE_URL para desplegar en cualquier subpath
+  base: process.env.BASE_URL || '/web-matematica-basica-y-pensamiento-matematico/',
   publicDir: 'public',
+  // Nota: function-plot se retiró junto con InteractiveGraph/FormulaExplorer (código muerto)
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: true,
+    sourcemap: false,
     minify: 'terser',
     terserOptions: {
       compress: {
@@ -22,9 +24,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vendor-katex': ['katex'],
-          'vendor-graph': ['function-plot'],
-          'vendor-db': ['dexie'],
-          'vendor-pdf': ['jspdf', 'qrcode']
+          'vendor-db': ['dexie']
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
@@ -52,12 +52,12 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    open: true,
+    open: false,
     cors: true
   },
   optimizeDeps: {
-    include: ['katex', 'function-plot', 'dexie'],
-    exclude: ['jspdf', 'qrcode']
+    include: ['katex', 'dexie'],
+    exclude: ['jspdf']
   },
   css: {
     devSourcemap: true

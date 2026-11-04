@@ -4,12 +4,12 @@ Curso profesional completo de matemática para principiantes absolutos. Diseñad
 
 ## 📋 Características
 
-- **6 Fases, 24 Módulos, 180+ Lecciones** - Desde conteo básico hasta cálculo y pensamiento matemático avanzado
+- **Fase 0 disponible: 4 módulos, 20 lecciones** - Conteo, operaciones, fracciones y porcentajes. Las fases 1-6 están en desarrollo
 - **Diseñado para cero experiencia** - Comienza con subitizing (reconocer cantidad sin contar)
 - **Extremadamente intuitivo** - Analogías cotidianas, un concepto a la vez
 - **Fórmulas LaTeX con hover** - Pasa el mouse sobre cualquier símbolo para ver qué significa
 - **Gráficas interactivas** - Funciones, parábolas, integrales con deslizadores en tiempo real
-- **Diplomas honorarios** - Certificados por lección, módulo, fase y curso completo (verificables)
+- **Constancias de logro** - Reconocimientos por lección, módulo y fase (generados localmente, no oficiales)
 - **Sin ansiedad matemática** - Sin temporizadores, reintentos ilimitados, mentalidad de crecimiento
 - **PWA** - Funciona sin conexión, instalable en móvil y desktop
 - **GitHub Pages + GitHub Actions** - Despliegue automático
@@ -26,7 +26,7 @@ Curso profesional completo de matemática para principiantes absolutos. Diseñad
 | 5 | Analista de Datos (Estadística) | 4 | 25 |
 | 6 | Pensador Matemático | 4 | 20 |
 
-**Total: 24 módulos, ~180 lecciones, ~60 horas de estudio**
+**Disponible hoy: 4 módulos, 20 lecciones, ~5 horas de estudio. Fases 1-6 en desarrollo**
 
 ## 🚀 Inicio Rápido
 
@@ -146,7 +146,8 @@ Este es un proyecto educativo de código abierto. Las contribuciones son bienven
 
 ## 📄 Licencia
 
-CC-BY-SA-4.0 - Creative Commons Atribución-CompartirIgual 4.0 Internacional
+- **Código:** MIT (ver archivo `LICENSE`)
+- **Contenido educativo** (textos, lecciones, ejercicios): CC-BY-SA-4.0 - Creative Commons Atribución-CompartirIgual 4.0 Internacional
 
 ---
 

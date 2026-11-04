@@ -36,16 +36,13 @@ export class Footer extends HTMLElement {
             <a href="#/" class="footer-link">Inicio</a>
             <a href="#/dashboard" class="footer-link">Dashboard</a>
             <a href="#/settings" class="footer-link">Configuración</a>
-            <a href="https://github.com" target="_blank" rel="noopener" class="footer-link">GitHub</a>
-            <a href="#/privacy" class="footer-link">Privacidad</a>
-            <a href="#/terms" class="footer-link">Términos</a>
+            <a href="#/legal" class="footer-link">Privacidad y Términos</a>
+            <a href="https://github.com/Cha0smagick/web-matematica-basica-y-pensamiento-matematico" target="_blank" rel="noopener" class="footer-link">GitHub</a>
           </div>
           <div class="footer-badges">
             <span class="badge">🧮 Vanilla JS</span>
             <span class="badge">📐 KaTeX</span>
-            <span class="badge">📊 D3/Function-plot</span>
             <span class="badge">💾 IndexedDB</span>
-            <span class="badge">♿ WCAG 2.1 AA</span>
             <span class="badge">📱 PWA</span>
           </div>
           <p class="footer-copyright">
