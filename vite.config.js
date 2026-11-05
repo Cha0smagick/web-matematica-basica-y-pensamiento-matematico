@@ -10,21 +10,18 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
+    minify: true,
     rollupOptions: {
       input: {
         main: 'index.html'
       },
       output: {
-        manualChunks: {
-          'vendor-katex': ['katex'],
-          'vendor-db': ['dexie']
+        // Vite 8 (rolldown): manualChunks solo acepta función
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('katex')) return 'vendor-katex';
+            if (id.includes('dexie')) return 'vendor-db';
+          }
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
@@ -43,9 +40,6 @@ export default defineConfig({
           return `assets/[name]-[hash].${ext}`;
         }
       }
-    },
-    modulePreload: {
-      polyfill: true
     },
     cssCodeSplit: true,
     reportCompressedSize: true

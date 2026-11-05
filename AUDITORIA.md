@@ -376,7 +376,8 @@ Además, la fase 0 declarada tiene 20 lecciones, pero solo 4 módulos con conten
 
 - **`npm test`: 8/8 OK** — validación de contenido (JSON, respuestas en rango, ids únicos, assets, manifest).
 - **`npm run lint`: 0 problemas** (errores y avisos).
-- **`npm run build`: OK** — sin sourcemaps, `jspdf` en chunk diferido, `qrcode`/`function-plot` eliminados.
+- **`npm run build`: OK** — Vite 8 (rolldown) + Vitest 5; sin sourcemaps; `jspdf` en chunk diferido; `qrcode`/`function-plot` eliminados. Build ~3× más rápido que con Vite 5/terser.
+- **Vulnerabilidades: 1 low** (antes 8, con 3 críticas): jspdf→4, vite→8 y vitest→5 eliminaron las cadenas críticas/altas.
 - **Runtime dev + producción (Chromium real): 21/21 checks OK** (`node scripts/verify.mjs` con dev server activo). Incluye: arranque, KaTeX con `font-family: KaTeX_Main`, `display-mode` correcto, persistencia en localStorage, lección real por ID, diagrama SVG, respuesta correcta/incorrecta, guardado IndexedDB, quiz con pase (100%) y fallo (sin diploma), 404, dashboard, reset que borra IndexedDB, cero errores de consola.
 - **Producción:** SW registrado, manifest/iconos/og-image/diagramas todos 200, PDF generado con jspdf 4.
 - **Accesibilidad (axe-core, `node scripts/a11y-audit.mjs`): 0 violaciones** de impacto ≥ moderado en 8 páginas (antes: 183 nodos). Corregidos: landmarks duplicados, `role="list"` sin listitems, select sin nombre, contraste del texto muted, logo con nombre accesible no coincidente, foco dentro de `aria-hidden`, opacidad que rompía contraste, jerarquía de headings, toggles de settings ahora operables por teclado (`role="switch"`).
@@ -398,5 +399,5 @@ Además, la fase 0 declarada tiene 20 lecciones, pero solo 4 módulos con conten
 ## Pendiente (documentado, no bloqueante)
 
 - **P0-10 (fondo):** las fases 1–6 siguen sin contenido; el sitio ahora lo declara honestamente ("en desarrollo"). Generar ese contenido es trabajo editorial, no técnico.
-- **Vulnerabilidades restantes (6):** cadena `vite/esbuild` (requiere vite 8, breaking) y `vitest/tinypool` (requiere vitest 4, breaking). Son dependencias de desarrollo, no llegan al bundle de producción.
+- **Vulnerabilidades restantes (1 low):** sin impacto conocido en producción. Queda en cero al actualizar la dependencia que la reporta.
 - **Accesibilidad:** verificación axe-core en 8 páginas = 0 violaciones. Pendiente un pase manual con lector de pantalla y en móvil real.
