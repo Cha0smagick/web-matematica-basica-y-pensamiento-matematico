@@ -24,7 +24,7 @@ describe('Contenido del curso', () => {
 
   it('cada opción correcta está dentro de rango (0 <= correct < options.length)', () => {
     const bad = [];
-    for (const [modId, mod] of Object.entries(modules)) {
+    for (const mod of Object.values(modules)) {
       for (const lesson of mod.lessons) {
         for (const block of lesson.content || []) {
           for (const q of block.questions || []) {

@@ -64,7 +64,7 @@ export class SettingsPage extends HTMLElement {
               <span class="setting-title">Tema de color</span>
               <span class="setting-desc">Claro, oscuro o según el sistema</span>
             </div>
-            <select class="theme-select" id="themeSelect">
+            <select class="theme-select" id="themeSelect" aria-label="Tema de color">
               <option value="light" ${theme === 'light' ? 'selected' : ''}>☀️ Claro</option>
               <option value="dark" ${theme === 'dark' ? 'selected' : ''}>🌙 Oscuro</option>
               <option value="system" ${theme === 'system' ? 'selected' : ''}>💻 Sistema</option>
@@ -80,7 +80,7 @@ export class SettingsPage extends HTMLElement {
               <span class="setting-desc">Desactivar animaciones para mayor comodidad</span>
             </div>
             <div class="setting-control">
-              <div class="toggle ${settings.reducedMotion ? 'active' : ''}" id="toggleReducedMotion"></div>
+              <div class="toggle ${settings.reducedMotion ? 'active' : ''}" id="toggleReducedMotion" role="switch" tabindex="0" aria-checked="${!!settings.reducedMotion}" aria-label="Reducir movimiento"></div>
             </div>
           </div>
           <div class="setting-item">
@@ -89,7 +89,7 @@ export class SettingsPage extends HTMLElement {
               <span class="setting-desc">Mejorar legibilidad para baja visión</span>
             </div>
             <div class="setting-control">
-              <div class="toggle ${settings.highContrast ? 'active' : ''}" id="toggleHighContrast"></div>
+              <div class="toggle ${settings.highContrast ? 'active' : ''}" id="toggleHighContrast" role="switch" tabindex="0" aria-checked="${!!settings.highContrast}" aria-label="Alto contraste"></div>
             </div>
           </div>
           <div class="setting-item">
@@ -98,7 +98,7 @@ export class SettingsPage extends HTMLElement {
               <span class="setting-desc">Tipografía más fácil de leer</span>
             </div>
             <div class="setting-control">
-              <div class="toggle ${settings.dyslexiaFont ? 'active' : ''}" id="toggleDyslexia"></div>
+              <div class="toggle ${settings.dyslexiaFont ? 'active' : ''}" id="toggleDyslexia" role="switch" tabindex="0" aria-checked="${!!settings.dyslexiaFont}" aria-label="Fuente para dislexia"></div>
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@ export class SettingsPage extends HTMLElement {
               <span class="setting-desc">Recibir aviso para estudiar cada día</span>
             </div>
             <div class="setting-control">
-              <div class="toggle ${settings.dailyReminder ? 'active' : ''}" id="toggleReminder"></div>
+              <div class="toggle ${settings.dailyReminder ? 'active' : ''}" id="toggleReminder" role="switch" tabindex="0" aria-checked="${!!settings.dailyReminder}" aria-label="Recordatorio diario"></div>
             </div>
           </div>
           <div class="setting-item">
@@ -120,7 +120,7 @@ export class SettingsPage extends HTMLElement {
               <span class="setting-desc">Sonido al responder correctamente</span>
             </div>
             <div class="setting-control">
-              <div class="toggle ${settings.soundEnabled ? 'active' : ''}" id="toggleSound"></div>
+              <div class="toggle ${settings.soundEnabled ? 'active' : ''}" id="toggleSound" role="switch" tabindex="0" aria-checked="${!!settings.soundEnabled}" aria-label="Sonidos de feedback"></div>
             </div>
           </div>
         </div>
@@ -152,6 +152,13 @@ export class SettingsPage extends HTMLElement {
     this._attachSettingsListeners();
   }
 
+  _toggleSetting(el, key) {
+    const isActive = !el.classList.contains('active');
+    el.classList.toggle('active', isActive);
+    el.setAttribute('aria-checked', String(isActive));
+    store.settings.set(key, isActive);
+  }
+
   _attachSettingsListeners() {
     const themeSelect = this.shadowRoot.getElementById('themeSelect');
     themeSelect?.addEventListener('change', (e) => {
@@ -169,9 +176,12 @@ export class SettingsPage extends HTMLElement {
     Object.entries(toggles).forEach(([key, id]) => {
       const el = this.shadowRoot.getElementById(id);
       if (el) {
-        el.addEventListener('click', () => {
-          const isActive = el.classList.toggle('active');
-          store.settings.set(key, isActive);
+        el.addEventListener('click', () => this._toggleSetting(el, key));
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this._toggleSetting(el, key);
+          }
         });
       }
     });

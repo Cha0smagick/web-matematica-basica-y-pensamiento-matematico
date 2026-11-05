@@ -76,7 +76,8 @@
   /* Textos */
   --text-primary: var(--neutral-900);
   --text-secondary: var(--neutral-700);
-  --text-muted: var(--neutral-500);
+  /* Muted: neutral-600 para cumplir contraste AA sobre fondos claros */
+  --text-muted: var(--neutral-600);
   --text-inverse: var(--neutral-0);
   --text-link: var(--primary-600);
   --text-link-hover: var(--primary-700);

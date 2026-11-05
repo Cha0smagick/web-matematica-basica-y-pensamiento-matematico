@@ -71,7 +71,7 @@ export class ModulePage extends HTMLElement {
         .lesson-content { flex: 1; }
         .lesson-title { font-weight: var(--font-weight-semibold); display: block; }
         .lesson-desc { font-size: var(--font-size-xs); color: var(--text-muted); }
-        .lesson-locked { opacity: 0.6; filter: grayscale(0.5); cursor: not-allowed; }
+        .lesson-locked { filter: grayscale(1); cursor: not-allowed; }
 
         .progress-line { height: 8px; background: var(--bg-tertiary); border-radius: var(--radius-full); overflow: hidden; margin-bottom: var(--spacing-xl); }
         .progress-fill { height: 100%; background: var(--primary); transition: width var(--transition-normal); }
@@ -106,7 +106,7 @@ export class ModulePage extends HTMLElement {
     return `
                 <div class="lesson-row ${isCompleted ? 'completed' : ''} ${isLocked ? 'lesson-locked' : ''}"
                      ${!isLocked ? `onclick="window.__APP_ROUTER__.navigate('/lesson/${lesson.id}')"` : ''}
-                     role="link" tabindex="0" aria-label="Lección ${i + 1}: ${lesson.title}">
+                     role="link" tabindex="0">
                   <div class="lesson-number">${isCompleted ? '✓' : i + 1}</div>
                   <div class="lesson-content">
                     <span class="lesson-title">${lesson.title}</span>

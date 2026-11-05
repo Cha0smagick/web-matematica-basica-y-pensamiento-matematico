@@ -100,7 +100,7 @@ export class LatexRenderer extends HTMLElement {
           .latex-empty { color: var(--text-muted); font-style: italic; font-size: var(--font-size-sm); }
           .katex-error { color: var(--error); font-size: var(--font-size-sm); font-family: var(--font-mono); background: var(--error-light); padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-sm); }
         </style>
-        <div class="latex-wrapper ${displayClass} ${sizeClass}" role="math" aria-label="Fórmula matemática">${processedHtml}</div>
+        <div class="latex-wrapper ${displayClass} ${sizeClass}" role="math" aria-label="Fórmula matemática"${this._displayMode ? ' tabindex="0"' : ''}>${processedHtml}</div>
       `;
 
       this._attachTokenListeners();
@@ -120,7 +120,8 @@ export class LatexRenderer extends HTMLElement {
 
       if (glossaryEntry) {
         const shortDef = this._escapeHtml(glossaryEntry.short || glossaryEntry.definition);
-        return `<span class="${className} latex-token"${attrs} data-tooltip="${shortDef}" data-token="${token}" tabindex="0">${content}</span>`;
+        // Sin tabindex: los tokens viven dentro de .katex-html[aria-hidden] y un foco ahí sería invisible para lectores
+        return `<span class="${className} latex-token"${attrs} data-tooltip="${shortDef}" data-token="${token}">${content}</span>`;
       }
       return match;
     });
@@ -259,7 +260,7 @@ if (!customElements.get('latex-renderer')) {
 
 // Función helper para uso programático
 export function renderLatex(latex, options = {}) {
-  const { displayMode = false, interactive = true, size = 'normal' } = options;
+  const { displayMode = false } = options;
   try {
     return katex.renderToString(latex, {
       displayMode,

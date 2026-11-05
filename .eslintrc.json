@@ -13,9 +13,9 @@
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
-    "no-unused-vars": "warn",
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "ignoreRestSiblings": true, "destructuredArrayIgnorePattern": "^_" }],
     "no-console": "off",
-    "no-alert": "warn",
+    "no-alert": "off",
     "eqeqeq": ["error", "always"],
     "curly": ["error", "all"]
   },

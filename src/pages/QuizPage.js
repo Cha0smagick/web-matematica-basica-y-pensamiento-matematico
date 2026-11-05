@@ -66,7 +66,7 @@ export class QuizPage extends HTMLElement {
         :host { display: block; }
         .quiz-page { padding: var(--spacing-lg); max-width: 700px; margin: 0 auto; }
         .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl); flex-wrap: wrap; gap: var(--spacing-sm); }
-        .quiz-title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); }
+        .quiz-title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin: 0; }
         .quiz-progress { font-size: var(--font-size-sm); color: var(--text-muted); }
         .progress-bar-container { height: 10px; background: var(--bg-tertiary); border-radius: var(--radius-full); overflow: hidden; margin: var(--spacing-md) 0 var(--spacing-xl) 0; }
         .progress-bar { height: 100%; background: var(--primary); border-radius: var(--radius-full); width: ${progress}%; transition: width var(--transition-normal); }
@@ -97,7 +97,7 @@ export class QuizPage extends HTMLElement {
 
       <div class="quiz-page">
         <div class="quiz-header">
-          <div class="quiz-title">Evaluación: ${this._module.title}</div>
+          <h1 class="quiz-title">Evaluación: ${this._module.title}</h1>
           <div class="quiz-progress">Pregunta ${this._currentQuestion + 1} de ${this._questions.length}</div>
         </div>
 

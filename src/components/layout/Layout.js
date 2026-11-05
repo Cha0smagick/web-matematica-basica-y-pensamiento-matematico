@@ -25,10 +25,10 @@ export class Layout extends HTMLElement {
           color: var(--text-primary);
         }
         
-        header { grid-area: header; }
-        aside { grid-area: sidebar; }
-        main { grid-area: main; overflow-y: auto; }
-        footer { grid-area: footer; }
+        .l-header { grid-area: header; }
+        .l-sidebar { grid-area: sidebar; }
+        .l-main { grid-area: main; overflow-y: auto; }
+        .l-footer { grid-area: footer; }
         
         @media (max-width: 1024px) {
           :host {
@@ -38,7 +38,7 @@ export class Layout extends HTMLElement {
               "footer";
             grid-template-columns: 1fr;
           }
-          aside {
+          .l-sidebar {
             position: fixed;
             top: 0; left: 0; bottom: 0;
             z-index: 100;
@@ -46,7 +46,7 @@ export class Layout extends HTMLElement {
             transition: transform var(--transition-normal);
             box-shadow: var(--shadow-xl);
           }
-          aside.open {
+          .l-sidebar.open {
             transform: translateX(0);
           }
           .sidebar-overlay {
@@ -65,11 +65,11 @@ export class Layout extends HTMLElement {
         }
       </style>
       
-      <header><slot name="header"></slot></header>
+      <div class="l-header"><slot name="header"></slot></div>
       <div class="sidebar-overlay" id="sidebarOverlay"></div>
-      <aside id="sidebar"><slot name="sidebar"></slot></aside>
-      <main id="main"><slot name="main"></slot></main>
-      <footer><slot name="footer"></slot></footer>
+      <div class="l-sidebar" id="sidebar"><slot name="sidebar"></slot></div>
+      <div class="l-main"><slot name="main"></slot></div>
+      <div class="l-footer"><slot name="footer"></slot></div>
     `;
     
     this._setupSidebarToggle();

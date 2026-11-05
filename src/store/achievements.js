@@ -222,7 +222,7 @@ export class AchievementsStore {
         title: 'Búho Nocturno',
         description: 'Estudiaste después de medianoche',
         icon: '🦉',
-        condition: (stats, progress, event) => {
+        condition: (_stats, _progress, _event) => {
           const hour = new Date().getHours();
           return hour >= 0 && hour < 5;
         }
@@ -234,7 +234,7 @@ export class AchievementsStore {
         title: 'Madrugador',
         description: 'Estudiaste antes de las 6 AM',
         icon: '🌅',
-        condition: (stats, progress, event) => {
+        condition: (_stats, _progress, _event) => {
           const hour = new Date().getHours();
           return hour >= 4 && hour < 6;
         }
@@ -372,7 +372,7 @@ export class AchievementsStore {
   getLocked() {
     return Object.entries(this.definitions)
       .filter(([id]) => !this._unlocked.has(id))
-      .map(([id, def]) => ({ ...def, unlocked: false }));
+      .map(([, def]) => ({ ...def, unlocked: false }));
   }
 
   getAll() {

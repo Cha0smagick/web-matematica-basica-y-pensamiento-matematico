@@ -1,6 +1,6 @@
 // DashboardPage - Panel de progreso con mapa visual del curso real
 import { store } from '../store/index.js';
-import { courseManifest, getPhaseModules, isPhaseAvailable } from '../courses/math-fundamentals/index.js';
+import { courseManifest, getPhaseModules } from '../courses/math-fundamentals/index.js';
 import baseStyles from '../styles/shadow-base.css?inline';
 
 export class DashboardPage extends HTMLElement {
@@ -34,7 +34,7 @@ export class DashboardPage extends HTMLElement {
       <style>
         :host { display: block; }
         .dashboard { padding: var(--spacing-lg); max-width: 1200px; margin: 0 auto; }
-        .welcome { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin-bottom: var(--spacing-xs); }
+        .welcome { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin-bottom: var(--spacing-xs); margin-top: 0; }
         .subtitle { color: var(--text-muted); }
 
         .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); margin-bottom: var(--spacing-xl); }
@@ -44,14 +44,14 @@ export class DashboardPage extends HTMLElement {
         .stat-card .stat-label { color: var(--text-muted); font-size: var(--font-size-sm); }
 
         .streak-card { background: linear-gradient(135deg, #f59e0b, #ef4444); color: white; border-radius: var(--radius-xl); padding: var(--spacing-lg); margin-bottom: var(--spacing-xl); display: flex; justify-content: space-between; align-items: center; }
-        .streak-info h3 { margin: 0 0 var(--spacing-xs) 0; font-size: var(--font-size-xl); }
+        .streak-info h2 { margin: 0 0 var(--spacing-xs) 0; font-size: var(--font-size-xl); }
         .streak-info p { margin: 0; opacity: 0.9; font-size: var(--font-size-sm); }
         .streak-number { font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); }
 
         .section-title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin-bottom: var(--spacing-lg); }
         .phases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--spacing-lg); }
         .phase-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-xl); overflow: hidden; }
-        .phase-card.unavailable { opacity: 0.7; }
+        .phase-card.unavailable { filter: grayscale(1); }
         .phase-header { padding: var(--spacing-lg); display: flex; align-items: center; gap: var(--spacing-md); }
         .phase-number { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: var(--font-weight-bold); flex-shrink: 0; color: white; }
         .phase-name { font-weight: var(--font-weight-semibold); display: block; margin-bottom: 4px; }
@@ -63,7 +63,7 @@ export class DashboardPage extends HTMLElement {
         .phase-actions { padding: var(--spacing-lg); border-top: 1px solid var(--border-color); }
 
         .next-lesson { background: var(--bg-tertiary); border-radius: var(--radius-xl); padding: var(--spacing-lg); border-left: 4px solid var(--primary); }
-        .next-lesson h3 { margin: 0 0 var(--spacing-sm) 0; font-size: var(--font-size-lg); }
+        .next-lesson h2 { margin: 0 0 var(--spacing-sm) 0; font-size: var(--font-size-lg); }
 
         @media (max-width: 640px) {
           .stats-row, .phases-grid { grid-template-columns: 1fr; }
@@ -72,7 +72,7 @@ export class DashboardPage extends HTMLElement {
 
       <div class="dashboard">
         <div class="dashboard-header">
-          <div class="welcome">Hola, ${store.get('user.name') || 'Estudiante'} 👋</div>
+          <h1 class="welcome">Hola, ${store.get('user.name') || 'Estudiante'} 👋</h1>
           <div class="subtitle">Aquí está tu progreso en el curso</div>
         </div>
 
@@ -97,7 +97,7 @@ export class DashboardPage extends HTMLElement {
 
         <div class="streak-card">
           <div class="streak-info">
-            <h3>Racha Actual</h3>
+            <h2>Racha Actual</h2>
             <p>Días consecutivos estudiando</p>
           </div>
           <div class="streak-number">🔥 ${streak} días</div>
@@ -128,7 +128,7 @@ export class DashboardPage extends HTMLElement {
         </div>
 
         <div class="next-lesson" style="margin-top: var(--spacing-xl);">
-          <h3>🎯 Tu Próximo Paso</h3>
+          <h2>🎯 Tu Próximo Paso</h2>
           <p style="margin: 0 0 var(--spacing-md) 0; color: var(--text-secondary);">Continúa desde donde lo dejaste o empieza desde el principio.</p>
           <button class="btn btn-primary btn-block" onclick="window.__APP_ROUTER__.navigate('/lesson/l0-1-1')">Ir a la primera lección</button>
         </div>

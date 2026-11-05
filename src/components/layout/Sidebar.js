@@ -97,7 +97,7 @@ export class Sidebar extends HTMLElement {
 
         <div class="sidebar-section">
           <h2 class="sidebar-title">Fases del Curso</h2>
-          <div class="nav-list" role="list">
+          <div class="nav-list">
             ${this._phases.map((phase, i) => {
     const phaseStat = stats[phase.id] || {};
     const progress = phaseStat.score || 0;

@@ -98,7 +98,7 @@ export class Header extends HTMLElement {
           <button class="btn-icon sidebar-toggle" id="menuBtn" aria-label="Menú" title="Menú">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
           </button>
-          <a href="#/" class="logo" aria-label="Ir al inicio">
+          <a href="#/" class="logo" aria-label="MateBásico: ir al inicio">
             <span class="logo-icon">🧮</span>
             <span class="logo-text">MateBásico</span>
           </a>
