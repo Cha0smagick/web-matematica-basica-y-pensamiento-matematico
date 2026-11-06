@@ -1,0 +1,521 @@
+{
+  "id": "m4-2",
+  "phaseId": "phase-4",
+  "number": "4.2",
+  "title": "Límites Intuitivos",
+  "description": "Acercarse sin tocar, lateral, infinito, indeterminaciones, continuidad",
+  "lessons": [
+    {
+      "id": "l4-2-1",
+      "title": "La Idea de Límite: Acercarse Sin Tocar",
+      "objective": "Entender límite como valor al que tiende f(x) cuando x se acerca a a. Notación lim_{x→a} f(x) = L",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "f(x) = (x²-1)/(x-1). En x=1 da 0/0 (indefinido). Pero si x=0.9 → 1.9, x=0.99 → 1.99, x=0.999 → 1.999. Se acerca a 2. Límite = 2."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Límite</strong>: lim_{x→a} f(x) = L significa: podemos hacer f(x) tan cerca de L como queramos, tomando x lo suficientemente cerca de a (pero x ≠ a).\n- No importa el valor EN a (puede no existir, ser distinto).\n- Importa el comportamiento CERCA de a.\n- Intuición: '¿hacia dónde va la función cuando x se acerca a a?'\nNotación: lim_{x→a} f(x) = L. Se lee 'límite de f de x cuando x tiende a a es igual a L'.\nEjemplo clásico: lim_{x→0} (sen x)/x = 1 (base del cálculo).",
+          "latex": "\\lim_{x\\to a} f(x) = L \\quad | \\quad \\text{``x se acerca a a, f(x) se acerca a L''} \\quad | \\quad x\\neq a \\text{ en el proceso}",
+          "visual": "assets/limit-intuition.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Te acercas a una pared (x→a). Tu distancia a la pared (f(x)) tiende a 0. No necesitas TOCAR la pared (x=a) para saber que la distancia tiende a 0. Límite = destino al que te diriges, no necesariamente donde estás.",
+          "conceptId": "limit-concept"
+        },
+        {
+          "type": "interactive",
+          "component": "LimitExplorer",
+          "description": "Función con hueco (x²-1)/(x-1). Slider x→1 desde izquierda/derecha. Tabla valores f(x). Gráfica con punto hueco en (1,2). Límite = 2 aunque f(1) no exista. Otros ejemplos: (x²-4)/(x-2), sen(x)/x, (1-cos x)/x."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-2-1-1",
+              "type": "multiple-choice",
+              "question": "lim_{x→2} (x²-4)/(x-2) = ",
+              "options": [
+                "0",
+                "2",
+                "4",
+                "No existe"
+              ],
+              "correct": 2,
+              "explanation": "Simplifica: (x-2)(x+2)/(x-2) = x+2 (x≠2). Límite x→2: 2+2 = 4."
+            },
+            {
+              "id": "q4-2-1-2",
+              "type": "fill-in",
+              "question": "lim_{x→0} sen(x)/x = ___",
+              "answer": "1",
+              "explanation": "Límite fundamental. Geométricamente: cuerda/arco → 1 cuando ángulo→0."
+            },
+            {
+              "id": "q4-2-1-3",
+              "type": "multiple-choice",
+              "question": "Para que exista lim_{x→a} f(x), ¿es necesario que f(a) exista?",
+              "options": [
+                "Sí, siempre",
+                "No, el límite ignora el valor en a",
+                "Solo si f es continua",
+                "Depende de la función"
+              ],
+              "correct": 1,
+              "explanation": "El límite solo depende de valores CERCA de a, no EN a. f(a) puede no existir o ser distinto al límite."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-2-2",
+      "title": "Límites Laterales: Acercarse por Izquierda y Derecha",
+      "objective": "lim_{x→a⁻} f(x) y lim_{x→a⁺} f(x). Existe límite bilateral ⟺ laterales iguales",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "f(x) = |x|/x. x→0⁻ (negativos): -1. x→0⁺ (positivos): +1. Laterales Distintos → Límite NO existe."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Límites laterales</strong>:\n- Límite por la izquierda: lim_{x→a⁻} f(x) = L⁻ (x < a, x→a)\n- Límite por la derecha: lim_{x→a⁺} f(x) = L⁺ (x > a, x→a)\n<strong>Teorema</strong>: Existe lim_{x→a} f(x) = L ⟺ lim_{x→a⁻} f(x) = lim_{x→a⁺} f(x) = L\nSi laterales son distintos → límite NO existe (salto).\nEjemplos: funciones a trozos, parte entera ⌊x⌋, valor absoluto, 1/x en 0.",
+          "latex": "\\lim_{x\\to a^-} f(x),\\, \\lim_{x\\to a^+} f(x) \\quad | \\quad \\lim_{x\\to a} f(x) \\text{ existe } \\iff \\lim_{x\\to a^-} f(x) = \\lim_{x\\to a^+} f(x)",
+          "visual": "assets/one-sided-limits.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Calle de doble sentido. Te acercas a cruce por norte (izquierda) ves semáforo rojo. Por sur (derecha) ves verde. Desde el cruce (límite bilateral) no hay consenso → no existe límite único. Saltos = discontinuidades de primer tipo.",
+          "conceptId": "one-sided-limits"
+        },
+        {
+          "type": "interactive",
+          "component": "OneSidedLimitExplorer",
+          "description": "Funciones a trozos: f(x) = {x² si x<1; 2x si x≥1}. Slider x→1⁻ y x→1⁺. Laterales calculados. Compara con f(1). Detecta saltos. Parte entera ⌊x⌋ en enteros."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-2-2-1",
+              "type": "multiple-choice",
+              "question": "f(x) = ⌊x⌋ (parte entera). lim_{x→2⁻} f(x) = ___, lim_{x→2⁺} f(x) = ___",
+              "options": [
+                "1, 2",
+                "2, 2",
+                "2, 3",
+                "1, 1"
+              ],
+              "correct": 0,
+              "explanation": "x→2⁻ (ej 1.9): ⌊1.9⌋=1. x→2⁺ (ej 2.1): ⌊2.1⌋=2. Laterales distintos → límite no existe en 2."
+            },
+            {
+              "id": "q4-2-2-2",
+              "type": "fill-in",
+              "question": "f(x) = {x+1 si x<0; x² si x≥0}. lim_{x→0⁻} f(x) = ___, lim_{x→0⁺} f(x) = ___",
+              "answer": "1, 0",
+              "explanation": "x→0⁻: usa x+1 → 1. x→0⁺: usa x² → 0. Laterales distintos → límite no existe en 0."
+            },
+            {
+              "id": "q4-2-2-3",
+              "type": "multiple-choice",
+              "question": "lim_{x→0} |x|/x = ",
+              "options": [
+                "1",
+                "-1",
+                "0",
+                "No existe"
+              ],
+              "correct": 3,
+              "explanation": "x→0⁻: -1. x→0⁺: +1. Laterales distintos → límite no existe."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-2-3",
+      "title": "Límites en el Infinito: Comportamiento en los Extremos",
+      "objective": "lim_{x→±∞} f(x). Asíntotas horizontales. Grados en racionales. Crecimiento: exp > pot > log",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "f(x) = 1/x. x→∞ → 0. x→-∞ → 0. Asíntota horizontal y=0. f(x) = (2x²+3)/(x²-1) → 2. ¿Y (x³+1)/(x²+1)? → ∞."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Límites en el infinito</strong>:\n- lim_{x→∞} f(x) = L: f(x) se acerca a L cuando x crece sin límite.\n- lim_{x→-∞} f(x) = L: f(x) se acerca a L cuando x decrece sin límite.\n- <strong>Asíntota horizontal</strong>: y = L si lim_{x→±∞} f(x) = L.\n<strong>Reglas para racionales</strong> P(x)/Q(x):\n  grado P < grado Q → 0 (asíntota y=0)\n  grado P = grado Q → coef_director_P / coef_director_Q\n  grado P > grado Q → ±∞ (no hay asíntota horizontal)\n<strong>Jerarquía de crecimiento</strong> (x→∞):\nconstante < log x < xᵃ (a>0) < xᵇ (b>a) < bˣ (b>1) < x! < xˣ\nExponencial crece más que cualquier potencia. Logaritmo crece menos que cualquier potencia.",
+          "latex": "\\lim_{x\\to\\infty} f(x) = L \\iff \\text{as\\'intota horizontal } y=L \\quad | \\quad \\frac{a_nx^n+...}{b_mx^m+...} \\sim \\frac{a_n}{b_m}x^{n-m} \\quad | \\quad e^x \\gg x^n \\gg \\ln x",
+          "visual": "assets/limits-infinity.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Carrera de crecimiento: tortuga (log), liebre (potencia), cohete (exponencial). A largo plazo, cohete gana SIEMPRE. Asíntota horizontal = meta que te acercas pero nunca alcanzas (1/x → 0).",
+          "conceptId": "limits-infinity"
+        },
+        {
+          "type": "interactive",
+          "component": "LimitInfinityExplorer",
+          "description": "Racionales: sliders grados y coeficientes. Ve asíntota horizontal. Compara crecimientos: x² vs 2ˣ vs log x vs x! en escala log. Tabla valores grandes (10, 100, 1000...). Detecta asíntotas oblicuas (grado P = grado Q+1)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-2-3-1",
+              "type": "multiple-choice",
+              "question": "lim_{x→∞} (3x² - 2x + 1) / (5x² + 4x - 7) = ",
+              "options": [
+                "0",
+                "3/5",
+                "∞",
+                "No existe"
+              ],
+              "correct": 1,
+              "explanation": "Grados iguales (2). Límite = coef_director_P / coef_director_Q = 3/5."
+            },
+            {
+              "id": "q4-2-3-2",
+              "type": "fill-in",
+              "question": "lim_{x→∞} (2ˣ) / (x¹⁰⁰) = ___",
+              "answer": "∞",
+              "explanation": "Exponencial 2ˣ crece más que cualquier potencia xⁿ (por grande que sea n)."
+            },
+            {
+              "id": "q4-2-3-3",
+              "type": "multiple-choice",
+              "question": "Asíntota horizontal de f(x) = (2x+1)/(x-3):",
+              "options": [
+                "y = 0",
+                "y = 2",
+                "y = -1/3",
+                "No hay"
+              ],
+              "correct": 1,
+              "explanation": "Grados iguales (1). Límite = 2/1 = 2. Asíntota horizontal y = 2."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-2-4",
+      "title": "Indeterminaciones: 0/0, ∞/∞, 0·∞, ∞-∞, 1^∞, 0⁰, ∞⁰",
+      "objective": "Reconocer formas indeterminadas. Técnicas: factorización, racionalización, regla de L'Hôpital (intro), cambio variable",
+      "type": "procedural",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "lim_{x→2} (x²-4)/(x-2) = 0/0 (indeterminado). NO es 'no existe'. Significa 'trabaja más': factoriza, simplifica, vuelve a evaluar."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Formas indeterminadas</strong> (no dan respuesta directa):\n- 0/0: factorizar, simplificar, racionalizar\n- ∞/∞: dividir por mayor potencia, L'Hôpital\n- 0·∞: reescribir como 0/0 o ∞/∞ (ej: x·ln x = ln x / (1/x))\n- ∞-∞: factor común, racionalizar (ej: √(x²+x) - x)\n- 1^∞, 0⁰, ∞⁰: usar e^{ln(...)} = e^{límite exponente·ln(base)}\n<strong>Técnicas</strong>:\n1. Factorización y simplificación (0/0 racional)\n2. Racionalización (raíces): multiplicar por conjugado\n3. División por mayor potencia (∞/∞ polinomial)\n4. Cambio variable (ej: t = 1/x para x→∞)\n5. Límite fundamental: lim_{u→0} sen u / u = 1\n6. Regla de L'Hôpital (intro): lim f/g = lim f'/g' si 0/0 o ∞/∞\nEjemplos clásicos: (√(x+1)-1)/x, (xⁿ-1)/(x-1), (1+1/x)ˣ → e.",
+          "latex": "\\text{Indet: } \\frac{0}{0},\\frac{\\infty}{\\infty},0\\cdot\\infty,\\infty-\\infty,1^\\infty,0^0,\\infty^0 \\quad | \\quad \\lim_{x\\to a}\\frac{f(x)}{g(x)}=\\lim\\frac{f'(x)}{g'(x)} \\text{ (L'H\\^opital)} \\quad | \\quad \\lim_{u\\to0}\\frac{\\sin u}{u}=1",
+          "visual": "assets/indeterminate-forms.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "0/0 = 'dos ceros peleando'. ¿Quién gana? Depende de qué tan rápido cada uno llega a 0. x² vs x en 0: x² llega más rápido → 0. x vs x²: x llega más lento → ∞. L'Hôpital = 'compara velocidades de llegada' (derivadas).",
+          "conceptId": "indeterminate-forms"
+        },
+        {
+          "type": "interactive",
+          "component": "IndeterminateResolver",
+          "description": "Selector tipo indeterminación. Paso a paso: identifica tipo → elige técnica → aplica → simplifica → evalúa. Ejemplos guiados: 0/0 (factoriza), ∞/∞ (divide mayor potencia), 0·∞ (reforma), ∞-∞ (conjugado), 1^∞ (log + L'Hôpital). Verifica con tabla valores cercanos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-2-4-1",
+              "type": "multiple-choice",
+              "question": "lim_{x→0} (√(x+1) - 1) / x = ",
+              "options": [
+                "0",
+                "1/2",
+                "1",
+                "∞"
+              ],
+              "correct": 1,
+              "explanation": "Racionaliza: multiplica por (√(x+1)+1)/(√(x+1)+1) = (x+1-1)/[x(√(x+1)+1)] = x/[x(√(x+1)+1)] = 1/(√(x+1)+1) → 1/2."
+            },
+            {
+              "id": "q4-2-4-2",
+              "type": "fill-in",
+              "question": "lim_{x→∞} (√(x²+3x) - x) = ___",
+              "answer": "3/2",
+              "explanation": "Racionaliza: (x²+3x-x²)/(√(x²+3x)+x) = 3x/(x√(1+3/x)+x) = 3/(√(1+0)+1) = 3/2."
+            },
+            {
+              "id": "q4-2-4-3",
+              "type": "multiple-choice",
+              "question": "lim_{x→0⁺} xˣ = ",
+              "options": [
+                "0",
+                "1",
+                "e",
+                "No existe"
+              ],
+              "correct": 1,
+              "explanation": "Forma 0⁰. xˣ = e^{x ln x}. x ln x = ln x / (1/x) → -∞/∞. L'Hôpital: (1/x)/(-1/x²) = -x → 0. e⁰ = 1."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-2-5",
+      "title": "Continuidad: Sin Saltos, Sin Huecos, Sin Asíntotas",
+      "objective": "f continua en a ⟺ lim_{x→a} f(x) = f(a). Teoremas: Bolzano (cero), Weierstrass (máx/mín), Darboux (valores intermedios)",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Dibujas gráfica sin levantar lápiz = continua. Salto = discontinuidad evitable. Hueco = evitable. Asíntota = inevitable. f(x)=1/x en 0: asíntota → NO continua."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Continuidad en un punto a</strong>:\nf continua en a ⟺ 1) f(a) existe, 2) lim_{x→a} f(x) existe, 3) lim_{x→a} f(x) = f(a)\n<strong>Tipos discontinuidad</strong>:\n- Evitable (hueco): límite existe ≠ f(a) o f(a) no definido. Ej: (x²-1)/(x-1) en 1.\n- Salto (finito): laterales existen pero son distintos. Ej: parte entera, |x|/x.\n- Infinita (asíntota vertical): límite ±∞. Ej: 1/x en 0.\n<strong>Teoremas fundamentales</strong> (requieren continuidad en intervalo CERRADO [a,b]):\n- <strong>Bolzano</strong>: f(a)·f(b)<0 → ∃ c∈(a,b): f(c)=0 (cruza cero)\n- <strong>Weierstrass</strong>: f alcanza máximo y mínimo en [a,b]\n- <strong>Darboux (Valores Intermedios)</strong>: f continua en [a,b] → toma TODOS los valores entre f(a) y f(b)\nContinuidad en intervalo: continua en todos sus puntos.",
+          "latex": "f \\text{ cont. en } a \\iff \\lim_{x\\to a}f(x)=f(a) \\quad | \\quad \\text{Bolzano: } f(a)f(b)<0 \\Rightarrow \\exists c\\in(a,b):f(c)=0 \\quad | \\quad \\text{Darboux: } f([a,b])=[m,M]",
+          "visual": "assets/continuity.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Temperatura día: continua (no salta). Altura edificio vs planta: salto (discontinuidad). Precio taxi: saltos en km (escalón). Bolzano: si mañana -5° y tarde +5°, EN ALGÚN MOMENTO fue 0°. Darboux: tomó TODAS las temperaturas entre -5 y +5.",
+          "conceptId": "continuity"
+        },
+        {
+          "type": "interactive",
+          "component": "ContinuityAnalyzer",
+          "description": "Función editable (a trozos, racional, etc.). Test continuidad en punto: f(a), límite, igualdad. Clasifica discontinuidad. Intervalo [a,b]: verifica Bolzano (cambio signo → raíz), Weierstrass (máx/mín), Darboux (valores intermedios). Gráfica: 'levanta lápiz' detecta saltos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-2-5-1",
+              "type": "multiple-choice",
+              "question": "f(x) = (x²-4)/(x-2) en x=2. Tipo discontinuidad:",
+              "options": [
+                "Evitable (hueco)",
+                "Salto",
+                "Infinita",
+                "Continua"
+              ],
+              "correct": 0,
+              "explanation": "Límite x→2 = 4. f(2) no definida. Si definimos f(2)=4, se vuelve continua. Discontinuidad evitable."
+            },
+            {
+              "id": "q4-2-5-2",
+              "type": "fill-in",
+              "question": "f(x) = 1/x en [1, 2]. ¿Cumple Bolzano? ___ ¿Darboux? ___",
+              "answer": "No (no cambia signo), Sí",
+              "explanation": "f(1)=1, f(2)=0.5. Mismo signo → Bolzano no aplica (no garantiza cero). Darboux sí: toma todos valores entre 0.5 y 1."
+            },
+            {
+              "id": "q4-2-5-3",
+              "type": "multiple-choice",
+              "question": "¿Cuál función NO es continua en ℝ?",
+              "options": [
+                "sen x",
+                "x²",
+                "|x|",
+                "1/x"
+              ],
+              "correct": 3,
+              "explanation": "1/x no definida en 0 → asintota vertical → discontinuidad infinita en 0."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-2-6",
+      "title": "Límites Trigonométricos Fundamentales: sen x/x, (1-cos x)/x",
+      "objective": "Dominar lim_{x→0} sen x/x = 1, lim_{x→0} (1-cos x)/x = 0. Aplicar con cambios de variable",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "lim_{x→0} sen(3x)/x = ? No es 1. Cambia variable: u=3x → 3·sen u/u → 3·1 = 3. Truco: 'haz que el argumento del seno coincida con el denominador'."
+        },
+        {
+          "type": "explanation",
+          "text": "Dos <strong>límites fundamentales</strong> (x en radianes):\n1. lim_{x→0} sen x / x = 1\n2. lim_{x→0} (1 - cos x) / x = 0\n3. Corolario: lim_{x→0} tan x / x = 1\n<strong>Técnica: cambio de variable</strong>\nSi argumento ≠ denominador, haz u = argumento.\nej: lim_{x→0} sen(5x) / x = lim_{u→0} sen u / (u/5) = 5 lim sen u/u = 5·1 = 5\nej: lim_{x→0} (1 - cos 3x) / x = lim_{u→0} (1 - cos u) / (u/3) = 3·0 = 0\nej: lim_{x→0} tan(2x) / sin(3x) = (2x/3x)·(tan2x/2x)/(sen3x/3x) → 2/3\nSiempre: 'argumento del trigonométrico = denominador' → 1 (para sen/tan) o 0 (para 1-cos).",
+          "latex": "\\lim_{x\\to0}\\frac{\\sin x}{x}=1 \\quad | \\quad \\lim_{x\\to0}\\frac{1-\\cos x}{x}=0 \\quad | \\quad \\lim_{x\\to0}\\frac{\\tan x}{x}=1 \\quad | \\quad \\text{Cambio: } u=g(x) \\Rightarrow \\frac{\\sin u}{u}\\to1",
+          "visual": "assets/trig-limits.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Regla de oro: 'seno de algo partido por ese mismo algo tiende a 1'. Si denominador es x pero seno es 3x, multiplica y divide por 3: 3·sen(3x)/3x. El 3 sale fuera, dentro queda 1. Como cambiar unidades: 3x radianes = 3·(x radianes).",
+          "conceptId": "trig-limits"
+        },
+        {
+          "type": "interactive",
+          "component": "TrigLimitTrainer",
+          "description": "Generador límites trigonométricos aleatorios. Paso a paso: identifica argumento → cambio variable u = argumento → reescribe denominador en u → aplica límite fundamental → resultado. Incluye: sen(ax)/x, (1-cos bx)/x, tan(cx)/sen(dx), sen(ax)/tan(bx)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-2-6-1",
+              "type": "multiple-choice",
+              "question": "lim_{x→0} sen(4x) / x = ",
+              "options": [
+                "1",
+                "4",
+                "1/4",
+                "0"
+              ],
+              "correct": 1,
+              "explanation": "u=4x → sen u / (u/4) = 4·sen u/u → 4·1 = 4."
+            },
+            {
+              "id": "q4-2-6-2",
+              "type": "fill-in",
+              "question": "lim_{x→0} (1 - cos 5x) / x = ___",
+              "answer": "0",
+              "explanation": "u=5x → (1-cos u)/(u/5) = 5·(1-cos u)/u → 5·0 = 0."
+            },
+            {
+              "id": "q4-2-6-3",
+              "type": "multiple-choice",
+              "question": "lim_{x→0} tan(2x) / sin(3x) = ",
+              "options": [
+                "2/3",
+                "3/2",
+                "1",
+                "6"
+              ],
+              "correct": 0,
+              "explanation": "tan(2x)/sen(3x) = (2x/3x)·(tan2x/2x)/(sen3x/3x) → (2/3)·1/1 = 2/3."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-2-7",
+      "title": "Definición Formal ε-δ (Opcional: Rigor Matemático)",
+      "objective": "Entender la definición precisa: ∀ε>0 ∃δ>0: 0<|x-a|<δ ⇒ |f(x)-L|<ε. Juego de la cercanía",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Qué significa EXACTAMENTE 'tan cerca como queramos'? ε = qué tan cerca de L quieres estar. δ = qué tan cerca de a debes estar. Juego: tú eliges ε, yo encuentro δ."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Definición ε-δ de límite</strong> (Cauchy-Weierstrass):\nlim_{x→a} f(x) = L significa:\n∀ ε > 0 (epsilon, tolerancia en y), ∃ δ > 0 (delta, tolerancia en x) tal que:\nsi 0 < |x - a| < δ, entonces |f(x) - L| < ε\n\nInterpretación juego:\n- 'Adversario' elige ε (franja horizontal alrededor de L: L-ε < y < L+ε)\n- 'Tú' debes encontrar δ (franja vertical alrededor de a: a-δ < x < a+δ, x≠a)\n- Tal que TODA x en (a-δ, a+δ) salvo a, caiga en la franja horizontal\n- Si puedes SIEMPRE ganar (para cualquier ε), el límite es L\nEquivalente a: la gráfica entra en el rectángulo (a-δ, a+δ) × (L-ε, L+ε) por los lados verticales, no por arriba/abajo.\nPara x→∞: ∀ε>0 ∃M: x>M ⇒ |f(x)-L|<ε.",
+          "latex": "\\lim_{x\\to a}f(x)=L \\iff \\forall\\varepsilon>0\\,\\exists\\delta>0:\\,0<|x-a|<\\delta\\implies|f(x)-L|<\\varepsilon \\quad | \\quad \\text{Juego: eliges }\\varepsilon,\\text{ yo doy }\\delta",
+          "visual": "assets/epsilon-delta.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Control de calidad: ε = tolerancia permitida en producto (ej: ±0.1mm). δ = precisión necesaria en máquina (ej: ±0.01mm). Si ajustas máquina dentro de δ, producto SIEMPRE sale dentro de ε. Definición = 'máquina bien calibrada garantiza producto bueno'.",
+          "conceptId": "epsilon-delta"
+        },
+        {
+          "type": "interactive",
+          "component": "EpsilonDeltaGame",
+          "description": "Juego interactivo: función f(x)=x², a=2, L=4. Usuario elige ε (slider). Debe encontrar δ (slider) tal que gráfica entre en rectángulo. Visual: franjas ε (horizontal), δ (vertical). Niveles: ε=0.5, 0.1, 0.01, 0.001. Muestra relación δ ≈ ε/(2a) para f(x)=x². Explica por qué δ depende de ε y a."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-2-7-1",
+              "type": "multiple-choice",
+              "question": "En definición ε-δ, ¿quién elige ε y quién elige δ?",
+              "options": [
+                "Tú eliges ε, yo δ",
+                "Yo elijo ε, tú δ",
+                "Ambos eligen ε",
+                "Ambos eligen δ"
+              ],
+              "correct": 1,
+              "explanation": "El 'adversario' (definición) elige ε arbitrariamente pequeño. Tú (demostrador) debes encontrar δ que funcione para ESE ε."
+            },
+            {
+              "id": "q4-2-7-2",
+              "type": "fill-in",
+              "question": "Demuestra lim_{x→2} (3x-1) = 5. Dado ε>0, elige δ = ___",
+              "answer": "ε/3",
+              "explanation": "|3x-1 - 5| = |3x-6| = 3|x-2| < ε ⟺ |x-2| < ε/3. Elige δ = ε/3."
+            },
+            {
+              "id": "q4-2-7-3",
+              "type": "multiple-choice",
+              "question": "Si f(x) = x², a = 3, L = 9. Para ε = 0.1, δ aproximado:",
+              "options": [
+                "0.1/6 ≈ 0.0167",
+                "0.1/3 ≈ 0.033",
+                "0.1/9 ≈ 0.011",
+                "√0.1 ≈ 0.316"
+              ],
+              "correct": 0,
+              "explanation": "Cerca de 3: |x²-9| = |x-3||x+3| ≈ |x-3|·6. Queremos 6|x-3| < 0.1 → |x-3| < 0.1/6. δ = ε/6."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-2-8",
+      "title": "Proyecto Módulo: Análisis de Comportamiento Límite en Modelos Reales",
+      "objective": "Dado modelo (crecimiento poblacional logístico, enfriamiento, carga condensador, cinética química), analizar límites: capacidad de carga, temperatura ambiente, carga máxima, equilibrio",
+      "type": "project",
+      "durationMin": 15,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Población logística: P(t) = K / (1 + ae^{-rt}). t→∞ → K (capacidad carga). Enfriamiento Newton: T(t) = Tₐ + (T₀-Tₐ)e^{-kt}. t→∞ → Tₐ (temp ambiente). Condensador: Q(t) = Qₘₐₓ(1-e^{-t/RC}). t→∞ → Qₘₐₓ."
+        },
+        {
+          "type": "explanation",
+          "text": "Modelos con límites interpretables:\n1. <strong>Logístico</strong>: P(t) = K/(1+ae^{-rt}). lim_{t→∞} P(t) = K (capacidad carga). lim_{t→-∞} = 0.\n2. <strong>Enfriamiento Newton</strong>: T(t) = Tₐ + (T₀-Tₐ)e^{-kt}. lim_{t→∞} = Tₐ (temp ambiente).\n3. <strong>Carga condensador RC</strong>: Q(t) = Qₘₐₓ(1-e^{-t/τ}). τ = RC. lim_{t→∞} = Qₘₐₓ. Corriente I(t) = (V/R)e^{-t/τ} → 0.\n4. <strong>Cinética química 1er orden</strong>: [A](t) = [A]₀e^{-kt}. Concentración → 0. Semivida t₁/₂ = ln2/k.\n5. <strong>Modelo SIR epidemia</strong>: I(t) → 0 (epidemia termina). S(∞) > 0 (susceptibles remanentes).\n6. <strong>Aprestamiento</strong>: f(x) = L/(1+e^{-k(x-x₀)}). Límite x→-∞ = 0, x→∞ = L.\nAnálisis: hallar límites, interpretarlos, graficar, hallar tiempo para alcanzar % del límite (ej: 95% de K).",
+          "latex": "P(t)=\\frac{K}{1+ae^{-rt}} \\xrightarrow{t\\to\\infty} K \\quad | \\quad T(t)=T_a+(T_0-T_a)e^{-kt} \\xrightarrow{t\\to\\infty} T_a \\quad | \\quad Q(t)=Q_{max}(1-e^{-t/RC}) \\xrightarrow{t\\to\\infty} Q_{max}",
+          "visual": "assets/limit-models.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "LimitModelAnalyzer",
+          "description": "Selector modelo (logístico, Newton, RC, cinética, SIR). Sliders parámetros. Gráfica con asíntotas horizontales marcadas. Calcula: límite t→∞, tiempo para 90%/99% del límite, semivida si aplica. Tabla valores. Exporta reporte: 'Capacidad carga K = ... se alcanza 95% en t = ...'. Compara modelos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-2-8-1",
+              "type": "number-input",
+              "question": "Condensador RC: R=1000Ω, C=0.001F. τ = RC = ___ s. Tiempo 99% carga ≈ ___ s",
+              "answer": "1, 4.6",
+              "explanation": "τ = 1000·0.001 = 1s. 99% → 1-e^{-t/τ}=0.99 → e^{-t}=-0.01 → t = -τ·ln(0.01) ≈ 4.6τ = 4.6s."
+            },
+            {
+              "id": "q4-2-8-2",
+              "type": "fill-in",
+              "question": "Población logística K=10000, r=0.1, P(0)=100. Límite t→∞ = ___. Tiempo duplicación inicial ≈ ln2/r = ___",
+              "answer": "10000, 6.93",
+              "explanation": "Límite = K = 10000. Crecimiento inicial ≈ exponencial r=0.1. Duplicación = ln2/0.1 ≈ 6.93."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "id": "m1-3",
+  "phaseId": "phase-1",
+  "number": "1.3",
+  "title": "Expresiones Algebraicas",
+  "description": "Variables= cajas, coeficientes, términos semejantes, evaluar, simplificar",
+  "lessons": [
+    {
+      "id": "l1-3-1",
+      "title": "Variables: Cajas Misteriosas",
+      "objective": "Entender variable como contenedor de un número desconocido o variable",
+      "type": "conceptual",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Piensa un número. Multiplícalo por 3. Suma 6. Divide entre 3. Resta tu número original. ¿Cuánto te da? Siempre 2. ¿Por qué?"
+        },
+        {
+          "type": "explanation",
+          "text": "Una <strong>variable</strong> (x, y, n...) representa un número que puede variar o que no conocemos aún. Es una 'caja' con un valor dentro. Expresión algebraica = combinación de números, variables y operaciones: 3x + 6. No tiene 'igual', no se 'resuelve', se <strong>evalúa</strong> (sustituye x por un número) o <strong>simplifica</strong>.",
+          "latex": "Expresi\\acute{o}n: 3x + 6 \\quad | \\quad \\text{Evaluar en } x=4: 3(4)+6 = 18",
+          "visual": "assets/variable-box.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Receta de cocina: 'x tazas de harina'. x es variable. Si x=2 → 2 tazas. Si x=3 → 3 tazas. La receta (expresión) no cambia, solo el valor de x.",
+          "conceptId": "variables"
+        },
+        {
+          "type": "interactive",
+          "component": "VariableBoxGame",
+          "description": "Arrasra números a cajas x, y. Ve expresión evaluada en tiempo real. Prueba varios valores."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-3-1-1",
+              "type": "multiple-choice",
+              "question": "En 5x - 3, ¿qué es la variable?",
+              "options": ["5", "x", "-3", "5x"],
+              "correct": 1,
+              "explanation": "x es la variable. 5 es coeficiente, -3 es término constante."
+            },
+            {
+              "id": "q1-3-1-2",
+              "type": "number-input",
+              "question": "Evalúa 2x² + 3x - 5 para x = 2",
+              "answer": 9,
+              "explanation": "2(2)² + 3(2) - 5 = 2(4) + 6 - 5 = 8 + 6 - 5 = 9."
+            },
+            {
+              "id": "q1-3-1-3",
+              "type": "multiple-choice",
+              "question": "¿Cuál es una expresión algebraica?",
+              "options": ["x + 3 = 7", "2x + 5", "x > 3", "3 + 4 = 7"],
+              "correct": 1,
+              "explanation": "2x + 5 es expresión (sin igual). x+3=7 es ecuación. x>3 es desigualdad. 3+4=7 es igualdad numérica."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-3-2",
+      "title": "Coeficientes, Términos y Grado",
+      "objective": "Identificar partes de un polinomio: coeficiente, término, grado",
+      "type": "conceptual",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "En 4x³ - 7x² + 2x - 9: ¿cuántos términos? ¿Cuál es el coeficiente director? ¿El grado?"
+        },
+        {
+          "type": "explanation",
+          "text": "Término = producto de número (coeficiente) y variable(s) con exponentes. 4x³: coeficiente 4, grado 3. -7x²: coef -7, grado 2. 2x: coef 2, grado 1. -9: término constante (grado 0). <strong>Grado del polinomio</strong> = mayor grado de sus términos (aquí 3). <strong>Coeficiente director</strong> = coeficiente del término de mayor grado (aquí 4).",
+          "latex": "P(x) = a_n x^n + a_{n-1} x^{n-1} + \\dots + a_1 x + a_0 \\quad (a_n \\neq 0)",
+          "visual": "assets/polynomial-anatomy.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Polinomio = edificio. Términos = plantas. Grado = altura del edificio. Coeficiente director = tamaño de la planta superior. Término constante = cimientos (planta 0).",
+          "conceptId": "polynomial-terms"
+        },
+        {
+          "type": "interactive",
+          "component": "PolynomialBuilder",
+          "description": "Arrastra términos para construir polinomio. Ve grado, coeficiente director, términos, forma estándar."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-3-2-1",
+              "type": "multiple-choice",
+              "question": "Grado de 3x⁴ - 2x⁷ + x²:",
+              "options": ["4", "7", "2", "13"],
+              "correct": 1,
+              "explanation": "Grados: 4, 7, 2. El mayor es 7."
+            },
+            {
+              "id": "q1-3-2-2",
+              "type": "fill-in",
+              "question": "Coeficiente director de -5x³ + 2x - 1: ___",
+              "answer": "-5",
+              "explanation": "Término de mayor grado: -5x³. Coeficiente: -5."
+            },
+            {
+              "id": "q1-3-2-3",
+              "type": "multiple-choice",
+              "question": "Término constante de 2x² - 7x + 4:",
+              "options": ["2", "-7", "4", "No tiene"],
+              "correct": 2,
+              "explanation": "Término sin variable: +4. Grado 0."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-3-3",
+      "title": "Términos Semejantes: Juntar lo Parecido",
+      "objective": "Sumar/restar términos con misma parte literal",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "3 manzanas + 2 manzanas = 5 manzanas. 3x + 2x = ? ¿Y 3x + 2y?"
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Términos semejantes</strong> = misma parte literal (misma variable, mismo exponente). 3x y -5x son semejantes. 3x² y 3x NO lo son. Para sumar/restar: <strong>suma coeficientes, conserva parte literal</strong>. 3x + 2x = 5x. 4x² - 7x² = -3x². 3x + 2y no se puede simplificar (distintas variables).",
+          "latex": "ax^n + bx^n = (a+b)x^n \\quad \\text{(solo si misma base y exponente)}",
+          "visual": "assets/like-terms.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Cajones: cajón 'x' tiene 3, añades 2 → 5. Cajón 'x²' tiene 4, quitas 7 → -3. Cajón 'y' separado. No mezcles cajones distintos.",
+          "conceptId": "like-terms"
+        },
+        {
+          "type": "interactive",
+          "component": "LikeTermsCollector",
+          "description": "Expresión con términos mezclados. Agrupa por color/forma. Suma coeficientes. Ve resultado simplificado."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-3-3-1",
+              "type": "fill-in",
+              "question": "Simplifica: 5x - 2x + 3x = ___x",
+              "answer": "6",
+              "explanation": "5 - 2 + 3 = 6. 6x."
+            },
+            {
+              "id": "q1-3-3-2",
+              "type": "multiple-choice",
+              "question": "Simplifica: 4x² + 3x - 2x² + x - 5",
+              "options": ["2x² + 4x - 5", "2x² + 2x - 5", "6x² + 4x - 5", "4x² + 4x - 5"],
+              "correct": 0,
+              "explanation": "x²: 4-2=2x². x: 3+1=4x. Constante: -5. Resultado: 2x² + 4x - 5."
+            },
+            {
+              "id": "q1-3-3-3",
+              "type": "multiple-choice",
+              "question": "¿Cuáles son términos semejantes?",
+              "options": ["3x y 3y", "2x² y 5x²", "4x y 4", "x³ y x²"],
+              "correct": 1,
+              "explanation": "Misma variable (x) y mismo exponente (2). 2x² y 5x² son semejantes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-3-4",
+      "title": "Ley Distributiva: Expandir y Factorizar",
+      "objective": "a(b+c) = ab + ac y su inversa: factor común",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "3 × (4 + 5) = 3×4 + 3×5 = 12 + 15 = 27. Ahora con variable: 2(x + 3) = ?"
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Ley distributiva</strong>: a(b + c) = ab + ac. Multiplica el exterior por CADA término interior. 2(x+3) = 2x + 6. Inversa: <strong>factor común</strong> = sacar factor compartido. 6x + 9 = 3(2x + 3). Factor común = MCD de coeficientes × menor potencia de cada variable común.",
+          "latex": "a(b+c) = ab+ac \\quad | \\quad ab+ac = a(b+c) \\quad | \\quad \\text{MCD}(6,9)=3, \\text{MCD}(x,x)=x \\Rightarrow 3x(2+3) \\text{ NO, } 6x+9=3(2x+3)",
+          "visual": "assets/distributive-law.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Bolsas de regalo: 3 bolsas, cada una con (1 libro + 2 caramelos). Total = 3 libros + 6 caramelos. Factor común = repartir equitativamente: 6 libros + 9 caramelos = 3 bolsas de (2 libros + 3 caramelos).",
+          "conceptId": "distributive-law"
+        },
+        {
+          "type": "interactive",
+          "component": "DistributiveExplorer",
+          "description": "Expandir: arrastra factor exterior a cada término interior. Factorizar: identifica MCD, arrastra fuera. Ve equivalencia."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-3-4-1",
+              "type": "fill-in",
+              "question": "Expandir: -2(3x - 5) = ___",
+              "answer": "-6x + 10",
+              "explanation": "-2·3x = -6x. -2·(-5) = +10. Cuidado con signos."
+            },
+            {
+              "id": "q1-3-4-2",
+              "type": "multiple-choice",
+              "question": "Factorizar: 12x² - 18x = ",
+              "options": ["6x(2x - 3)", "6(2x² - 3x)", "3x(4x - 6)", "2x(6x - 9)"],
+              "correct": 0,
+              "explanation": "MCD(12,18)=6. Variable común: x (menor exponente 1). Factor común: 6x. 6x(2x - 3)."
+            },
+            {
+              "id": "q1-3-4-3",
+              "type": "multiple-choice",
+              "question": "Expandir (x+2)(x+3) = ?",
+              "options": ["x²+5x+6", "x²+6", "x²+5", "2x+5"],
+              "correct": 0,
+              "explanation": "FOIL: First x·x=x², Outer x·3=3x, Inner 2·x=2x, Last 2·3=6. x²+5x+6."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-3-5",
+      "title": "Productos Notables: Patrones que Ahorran Trabajo",
+      "objective": "(a+b)², (a-b)², (a+b)(a-b) - reconocer y aplicar",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "(x+5)² = ? NO es x²+25. Expande: (x+5)(x+5) = x²+10x+25. Patrón: (a+b)² = a² + 2ab + b²."
+        },
+        {
+          "type": "explanation",
+          "text": "Tres <strong>productos notables</strong>:\n1. <strong>Suma al cuadrado</strong>: (a+b)² = a² + 2ab + b²\n2. <strong>Diferencia al cuadrado</strong>: (a-b)² = a² - 2ab + b²\n3. <strong>Suma por diferencia</strong>: (a+b)(a-b) = a² - b² (¡término medio se cancela!)\nReconocer patrones ahorra expansión paso a paso.",
+          "latex": "(a+b)^2 = a^2+2ab+b^2 \\quad | \\quad (a-b)^2 = a^2-2ab+b^2 \\quad | \\quad (a+b)(a-b) = a^2-b^2",
+          "visual": "assets/special-products.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Cuadrado de lado (a+b): área = a² + b² + 2ab (dos rectángulos a×b). Diferencia de cuadrados: recorta cuadrado b² de esquina de a² → rectángulo (a+b)×(a-b). Visual = geométrico.",
+          "conceptId": "special-products"
+        },
+        {
+          "type": "interactive",
+          "component": "SpecialProductsGame",
+          "description": "Identifica patrón: suma al cuadrado, diferencia al cuadrado, suma por diferencia. Expande mentalmente. Verifica visual."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-3-5-1",
+              "type": "multiple-choice",
+              "question": "(2x - 3)² = ?",
+              "options": ["4x² - 9", "4x² - 12x + 9", "4x² + 12x + 9", "2x² - 9"],
+              "correct": 1,
+              "explanation": "(a-b)² = a² - 2ab + b². a=2x, b=3. (2x)² - 2(2x)(3) + 3² = 4x² - 12x + 9."
+            },
+            {
+              "id": "q1-3-5-2",
+              "type": "fill-in",
+              "question": "(x+7)(x-7) = x² - ___",
+              "answer": "49",
+              "explanation": "(a+b)(a-b) = a² - b². a=x, b=7. x² - 49."
+            },
+            {
+              "id": "q1-3-5-3",
+              "type": "multiple-choice",
+              "question": "Factoriza: x² - 16 = ",
+              "options": ["(x-4)²", "(x+4)(x-4)", "(x-8)(x+2)", "No se puede"],
+              "correct": 1,
+              "explanation": "Diferencia de cuadrados: x² - 4² = (x+4)(x-4)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-3-6",
+      "title": "Evaluar Expresiones: Sustituir y Calcular",
+      "objective": "Sustituir variables por valores, respetando orden de operaciones",
+      "type": "procedural",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Fórmula del área de rectángulo: A = b·h. Si b=5, h=3 → A=15. Ahora: perímetro P = 2(b+h). b=5, h=3 → P = ?"
+        },
+        {
+          "type": "explanation",
+          "text": "Evaluar = reemplazar cada variable por su valor (¡entre paréntesis!) y calcular siguiendo jerarquía: paréntesis, potencias, mult/div, suma/resta. Clave: 2x² para x=-3 → 2(-3)² = 2·9 = 18. NO -6² = -36. Paréntesis protegen el signo.",
+          "latex": "P = 2(b+h) \\xrightarrow{b=5,h=3} P = 2(5+3) = 2(8) = 16",
+          "visual": "assets/evaluate-expression.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Máquina de funciones: entra valor x, sale resultado. Evaluar = meter input, leer output. Paréntesis = embalaje protector para que el signo no se pierda en la cinta transportadora.",
+          "conceptId": "evaluate-expressions"
+        },
+        {
+          "type": "interactive",
+          "component": "ExpressionEvaluator",
+          "description": "Expresión con sliders para variables. Calcula paso a paso: sustitución → potencias → mult/div → suma/resta. Resalta cada paso."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-3-6-1",
+              "type": "number-input",
+              "question": "Evalúa 3x² - 2x + 1 para x = -2",
+              "answer": 17,
+              "explanation": "3(-2)² - 2(-2) + 1 = 3(4) + 4 + 1 = 12 + 4 + 1 = 17."
+            },
+            {
+              "id": "q1-3-6-2",
+              "type": "multiple-choice",
+              "question": "Si a=2, b=-3, ¿cuál es el valor de (a-b)²?",
+              "options": ["1", "25", "49", "-1"],
+              "correct": 1,
+              "explanation": "(2 - (-3))² = (2+3)² = 5² = 25."
+            },
+            {
+              "id": "q1-3-6-3",
+              "type": "fill-in",
+              "question": "Volumen cono: V = 1/3 π r² h. r=3, h=4, π≈3.14. V ≈ ___",
+              "answer": "37.68",
+              "explanation": "V = 1/3 × 3.14 × 3² × 4 = 1/3 × 3.14 × 9 × 4 = 3.14 × 12 = 37.68."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-3-7",
+      "title": "Proyecto Módulo: Calculadora de Precios con Descuentos",
+      "objective": "Crear expresión algebraica para precio final con descuentos e impuestos",
+      "type": "project",
+      "durationMin": 15,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Producto: P euros. Descuento d% (ej 20%). IVA i% (ej 21%). Escribe expresión para precio final. ¿Orden importa?"
+        },
+        {
+          "type": "explanation",
+          "text": "Precio con descuento: P(1 - d/100). Luego IVA: ×(1 + i/100). Expresión completa: P_final = P(1 - d/100)(1 + i/100). ¿Descuento sobre precio con IVA? P(1 + i/100)(1 - d/100) = MISMO resultado (conmutativa). Simplifica: expande, agrupa términos. Variables: P, d, i.",
+          "latex": "P_{final} = P\\left(1-\\frac{d}{100}\\right)\\left(1+\\frac{i}{100}\\right) = P\\left(1 + \\frac{i-d}{100} - \\frac{di}{10000}\\right)",
+          "visual": "assets/price-calculator.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "PriceCalculatorBuilder",
+          "description": "Sliders para P, d%, i%. Ve expresión, expandida, resultado numérico. Prueba orden diferente."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-3-7-1",
+              "type": "number-input",
+              "question": "P=100€, descuento 20%, IVA 21%. Precio final:",
+              "answer": "96.8",
+              "explanation": "100 × 0.8 × 1.21 = 80 × 1.21 = 96.8€."
+            },
+            {
+              "id": "q1-3-7-2",
+              "type": "multiple-choice",
+              "question": "Expresión expandida de P(1-d/100)(1+i/100):",
+              "options": ["P(1 + (i-d)/100 - di/10000)", "P(1 + (d-i)/100 + di/10000)", "P(1 - (i+d)/100)", "P(1 + i/100 - d/100)"],
+              "correct": 0,
+              "explanation": "(1-d/100)(1+i/100) = 1 + i/100 - d/100 - di/10000 = 1 + (i-d)/100 - di/10000."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

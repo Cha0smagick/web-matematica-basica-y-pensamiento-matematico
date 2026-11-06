@@ -1,0 +1,447 @@
+{
+  "id": "m2-2",
+  "phaseId": "phase-2",
+  "number": "2.2",
+  "title": "Polinomios y Factorización",
+  "description": "Suma/resta/multiplicación, factor común, diferencia cuadrados, trinomios",
+  "lessons": [
+    {
+      "id": "l2-2-1",
+      "title": "Polinomios: Suma, Resta y Multiplicación",
+      "objective": "Operar con polinomios: agrupar términos semejantes, distributiva, productos notables",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "(3x² + 2x - 5) + (2x² - 4x + 7) = ? Agrupa x² con x², x con x, constantes con constantes."
+        },
+        {
+          "type": "explanation",
+          "text": "Operaciones básicas:\n- <strong>Suma/Resta</strong>: agrupa términos semejantes (mismo grado). (3x²+2x-5) + (2x²-4x+7) = 5x² - 2x + 2\n- <strong>Multiplicación</strong>: distributiva cada término del primero por cada término del segundo. (x+2)(x²-x+3) = x(x²-x+3) + 2(x²-x+3) = x³-x²+3x + 2x²-2x+6 = x³+x²+x+6\n- <strong>Productos notables</strong>: (a+b)², (a-b)², (a+b)(a-b) - ahorran pasos.",
+          "latex": "(a+b)(c+d) = ac+ad+bc+bd \\quad | \\quad \\sum (a_i x^i) \\pm \\sum (b_i x^i) = \\sum (a_i \\pm b_i)x^i",
+          "visual": "assets/polynomial-ops.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Polinomio = bolsa de monedas de distintas denominaciones (x², x, 1). Sumar bolsas = juntar monedas iguales. Multiplicar = cada moneda de la primera bolsa se cambia por el valor de cada moneda de la segunda.",
+          "conceptId": "polynomial-operations"
+        },
+        {
+          "type": "interactive",
+          "component": "PolynomialCalculator",
+          "description": "Dos polinomios (selector grado 0-4). Operación: +, -, ×. Paso a paso: expandir, agrupar semejantes. Ve términos coloreados por grado."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-2-1-1",
+              "type": "fill-in",
+              "question": "(2x² - 3x + 4) + (-x² + 5x - 2) = ___x² + ___x + ___",
+              "answer": "1, 2, 2",
+              "explanation": "x²: 2-1=1. x: -3+5=2. Const: 4-2=2. Resultado: x² + 2x + 2."
+            },
+            {
+              "id": "q2-2-1-2",
+              "type": "multiple-choice",
+              "question": "(x + 3)(x² - 2x + 1) = ?",
+              "options": ["x³ + x² - 5x + 3", "x³ + x² - 5x + 3", "x³ - x² - 5x + 3", "x³ + 3x² - 5x + 3"],
+              "correct": 0,
+              "explanation": "x·x²=x³, x·(-2x)=-2x², x·1=x. 3·x²=3x², 3·(-2x)=-6x, 3·1=3. Suma: x³ + x² -5x +3."
+            },
+            {
+              "id": "q2-2-1-3",
+              "type": "fill-in",
+              "question": "(2x - 1)² = 4x² - ___x + 1",
+              "answer": "4",
+              "explanation": "(a-b)² = a² - 2ab + b². a=2x, b=1. (2x)² - 2(2x)(1) + 1 = 4x² - 4x + 1."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-2-2",
+      "title": "División de Polinomios: Regla de Ruffini",
+      "objective": "Dividir polinomio por binomio (x-a) usando Ruffini, hallar cociente y resto",
+      "type": "procedural",
+      "durationMin": 10,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Divide x³ - 6x² + 11x - 6 entre (x - 1). ¿Ruffini o división larga? Ruffini es más rápido para (x-a)."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Regla de Ruffini</strong> (división por x-a):\n1. Escribe coeficientes del dividendo (incluye ceros para grados faltantes)\n2. Escribe 'a' a la izquierda (de x-a)\n3. Baja el primer coeficiente\n4. Multiplica por 'a', suma al siguiente, repite\n5. Último número = resto. Los anteriores = coeficientes del cociente (grado n-1)\nTeorema del resto: resto = P(a). Teorema del factor: (x-a) es factor ⟺ P(a)=0.",
+          "latex": "P(x) = (x-a)Q(x) + R \\quad | \\quad R = P(a) \\quad | \\quad (x-a) \\text{ factor } \\iff P(a)=0",
+          "visual": "assets/ruffini.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Evaluar P(a) y dividir por (x-a) son lo mismo. Ruffini = evaluar 'en cascada'. Como calcular valor de polinomio en x=a pero guardando coeficientes intermedios = cociente.",
+          "conceptId": "ruffini"
+        },
+        {
+          "type": "interactive",
+          "component": "RuffiniCalculator",
+          "description": "Input polinomio (coeficientes) y divisor (x-a). Tabla Ruffini interactiva. Paso a paso animado. Muestra P(a), cociente, resto. Verifica: (x-a)Q(x)+R = P(x)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-2-2-1",
+              "type": "multiple-choice",
+              "question": "Divide x³ - 4x² + x + 6 por (x - 2). Resto:",
+              "options": ["0", "2", "-2", "6"],
+              "correct": 0,
+              "explanation": "P(2) = 8 - 16 + 2 + 6 = 0. Resto 0 → (x-2) es factor. Cociente: x² - 2x - 3."
+            },
+            {
+              "id": "q2-2-2-2",
+              "type": "fill-in",
+              "question": "Ruffini de 2x³ - 5x² + 3x - 7 entre (x + 1). a = ___ . Coeficientes: 2, -5, 3, -7. Resto = ___",
+              "answer": "-1, -17",
+              "explanation": "a = -1 (divisor x-(-1)). Ruffini: 2 → -7 → 10 → -17. Resto -17 = P(-1)."
+            },
+            {
+              "id": "q2-2-2-3",
+              "type": "multiple-choice",
+              "question": "Si P(3) = 0, entonces:",
+              "options": ["(x+3) es factor", "(x-3) es factor", "x=3 es raíz", "Ambas B y C"],
+              "correct": 3,
+              "explanation": "Teorema del factor: P(a)=0 ⟺ (x-a) factor. P(3)=0 → (x-3) factor y x=3 raíz."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-2-3",
+      "title": "Factor Común: Sacar lo Compartido",
+      "objective": "Identificar y extraer MCD de coeficientes y mínima potencia de variables",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "12x³y² - 18x²y³ + 6xy. ¿Qué tienen todos en común? 6xy. Saca factor: 6xy(2x²y - 3xy² + 1)."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Factor común</strong> = MCD de coeficientes numéricos × cada variable común con MENOR exponente.\nPasos:\n1. MCD de coeficientes (12, 18, 6) = 6\n2. Variables comunes: x (exp mín 1), y (exp mín 1)\n3. Factor común = 6xy\n4. Divide cada término por 6xy → paréntesis\nSiempre verifica expandiendo.",
+          "latex": "MCD(a,b,c) \\cdot x^{\\min(e_x)} y^{\\min(e_y)} \\dots \\quad | \\quad 12x^3y^2 - 18x^2y^3 + 6xy = 6xy(2x^2y - 3xy^2 + 1)",
+          "visual": "assets/common-factor.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Repartir caramelos entre hermanos: 12, 18, 6 caramelos. Máximo que puedes dar a cada uno por igual = 6 (MCD). Si también tienen pegatinas x e y, das la cantidad mínima que todos tienen.",
+          "conceptId": "common-factor"
+        },
+        {
+          "type": "interactive",
+          "component": "CommonFactorExtractor",
+          "description": "Polinomio 3-5 términos. Calcula MCD coeficientes. Detecta variables comunes y exp mín. Arrastra factor fuera. Verifica expandiendo."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-2-3-1",
+              "type": "fill-in",
+              "question": "Factor común de 8a³b² - 12a²b³ + 4ab = ___",
+              "answer": "4ab",
+              "explanation": "MCD(8,12,4)=4. Variables: a (mín exp 1), b (mín exp 1). 4ab."
+            },
+            {
+              "id": "q2-2-3-2",
+              "type": "multiple-choice",
+              "question": "Factoriza: 15x⁴y - 25x³y² + 10x²y³ = ",
+              "options": ["5x²y(3x² - 5xy + 2y²)", "5xy(3x³ - 5x²y + 2xy²)", "5x²y(3x² - 5xy + 2y²)", "5x²y²(3x² - 5x + 2y)"],
+              "correct": 0,
+              "explanation": "MCD(15,25,10)=5. x mín exp 2, y mín exp 1. 5x²y(3x² - 5xy + 2y²)."
+            },
+            {
+              "id": "q2-2-3-3",
+              "type": "fill-in",
+              "question": "Factoriza completamente: 6x² + 9x = ___",
+              "answer": "3x(2x + 3)",
+              "explanation": "MCD(6,9)=3. x común. 3x(2x+3)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-2-4",
+      "title": "Diferencia de Cuadrados: a² - b² = (a+b)(a-b)",
+      "objective": "Reconocer y factorizar diferencia de cuadrados (incluye casos disfrazados)",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "x² - 25 = (x+5)(x-5). 4x² - 9 = (2x+3)(2x-3). 16 - y² = (4+y)(4-y). Patrón: cuadrado MENOS cuadrado."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Diferencia de cuadrados</strong>: a² - b² = (a+b)(a-b).\nClaves para reconocer:\n- Dos términos\n- Signo MENOS entre ellos\n- Ambos son cuadrados perfectos (numéricos o variables con exp par)\nEjemplos: x²-16, 9x²-25y², 1-4x², x⁴-y⁴ = (x²+y²)(x²-y²) = (x²+y²)(x+y)(x-y).\nNO es diferencia de cuadrados: x²+9 (suma), x²-5 (5 no es cuadrado perfecto en ℚ).",
+          "latex": "a^2 - b^2 = (a+b)(a-b) \\quad | \\quad x^4 - y^4 = (x^2+y^2)(x+y)(x-y)",
+          "visual": "assets/diff-squares.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Dos cuadrados de papel. Recorta el pequeño de la esquina del grande. Lo que queda se puede reorganizar en rectángulo (a+b)×(a-b). Área original a²-b² = área rectángulo (a+b)(a-b).",
+          "conceptId": "diff-squares"
+        },
+        {
+          "type": "interactive",
+          "component": "DiffSquaresDetector",
+          "description": "Expresiones aleatorias. Usuario identifica: ¿diferencia de cuadrados? Si sí: identifica a y b, escribe factorización. Incluye casos iterados (x⁴-y⁴)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-2-4-1",
+              "type": "multiple-choice",
+              "question": "Factoriza: 25x² - 36y² = ",
+              "options": ["(5x+6y)(5x-6y)", "(5x-6y)²", "(5x+6y)²", "No se puede"],
+              "correct": 0,
+              "explanation": "a²-b² con a=5x, b=6y. (5x+6y)(5x-6y)."
+            },
+            {
+              "id": "q2-2-4-2",
+              "type": "fill-in",
+              "question": "Factoriza completamente: x⁴ - 16 = (x²+4)(x+___)(x-___ )",
+              "answer": "2, 2",
+              "explanation": "x⁴-16 = (x²)²-4² = (x²+4)(x²-4) = (x²+4)(x+2)(x-2)."
+            },
+            {
+              "id": "q2-2-4-3",
+              "type": "multiple-choice",
+              "question": "¿Cuál NO es diferencia de cuadrados?",
+              "options": ["49 - x²", "x² - 49", "x² + 49", "1 - 4x²"],
+              "correct": 2,
+              "explanation": "x² + 49 es SUMA de cuadrados. No se factoriza en reales (sí en complejos: (x+7i)(x-7i))."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-2-5",
+      "title": "Trinomios de la Forma x² + bx + c",
+      "objective": "Factorizar x² + bx + c buscando dos números que sumen b y multipliquen c",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "x² + 5x + 6 = (x+2)(x+3). ¿Por qué? 2+3=5 (coef x), 2×3=6 (término independiente). Busca dos números: suma = b, producto = c."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Trinomio x² + bx + c</strong> (coeficiente director 1):\nBusca p, q tales que: p + q = b, p · q = c.\nEntonces x² + bx + c = (x+p)(x+q).\nSignos:\n- c > 0: p,q mismo signo (signo de b)\n- c < 0: p,q signos distintos (el mayor en valor absoluto tiene signo de b)\nEjemplos: x²+7x+10 → 2,5 (suma 7, prod 10) → (x+2)(x+5). x²-x-6 → -3,2 (suma -1, prod -6) → (x-3)(x+2).",
+          "latex": "x^2+bx+c = (x+p)(x+q) \\text{ con } p+q=b, \\, pq=c",
+          "visual": "assets/trinomial-x2.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Área de rectángulo: (x+p)(x+q) = x² + (p+q)x + pq. Lados = x+p y x+q. Área = x² + bx + c. Factorizar = encontrar lados del rectángulo dado el área.",
+          "conceptId": "trinomial-x2"
+        },
+        {
+          "type": "interactive",
+          "component": "TrinomialX2Factorizer",
+          "description": "Genera trinomios x²+bx+c. Tabla: busca p,q. Suma b, producto c. Arrastra a (x+p)(x+q). Verifica expandiendo. Incluye c negativos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-2-5-1",
+              "type": "fill-in",
+              "question": "Factoriza: x² + 9x + 14 = (x+___)(x+___)",
+              "answer": "2, 7",
+              "explanation": "Busca p+q=9, pq=14. 2+7=9, 2×7=14. (x+2)(x+7)."
+            },
+            {
+              "id": "q2-2-5-2",
+              "type": "multiple-choice",
+              "question": "x² - 4x - 12 = ",
+              "options": ["(x-6)(x+2)", "(x+6)(x-2)", "(x-4)(x+3)", "(x-3)(x+4)"],
+              "correct": 0,
+              "explanation": "c=-12 (signos distintos). p+q=-4, pq=-12. -6+2=-4, -6×2=-12. (x-6)(x+2)."
+            },
+            {
+              "id": "q2-2-5-3",
+              "type": "fill-in",
+              "question": "x² - 10x + 25 = (x-___ )²",
+              "answer": "5",
+              "explanation": "Trinomio cuadrado perfecto: -5-5=-10, (-5)×(-5)=25. (x-5)²."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-2-6",
+      "title": "Trinomios de la Forma ax² + bx + c (a ≠ 1)",
+      "objective": "Factorizar trinomios con coeficiente director ≠ 1: método AC, prueba-error, agrupación",
+      "type": "procedural",
+      "durationMin": 10,
+      "content": [
+        {
+          "type": "hook",
+          "text": "2x² + 7x + 3. No es (x+...)(x+...). Prueba (2x+1)(x+3) = 2x²+6x+x+3 = 2x²+7x+3. ¡Funciona! Método sistemático: AC."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Método AC</strong> para ax²+bx+c:\n1. Multiplica a·c\n2. Busca p,q: p+q=b, p·q=a·c\n3. Reescribe bx = px + qx\n4. Agrupa: (ax²+px) + (qx+c)\n5. Factor común en cada grupo\n6. Factor común binomial\nEjemplo: 2x²+7x+3. a·c=6. p+q=7, pq=6 → 1,6. 2x²+1x+6x+3 = x(2x+1)+3(2x+1) = (2x+1)(x+3).\nAlternativa: prueba-error con divisores de a y c.",
+          "latex": "ax^2+bx+c \\xrightarrow{AC} ax^2+px+qx+c \\xrightarrow{agrupar} (dx+e)(fx+g)",
+          "visual": "assets/trinomial-ax2.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Rompecabezas: rectángulo área 2x²+7x+3. Lados deben multiplicar 2x² (→ 2x y x) y 3 (→ 1 y 3). Prueba combinaciones: (2x+1)(x+3) da 7x central. (2x+3)(x+1) da 5x. Solo una encaja.",
+          "conceptId": "trinomial-ax2"
+        },
+        {
+          "type": "interactive",
+          "component": "TrinomialAX2Factorizer",
+          "description": "Método AC paso a paso: calcula ac, busca p,q, reescribe, agrupa, factoriza. Alternativa: generador de combinaciones (2x±?)(x±?) con divisores. Verifica expandiendo."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-2-6-1",
+              "type": "fill-in",
+              "question": "Factoriza 3x² + 10x + 8 usando AC. ac = ___. p,q = ___,___. Factorización: (3x+___)(x+___)",
+              "answer": "24, 4, 6, 4, 2",
+              "explanation": "ac=24. p+q=10, pq=24 → 4,6. 3x²+4x+6x+8 = x(3x+4)+2(3x+4) = (3x+4)(x+2)."
+            },
+            {
+              "id": "q2-2-6-2",
+              "type": "multiple-choice",
+              "question": "Factoriza: 6x² - 5x - 6 = ",
+              "options": ["(3x+2)(2x-3)", "(3x-2)(2x+3)", "(6x+3)(x-2)", "(2x+3)(3x-2)"],
+              "correct": 0,
+              "explanation": "ac=-36. p+q=-5, pq=-36 → -9,4. 6x²-9x+4x-6 = 3x(2x-3)+2(2x-3) = (2x-3)(3x+2)."
+            },
+            {
+              "id": "q2-2-6-3",
+              "type": "fill-in",
+              "question": "Factoriza completamente: 4x² - 9 = (2x+___)(2x-___)",
+              "answer": "3, 3",
+              "explanation": "Diferencia de cuadrados: (2x)² - 3² = (2x+3)(2x-3)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-2-7",
+      "title": "Factorización por Agrupación de Términos",
+      "objective": "Agrupar términos de 4 en 4 (o más) para sacar factor común binomial",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "x³ + 2x² + 3x + 6. Agrupa: (x³+2x²) + (3x+6) = x²(x+2) + 3(x+2) = (x+2)(x²+3)."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Agrupación</strong>: para polinomios de 4+ términos.\n1. Agrupa términos de 2 en 2 (o 3 en 3) buscando factor común en cada grupo\n2. Saca factor común de cada grupo\n3. Debe aparecer un <strong>factor común binomial</strong>\n4. Saca ese factor binomial\nEjemplo: ax + ay + bx + by = a(x+y) + b(x+y) = (x+y)(a+b).\nSi no sale, prueba distinto agrupamiento. Útil tras método AC (reescribe término medio).",
+          "latex": "ax+ay+bx+by = a(x+y)+b(x+y) = (x+y)(a+b) \\quad | \\quad x^3+2x^2+3x+6 = x^2(x+2)+3(x+2) = (x+2)(x^2+3)",
+          "visual": "assets/grouping.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Clasificar ropa: (camisas azules + pantalones azules) + (camisas rojas + pantalones rojos) = azul(camisa+pantalón) + rojo(camisa+pantalón) = (camisa+pantalón)(azul+rojo). Factor binomial = 'camisa+pantalón'.",
+          "conceptId": "grouping-factorization"
+        },
+        {
+          "type": "interactive",
+          "component": "GroupingFactorizer",
+          "description": "Polinomio 4-6 términos. Usuario elige agrupamiento. Ve factor común cada grupo. ¿Factor binomial común? Si no, sugiere reagrupar. Verifica expandiendo."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-2-7-1",
+              "type": "fill-in",
+              "question": "Factoriza por agrupación: x³ - 3x² + 2x - 6 = (x²+___)(x-___)",
+              "answer": "2, 3",
+              "explanation": "(x³-3x²)+(2x-6) = x²(x-3)+2(x-3) = (x-3)(x²+2)."
+            },
+            {
+              "id": "q2-2-7-2",
+              "type": "multiple-choice",
+              "question": "ax - ay + bx - by = ",
+              "options": ["(a+b)(x-y)", "(a-b)(x+y)", "(a+b)(x+y)", "(x-y)(a-b)"],
+              "correct": 0,
+              "explanation": "a(x-y) + b(x-y) = (x-y)(a+b)."
+            },
+            {
+              "id": "q2-2-7-3",
+              "type": "fill-in",
+              "question": "2x³ + 4x² + 3x + 6 = (x²+___)(2x+___)",
+              "answer": "3, 2",
+              "explanation": "(2x³+4x²)+(3x+6) = 2x²(x+2)+3(x+2) = (x+2)(2x²+3)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-2-8",
+      "title": "Proyecto Módulo: Diseño de Cajas de Cartón (Optimización de Volumen)",
+      "objective": "Modelar volumen de caja sin tapa cortando esquinas: V(x) = x(L-2x)(W-2x). Factorizar, encontrar raíces, máximo",
+      "type": "project",
+      "durationMin": 15,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Cartón 20×30 cm. Cortas cuadrados x×x en esquinas, doblas lados. Volumen V = x(20-2x)(30-2x). ¿Qué x maximiza V?"
+        },
+        {
+          "type": "explanation",
+          "text": "Caja sin tapa: cortar cuadrados lado x en 4 esquinas de rectángulo L×W. Dimensiones base: (L-2x) × (W-2x). Altura: x.\nVolumen: V(x) = x(L-2x)(W-2x) = 4x³ - 2(L+W)x² + LW x.\nRaíces: x=0, x=L/2, x=W/2 (volumen 0). Dominio físico: 0 < x < min(L,W)/2.\nMáximo: derivada V'(x) = 0 → cuadrática. O usa vértice de parábola (aprox). Factorización ayuda a ver raíces y comportamiento.",
+          "latex": "V(x) = x(L-2x)(W-2x) = 4x^3 - 2(L+W)x^2 + LWx \\quad | \\quad V'(x) = 12x^2 - 4(L+W)x + LW",
+          "visual": "assets/box-optimization.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "BoxVolumeOptimizer",
+          "description": "Sliders L, W. Gráfica V(x). Raíces marcadas. Derivada V'(x). Encuentra x óptimo numéricamente. Compara con fórmula analítica."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-2-8-1",
+              "type": "multiple-choice",
+              "question": "Cartón 20×30. Volumen V(x) = x(20-2x)(30-2x). Raíces de V(x)=0:",
+              "options": ["0, 10, 15", "0, 5, 10", "0, 20, 30", "0, 2, 3"],
+              "correct": 0,
+              "explanation": "x=0, 20-2x=0→x=10, 30-2x=0→x=15. Dominio útil: 0<x<10."
+            },
+            {
+              "id": "q2-2-8-2",
+              "type": "number-input",
+              "question": "Para L=20, W=30, V(x) = 4x³ - 100x² + 600x. V'(x) = 12x² - 200x + 600 = 0. x óptimo ≈ ? (usa fórmula general)",
+              "answer": 3.92,
+              "explanation": "x = (200 ± √(40000-28800))/24 = (200 ± √11200)/24. √11200≈105.83. x₁=(200-105.83)/24≈3.92. x₂=(200+105.83)/24>10 (fuera dominio)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

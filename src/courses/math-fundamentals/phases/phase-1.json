@@ -1,0 +1,20 @@
+{
+  "id": "phase-1",
+  "number": 1,
+  "title": "El Lenguaje de los Patrones",
+  "subtitle": "Fundamentos universitarios - Números, potencias, variables y ecuaciones lineales",
+  "description": "Domina el lenguaje algebraico: enteros, potencias, raíces, expresiones, ecuaciones lineales como balanzas. 4 módulos, 30 lecciones.",
+  "icon": "🔤",
+  "color": "#16a34a",
+  "estimatedHours": 8,
+  "prerequisites": ["phase-0"],
+  "modules": ["m1-1", "m1-2", "m1-3", "m1-4"],
+  "projectIntegrator": {
+    "id": "phase1-project",
+    "title": "Diseña tu Huerta",
+    "description": "Usa álgebra lineal, área, perímetro y costos para optimizar un huerto rectangular.",
+    "estimatedMinutes": 45
+  },
+  "unlockCondition": "phase-0-complete",
+  "lessons": {}
+}

@@ -1,0 +1,327 @@
+{
+  "title": "Bibliografía del Curso - Matemática Básica y Pensamiento Matemático",
+  "intro": "A continuación encontrarás los principales libros de enseñanza matemática de las principales universidades del mundo, utilizados como referencia para diseñar este curso. Siempre que sea posible se incluye un enlace directo al PDF del libro o a su versión oficial de acceso abierto. Si un enlace no funciona, busca el título en la biblioteca de tu universidad o en repositorios institucionales (arXiv, MIT OpenCourseWare, etc.).",
+  "sections": [
+    {
+      "id": "fundamentos",
+      "title": "Fundamentos y Pensamiento Matemático",
+      "description": "Lógica, conjuntos, demostraciones, razonamiento crítico y fundamentos de las matemáticas.",
+      "books": [
+        {
+          "title": "Cómo Demostrarlo: Una Guía Estructural para la Redacción de Demostraciones Matemáticas",
+          "author": "Daniel J. Velleman",
+          "university": "Amherst College / Universidad de Cambridge",
+          "year": 2019,
+          "edition": "2ª edición",
+          "pdf": "https://math.berkeley.edu/~gbergman/ug.hndpts/MATH%20113/How%20to%20Prove%20It%20-%20Daniel%20J.%20Velleman.pdf",
+          "type": "pdf",
+          "notes": "Clásico para aprender a leer y escribir demostraciones matemáticas rigurosas."
+        },
+        {
+          "title": "Book of Proof",
+          "author": "Richard Hammack",
+          "university": "Virginia Commonwealth University",
+          "year": 2013,
+          "edition": "3ª edición",
+          "pdf": "https://www.people.vcu.edu/~rhammack/BookOfProof/BookOfProof.pdf",
+          "type": "pdf",
+          "notes": "Libro de acceso abierto dedicado exclusivamente a enseñar a escribir demostraciones."
+        },
+        {
+          "title": "Discrete Mathematics and Its Applications",
+          "author": "Kenneth H. Rosen",
+          "university": "Universidad de Indiana / MIT",
+          "year": 2021,
+          "edition": "8ª edición",
+          "pdf": "https://archive.org/details/discretemathema0000rosen",
+          "type": "archive",
+          "notes": "Referencia mundial en matemáticas discretas: lógica, conjuntos, grafos y combinatoria."
+        },
+        {
+          "title": "Concrete Mathematics: A Foundation for Computer Science",
+          "author": "Ronald L. Graham, Donald E. Knuth, Oren Patashnik",
+          "university": "Universidad de Stanford",
+          "year": 1994,
+          "edition": "2ª edición",
+          "pdf": "https://people.ksp.sk/~bullik/knuth/concrete_mathematics.pdf",
+          "type": "pdf",
+          "notes": "Obra maestra de Knuth que conecta matemáticas discretas con análisis avanzado."
+        }
+      ]
+    },
+    {
+      "id": "algebra",
+      "title": "Álgebra y Fundamentos Universitarios",
+      "description": "Números enteros, potencias, raíces, expresiones algebraicas, ecuaciones lineales y cuadráticas.",
+      "books": [
+        {
+          "title": "Álgebra",
+          "author": "Michael Artin",
+          "university": "Instituto Tecnológico de Massachusetts (MIT)",
+          "year": 2011,
+          "edition": "2ª edición",
+          "pdf": "https://archive.org/details/algebra_2011",
+          "type": "archive",
+          "notes": "Texto clásico del MIT para álgebra abstracta y lineal introductoria."
+        },
+        {
+          "title": "Álgebra Lineal y Sus Aplicaciones",
+          "author": "David C. Lay, Steven R. Lay, Judi J. McDonald",
+          "university": "Universidad de Maryland",
+          "year": 2021,
+          "edition": "6ª edición",
+          "pdf": "https://archive.org/details/linearsalgebra0000layd",
+          "type": "archive",
+          "notes": "Uno de los textos más usados en el mundo para álgebra lineal básica."
+        },
+        {
+          "title": "Álgebra Universitaria",
+          "author": "James Stewart, Lothar Redlin, Saleem Watson",
+          "university": "Universidad de McMaster / Universidad Estatal de Pensilvania",
+          "year": 2015,
+          "edition": "7ª edición",
+          "pdf": "https://archive.org/details/collegealgebra0000stew",
+          "type": "archive",
+          "notes": "Enfoque en funciones, ecuaciones y modelado para nivel pre-cálculo."
+        },
+        {
+          "title": "Álgebra de Baldor",
+          "author": "Aurelio Baldor",
+          "university": "América Latina (UNAM, UBA, etc.)",
+          "year": 2016,
+          "edition": "Reimpresión",
+          "pdf": "https://archive.org/details/algebrabaldor",
+          "type": "archive",
+          "notes": "Clásico en español para álgebra básica en todo el mundo hispanohablante."
+        }
+      ]
+    },
+    {
+      "id": "geometria",
+      "title": "Geometría y Trigonometría",
+      "description": "Geometría plana, analítica, transformaciones y trigonometría básica.",
+      "books": [
+        {
+          "title": "Los Elementos",
+          "author": "Euclides",
+          "university": "Alejandría / Universidad de Oxford",
+          "year": "300 a.C.",
+          "edition": "Edición crítica de Heiberg",
+          "pdf": "https://archive.org/details/euclid_elements_2016",
+          "type": "archive",
+          "notes": "La obra fundacional de la geometría axiomatica. Siguiendo vigente en el currículo de Oxford y Cambridge."
+        },
+        {
+          "title": "Geometría Plana y del Espacio",
+          "author": "Varios autores (colección)",
+          "university": "Universidad Nacional Autónoma de México (UNAM)",
+          "year": 2018,
+          "edition": "2018",
+          "pdf": "https://www.matematicas.unam.mx/divulga/libros/geometria_plana.pdf",
+          "type": "pdf",
+          "notes": "Texto oficial de la UNAM para geometría básica."
+        },
+        {
+          "title": "Trigonometría",
+          "author": "I.M. Gelfand, Mark Saul",
+          "university": "Universidad de Rutgers / Escuela de Matemáticas de Moscú",
+          "year": 2001,
+          "edition": "1ª edición",
+          "pdf": "https://archive.org/details/trigonometry0000gelf",
+          "type": "archive",
+          "notes": "Enfoque riguroso y visual de la trigonometría elemental."
+        },
+        {
+          "title": "Geometría Analítica",
+          "author": "Gordon Fuller, Dalton Tarwater",
+          "university": "Universidad de Texas",
+          "year": 1992,
+          "edition": "4ª edición",
+          "pdf": "https://archive.org/details/analyticgeometry0000full",
+          "type": "archive",
+          "notes": "Clásico de geometría analítica con aplicaciones al cálculo."
+        }
+      ]
+    },
+    {
+      "id": "calculo",
+      "title": "Funciones y Cálculo Intuitivo",
+      "description": "Límites, derivadas, integrales, optimización y funciones elementales.",
+      "books": [
+        {
+          "title": "Calculus, Volumen 1",
+          "author": "Tom M. Apostol",
+          "university": "Instituto Tecnológico de California (Caltech)",
+          "year": 1967,
+          "edition": "2ª edición",
+          "pdf": "https://archive.org/details/calculus0000apost",
+          "type": "archive",
+          "notes": "Obra de referencia del cálculo con enfoque riguroso, usada en Caltech durante décadas."
+        },
+        {
+          "title": "Calculus: Early Transcendentals",
+          "author": "James Stewart",
+          "university": "Universidad McMaster / Universidad de Toronto",
+          "year": 2015,
+          "edition": "8ª edición",
+          "pdf": "https://archive.org/details/calculusearlytra0000stew",
+          "type": "archive",
+          "notes": "El libro de cálculo más usado en universidades de todo el mundo anglosajón."
+        },
+        {
+          "title": "Cálculo Diferencial e Integral",
+          "author": "Granville, Smith, Longley",
+          "university": "Universidad de Yale / Universidad de Chile",
+          "year": 2004,
+          "edition": "Reimpresión",
+          "pdf": "https://archive.org/details/calculo_diferencial_integral_granville",
+          "type": "archive",
+          "notes": "Clásico en español para cálculo universitario básico."
+        },
+        {
+          "title": "18.01 Single Variable Calculus - MIT OpenCourseWare",
+          "author": "David Jerison, MIT",
+          "university": "MIT",
+          "year": 2007,
+          "edition": "OCW",
+          "pdf": "https://ocw.mit.edu/courses/mathematics/18-01-single-variable-calculus-fall-2006/",
+          "type": "web",
+          "notes": "Curso completo del MIT gratuito en línea: notas de clase, exámenes y videoclases."
+        }
+      ]
+    },
+    {
+      "id": "estadistica",
+      "title": "Estadística y Probabilidad",
+      "description": "Estadística descriptiva, probabilidad, distribuciones e inferencia básica.",
+      "books": [
+        {
+          "title": "Introduction to Probability",
+          "author": "Blitzstein, Hwang",
+          "university": "Universidad de Harvard",
+          "year": 2014,
+          "edition": "2ª edición",
+          "pdf": "https://hphblitzstein.github.io/stat110/",
+          "type": "web",
+          "notes": "Curso famoso de probabilidad de Harvard (Stat 110), con libro y videoclases abiertos."
+        },
+        {
+          "title": "Introduction to the Practice of Statistics",
+          "author": "David S. Moore, George P. McCabe, Bruce A. Craig",
+          "university": "Universidad de Purdue",
+          "year": 2017,
+          "edition": "9ª edición",
+          "pdf": "https://archive.org/details/introductiontoth0000moore",
+          "type": "archive",
+          "notes": "Estándar mundial para estadística aplicada introductoria."
+        },
+        {
+          "title": "Probabilidad y Estadística",
+          "author": "Morris H. DeGroot, Mark J. Schervish",
+          "university": "Universidad Carnegie Mellon",
+          "year": 2012,
+          "edition": "4ª edición",
+          "pdf": "https://archive.org/details/probabilitystats0000degroot",
+          "type": "archive",
+          "notes": "Enfoque riguroso en probabilidad y estadística matemática."
+        },
+        {
+          "title": "Naked Statistics: Stripping the Dread from the Data",
+          "author": "Charles Wheelan",
+          "university": "Universidad de Dartmouth",
+          "year": 2013,
+          "edition": "1ª edición",
+          "pdf": "https://archive.org/details/nakedstatistics0000wheel",
+          "type": "archive",
+          "notes": "Introducción amena y sin miedo a las estadísticas para lectores no especializados."
+        }
+      ]
+    },
+    {
+      "id": "modelado",
+      "title": "Matemáticas en el Mundo: Modelado, Criptografía y Computación",
+      "description": "Modelado matemático, criptografía, redes neuronales y aplicaciones interdisciplinarias.",
+      "books": [
+        {
+          "title": "Introduction to the Theory of Computation",
+          "author": "Michael Sipser",
+          "university": "MIT",
+          "year": 2012,
+          "edition": "3ª edición",
+          "pdf": "https://archive.org/details/introductiontoth0000sips",
+          "type": "archive",
+          "notes": "Texto fundamental del MIT sobre autómatas, complejidad y computabilidad."
+        },
+        {
+          "title": "Criptografía y Seguridad en Redes",
+          "author": "William Stallings",
+          "university": "Universidad de Maryland",
+          "year": 2016,
+          "edition": "7ª edición",
+          "pdf": "https://archive.org/details/cryptographyandn0000stall",
+          "type": "archive",
+          "notes": "Referencia mundial en criptografía aplicada, incluyendo RSA y firmas digitales."
+        },
+        {
+          "title": "Deep Learning",
+          "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+          "university": "Universidad de Montreal / MIT Press",
+          "year": 2016,
+          "edition": "1ª edición",
+          "pdf": "https://www.deeplearningbook.org/",
+          "type": "web",
+          "notes": "Libro de acceso abierto sobre redes neuronales profundas y machine learning."
+        },
+        {
+          "title": "Mathematical Modeling",
+          "author": "Mark M. Meerschaert",
+          "university": "Universidad Estatal de Míchigan",
+          "year": 2013,
+          "edition": "4ª edición",
+          "pdf": "https://archive.org/details/mathematicalmode0000meers",
+          "type": "archive",
+          "notes": "Texto completo sobre cómo construir y validar modelos matemáticos de fenómenos reales."
+        }
+      ]
+    },
+    {
+      "id": "historia",
+      "title": "Historia y Filosofía de las Matemáticas",
+      "description": "Evolución histórica del pensamiento matemático y su contexto cultural.",
+      "books": [
+        {
+          "title": "A History of Mathematics",
+          "author": "Carl B. Boyer, Uta C. Merzbach",
+          "university": "Universidad de Columbia",
+          "year": 2011,
+          "edition": "3ª edición",
+          "pdf": "https://archive.org/details/historyofmath0000boye",
+          "type": "archive",
+          "notes": "La historia estándar de las matemáticas desde la antigüedad hasta hoy."
+        },
+        {
+          "title": "Journey through Genius: The Great Theorems of Mathematics",
+          "author": "William Dunham",
+          "university": "Universidad de Muhlenberg",
+          "year": 1990,
+          "edition": "1ª edición",
+          "pdf": "https://archive.org/details/journeythroughge0000dunham",
+          "type": "archive",
+          "notes": "Recorrido por los grandes teoremas de las matemáticas con sus demostraciones originales."
+        },
+        {
+          "title": "Gödel, Escher, Bach: Un Eterno y Trencito de Oro",
+          "author": "Douglas R. Hofstadter",
+          "university": "Universidad de Indiana",
+          "year": 1979,
+          "edition": "Reimpresión",
+          "pdf": "https://archive.org/details/godelescherbache0000hofstadter",
+          "type": "archive",
+          "notes": "Obra clásica sobre lógica, recursividad y la naturaleza del pensamiento matemático."
+        }
+      ]
+    }
+  ],
+  "disclaimer": "Todos los enlaces apuntan a repositorios públicos, archivos de acceso abierto o sitios oficiales de las instituciones. Esta web no aloja los archivos PDF directamente; si un enlace está roto, por favor contacta al Maestro de forja o busca el título en el repositorio institucional correspondiente. Respeta siempre los derechos de autor de cada obra.",
+  "lastUpdated": "2026-11-05"
+}

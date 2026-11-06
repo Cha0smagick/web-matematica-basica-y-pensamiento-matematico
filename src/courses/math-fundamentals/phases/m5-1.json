@@ -1,0 +1,509 @@
+{
+  "id": "m5-1",
+  "phaseId": "phase-5",
+  "number": "5.1",
+  "title": "Estadística Descriptiva",
+  "description": "Media, mediana, moda, desviación, cuartiles, boxplots, detectar mentiras",
+  "lessons": [
+    {
+      "id": "l5-1-1",
+      "title": "Datos: Tipos, Variables, Tablas de Frecuencia",
+      "objective": "Clasificar datos: cualitativos (nominal, ordinal) vs cuantitativos (discreto, continuo). Tablas frecuencia absoluta/relativa/acumulada",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Encuesta: 'Color favorito' (cualitativo nominal), 'Satisfacción 1-5' (cualitativo ordinal), 'Edad' (cuantitativo discreto), 'Peso' (cuantitativo continuo). Cada tipo se analiza distinto."
+        },
+        {
+          "type": "explanation",
+          "text": "Tipos de variables:\n- <strong>Cualitativas</strong> (categóricas):\n  - Nominal: sin orden (color, sexo, marca)\n  - Ordinal: con orden (bajo/medio/alto, 1-5 estrellas)\n- <strong>Cuantitativas</strong> (numéricas):\n  - Discretas: valores contables (número de hijos, coches)\n  - Continuas: cualquier valor en intervalo (peso, altura, tiempo)\n<strong>Tablas de frecuencia</strong>:\n- Frecuencia absoluta (nᵢ): cuenta\n- Frecuencia relativa (fᵢ): nᵢ/N (proporción)\n- Porcentaje: fᵢ×100%\n- Frecuencia acumulada: suma hasta ese valor\n- Frecuencia relativa acumulada\nAgrupación en intervalos (clases) para continuas: ancho, límites, marca de clase.",
+          "latex": "f_i = n_i/N \\quad | \\quad \\sum f_i = 1 \\quad | \\quad F_i = \\sum_{k\\le i} f_k \\quad | \\quad \\text{Intervalos: } [L_i, L_{i+1})",
+          "visual": "assets/data-types.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Cesta frutas: manzanas, peras, plátanos (cualitativo nominal). Tallas ropa: S, M, L, XL (ordinal). Semillas por fruta: 0, 1, 2, 3... (discreto). Peso cada fruta: 150.3g, 149.8g... (continuo).",
+          "conceptId": "data-types"
+        },
+        {
+          "type": "interactive",
+          "component": "DataClassifier",
+          "description": "Dataset crudo → usuario clasifica cada variable. Genera tabla frecuencias automática. Para continuas: elige nº clases (Sturges, Rice, raíz), genera histograma. Frecuencias absolutas, relativas, acumuladas, porcentajes. Exporta tabla LaTeX/CSV."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-1-1-1",
+              "type": "multiple-choice",
+              "question": "Variable 'Nivel educativo: Primaria, Secundaria, Universidad' es:",
+              "options": [
+                "Cuantitativa discreta",
+                "Cuantitativa continua",
+                "Cualitativa nominal",
+                "Cualitativa ordinal"
+              ],
+              "correct": 3,
+              "explanation": "Tiene orden natural (Primaria < Secundaria < Universidad) → ordinal."
+            },
+            {
+              "id": "q5-1-1-2",
+              "type": "fill-in",
+              "question": "Datos: 2, 3, 3, 5, 5, 5, 7. Frecuencia absoluta del 5 = ___. Relativa = ___",
+              "answer": "3, 3/7 ≈ 0.429",
+              "explanation": "Aparece 3 veces de 7 totales. n=3, f=3/7."
+            },
+            {
+              "id": "q5-1-1-3",
+              "type": "multiple-choice",
+              "question": "Para agrupar variable continua en intervalos, nº clases recomendado (Sturges):",
+              "options": [
+                "k = 1 + 3.322 log₁₀(n)",
+                "k = √n",
+                "k = n/10",
+                "k = 5 siempre"
+              ],
+              "correct": 0,
+              "explanation": "Regla Sturges: k = 1 + 3.322 log₁₀(n). Raíz cuadrada es alternativa simple."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-1-2",
+      "title": "Medidas de Tendencia Central: Media, Mediana, Moda",
+      "objective": "Calcular e interpretar media aritmética, mediana, moda. Cuándo usar cada una. Media ponderada, media geométrica, media armónica",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Salarios: 1000, 1100, 1200, 1300, 100000. Media = 20920 (engañosa). Mediana = 1200 (representativa). Moda = ninguna. Mediana resiste outliers."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Media aritmética</strong>: x̄ = (Σxᵢ)/n. Sensible a outliers. Única.\n<strong>Mediana</strong> (Me): valor central ordenado. n impar → central. n par → media dos centrales. Robusta (25% outliers).\n<strong>Moda</strong> (Mo): valor más frecuente. Puede no existir, ser única o múltiple. Para cualitativas.\nRelación forma-distribución:\n- Simétrica: Media = Mediana = Moda\n- Sesgo derecha (cola larga +): Media > Mediana > Moda\n- Sesgo izquierda (cola larga -): Media < Mediana < Moda\n<strong>Otras medias</strong>:\n- Ponderada: x̄ₚ = Σ(wᵢxᵢ)/Σwᵢ\n- Geométrica: (∏xᵢ)^{1/n} (tasas crecimiento, índices)\n- Armónica: n/Σ(1/xᵢ) (velocidades medias, tasas)",
+          "latex": "\\bar{x} = \\frac{\\sum x_i}{n} \\quad | \\quad Me = x_{((n+1)/2)} \\text{ (ordenados)} \\quad | \\quad Mo = \\arg\\max f_i \\quad | \\quad \\text{Simétrica: } \\bar{x}=Me=Mo",
+          "visual": "assets/central-tendency.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Fiesta: edades 20, 22, 22, 23, 25, 60 (abuelo). Media = 28.7 (nadie tiene 28). Mediana = 22.5 (mitad ≤ 22.5). Moda = 22. Mediana y moda representan mejor al grupo típico.",
+          "conceptId": "central-tendency"
+        },
+        {
+          "type": "interactive",
+          "component": "CentralTendencyExplorer",
+          "description": "Dataset editable (añade/quita puntos). Calcula media, mediana, moda en vivo. Gráfico puntos + líneas verticales media/mediana/moda. Detecta outliers (IQR). Sesgo: mueve punto extremo, ve media moverse más que mediana. Medias ponderada/geométrica/armónica: selector tipo."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-1-2-1",
+              "type": "number-input",
+              "question": "Datos: 4, 7, 7, 8, 10, 12, 100. Mediana = ___",
+              "answer": "8",
+              "explanation": "Ordenados: 4, 7, 7, 8, 10, 12, 100. n=7 impar → 4º valor = 8."
+            },
+            {
+              "id": "q5-1-2-2",
+              "type": "multiple-choice",
+              "question": "Distribución con cola larga a la derecha (asimetría positiva):",
+              "options": [
+                "Media = Mediana = Moda",
+                "Media > Mediana > Moda",
+                "Media < Mediana < Moda",
+                "Media = Mediana ≠ Moda"
+              ],
+              "correct": 1,
+              "explanation": "Cola derecha arrastra media hacia valores altos. Media > Mediana > Moda."
+            },
+            {
+              "id": "q5-1-2-3",
+              "type": "fill-in",
+              "question": "Velocidad media viaje: ida 60 km/h, vuelta 40 km/h (misma distancia). Media armónica = ___ km/h",
+              "answer": "48",
+              "explanation": "2/(1/60 + 1/40) = 2/(5/120) = 48 km/h. NO media aritmética (50)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-1-3",
+      "title": "Medidas de Dispersión: Rango, Varianza, Desviación Típica, CV, IQR",
+      "objective": "Cuánto se alejan los datos del centro. Varianza (σ²), desviación típica (σ), coeficiente variación (CV), rango intercuartílico (IQR)",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Dos clases: notas [5,5,5,5,5] y [0,10,0,10,0,10]. Ambas media = 5. Primera σ=0 (todos iguales). Segunda σ≈5 (muy dispersos). Media sola no basta."
+        },
+        {
+          "type": "explanation",
+          "text": "Medidas de dispersión:\n- <strong>Rango</strong>: R = Máx - Mín. Sensible a outliers.\n- <strong>Rango intercuartílico (IQR)</strong>: IQR = Q₃ - Q₁ (50% central). Robusto.\n- <strong>Varianza</strong>:\n  Poblacional: σ² = Σ(xᵢ-μ)²/N\n  Muestral: s² = Σ(xᵢ-x̄)²/(n-1) (corrección Bessel)\n- <strong>Desviación típica</strong>: σ = √σ², s = √s². Misma unidad que datos.\n- <strong>Coeficiente de variación</strong>: CV = σ/|μ| (adimensional). Compara dispersión relativa entre escalas distintas.\n- <strong>Desviación media absoluta</strong>: MAD = Σ|xᵢ-μ|/n (más intuitiva).\nRegla empírica (normal): 68% en μ±σ, 95% en μ±2σ, 99.7% en μ±3σ.\nOutliers (Tukey): < Q₁ - 1.5·IQR o > Q₃ + 1.5·IQR.",
+          "latex": "\\sigma^2 = \\frac{\\sum(x_i-\\mu)^2}{N} \\quad | \\quad s^2 = \\frac{\\sum(x_i-\\bar{x})^2}{n-1} \\quad | \\quad \\text{IQR} = Q_3-Q_1 \\quad | \\quad CV = \\frac{\\sigma}{|\\mu|} \\quad | \\quad \\text{Outlier: } <Q_1-1.5IQR \\text{ o } >Q_3+1.5IQR",
+          "visual": "assets/dispersion.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Dardos en diana: media = centro de los impactos. Desviación = radio promedio. Varianza = radio². CV = radio/centro (qué tan 'apretados' relativos al centro). IQR = anillo central 50%.",
+          "conceptId": "dispersion"
+        },
+        {
+          "type": "interactive",
+          "component": "DispersionExplorer",
+          "description": "Dataset → histograma + boxplot. Calcula: rango, σ, s, CV, IQR, MAD. Outliers marcados (Tukey). Slider 'añade outlier' → ve σ dispararse, IQR estable. Compara dos datasets misma media distinta σ. Regla empírica: sombrea μ±σ, μ±2σ, μ±3σ en campana normal."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-1-3-1",
+              "type": "number-input",
+              "question": "Datos: 10, 12, 14, 16, 18. Media = 14. Varianza poblacional = ___",
+              "answer": "8",
+              "explanation": "Desviaciones: -4, -2, 0, 2, 4. Cuadrados: 16, 4, 0, 4, 16. Suma=40. σ²=40/5=8."
+            },
+            {
+              "id": "q5-1-3-2",
+              "type": "multiple-choice",
+              "question": "IQR es más robusto que rango porque:",
+              "options": [
+                "Usa todos los datos",
+                "Ignora el 25% inferior y 25% superior",
+                "Siempre es menor",
+                "Se calcula más rápido"
+              ],
+              "correct": 1,
+              "explanation": "IQR = Q₃-Q₁ usa solo el 50% central. No afectado por extremos (outliers)."
+            },
+            {
+              "id": "q5-1-3-3",
+              "type": "fill-in",
+              "question": "Dataset A: μ=100, σ=10. Dataset B: μ=10, σ=2. CV_A = ___, CV_B = ___. ¿Cuál más disperso relativamente?",
+              "answer": "0.1, 0.2, B",
+              "explanation": "CV_A=10/100=0.1 (10%). CV_B=2/10=0.2 (20%). B más disperso relativo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-1-4",
+      "title": "Cuartiles, Percentiles, Boxplots (Diagrama de Caja)",
+      "objective": "Posición relativa: percentiles (Pₖ), cuartiles (Q₁, Q₂, Q₃). Boxplot: caja Q₁-Q₃, mediana, bigotes, outliers",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Tu sueldo está en percentil 90: ganas más que el 90% de tu sector. Boxplot: ve distribución de un vistazo. Caja = 50% central. Bigotes = rango sin outliers. Puntos = outliers."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Percentiles</strong>: Pₖ = valor tal que k% datos ≤ Pₖ.\n- Cuartiles: Q₁ = P₂₅, Q₂ = P₅₀ (mediana), Q₃ = P₇₅\n- Deciles: D₁...D₉ (cada 10%)\n- Cálculo: posición i = (k/100)·(n+1). Interpolación si no entero.\n<strong>Boxplot (diagrama de caja y bigotes)</strong>:\n- Caja: [Q₁, Q₃] (IQR = Q₃-Q₁)\n- Línea central: mediana (Q₂)\n- Bigotes: hasta Q₁-1.5·IQR (inf) y Q₃+1.5·IQR (sup) o dato extremo no outlier\n- Outliers: puntos fuera de bigotes (· para leves, * para extremos >3·IQR)\n- Simetría: mediana centrada en caja + bigotes simétricos ≈ distribución simétrica\nComparación grupos: boxplots paralelos (ej: salarios por sector).",
+          "latex": "P_k: k\\% \\le P_k \\quad | \\quad Q_1=P_{25},\\, Q_2=P_{50},\\, Q_3=P_{75} \\quad | \\quad \\text{Bigotes: } [Q_1-1.5IQR,\\, Q_3+1.5IQR] \\quad | \\quad \\text{Outlier: } <Q_1-1.5IQR \\text{ o } >Q_3+1.5IQR",
+          "visual": "assets/boxplot.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Carrera 1000 corredores. Percentil 90 = posición 100 (adelantas 900). Boxplot = 'foto finish' de la distribución: caja = pelotón central (50%), bigotes = corredores normales adelantados/rezagados, outliers = fugados o abandonados.",
+          "conceptId": "quartiles-boxplot"
+        },
+        {
+          "type": "interactive",
+          "component": "BoxplotBuilder",
+          "description": "Dataset → boxplot interactivo. Cálculo Q₁, Q₂, Q₃ (métodos: exclusivo/inclusivo). Bigotes Tukey. Outliers detectados (leves ·, extremos *). Percentiles: slider k → Pₖ valor. Múltiples boxplots paralelos (comparar grupos). Exporta imagen SVG."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-1-4-1",
+              "type": "fill-in",
+              "question": "Datos ordenados n=20. Posición Q₁ = (20+1)/4 = 5.25 → interpola entre 5º y 6º. Si 5º=12, 6º=14 → Q₁ = ___",
+              "answer": "12.5",
+              "explanation": "Posición 5.25 → 25% entre 5º y 6º. 12 + 0.25×(14-12) = 12.5."
+            },
+            {
+              "id": "q5-1-4-2",
+              "type": "multiple-choice",
+              "question": "En boxplot, bigote superior llega hasta:",
+              "options": [
+                "Máximo dato",
+                "Q₃ + 1.5·IQR",
+                "Q₃ + 3·IQR",
+                "P₉₅"
+              ],
+              "correct": 1,
+              "explanation": "Bigote Tukey: hasta Q₃ + 1.5·IQR o último dato dentro de ese límite, lo que sea menor."
+            },
+            {
+              "id": "q5-1-4-3",
+              "type": "fill-in",
+              "question": "Tu puntuación test: P₈₅. Significa: ___% personas sacaron ≤ que tú, ___% sacaron > que tú",
+              "answer": "85, 15",
+              "explanation": "Percentil 85 = 85% por debajo o igual, 15% por encima."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-1-5",
+      "title": "Forma de la Distribución: Asimetría, Curtosis, Gráficos",
+      "objective": "Coeficiente asimetría (Fisher), curtosis. Histograma, polígono frecuencias, curva densidad. Detectar bimodalidad, colas pesadas",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Distribución simétrica: asimetría 0. Cola derecha larga: asimetría +. Cola izquierda larga: asimetría -. Curtosis: qué tan 'puntiaguda' (leptocúrtica) o 'plana' (platicúrtica) vs normal (mesocúrtica)."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Asimetría (skewness)</strong>:\nγ₁ = E[(X-μ)³]/σ³ (Fisher). Muestral: g₁ = (n/((n-1)(n-2))) Σ((xᵢ-x̄)/s)³\n- γ₁ ≈ 0: simétrica\n- γ₁ > 0: asim. derecha (cola + larga)\n- γ₁ < 0: asim. izquierda (cola - larga)\n<strong>Curtosis (kurtosis)</strong>:\nγ₂ = E[(X-μ)⁴]/σ⁴ - 3 (exceso vs normal)\n- γ₂ ≈ 0: mesocúrtica (normal)\n- γ₂ > 0: leptocúrtica (puntiaguda, colas pesadas)\n- γ₂ < 0: platicúrtica (plana, colas ligeras)\n<strong>Gráficos</strong>:\n- Histograma: frecuencias en intervalos\n- Polígono frecuencias: une marcas de clase\n- Curva densidad: suavizado (kernel density)\n- Q-Q plot: cuantil-teórico vs cuantil-muestral (normalidad)\nDetección: bimodalidad (dos picos), colas pesadas (outliers frecuentes), truncamiento.",
+          "latex": "\\gamma_1 = \\frac{E[(X-\\mu)^3]}{\\sigma^3} \\quad | \\quad \\gamma_2 = \\frac{E[(X-\\mu)^4]}{\\sigma^4}-3 \\quad | \\quad \\text{Bimodal: dos picos} \\quad | \\quad \\text{Q-Q plot: } \\text{cuantil te\\'orico vs muestral}",
+          "visual": "assets/distribution-shape.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Campana normal: simétrica, curtosis 0. Distribución ingresos: asimetría + (cola rica larga), leptocúrtica (muchos pobres, pocos muy ricos). Alturas: casi normal. Notas examen fácil: asimetría - (muchos altos, cola bajos).",
+          "conceptId": "distribution-shape"
+        },
+        {
+          "type": "interactive",
+          "component": "ShapeAnalyzer",
+          "description": "Dataset → histograma + curva densidad + normal superpuesta. Calcula: asimetría (Fisher), curtosis exceso. Q-Q plot vs normal. Test Shapiro-Wilk (normalidad). Detecta: bimodalidad (picos), truncamiento (corte brusco), colas pesadas. Transformaciones: log, raíz, Box-Cox para normalizar."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-1-5-1",
+              "type": "multiple-choice",
+              "question": "Distribución con asimetría positiva (γ₁ > 0):",
+              "options": [
+                "Cola izquierda más larga",
+                "Cola derecha más larga",
+                "Perfectamente simétrica",
+                "Bimodal"
+              ],
+              "correct": 1,
+              "explanation": "Asimetría positiva = cola derecha (valores altos) más larga. Media > Mediana."
+            },
+            {
+              "id": "q5-1-5-2",
+              "type": "multiple-choice",
+              "question": "Curtosis exceso γ₂ > 0 indica:",
+              "options": [
+                "Distribución más plana que normal",
+                "Distribución más puntiaguda con colas más pesadas",
+                "Simétrica",
+                "Bimodal"
+              ],
+              "correct": 1,
+              "explanation": "Leptocúrtica: pico más alto, colas más pesadas (más outliers que normal)."
+            },
+            {
+              "id": "q5-1-5-3",
+              "type": "fill-in",
+              "question": "Q-Q plot puntos caen sobre línea recta diagonal → distribución: ___",
+              "answer": "normal",
+              "explanation": "Q-Q plot vs normal: puntos en diagonal = distribución normal. Curvatura = desviación."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-1-6",
+      "title": "Estadística Bivariada: Correlación, Covarianza, Gráfico Dispersión",
+      "objective": "Dos variables cuantitativas. Covarianza, correlación Pearson (r), Spearman (rho). Gráfico dispersión. r ∈ [-1,1]. Correlación ≠ Causalidad",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Altura vs peso: correlación +. Horas estudio vs nota: correlación +. Precio vs demanda: correlación -. Helados vs ahogamientos: correlación + (variable oculta: calor). CORRELACIÓN ≠ CAUSALIDAD."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Covarianza</strong>:\nsₓᵧ = Σ(xᵢ-x̄)(yᵢ-ȳ)/(n-1)\nSigno indica dirección relación, magnitud depende escalas.\n<strong>Correlación de Pearson (r)</strong>:\nr = sₓᵧ / (sₓ·sᵧ) = Σ(xᵢ-x̄)(yᵢ-ȳ) / √[Σ(xᵢ-x̄)² Σ(yᵢ-ȳ)²]\nr ∈ [-1, 1]\n- r ≈ 1: relación lineal fuerte positiva\n- r ≈ -1: relación lineal fuerte negativa\n- r ≈ 0: sin relación lineal (puede haber no lineal)\n<strong>Correlación Spearman (ρ)</strong>: Pearson sobre rangos. Captura monotonía no lineal. Robusta outliers.\n<strong>Gráfico dispersión (scatter plot)</strong>: visualiza relación, outliers, no linealidad, heterocedasticidad.\n<strong>Regresión lineal simple</strong> (adelanto): ŷ = a + bx, b = r·sᵧ/sₓ, a = ȳ - b·x̄.\n<strong>¡Correlación ≠ Causalidad!</strong> Variable oculta (confounding), causalidad inversa, coincidencia.",
+          "latex": "r = \\frac{\\sum(x_i-\\bar{x})(y_i-\\bar{y})}{\\sqrt{\\sum(x_i-\\bar{x})^2\\sum(y_i-\\bar{y})^2}} \\in [-1,1] \\quad | \\quad \\rho = \\text{Pearson sobre rangos} \\quad | \\quad r\\neq\\text{causalidad}",
+          "visual": "assets/correlation.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Covarianza = '¿suben/bajan juntos?' (signo). Correlación = '¿qué tan fuerte y en qué dirección?' (normalizada -1 a 1). Gráfico dispersión = 'nube de puntos': forma elipse = lineal, forma curva = no lineal, nube circular = independencia.",
+          "conceptId": "correlation"
+        },
+        {
+          "type": "interactive",
+          "component": "CorrelationExplorer",
+          "description": "Dataset bivariado → scatter plot + línea regresión + r + ρ. Slider 'añade outlier' → ve r cambiar drásticamente, ρ más estable. Datasets predefinidos: lineal +, lineal -, parabólica (r≈0), circular (r≈0), heterocedástica. Test significancia r (t-student). Correlación parcial (control variable 3ª)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-1-6-1",
+              "type": "multiple-choice",
+              "question": "r = -0.9 indica:",
+              "options": [
+                "Relación lineal débil negativa",
+                "Relación lineal fuerte negativa",
+                "Sin relación",
+                "Relación no lineal"
+              ],
+              "correct": 1,
+              "explanation": "Cercano a -1 = relación lineal fuerte negativa (cuando una sube, otra baja consistentemente)."
+            },
+            {
+              "id": "q5-1-6-2",
+              "type": "fill-in",
+              "question": "Datos: x=[1,2,3], y=[2,4,6]. Covarianza = ___, r = ___",
+              "answer": "2, 1",
+              "explanation": "Relación perfecta y=2x. Covarianza = 2. r = 1 (lineal perfecta positiva)."
+            },
+            {
+              "id": "q5-1-6-3",
+              "type": "multiple-choice",
+              "question": "Helados vendidos y ahogamientos correlacionan positivamente. Causa real:",
+              "options": [
+                "Helados causan ahogamientos",
+                "Ahogamientos causan compras helados",
+                "Variable oculta: temperatura/verano",
+                "Coincidencia aleatoria"
+              ],
+              "correct": 2,
+              "explanation": "Variable confusora: calor → más helados Y más gente nadando → más ahogamientos. Correlación espuria."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-1-7",
+      "title": "Detectar Mentiras con Estadística: Sesgos, Gráficos Engañosos, p-hacking",
+      "objective": "Eje Y truncado, áreas no proporcionales, medias sin dispersión, cherry-picking, p-hacking, HARKing, significancia vs importancia práctica",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Gráfico barras: eje Y empieza en 90 (no 0). Diferencia 92 vs 95 parece enorme (doble altura). Real: 3% diferencia. Eje truncado = mentira visual. Cherry-picking: solo muestra datos que apoyan tesis."
+        },
+        {
+          "type": "explanation",
+          "text": "Trucos comunes para engañar:\n1. <strong>Eje Y truncado</strong>: no empieza en 0 → exagera diferencias\n2. <strong>Escala no lineal / logarítmica sin avisar</strong>\n3. <strong>Áreas/volúmenes no proporcionales</strong>: iconos 2D/3D donde altura representa valor pero área crece al cuadrado/cubo\n4. <strong>Eje X manipulado</strong>: intervalos irregulares, omitir periodos\n5. <strong>Cherry-picking</strong>: seleccionar solo datos favorables, omitir contexto\n6. <strong>Media sin dispersión</strong>: 'promedio 5 estrellas' pero σ=2 (polarizado)\n7. <strong>Significancia estadística ≠ importancia práctica</strong>: p<0.001 con n=1,000,000 pero efecto minúsculo (d=0.01)\n8. <strong>p-hacking</strong>: probar muchas variables/hipótesis hasta p<0.05, reportar solo esa\n9. <strong>HARKing</strong>: hypothesizing after results known (escribir hipótesis tras ver datos)\n10. <strong>Publication bias</strong>: solo se publican resultados significativos\nDefensa: siempre pide datos brutos, intervalos confianza, tamaño efecto (Cohen's d), preregistro, réplica.",
+          "latex": "\\text{Eje Y truncado: } y_{min} > 0 \\Rightarrow \\text{exagera} \\quad | \\quad \\text{Tamaño efecto: } d = \\frac{\\bar{x}_1-\\bar{x}_2}{s_{pooled}} \\quad | \\quad p\\text{-hacking: probar hasta } p<0.05",
+          "visual": "assets/statistical-lies.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Foto recortada: solo ves la mitad que conviene. Eje Y truncado = zoom en la diferencia. p-hacking = tirar dados hasta sacar 6 y decir '¡mira, saqué 6!' sin contar los otros 20 lanzamientos. Tamaño efecto = '¿importa realmente?' no solo '¿es raro por azar?'.",
+          "conceptId": "statistical-lies"
+        },
+        {
+          "type": "interactive",
+          "component": "LieDetector",
+          "description": "Galería gráficos engañosos reales (truncado, áreas 3D, ejes duales, cherry-picking). Usuario identifica truco. Generador: 'Crea gráfico honesto vs engañoso con mismos datos'. Checklist detección: ¿eje Y en 0? ¿áreas proporcionales? ¿contexto completo? ¿intervalos confianza? ¿tamaño efecto? ¿preregistro?"
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-1-7-1",
+              "type": "multiple-choice",
+              "question": "Gráfico barras empieza en 90 (valores 92 y 95). Diferencia visual parece 3x real. Truco:",
+              "options": [
+                "Eje Y truncado",
+                "Escala logarítmica",
+                "Cherry-picking",
+                "Áreas 3D"
+              ],
+              "correct": 0,
+              "explanation": "Eje Y no empieza en 0 → exagera diferencias relativas."
+            },
+            {
+              "id": "q5-1-7-2",
+              "type": "multiple-choice",
+              "question": "p < 0.001 pero tamaño efecto d = 0.02. Conclusión:",
+              "options": [
+                "Efecto grande e importante",
+                "Estadísticamente significativo pero prácticamente irrelevante",
+                "Error en cálculo",
+                "Muestra muy pequeña"
+              ],
+              "correct": 1,
+              "explanation": "Gran n detecta efectos minúsculos. Significancia ≠ importancia. d=0.02 es despreciable."
+            },
+            {
+              "id": "q5-1-7-3",
+              "type": "fill-in",
+              "question": "Probar 20 variables independientes hasta una dé p<0.05. Probabilidad al menos una falsa positiva: ___",
+              "answer": "1 - 0.95²⁰ ≈ 0.64",
+              "explanation": "P(ninguna falsa) = 0.95²⁰ ≈ 0.36. P(al menos 1) = 1 - 0.36 = 0.64 (64%). ¡p-hacking!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-1-8",
+      "title": "Proyecto Módulo: Análisis Exploratorio de Dataset Real (Kaggle / UCI)",
+      "objective": "Dataset completo (ej: Titanic, Housing, Iris, Wine, Heart Disease). EDA completo: limpieza, univariado, bivariado, visualizaciones, insights, reporte ejecutivo",
+      "type": "project",
+      "durationMin": 20,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Dataset Titanic: ¿quién sobrevivió? Variables: clase, sexo, edad, tarifa, embarcación. Limpia nulos, analiza univariado, cruza variables (sexo×supervivencia, clase×edad), visualiza, halla insights, redacta reporte 1 página."
+        },
+        {
+          "type": "explanation",
+          "text": "Metodología EDA (Análisis Exploratorio Datos):\n1. <strong>Carga y diccionario</strong>: variables, tipos, nulos, duplicados\n2. <strong>Limpieza</strong>: imputa nulos (media/mediana/moda/modelo), elimina duplicados, outliers (decisión documentada)\n3. <strong>Análisis univariado</strong>: cada variable → distribución, centro, dispersión, forma, outliers, gráficos (hist, box, barras)\n4. <strong>Análisis bivariado/multivariado</strong>: matriz correlación, scatter plots, boxplots paralelos, tablas contingencia (categóricas), test chi-cuadrado / ANOVA\n5. <strong>Insights clave</strong>: patrones, anomalías, relaciones, hipótesis generadas\n6. <strong>Visualizaciones finales</strong>: 3-5 gráficos 'que cuentan la historia'\n7. <strong>Reporte ejecutivo</strong> (1 pág): pregunta, datos, hallazgos principales, limitaciones, próximas preguntas\nDatasets sugeridos: Titanic (clasificación), Boston Housing (regresión), Iris (clustering), Wine Quality (regresión/clasificación), Heart Disease (clasificación médica), Mall Customers (segmentación).",
+          "latex": "EDA: \\text{Limpieza} \\to \\text{Univariado} \\to \\text{Bivariado} \\to \\text{Insights} \\to \\text{Reporte} \\quad | \\quad \\text{Matriz corr: } \\rho_{ij} \\quad | \\quad \\chi^2, ANOVA \\text{ para categ\\'oricas}",
+          "visual": "assets/eda-project.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "EDAWorkbench",
+          "description": "Carga CSV (drag & drop). Paso a paso guiado:\n1. Vista previa + diccionario + nulos %\n2. Limpieza: botones imputar/eliminar, log acciones\n3. Univariado: selector variable → hist/box/barras + stats + outliers\n4. Bivariado: selector X,Y → scatter/box paralelos/tabla contingencia + corr/test\n5. Matriz correlación heatmap + dendrograma clustering\n6. Constructor reporte: selecciona insights → genera markdown/PDF con gráficos\n7. Exporta: notebook (JSON), reporte PDF, dataset limpio CSV."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-1-8-1",
+              "type": "multiple-choice",
+              "question": "Variable 'Edad' tiene 15% nulos. Mejor imputación si distribución asimétrica:",
+              "options": [
+                "Media",
+                "Mediana",
+                "Moda",
+                "Eliminar filas"
+              ],
+              "correct": 1,
+              "explanation": "Mediana robusta a asimetría/outliers. Media se sesga."
+            },
+            {
+              "id": "q5-1-8-2",
+              "type": "fill-in",
+              "question": "Test para relación variable categórica (Sexo: M/F) vs categórica (Supervivencia: Sí/No): ___",
+              "answer": "Chi-cuadrado (χ²)",
+              "explanation": "Tabla contingencia + test χ² independencia."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

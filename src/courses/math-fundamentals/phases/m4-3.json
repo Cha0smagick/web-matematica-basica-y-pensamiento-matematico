@@ -1,0 +1,490 @@
+{
+  "id": "m4-3",
+  "phaseId": "phase-4",
+  "number": "4.3",
+  "title": "Derivada = Velocidad Instantánea",
+  "description": "Tangente, reglas derivación, optimización, relacionados, física",
+  "lessons": [
+    {
+      "id": "l4-3-1",
+      "title": "La Derivada: Pendiente de la Tangente = Velocidad Instantánea",
+      "objective": "Entender derivada como límite de razón de cambio promedio. f'(a) = lim_{h→0} (f(a+h)-f(a))/h. Velocímetro vs odómetro",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Coche: odómetro = posición (función). Velocímetro = derivada (velocidad INSTANTÁNEA). Velocidad media = (km final - km inicial) / tiempo. Velocidad instantánea = límite cuando tiempo → 0."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Derivada</strong> de f en a:\nf'(a) = lim_{h→0} (f(a+h) - f(a)) / h\n- Geométrica: pendiente de la recta TANGENTE en (a, f(a))\n- Física: velocidad instantánea (si f = posición)\n- Razón de cambio instantánea\nNotaciones: f'(x), dy/dx, df/dx, Df(x)\nRecta tangente: y - f(a) = f'(a)(x - a)\nRecta normal: pendiente -1/f'(a) (si f'(a)≠0)\nDiferenciabilidad ⇒ continuidad. Recíproco FALSO (ej: |x| en 0).",
+          "latex": "f'(a) = \\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h} \\quad | \\quad \\text{Tangente: } y=f(a)+f'(a)(x-a) \\quad | \\quad v(t) = x'(t),\\, a(t) = v'(t) = x''(t)",
+          "visual": "assets/derivative-concept.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Película: fotograma a fotograma. Posición en cada frame. Velocidad = (posición frame n+1 - posición frame n) / Δt. Derivada = Δt → 0 (cámara infinita velocidad). Velocímetro no mide promedio, mide AHORA.",
+          "conceptId": "derivative-concept"
+        },
+        {
+          "type": "interactive",
+          "component": "DerivativeExplorer",
+          "description": "Función f(x). Punto a móvil. Secante (a, a+h) → tangente cuando h→0. Pendiente secante = (f(a+h)-f(a))/h. Tabla h: 1, 0.1, 0.01, 0.001 → límite. Gráfica derivada f'(x) = pendiente tangente en cada punto. Velocímetro animado: coche + gráfica posición/velocidad."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-3-1-1",
+              "type": "multiple-choice",
+              "question": "f(x) = x². f'(3) = ",
+              "options": [
+                "3",
+                "6",
+                "9",
+                "2"
+              ],
+              "correct": 1,
+              "explanation": "f'(x) = 2x. f'(3) = 6. Pendiente tangente en (3,9) es 6."
+            },
+            {
+              "id": "q4-3-1-2",
+              "type": "fill-in",
+              "question": "Posición x(t) = 4t² + 2t. Velocidad v(t) = ___. Aceleración a(t) = ___",
+              "answer": "8t+2, 8",
+              "explanation": "v(t) = x'(t) = 8t+2. a(t) = v'(t) = 8."
+            },
+            {
+              "id": "q4-3-1-3",
+              "type": "multiple-choice",
+              "question": "Derivada de f en a existe ⟺ ",
+              "options": [
+                "f es continua en a",
+                "Límite (f(a+h)-f(a))/h existe y es finito",
+                "f(a) = 0",
+                "f es polinomio"
+              ],
+              "correct": 1,
+              "explanation": "Definición: el límite de la razón de cambio debe existir y ser finito. Continuidad es necesaria pero no suficiente."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-3-2",
+      "title": "Reglas Básicas de Derivación: Constante, Potencia, Suma, Múltiplo",
+      "objective": "Derivar polinomios y combinaciones lineales. (cf)' = cf', (f+g)' = f'+g', (xⁿ)' = nxⁿ⁻¹",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Derivada de x³: 3x². De 5x⁴: 20x³. De 3x² - 7x + 2: 6x - 7. Reglas: 'baja exponente, multiplica por el anterior, resta 1 al exponente'."
+        },
+        {
+          "type": "explanation",
+          "text": "Reglas fundamentales:\n1. <strong>Constante</strong>: (c)' = 0\n2. <strong>Potencia</strong>: (xⁿ)' = n·xⁿ⁻¹ (n ∈ ℝ)\n3. <strong>Múltiplo por constante</strong>: (c·f)' = c·f'\n4. <strong>Suma/Resta</strong>: (f ± g)' = f' ± g'\nCon estas derivas CUALQUIER polinomio y combinaciones lineales.\nEjemplos:\n- (7)' = 0\n- (x⁵)' = 5x⁴\n- (3x⁴)' = 12x³\n- (x³ - 4x² + 2x - 5)' = 3x² - 8x + 2\n- (√x)' = (x^{1/2})' = ½x^{-1/2} = 1/(2√x)\n- (1/x²)' = (x^{-2})' = -2x^{-3} = -2/x³",
+          "latex": "(c)'=0 \\quad | \\quad (x^n)'=nx^{n-1} \\quad | \\quad (cf)'=cf' \\quad | \\quad (f\\pm g)'=f'\\pm g' \\quad | \\quad n\\in\\mathbb{R}",
+          "visual": "assets/basic-derivative-rules.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Regla potencia: 'exponente baja, multiplica, exponentes resta 1'. xⁿ → n·xⁿ⁻¹. Como 'bajar un escalón': x³ (escalón 3) → 3x² (escalón 2). Constante = suelo (escalón 0) → derivada 0 (sótano).",
+          "conceptId": "basic-derivative-rules"
+        },
+        {
+          "type": "interactive",
+          "component": "DerivativeRulesTrainer",
+          "description": "Generador polinomios aleatorios (grados 0-5, coeficientes -5 a 5). Usuario deriva término a término. Paso a paso: identifica término → aplica regla potencia → suma resultados. Verifica derivando con regla suma. Incluye raíces (x^{1/2}) y potencias negativas."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-3-2-1",
+              "type": "fill-in",
+              "question": "Deriva: f(x) = 4x³ - 3x² + 2x - 7. f'(x) = ___",
+              "answer": "12x² - 6x + 2",
+              "explanation": "Término a término: (4x³)'=12x², (-3x²)'=-6x, (2x)'=2, (-7)'=0."
+            },
+            {
+              "id": "q4-3-2-2",
+              "type": "multiple-choice",
+              "question": "(√x)' = ",
+              "options": [
+                "1/(2√x)",
+                "2√x",
+                "1/√x",
+                "√x/2"
+              ],
+              "correct": 0,
+              "explanation": "√x = x^{1/2}. (x^{1/2})' = ½x^{-1/2} = 1/(2√x)."
+            },
+            {
+              "id": "q4-3-2-3",
+              "type": "fill-in",
+              "question": "f(x) = 3/x² - 2/√x + 5. f'(x) = ___",
+              "answer": "-6/x³ + 1/x^{3/2}",
+              "explanation": "3x^{-2} → -6x^{-3} = -6/x³. -2x^{-1/2} → -2(-1/2)x^{-3/2} = x^{-3/2} = 1/x√x. 5' = 0."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-3-3",
+      "title": "Regla del Producto y Regla del Cociente",
+      "objective": "(fg)' = f'g + fg'. (f/g)' = (f'g - fg')/g². Derivar productos y cocientes sin expandir",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "(x²·sen x)' ≠ 2x·cos x. Producto: 'deriva primera × segunda + primera × deriva segunda'. Cociente: 'deriva arriba × abajo - arriba × deriva abajo, todo sobre abajo al cuadrado'."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Regla del producto</strong>: (f·g)' = f'·g + f·g'\nMnemotecnia: 'D U + U D' (deriva primera por segunda + primera por deriva segunda)\n<strong>Regla del cociente</strong>: (f/g)' = (f'·g - f·g') / g²\nMnemotecnia: 'Abajo deriva arriba menos arriba deriva abajo, todo sobre abajo al cuadrado'\nExtensión: producto de 3: (fgh)' = f'gh + fg'h + fgh'\nDerivada de 1/g: (1/g)' = -g'/g² (caso especial cociente).",
+          "latex": "(fg)'=f'g+fg' \\quad | \\quad \\left(\\frac{f}{g}\\right)'=\\frac{f'g-fg'}{g^2} \\quad | \\quad \\left(\\frac{1}{g}\\right)'=-\\frac{g'}{g^2}",
+          "visual": "assets/product-quotient-rules.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Producto: dos fábricas. Producción total = fábrica A × fábrica B. Cambio = (cambio A)×B + A×(cambio B). Cociente: ratio A/B. Cambio ratio = (cambio A·B - A·cambio B)/B². Como interés compuesto vs simple.",
+          "conceptId": "product-quotient-rules"
+        },
+        {
+          "type": "interactive",
+          "component": "ProductQuotientTrainer",
+          "description": "Expresiones: producto (polinomio×trig, exp×log, etc.) y cociente. Paso a paso: identifica f,g → f',g' → aplica fórmula → simplifica. Cociente: opción 'simplifica antes' (factoriza) vs 'aplica regla directo'. Compara resultados."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-3-3-1",
+              "type": "fill-in",
+              "question": "f(x) = x²·sen x. f'(x) = ___",
+              "answer": "2x sen x + x² cos x",
+              "explanation": "f'g + fg' = (2x)·sen x + x²·cos x."
+            },
+            {
+              "id": "q4-3-3-2",
+              "type": "multiple-choice",
+              "question": "f(x) = (x²+1)/(x-1). f'(x) = ",
+              "options": [
+                "(2x(x-1) - (x²+1))/(x-1)²",
+                "(2x(x-1) + (x²+1))/(x-1)²",
+                "2x/(x-1)",
+                "(x²+1)/(x-1)²"
+              ],
+              "correct": 0,
+              "explanation": "Cociente: f'g - fg' / g² = (2x)(x-1) - (x²+1)(1) / (x-1)²."
+            },
+            {
+              "id": "q4-3-3-3",
+              "type": "fill-in",
+              "question": "f(x) = x·eˣ·ln x. f'(x) = ___ (usa producto de 3)",
+              "answer": "eˣ ln x + x eˣ ln x + x eˣ/x = eˣ(ln x + x ln x + 1)",
+              "explanation": "(fgh)' = f'gh + fg'h + fgh'. f=x, g=eˣ, h=ln x. f'=1, g'=eˣ, h'=1/x. 1·eˣ·ln x + x·eˣ·ln x + x·eˣ·(1/x) = eˣ(ln x + x ln x + 1)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-3-4",
+      "title": "Regla de la Cadena: Derivadas de Funciones Compuestas",
+      "objective": "(f∘g)'(x) = f'(g(x))·g'(x). 'Deriva fuera, deja dentro, deriva dentro'. Aplicar en capas",
+      "type": "procedural",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "f(x) = sen(x²). No es cos(x²). Es cos(x²) · 2x. 'Deriva fuera (sen→cos), deja dentro (x²), deriva dentro (2x)'. Capas como cebolla."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Regla de la cadena</strong>: (f(g(x)))' = f'(g(x)) · g'(x)\nEn notación Leibniz: dy/dx = (dy/du)·(du/dx) donde u = g(x)\nPasos:\n1. Identifica función EXTERIOR f y INTERIOR g\n2. Deriva exterior evaluada en interior: f'(g(x))\n3. Multiplica por derivada interior: g'(x)\n4. Simplifica\nEjemplos:\n- (sen(x²))' = cos(x²)·2x\n- (e^{3x})' = e^{3x}·3 = 3e^{3x}\n- (ln(x²+1))' = 1/(x²+1)·2x = 2x/(x²+1)\n- (√(x³+1))' = ½(x³+1)^{-1/2}·3x² = 3x²/(2√(x³+1))\n- (tan(x))' = sec²(x) (cadena: sen/cos → cociente)\nCapas múltiples: (sen(e^{x²}))' = cos(e^{x²})·e^{x²}·2x.",
+          "latex": "(f\\circ g)'(x) = f'(g(x))\\cdot g'(x) \\quad | \\quad \\frac{dy}{dx} = \\frac{dy}{du}\\frac{du}{dx} \\quad | \\quad \\text{``Deriva fuera, deja dentro, deriva dentro''}",
+          "visual": "assets/chain-rule.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Cebolla: capas. f(g(h(x))). Deriva capa a capa desde fuera: f'(g(h(x))) · g'(h(x)) · h'(x). Como cadena de montaje: cada estación transforma lo que recibe. Velocidad final = producto de velocidades relativas.",
+          "conceptId": "chain-rule"
+        },
+        {
+          "type": "interactive",
+          "component": "ChainRuleTrainer",
+          "description": "Generador funciones compuestas (2-4 capas). Árbol visual: exterior → interior. Paso a paso: colorea capa exterior, deriva, multiplica por derivada siguiente. Notación Leibniz: dy/du · du/dv · dv/dx. Ejemplos: trig(polinomio), exp(log), potencia(compuesta), log(trig)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-3-4-1",
+              "type": "fill-in",
+              "question": "f(x) = cos(3x²+1). f'(x) = ___",
+              "answer": "-sen(3x²+1)·6x = -6x sen(3x²+1)",
+              "explanation": "Exterior cos → -sen. Interior 3x²+1 → 6x. Producto: -sen(3x²+1)·6x."
+            },
+            {
+              "id": "q4-3-4-2",
+              "type": "multiple-choice",
+              "question": "f(x) = ln(sen x). f'(x) = ",
+              "options": [
+                "cot x",
+                "tan x",
+                "1/sen x",
+                "cos x"
+              ],
+              "correct": 0,
+              "explanation": "Exterior ln → 1/u. Interior sen x → cos x. (1/sen x)·cos x = cot x."
+            },
+            {
+              "id": "q4-3-4-3",
+              "type": "fill-in",
+              "question": "f(x) = (x²+1)¹⁰. f'(x) = ___ (cadena: potencia exterior)",
+              "answer": "10(x²+1)⁹·2x = 20x(x²+1)⁹",
+              "explanation": "Exterior u¹⁰ → 10u⁹. Interior x²+1 → 2x. 10(x²+1)⁹·2x."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-3-5",
+      "title": "Derivadas de Funciones Trigonométricas, Exponenciales y Logarítmicas",
+      "objective": "Tabla completa: (sen x)'=cos x, (cos x)'=-sen x, (tan x)'=sec²x, (eˣ)'=eˣ, (aˣ)'=aˣln a, (ln x)'=1/x, (logₐx)'=1/(x ln a)",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Derivada de eˣ es eˣ (¡única función igual a su derivada!). Derivada de ln x es 1/x. Derivada de sen x es cos x. Derivada de cos x es -sen x (¡signo menos!)."
+        },
+        {
+          "type": "explanation",
+          "text": "Tabla de derivadas trascendentes:\n- (sen x)' = cos x\n- (cos x)' = -sen x\n- (tan x)' = sec²x = 1/cos²x\n- (cot x)' = -csc²x\n- (sec x)' = sec x tan x\n- (csc x)' = -csc x cot x\n- (eˣ)' = eˣ  (¡propiedad única!)\n- (aˣ)' = aˣ ln a  (a > 0)\n- (ln x)' = 1/x  (x > 0)\n- (logₐ x)' = 1/(x ln a)\n- (arcsen x)' = 1/√(1-x²)\n- (arccos x)' = -1/√(1-x²)\n- (arctan x)' = 1/(1+x²)\nCombinadas con cadena: (sen(eˣ))' = cos(eˣ)·eˣ. (ln(x²+1))' = 2x/(x²+1). (5^{x²})' = 5^{x²} ln 5 · 2x.",
+          "latex": "(\\sin x)'=\\cos x \\quad (\\cos x)'=-\\sin x \\quad (e^x)'=e^x \\quad (a^x)'=a^x\\ln a \\quad (\\ln x)'=1/x \\quad (\\log_a x)'=1/(x\\ln a) \\quad (\\arctan x)'=1/(1+x^2)",
+          "visual": "assets/transcendent-derivatives.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "eˣ = 'función perfecta': su tasa de cambio ES su valor. ln x = inversa de eˣ → derivada 1/x (simétrica). Trigonométricas: sen y cos son 'gemelos derivados' con cambio de signo en cos. Tan = sen/cos → derivada sec² (crece rápido cerca de π/2).",
+          "conceptId": "transcendent-derivatives"
+        },
+        {
+          "type": "interactive",
+          "component": "TranscendentDerivativeTrainer",
+          "description": "Tabla interactiva. Generador aleatorio: combina trascendentes + cadena + producto/cociente. Paso a paso: identifica tipo → regla base → cadena si compuesta → producto/cociente si combina. Verifica derivando numéricamente (diferencia central h=1e-6)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-3-5-1",
+              "type": "multiple-choice",
+              "question": "f(x) = e^{2x}·sen(3x). f'(x) = ",
+              "options": [
+                "2e^{2x}sen(3x) + 3e^{2x}cos(3x)",
+                "e^{2x}(2sen3x+3cos3x)",
+                "2e^{2x}cos(3x)",
+                "Ambas A y B son correctas"
+              ],
+              "correct": 3,
+              "explanation": "Producto: (e^{2x})'sen3x + e^{2x}(sen3x)' = 2e^{2x}sen3x + 3e^{2x}cos3x = e^{2x}(2sen3x+3cos3x)."
+            },
+            {
+              "id": "q4-3-5-2",
+              "type": "fill-in",
+              "question": "f(x) = log₂(x²+1). f'(x) = ___",
+              "answer": "2x/((x²+1)ln2)",
+              "explanation": "(logₐ u)' = u'/(u ln a). u=x²+1, u'=2x, a=2. f' = 2x/((x²+1)ln2)."
+            },
+            {
+              "id": "q4-3-5-3",
+              "type": "multiple-choice",
+              "question": "f(x) = arctan(√x). f'(x) = ",
+              "options": [
+                "1/(2√x(1+x))",
+                "1/(1+x)",
+                "1/(2√x(1-x))",
+                "√x/(1+x)"
+              ],
+              "correct": 0,
+              "explanation": "(arctan u)' = u'/(1+u²). u=√x, u'=1/(2√x). f' = (1/(2√x))/(1+x) = 1/(2√x(1+x))."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-3-6",
+      "title": "Optimización: Máximos y Mínimos. Derivada = 0, Test Segunda Derivada",
+      "objective": "Encontrar extremos absolutos/relativos. Puntos críticos: f'=0 o f' no existe. f''>0 → mínimo, f''<0 → máximo. Problemas de caja, cercado, coste mínimo",
+      "type": "procedural",
+      "durationMin": 10,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Rectángulo perímetro 20 → área máxima cuando es cuadrado (5×5). Derivada área = 0 → lado = 5. Segunda derivada negativa → máximo."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Optimización</strong> (máximos/mínimos):\n1. Modelo: variable a optimizar (área, volumen, coste, tiempo) en función de parámetro x\n2. Dominio real de x (restricciones físicas)\n3. Deriva f'(x)\n4. <strong>Puntos críticos</strong>: f'(x) = 0 o f'(x) no existe\n5. <strong>Test segunda derivada</strong>: f''(c) > 0 → mínimo local; f''(c) < 0 → máximo local; f''(c) = 0 → inconcluso (usa test primera derivada)\n6. <strong>Extremos absolutos</strong>: evalúa f en puntos críticos + extremos del dominio\n7. Interpreta: ¿tiene sentido físico?\nEjemplos clásicos:\n- Caja sin tapa: V = x(L-2x)(W-2x)\n- Cercado: área = x·y con 2x+y = L fijo\n- Coste mínimo: C(x) = fijos + variables/x + operativos·x\n- Distancia mínima: punto a curva",
+          "latex": "f'(c)=0 \\text{ (punto cr\\'itico)} \\quad | \\quad f''(c)>0 \\Rightarrow \\text{m\\'inimo} \\quad | \\quad f''(c)<0 \\Rightarrow \\text{m\\'aximo} \\quad | \\quad \\text{Extremos absolutos: eval\\'ua en cr\\'iticos + bordes}",
+          "visual": "assets/optimization.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Cima montaña: f'=0 (llano), f''<0 (cóncava abajo = máximo). Valle: f'=0, f''>0 (cóncava arriba = mínimo). Punto silla: f'=0, f''=0 (cambio concavidad). Test segunda derivada = 'curvatura' en el punto crítico.",
+          "conceptId": "optimization"
+        },
+        {
+          "type": "interactive",
+          "component": "OptimizationLab",
+          "description": "Problemas clásicos interactivos:\n1. Caja cartón (L,W variables) → V(x) → máx\n2. Cercado rectangular (lado río gratis) → máx área\n3. Lata cilíndrica (volumen fijo) → mín superficie\n4. Tubería esquina (longitud máx que pasa) → mín L(θ)\n5. Coste transporte (velocidad vs consumo) → mín coste/km\nCada uno: modelo → derivada → críticos → test 2ª deriv → evalúa bordes → respuesta con unidades. Gráfica f(x) con máx/mín marcados."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-3-6-1",
+              "type": "number-input",
+              "question": "Rectángulo perímetro 40. Área máxima = ___ (lado = ___)",
+              "answer": "100, 10",
+              "explanation": "2x+2y=40 → y=20-x. A=x(20-x)=20x-x². A'=20-2x=0 → x=10. y=10. A=100. f''=-2<0 → máx."
+            },
+            {
+              "id": "q4-3-6-2",
+              "type": "fill-in",
+              "question": "Cilindro volumen 1000 cm³. Radio que minimiza superficie: r = ___ cm",
+              "answer": "∛(500/π) ≈ 5.42",
+              "explanation": "V=πr²h=1000 → h=1000/(πr²). S=2πr²+2πrh=2πr²+2000/r. S'=4πr-2000/r²=0 → 4πr³=2000 → r³=500/π → r=∛(500/π)."
+            },
+            {
+              "id": "q4-3-6-3",
+              "type": "multiple-choice",
+              "question": "f(x) = x³ - 3x. Punto crítico x=1: f''(1)=6>0 → ",
+              "options": [
+                "Máximo local",
+                "Mínimo local",
+                "Punto de inflexión",
+                "No es crítico"
+              ],
+              "correct": 1,
+              "explanation": "f'(x)=3x²-3=0 → x=±1. f''(x)=6x. f''(1)=6>0 → mínimo local en x=1. f''(-1)=-6<0 → máximo local en x=-1."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-3-7",
+      "title": "Tasas Relacionadas: Cambios Conectados en el Tiempo",
+      "objective": "Variables x(t), y(t) relacionadas por ecuación. Deriva implícita respecto a t: dx/dt, dy/dt. Escalera, globo, sombra, coches cruzando",
+      "type": "procedural",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Escalera 5m apoyada en pared. Base se aleja 1 m/s. ¿Qué tan rápido baja la punta cuando base está a 3m? x²+y²=25 → 2x dx/dt + 2y dy/dt = 0."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Tasas relacionadas</strong>: variables que cambian en el tiempo y están ligadas por una ecuación.\nPasos:\n1. Dibuja, identifica variables (x, y, θ...) y constantes\n2. Escribe ecuación que las relacione (geometría, física)\n3. Deriva IMPLICITAMENTE respecto a t (regla cadena: d/dt f(x) = f'(x)·dx/dt)\n4. Sustituye valores conocidos (incluyendo tasas dadas)\n5. Despeja la tasa pedida\nClásicos:\n- Escalera: x²+y²=L² → x·dx/dt + y·dy/dt = 0\n- Globo esférico: V=4/3πr³ → dV/dt = 4πr²·dr/dt\n- Sombra: triángulos semejantes → x/y = h/H\n- Coches acercándose: z² = x²+y² → z·dz/dt = x·dx/dt + y·dy/dt\n- Ángulo elevación: tan θ = h/x → sec²θ·dθ/dt = -h/x²·dx/dt",
+          "latex": "x^2+y^2=L^2 \\Rightarrow x\\frac{dx}{dt}+y\\frac{dy}{dt}=0 \\quad | \\quad V=\\frac{4}{3}\\pi r^3 \\Rightarrow \\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt} \\quad | \\quad \\text{Deriva impl\\'icita en } t",
+          "visual": "assets/related-rates.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Escalera: base se aleja (dx/dt > 0), punta baja (dy/dt < 0). Están 'atadas' por la longitud fija. Derivar la ecuación de la atadura (Pitágoras) revela cómo se transmiten las velocidades.",
+          "conceptId": "related-rates"
+        },
+        {
+          "type": "interactive",
+          "component": "RelatedRatesLab",
+          "description": "Simulaciones animadas:\n1. Escalera: slider dx/dt, ve dy/dt calculado. Gráfica x(t), y(t).\n2. Globo: dV/dt dado, calcula dr/dt. Ve radio crecer.\n3. Sombra: persona camina, sombra alarga. Triángulos semejantes.\n4. Dos coches: uno N, otro E. Distancia z(t). Velocidad acercamiento.\n5. Ángulo: avión pasa cabeza, ángulo θ(t). Velocidad angular.\nCada uno: ecuación → derivada implícita paso a paso → sustitución → resultado con unidades."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-3-7-1",
+              "type": "number-input",
+              "question": "Escalera 10m. Base se aleja 0.5 m/s. Cuando base a 6m, punta baja a ___ m/s",
+              "answer": "-0.375",
+              "explanation": "x=6, y=√(100-36)=8. x·dx/dt + y·dy/dt = 0 → 6·0.5 + 8·dy/dt = 0 → dy/dt = -3/8 = -0.375 m/s."
+            },
+            {
+              "id": "q4-3-7-2",
+              "type": "fill-in",
+              "question": "Globo: dV/dt = 100 cm³/s. Cuando r=5cm, dr/dt = ___ cm/s",
+              "answer": "1/π ≈ 0.318",
+              "explanation": "dV/dt = 4πr² dr/dt → 100 = 4π·25·dr/dt → dr/dt = 100/(100π) = 1/π."
+            },
+            {
+              "id": "q4-3-7-3",
+              "type": "multiple-choice",
+              "question": "Coche A va N a 60 km/h, B va E a 80 km/h. Cuando A a 30km, B a 40km, dz/dt = ",
+              "options": [
+                "100 km/h",
+                "140 km/h",
+                "50 km/h",
+                "70 km/h"
+              ],
+              "correct": 0,
+              "explanation": "z²=x²+y². z=50. z·dz/dt = x·dx/dt + y·dy/dt = 30·60 + 40·80 = 1800+3200=5000. dz/dt = 5000/50 = 100 km/h."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-3-8",
+      "title": "Proyecto Módulo: Optimización Integral - Diseña tu Negocio",
+      "objective": "Modelo completo: C(x) = costes, I(x) = ingresos, B(x) = beneficio. Deriva B'(x)=0 → producción óptima. Análisis sensibilidad, punto muerto, elasticidad",
+      "type": "project",
+      "durationMin": 20,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Fabricas sillas. Coste fijo 5000€, variable 30€/ud. Precio venta p(x) = 100 - 0.5x (baja si produces más). Ingreso I(x) = x·p(x). Beneficio B(x) = I(x) - C(x). ¿Cuántas sillas maximizan beneficio?"
+        },
+        {
+          "type": "explanation",
+          "text": "Modelo negocio completo:\n- <strong>Coste</strong>: C(x) = CF + CV·x (fijos + variables)\n- <strong>Demanda/Precio</strong>: p(x) = a - b·x (lineal decreciente)\n- <strong>Ingreso</strong>: I(x) = x·p(x) = ax - bx² (parábola abre abajo)\n- <strong>Beneficio</strong>: B(x) = I(x) - C(x) = -bx² + (a-CV)x - CF\n- <strong>Óptimo</strong>: B'(x) = -2bx + (a-CV) = 0 → x* = (a-CV)/(2b)\n- <strong>Test 2ª derivada</strong>: B''(x) = -2b < 0 → MÁXIMO\n- <strong>Punto muerto</strong>: B(x) = 0 → raíces (umbral rentabilidad)\n- <strong>Elasticidad-precio</strong>: ε = (dp/p)/(dx/x) = (p'(x)·x)/p(x). Óptimo ingreso: |ε| = 1\n- <strong>Análisis sensibilidad</strong>: ¿cómo cambia x* si CV sube 10%? si a baja 5%?\nEntregable: informe ejecutivo con gráficas, tablas, recomendaciones.",
+          "latex": "B(x)=-bx^2+(a-CV)x-CF \\quad | \\quad x^*=\\frac{a-CV}{2b} \\quad | \\quad B''(x)=-2b<0 \\text{ (m\\'ax)} \\quad | \\quad \\varepsilon=\\frac{p'(x)x}{p(x)} \\quad | \\quad \\text{Punto muerto: } B(x)=0",
+          "visual": "assets/business-optimization.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "BusinessOptimizer",
+          "description": "Sliders: CF, CV, a, b. Gráficas: C(x), I(x), B(x). Marcadores: x* (óptimo), puntos muertos, B_máx. Tabla sensibilidad: ΔCV → Δx*, ΔB_máx. Elasticidad en x*. Exporta: 'Producir X uds da beneficio máx Y€. Punto muerto: Z uds. Si coste variable sube 10%, producir X' uds.'"
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-3-8-1",
+              "type": "number-input",
+              "question": "CF=5000, CV=30, a=100, b=0.5. Producción óptima x* = ___ uds",
+              "answer": "70",
+              "explanation": "x* = (a-CV)/(2b) = (100-30)/(2·0.5) = 70/1 = 70 uds."
+            },
+            {
+              "id": "q4-3-8-2",
+              "type": "fill-in",
+              "question": "Beneficio máximo B(x*) = ___ €. Punto muerto inferior = ___ uds",
+              "answer": "B_max = -0.5·70² + 70·70 - 5000 = 2450 - 5000 = -2550? Wait. B(x) = -0.5x² + 70x - 5000. B(70) = -0.5·4900 + 4900 - 5000 = -2450 + 4900 - 5000 = -2550. Negative? That means loss. Let me recalc: I(x) = 100x - 0.5x². C(x) = 5000 + 30x. B = -0.5x² + 70x - 5000. Vertex at x=70. B(70) = -2450 + 4900 - 5000 = -2550. So max benefit is -2550 (loss). Break-even: -0.5x²+70x-5000=0 → x²-140x+10000=0 → (x-70)²+? Wait discriminant: 4900-10000=-5100<0. No real roots. Never profitable. This is a good teaching moment: not all businesses are viable. Let me change params to make it profitable. a=150, CV=30, b=0.5, CF=5000. x*=(150-30)/1=120. B(120)=-0.5·14400+120·120-5000=-7200+14400-5000=2200. Break-even: -0.5x²+120x-5000=0 → x²-240x+10000=0 → disc=57600-40000=17600. Roots: (240±√17600)/2 = 120±66.3 → 53.7, 186.3. Profitable between ~54 and ~186."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

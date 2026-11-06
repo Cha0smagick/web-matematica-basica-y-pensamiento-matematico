@@ -1,0 +1,527 @@
+{
+  "id": "m5-4",
+  "phaseId": "phase-5",
+  "number": "5.4",
+  "title": "Inferencia Básica",
+  "description": "Muestreo, intervalos confianza, test hipótesis, correlación ≠ causalidad",
+  "lessons": [
+    {
+      "id": "l5-4-1",
+      "title": "Muestreo: Aleatorio Simple, Estratificado, Conglomerados, Sistemático",
+      "objective": "Tipos de muestreo, sesgos, representatividad. Tamaño muestra, error muestral, muestreo con/sin reemplazo",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Encuesta electoral: llaman fijos (sesgo: solo mayores en casa). Mejor: aleatorio simple (todos misma prob). Estratificado: asegura representación grupos (edad, sexo). Conglomerados: barrios → ahorra costos."
+        },
+        {
+          "type": "explanation",
+          "text": "Tipos de muestreo probabilístico:\n1. <strong>Aleatorio Simple (MAS)</strong>: todos subconjuntos n igual prob. Requiere marco muestral completo.\n2. <strong>Estratificado</strong>: divide población en estratos (homogéneos dentro, heterogéneos entre). Muestrea en cada estrato (proporcional / óptima / Neyman). Reduce varianza.\n3. <strong>Conglomerados (clusters)</strong>: divide en grupos (heterogéneos dentro, homogéneos entre). Selecciona conglomerados al azar, mide todos dentro. Ahorra costos logísticos.\n3. <strong>Sistemático</strong>: cada k-ésimo elemento (k=N/n). Inicio aleatorio. Fácil, pero riesgo patrón periódico.\n<strong>Sesgos</strong>:\n- Sesgo selección: marco incompleto, no respuesta\n- Sesgo voluntario: solo interesados responden\n- Sesgo supervivencia: solo observas 'supervivientes'\n<strong>Tamaño muestra</strong>: n = (z²·p·q)/E² (proporción), n = (z·σ/E)² (media). E = error margen.",
+          "latex": "n = \\frac{z^2 p q}{E^2} \\text{ (prop.)} \\quad | \\quad n = \\left(\\frac{z\\sigma}{E}\\right)^2 \\text{ (media)} \\quad | \\quad \\text{Neyman: } n_h \\propto N_h\\sigma_h",
+          "visual": "assets/sampling.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Cocina: prueba cuchara sopa (muestreo). MAS = revuelve bien, prueba cucharada. Estratificado: prueba cucharada de cada olla (carne, verduras, caldo). Conglomerados: prueba plato entero de una mesa (cluster). Sistemático: prueba cada 5ª cucharada.",
+          "conceptId": "sampling"
+        },
+        {
+          "type": "interactive",
+          "component": "SamplingLab",
+          "description": "Población virtual (N=10000) con variable Y y estratos/clusters. Usuario elige método: MAS, estratificado (proporcional/Neyman), conglomerados (1/2 etapa), sistemático. Calcula: media muestral, varianza, sesgo, error estándar, IC 95%. Compara métodos: caja bigotes 1000 repeticiones. Costo vs precisión. Sesgo no respuesta: simula no respuesta diferencial."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-4-1-1",
+              "type": "multiple-choice",
+              "question": "Muestreo estratificado vs MAS: principal ventaja:",
+              "options": [
+                "Más barato",
+                "Reduce varianza (más preciso)",
+                "Más fácil implementar",
+                "No requiere marco muestral"
+              ],
+              "correct": 1,
+              "explanation": "Estratos homogéneos reducen varianza intra-estrato → estimador más preciso para mismo n."
+            },
+            {
+              "id": "q5-4-1-2",
+              "type": "fill-in",
+              "question": "Proporción p=0.5 (máx varianza). IC 95% margen error 3%. n = ___",
+              "answer": "1067",
+              "explanation": "n = (1.96² × 0.5 × 0.5) / 0.03² ≈ 1067.1 → 1068."
+            },
+            {
+              "id": "q5-4-1-3",
+              "type": "multiple-choice",
+              "question": "Muestreo sistemático cada k=10. Riesgo principal:",
+              "options": [
+                "Sesgo selección",
+                "Patrón periódico en población coincide con k",
+                "Costo alto",
+                "Difícil calcular IC"
+              ],
+              "correct": 1,
+              "explanation": "Si población tiene patrón cada 10 elementos, muestra no representativa."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-4-2",
+      "title": "Estimación Puntual: Insesgadez, Eficiencia, Consistencia, MLE",
+      "objective": "Estimador θ̂. Insesgado: E[θ̂]=θ. Eficiente: mínima varianza. Consistente: θ̂ → θ cuando n→∞. MLE: maximiza verosimilitud",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Media muestral X̄ estima μ. ¿Es buena? Insesgada (E[X̄]=μ). Eficiente (mínima varianza entre insesgados). Consistente (X̄→μ cuando n→∞). MLE: el valor que hace datos más probables."
+        },
+        {
+          "type": "explanation",
+          "text": "Propiedades estimadores puntuales:\n1. <strong>Insesgadez</strong>: E[θ̂] = θ. X̄ insesgada para μ. S² (con n-1) insesgada para σ².\n2. <strong>Eficiencia</strong>: entre insesgados, menor varianza. X̄ es eficiente (Cramér-Rao).\n3. <strong>Consistencia</strong>: θ̂_n → θ en probabilidad cuando n→∞ (Ley Grandes Números). X̄, S² consistentes.\n4. <strong>Suficiencia</strong>: estadístico contiene toda info muestra sobre θ (Factorización Neyman).\n<strong>MLE (Máxima Verosimilitud)</strong>:\n- L(θ) = ∏ f(xᵢ|θ) (verosimilitud)\n- ℓ(θ) = ln L(θ) (log-verosimilitud)\n- θ̂_MLE = argmax ℓ(θ) → resuelve ∂ℓ/∂θ = 0 (ecuación score)\n- Propiedades asintóticas: consistente, asintóticamente normal, eficiente (alcanza Cramér-Rao)\n- Invariancia: g(θ̂_MLE) = MLE de g(θ)\nEjemplos: Normal → μ̂=X̂, σ̂²=(1/n)Σ(xᵢ-X̄)² (sesgada, pero MLE). Bernoulli → p̂ = X̄. Poisson → λ̂ = X̄. Exponencial → λ̂ = 1/X̄.",
+          "latex": "E[\\hat{\\theta}]=\\theta \\text{ (insesgado)} \\quad | \\quad Var(\\hat{\\theta}) \\text{ mínima (eficiente)} \\quad | \\quad \\hat{\\theta}_n \\xrightarrow{p} \\theta \\text{ (consistente)} \\quad | \\quad \\hat{\\theta}_{MLE} = \\arg\\max_\\theta \\sum \\ln f(x_i|\\theta)",
+          "visual": "assets/point-estimation.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Insesgado = 'apuntas al centro de la diana en promedio'. Eficiente = 'tus flechas están muy juntas'. Consistente = 'con más flechas, te acercas al centro'. MLE = 'elige el centro que hace tu patrón de flechas más probable'.",
+          "conceptId": "point-estimation"
+        },
+        {
+          "type": "interactive",
+          "component": "EstimationLab",
+          "description": "Generador muestras de distribución conocida (Normal, Bernoulli, Poisson, Exponencial). Usuario elige estimador (media, mediana, MLE, momentos). Simula 10000 muestras: histograma estimador, media, varianza, sesgo, MSE. Compara: X̄ vs mediana (Normal vs Laplace), S²_n vs S²_{n-1}, MLE vs momentos. Eficiencia relativa: var(θ̂₁)/var(θ̂₂). Consistencia: ve convergencia n=10,30,100,1000."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-4-2-1",
+              "type": "multiple-choice",
+              "question": "MLE de μ en Normal(μ, σ² conocida):",
+              "options": [
+                "Media muestral X̄",
+                "Mediana",
+                "Moda",
+                "Promedio recortado"
+              ],
+              "correct": 0,
+              "explanation": "Log-verosimilitud: ∑-(xᵢ-μ)²/(2σ²). Derivada → μ̂ = X̄."
+            },
+            {
+              "id": "q5-4-2-2",
+              "type": "fill-in",
+              "question": "Bernoulli(p). MLE de p = ___",
+              "answer": "X̄ (proporción éxitos)",
+              "explanation": "L(p) = p^{∑xᵢ}(1-p)^{n-∑xᵢ}. Log, deriva → p̂ = ∑xᵢ/n = X̄."
+            },
+            {
+              "id": "q5-4-2-3",
+              "type": "multiple-choice",
+              "question": "Estimador consistente significa:",
+              "options": [
+                "E[θ̂]=θ",
+                "Var(θ̂) mínima",
+                "θ̂_n → θ cuando n→∞",
+                "θ̂ suficiente"
+              ],
+              "correct": 2,
+              "explanation": "Consistencia: converge en probabilidad al parámetro verdadero al crecer muestra."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-4-3",
+      "title": "Intervalos de Confianza: Media, Proporción, Varianza, Diferencias",
+      "objective": "IC 1-α: P(θ ∈ IC) = 1-α. Media σ conocida (Z), σ desconocida (t). Proporción (Wilson, exacto Clopper-Pearson). Varianza (chi-cuadrado). Diferencia medias/proporciones",
+      "type": "procedural",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Encuesta: 52% intención voto, margen ±3%. IC 95% = [49%, 55%]. Significado: si repites 100 veces, ~95 intervalos contienen valor verdadero. NO: 'probabilidad 95% que p esté aquí'."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Intervalo de Confianza (IC) 1-α</strong>: región que cubre parámetro verdadero con prob 1-α en muestreo repetido.\nInterpretación correcta: 'Método genera intervalos que contienen θ el 95% de veces'. NO 'P(θ ∈ este intervalo) = 0.95'.\n<strong>IC Media</strong>:\n- σ conocida: X̄ ± z_{α/2}·σ/√n\n- σ desconocida: X̄ ± t_{n-1,α/2}·S/√n\n<strong>IC Proporción</strong>:\n- Wald (asintótico): p̂ ± z√(p̂q̂/n) [malo si p cerca 0/1 o n pequeño]\n- Wilson (recomendado): (p̂ + z²/2n ± z√(p̂q̂/n + z²/4n²)) / (1+z²/n)\n- Exacto Clopper-Pearson: basado binomial (garantiza cobertura ≥ 1-α)\n<strong>IC Varianza</strong> (normal): [(n-1)S²/χ²_{α/2}, (n-1)S²/χ²_{1-α/2}]\n<strong>IC Diferencia</strong>:\n- Medias (σ conocidas): (X̄₁-X̄₂) ± z√(σ₁²/n₁+σ₂²/n₂)\n- Medias (σ desconocidas, iguales): (X̄₁-X̄₂) ± t·S_p√(1/n₁+1/n₂)\n- Proporciones: (p̂₁-p̂₂) ± z√(p̂₁q̂₁/n₁ + p̂₂q̂₂/n₂)\n<strong>Bootstrap IC</strong>: percentil, BCa (corregido sesgo/aceleración).",
+          "latex": "IC_{1-\\alpha}: \\hat{\\theta} \\pm z_{\\alpha/2}\\cdot SE \\quad | \\quad \\text{Wilson: } \\frac{\\hat{p}+z^2/2n \\pm z\\sqrt{\\hat{p}\\hat{q}/n+z^2/4n^2}}{1+z^2/n} \\quad | \\quad IC_\\sigma^2: \\left[\\frac{(n-1)S^2}{\\chi^2_{\\alpha/2}}, \\frac{(n-1)S^2}{\\chi^2_{1-\\alpha/2}}\\right]",
+          "visual": "assets/confidence-intervals.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Red pesca: IC = red. 95% confianza = '95% de veces que lances la red, atraparás el pez (parámetro)'. Tamaño red = precisión (ancho IC). Nivel confianza = 'qué tan seguro quieres estar'. Bootstrap = 'simula muchas redes con tus datos'.",
+          "conceptId": "confidence-intervals"
+        },
+        {
+          "type": "interactive",
+          "component": "ConfidenceIntervalLab",
+          "description": "Selector: Media (Z/t), Proporción (Wald/Wilson/Exacto), Varianza, Diferencia medias, Diferencia proporciones. Input: datos resumidos (n, X̄, S, p̂) o datos brutos. Nivel confianza (90/95/99%). Calcula IC exacto + gráfico (distribución muestral + IC sombreado). Compara métodos (Wald vs Wilson vs Exacto). Bootstrap: 10000 remuestreos → IC percentil vs BCa. Coverage simulation: repite 10000 veces, % intervalos que cubren parámetro real."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-4-3-1",
+              "type": "multiple-choice",
+              "question": "IC 95% media, σ desconocida, n=25. Usar:",
+              "options": [
+                "Z = 1.96",
+                "t_{24,0.025} ≈ 2.064",
+                "t_{25,0.025} ≈ 2.060",
+                "Chi-cuadrado"
+              ],
+              "correct": 1,
+              "explanation": "σ desconocida → t-Student. g.l. = n-1 = 24. t_{24,0.025} ≈ 2.064."
+            },
+            {
+              "id": "q5-4-3-2",
+              "type": "fill-in",
+              "question": "Proporción p̂=0.52, n=1000. IC Wilson 95% ≈ [___, ___]",
+              "answer": "0.489, 0.550",
+              "explanation": "Wilson: (0.52+1.96²/2000 ± 1.96√(0.52×0.48/1000+1.96²/4×10⁶))/(1+1.96²/1000) ≈ [0.489, 0.550]."
+            },
+            {
+              "id": "q5-4-3-3",
+              "type": "multiple-choice",
+              "question": "Interpretación correcta IC 95% [a,b] para μ:",
+              "options": [
+                "P(μ ∈ [a,b]) = 0.95",
+                "El método genera intervalos que contienen μ el 95% de veces",
+                "μ está en [a,b] con 95% certeza",
+                "Hay 95% probabilidad que próxima muestra dé media en [a,b]"
+              ],
+              "correct": 1,
+              "explanation": "Frecuentista: el intervalo es fijo, μ es fijo (desconocido). La aleatoriedad está en el método de muestreo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-4-4",
+      "title": "Test de Hipótesis: Nula/Alternativa, Errores I/II, p-valor, Potencia",
+      "objective": "H₀ vs H₁. Estadístico test, región crítica, p-valor. Error tipo I (α), tipo II (β). Potencia = 1-β. Test unilateral/bilateral. Significación vs importancia",
+      "type": "procedural",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Test nuevo fármaco: H₀: 'no funciona' vs H₁: 'funciona'. p-valor = 0.03. Significa: 'si H₀ fuera cierto, probabilidad ver datos tan extremos = 3%'. Rechazamos H₀ si p < α (ej 0.05)."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Test hipótesis</strong>:\n- H₀ (nula): 'no hay efecto/diferencia' (status quo)\n- H₁ (alternativa): 'hay efecto/diferencia' (lo que investigas)\n- Estadístico test: función datos → número (bajo H₀ distribución conocida)\n- Región crítica: valores estadístico → rechazar H₀\n- p-valor: P(estadístico ≥ observado | H₀ cierto). 'Evidencia contra H₀'\n- Nivel significancia α: umbral rechazo (0.05, 0.01, 0.001)\n- Decisión: p < α → rechaza H₀; p ≥ α → no rechaza H₀\n<strong>Errores</strong>:\n- Tipo I (α): rechazar H₀ siendo cierta (falso positivo)\n- Tipo II (β): no rechazar H₀ siendo falsa (falso negativo)\n- Potencia = 1-β = P(rechazar H₀ | H₁ cierta)\n- Trade-off: α↓ → β↑ (menos falsos positivos → más falsos negativos)\n<strong>Unilateral vs Bilateral</strong>:\n- H₁: μ > μ₀ (unilateral derecha) → región cola derecha\n- H₁: μ ≠ μ₀ (bilateral) → dos colas α/2 cada una\n<strong>Significación vs Importancia</strong>: p<0.001 con n=1,000,000 pero efecto minúsculo (d=0.01). Significativo ≠ importante.",
+          "latex": "H_0:\\theta=\\theta_0 \\; vs \\; H_1:\\theta\\neq\\theta_0 \\text{ (bilateral)} \\quad | \\quad p = P(T\\ge t_{obs}|H_0) \\quad | \\quad \\alpha=P(\\text{Tipo I}),\\; \\beta=P(\\text{Tipo II}) \\quad | \\quad \\text{Potencia}=1-\\beta",
+          "visual": "assets/hypothesis-testing.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Juicio: H₀ = 'inocente' (presunción). H₁ = 'culpable'. p-valor = 'probabilidad ver esta evidencia si inocente'. α = 'umbral duda razonable'. Tipo I = 'condenar inocente'. Tipo II = 'absolver culpable'. Potencia = 'capacidad detectar culpable'. Unilateral = 'solo culpable en una dirección'.",
+          "conceptId": "hypothesis-testing"
+        },
+        {
+          "type": "interactive",
+          "component": "HypothesisTestLab",
+          "description": "Selector test: 1 media (Z/t), 2 medias (independientes/pareadas), 1 proporción, 2 proporciones, 1 varianza, 2 varianzas, ANOVA. Input: datos o resumen + H₀/H₁ + α. Calcula: estadístico, g.l., p-valor, decisión, IC correspondiente. Gráfico: distribución H₀, región crítica, estadístico observado, p-valor sombreado. Potencia: curva potencia vs tamaño efecto. Tamaño muestra necesario para potencia 80%. Análisis sensibilidad α vs β."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-4-4-1",
+              "type": "multiple-choice",
+              "question": "p-valor = 0.03, α = 0.05. Decisión:",
+              "options": [
+                "Rechazar H₀",
+                "No rechazar H₀",
+                "Aceptar H₀",
+                "Repetir test"
+              ],
+              "correct": 0,
+              "explanation": "p < α → rechazar H₀. Hay evidencia significativa contra H₀."
+            },
+            {
+              "id": "q5-4-4-2",
+              "type": "fill-in",
+              "question": "Error tipo I = rechazar H₀ siendo ___. Error tipo II = no rechazar H₀ siendo ___",
+              "answer": "cierta, falsa",
+              "explanation": "Tipo I: falso positivo (rechazar verdad). Tipo II: falso negativo (no rechazar falsedad)."
+            },
+            {
+              "id": "q5-4-4-3",
+              "type": "multiple-choice",
+              "question": "Potencia = 1 - β. Para aumentar potencia:",
+              "options": [
+                "Disminuir α",
+                "Disminuir n",
+                "Aumentar tamaño efecto o n",
+                "Hacer test bilateral"
+              ],
+              "correct": 2,
+              "explanation": "Potencia aumenta con: n mayor, efecto mayor, α mayor (más riesgo tipo I), test unilateral (si dirección conocida)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-4-5",
+      "title": "Tests Paramétricos Comunes: t-Student (1, 2 muestras, pareadas), ANOVA, Chi-cuadrado",
+      "objective": "t 1 muestra (media vs μ₀), t 2 muestras independientes (varianzas iguales/desiguales - Welch), t pareadas, ANOVA 1 factor, Chi-cuadrado bondad ajuste/independencia",
+      "type": "procedural",
+      "durationMin": 10,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Media clase = 70? t 1 muestra. ¿Hombres vs mujeres altura? t 2 muestras. ¿Antes/después tratamiento? t pareadas. ¿3+ grupos? ANOVA. ¿Tabla contingencia? Chi-cuadrado."
+        },
+        {
+          "type": "explanation",
+          "text": "Tests paramétricos principales:\n1. <strong>t 1 muestra</strong>: H₀: μ = μ₀. t = (X̄-μ₀)/(S/√n) ~ t_{n-1}\n2. <strong>t 2 muestras independientes</strong>:\n   - Varianzas iguales (pooled): t = (X̄₁-X̄₂)/(S_p√(1/n₁+1/n₂)), g.l. = n₁+n₂-2\n   - Varianzas desiguales (Welch): t = (X̄₁-X̄₂)/√(S₁²/n₁+S₂²/n₂), g.l. Welch-Satterthwaite\n3. <strong>t pareadas</strong>: H₀: μ_d = 0. dᵢ = Xᵢ-Yᵢ. t = d̄/(S_d/√n) ~ t_{n-1}\n4. <strong>ANOVA 1 factor</strong> (k grupos):\n   H₀: μ₁ = μ₂ = ... = μ_k\n   F = MSE_entre / MSE_dentro ~ F_{k-1, N-k}\n   Post-hoc: Tukey HSD, Bonferroni (comparaciones múltiples)\n5. <strong>Chi-cuadrado</strong>:\n   - Bondad ajuste: Σ(O-E)²/E ~ χ²_{k-1}\n   - Independencia (tabla r×c): Σ(O-E)²/E ~ χ²_{(r-1)(c-1)}\n   - Homogeneidad: mismo test estructura\nSupuestos: normalidad (o n grande), independencia, homocedasticidad (para t/ANOVA). Robustez: t/ANOVA robustos a normalidad moderada, no a outliers/heterocedasticidad severa.",
+          "latex": "t_{pooled} = \\frac{\\bar{X}_1-\\bar{X}_2}{S_p\\sqrt{1/n_1+1/n_2}} \\quad | \\quad t_{Welch} = \\frac{\\bar{X}_1-\\bar{X}_2}{\\sqrt{S_1^2/n_1+S_2^2/n_2}} \\quad | \\quad F = \\frac{MS_{entre}}{MS_{dentro}} \\quad | \\quad \\chi^2 = \\sum \\frac{(O-E)^2}{E}",
+          "visual": "assets/parametric-tests.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "t pareadas = 'mismo sujeto antes/después' (elimina variabilidad individual). ANOVA = '¿diferencias entre grupos > ruido dentro grupos?'. Chi-cuadrado = '¿observado coincide con esperado?'. Welch = 'no asumimos varianzas iguales, más seguro'.",
+          "conceptId": "parametric-tests"
+        },
+        {
+          "type": "interactive",
+          "component": "ParametricTestsLab",
+          "description": "Selector test: 1 media, 2 medias (pooled/Welch), pareadas, ANOVA, chi² bondad/independencia. Input datos/resumen. Verifica supuestos: Shapiro-Wilk (normalidad), Levene/Bartlett (homocedasticidad), outliers (boxplot). Calcula: estadístico, g.l., p-valor, IC efecto (Cohen's d, η²). Post-hoc ANOVA: Tukey HSD (gráfico intervalos). Chi²: tabla observado/esperado, residuos estandarizados. Reporte automático APA."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-4-5-1",
+              "type": "multiple-choice",
+              "question": "t pareadas vs t 2 muestras independientes: cuándo usar pareadas?",
+              "options": [
+                "Mismas unidades medidas 2 veces (antes/después)",
+                "Grupos independientes",
+                "Varianzas desiguales",
+                "Muestras grandes"
+              ],
+              "correct": 0,
+              "explanation": "Pareadas: mismas unidades (sujetos) en ambas condiciones. Elimina variabilidad entre sujetos."
+            },
+            {
+              "id": "q5-4-5-2",
+              "type": "fill-in",
+              "question": "ANOVA 3 grupos, n=30 total. g.l. entre = ___, g.l. dentro = ___",
+              "answer": "2, 27",
+              "explanation": "Entre: k-1 = 3-1 = 2. Dentro: N-k = 30-3 = 27."
+            },
+            {
+              "id": "q5-4-5-3",
+              "type": "multiple-choice",
+              "question": "Test Welch vs pooled: Welch se usa cuando:",
+              "options": [
+                "Varianzas iguales",
+                "Varianzas desiguales (no homocedasticidad)",
+                "Muestras pareadas",
+                "Distribución no normal"
+              ],
+              "correct": 1,
+              "explanation": "Welch no asume varianzas iguales. Más robusto, g.l. ajustados (Satterthwaite)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-4-6",
+      "title": "Tests No Paramétricos: Mann-Whitney, Wilcoxon, Kruskal-Wallis, Signos",
+      "objective": "Cuando fallan supuestos paramétricos. Basados en rangos. Mann-Whitney U (2 independientes), Wilcoxon signed-rank (pareadas), Kruskal-Wallis (k grupos), Signos (mediana)",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Datos muy asimétricos, outliers, ordinales, n pequeño → no paramétricos. Mann-Whitney: '¿valores grupo A tienden a ser mayores que grupo B?'. No asume normalidad."
+        },
+        {
+          "type": "explanation",
+          "text": "Tests no paramétricos (basados en rangos):\n1. <strong>Signos (1 muestra)</strong>: H₀: mediana = m₀. Cuenta signos +/- respecto a m₀. Binomial(n, 0.5).\n2. <strong>Wilcoxon signed-rank (pareadas)</strong>: H₀: mediana diferencias = 0. Rango |d|, suma rangos signos + y -. Más potente que signos.\n3. <strong>Mann-Whitney U (2 independientes)</strong>: H₀: distribuciones iguales (estocásticamente). Rango todos datos, suma rangos grupo 1. Equivalente a test diferencia medianas si formas iguales.\n4. <strong>Kruskal-Wallis H (k grupos)</strong>: generalización Mann-Whitney. Rango todos datos, suma rangos por grupo. H ~ χ²_{k-1}.\n5. <strong>Friedman (k pareadas/bloques)</strong>: generalización Wilcoxon para >2 condiciones mismo sujeto.\nVentajas: sin normalidad, robustos outliers, datos ordinales. Desventajas: menos potencia si normalidad cierta, no dan IC parámetros directamente (solo Hodges-Lehmann).",
+          "latex": "Mann-Whitney U: \\sum R_1 \\quad | \\quad Wilcoxon: \\sum \\text{sgn}(d_i)R_i \\quad | \\quad Kruskal-Wallis H = \\frac{12}{N(N+1)}\\sum \\frac{R_j^2}{n_j} - 3(N+1) \\sim \\chi^2_{k-1}",
+          "visual": "assets/nonparametric-tests.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Rangos = 'orden de llegada'. No importa cuánto ganaste, solo tu posición. Mann-Whitney: '¿grupo A llega consistentemente antes que B?'. Wilcoxon: '¿mejoraste consistentemente?'. Kruskal-Wallis: '¿hay grupo que llega consistentemente antes?'. Robustos: un corredor super-rápido (outlier) solo cambia su rango, no distorsiona media.",
+          "conceptId": "nonparametric-tests"
+        },
+        {
+          "type": "interactive",
+          "component": "NonparametricLab",
+          "description": "Selector: Signos, Wilcoxon, Mann-Whitney, Kruskal-Wallis, Friedman. Input datos. Calcula: rangos, estadístico, p-valor exacto (pequeño n) / asintótico (grande n). Eficiencia relativa vs t (95% para normal, >95% para colas pesadas). Hodges-Lehmann IC mediana/diferencia medianas. Post-hoc Dunn (Kruskal-Wallis) con corrección Bonferroni. Compara potencia vs t via simulación (normal vs log-normal vs Cauchy)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-4-6-1",
+              "type": "multiple-choice",
+              "question": "Mann-Whitney U testea:",
+              "options": [
+                "Diferencia medias",
+                "Diferencia medianas (si formas iguales)",
+                "Diferencia varianzas",
+                "Normalidad"
+              ],
+              "correct": 1,
+              "explanation": "Bajo H₀: distribuciones idénticas. Si formas iguales → diferencia medianas. Generalmente: estocásticamente mayor."
+            },
+            {
+              "id": "q5-4-6-2",
+              "type": "fill-in",
+              "question": "Kruskal-Wallis con k=4 grupos. Estadístico H ~ χ² con ___ g.l.",
+              "answer": "3",
+              "explanation": "g.l. = k-1 = 4-1 = 3."
+            },
+            {
+              "id": "q5-4-6-3",
+              "type": "multiple-choice",
+              "question": "Wilcoxon signed-rank vs Signos: Wilcoxon es más potente porque:",
+              "options": [
+                "Usa signos Y magnitudes (rangos)",
+                "Requiere normalidad",
+                "Tamaño muestra menor",
+                "Es paramétrico"
+              ],
+              "correct": 0,
+              "explanation": "Wilcoxon usa rangos de |diferencias| con signos. Signos solo usa signos. Más info → más potencia."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-4-7",
+      "title": "Correlación ≠ Causalidad: Variables Ocultas, Causalidad Inversa, Coincidencia, DAGs",
+      "objective": "Por qué correlación no implica causalidad. Variables confusoras, colisionadores, mediación. Diagramas causales (DAGs). Regla del dorso, do-calculus (intro)",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Helados y ahogamientos correlacionan +. ¿Helados causan ahogamientos? No. Variable oculta: CALOR → más helados Y más natación. DAG: Calor → Helados, Calor → Ahogamientos."
+        },
+        {
+          "type": "explanation",
+          "text": "Por qué r ≠ causalidad:\n1. <strong>Variable confusora (common cause)</strong>: Z → X, Z → Y. Ej: calor → helados, calor → ahogamientos.\n2. <strong>Causalidad inversa</strong>: Y → X (no X → Y). Ej: depresión → insomnio vs insomnio → depresión.\n3. <strong>Coincidencia / correlación espuria</strong>: correlación por azar en muestra (p-hacking).\n4. <strong>Variable colisionador (collider)</strong>: X → Z ← Y. Condicionar a Z crea asociación espuria X-Y.\n5. <strong>Mediación</strong>: X → M → Y. Efecto total = directo + indirecto.\n<strong>Diagramas Causales (DAGs)</strong>:\n- Nodos = variables, Flechas = causalidad directa\n- d-separation: ¿X e Y independientes dado Z?\n- Regla del dorso (backdoor): para estimar efecto X→Y, ajustar por variables que bloquean caminos traseros (confusores). NO ajustar por colisionadores/mediadores.\n- do-calculus (Pearl): P(Y|do(X)) vs P(Y|X). Intervención vs observación.\n<strong>Diseño experimental</strong>: aleatorización rompe confundimiento (rompe flechas entrantes a X).",
+          "latex": "DAG: Z \\to X, Z \\to Y \\text{ (confusor)} \\quad | \\quad X \\to M \\to Y \\text{ (mediaci\\'on)} \\quad | \\quad X \\to Z \\leftarrow Y \\text{ (colisionador)} \\quad | \\quad \\text{Backdoor: ajustar confusores, NO colisionadores} \\quad | \\quad P(Y|do(X)) \\neq P(Y|X)",
+          "visual": "assets/causality.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "DAG = mapa causal. Flechas = 'influye en'. Backdoor = 'puerta trasera por donde se cuela confusión'. Ajustar = 'cerrar puerta trasera'. Colisionador = 'trampa: si condicionas, creas asociación falsa'. Aleatorización = 'corta todas las flechas entrantes al tratamiento' = oro causal.",
+          "conceptId": "causality"
+        },
+        {
+          "type": "interactive",
+          "component": "CausalityLab",
+          "description": "Editor DAG: arrastra nodos, dibuja flechas. Identifica: confusores (backdoor), mediadores, colisionadores. d-separation checker: ¿X ⊥ Y | Z? Backdoor criterion: conjunto mínimo ajuste. Simula datos del DAG: genera X→Y con confusor Z. Estima efecto X→Y: 1) sin ajustar (sesgado), 2) ajustando Z (insesgado), 3) ajustando colisionador (sesgado). do-calculus: P(Y|do(X)) vs P(Y|X) via simulación intervención. Exporta DAG + análisis."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-4-7-1",
+              "type": "multiple-choice",
+              "question": "X → Z ← Y (colisionador). Condicionar a Z:",
+              "options": [
+                "Bloquea asociación X-Y",
+                "Crea asociación espuria X-Y",
+                "No afecta X-Y",
+                "Elimina causalidad"
+              ],
+              "correct": 1,
+              "explanation": "Condicionar en colisionador ABRE camino X-Z-Y → crea asociación espuria entre X e Y."
+            },
+            {
+              "id": "q5-4-7-2",
+              "type": "fill-in",
+              "question": "Regla backdoor: para estimar efecto causal X → Y, ajustar por variables que bloquean ___",
+              "answer": "caminos traseros (backdoor paths)",
+              "explanation": "Caminos que entran a X por 'atrás' (← X). No ajustar por descendientes de X (mediadores/colisionadores)."
+            },
+            {
+              "id": "q5-4-7-3",
+              "type": "multiple-choice",
+              "question": "Aleatorización en experimento:",
+              "options": [
+                "Elimina necesidad de grupo control",
+                "Rompe flechas entrantes al tratamiento (confusores)",
+                "Garantiza normalidad",
+                "Hace innecesario p-valor"
+              ],
+              "correct": 1,
+              "explanation": "Aleatorización hace tratamiento independiente de confusores → efecto causal identificable."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-4-8",
+      "title": "Proyecto Módulo: Estudio Observacional vs Experimental - Análisis Completo",
+      "objective": "Dataset real (ej: efecto educación en salarios, fármaco en salud, publicidad en ventas). Identificar pregunta causal, DAG, variables confusoras, diseño (observacional vs experimental), análisis (regresión, matching, IV), conclusiones con limitaciones",
+      "type": "project",
+      "durationMin": 25,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Dataset: 10000 personas, variables: educación (años), salario, IQ, padres_educ, experiencia, sector. Pregunta: ¿educación CAUSA mayor salario? DAG: IQ → educ, IQ → salario, padres_educ → educ, experiencia → salario. Confusores: IQ, experiencia. Ajustar → efecto causal estimado."
+        },
+        {
+          "type": "explanation",
+          "text": "Metodología análisis causal observacional:\n1. <strong>Pregunta causal</strong>: ¿X causa Y? (ej: educación → salario)\n2. <strong>DAG teórico</strong>: dibuja relaciones causales conocidas (literatura, expertos). Identifica: confusores (backdoor), mediadores, colisionadores.\n3. <strong>Estrategia identificación</strong>:\n   - Backdoor adjustment: reg Y ~ X + confusores (regresión múltiple)\n   - Matching: empareja tratados/no tratados por confusores (propensity score)\n   - Instrumental Variables (IV): variable Z → X, Z ⊥ Y|X (excluyente)\n   - Difference-in-Differences (DiD): panel antes/después tratamiento/control\n   - Regression Discontinuity (RD): cutoff arbitrario\n4. <strong>Análisis sensibilidad</strong>: ¿qué tan robusto a confusores no observados? (E-value, Rosenbaum bounds)\n5. <strong>Validación</strong>: placebo tests, falsification tests, submuestras\n6. <strong>Limitaciones</strong>: no probar causalidad definitiva (solo evidencia), supuestos no testables, generalizabilidad.\n7. <strong>Reporte</strong>: pregunta, DAG, estrategia, resultados (efecto ± IC), limitaciones, conclusiones cautas.\nDatasets: Card (educación-salario), Lalonde (entrenamiento laboral), Angrist (servicio militar-ingresos), datos salud (fármaco-resultado).",
+          "latex": "Backdoor: P(Y|do(X)) = \\sum_z P(Y|X,Z=z)P(Z=z) \\quad | \\quad IV: Z \\to X, Z \\perp Y|X \\quad | \\quad DiD: (\\bar{Y}_{T,post}-\\bar{Y}_{T,pre}) - (\\bar{Y}_{C,post}-\\bar{Y}_{C,pre}) \\quad | \\quad E-value = RR + \\sqrt{RR(RR-1)}",
+          "visual": "assets/causal-project.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "CausalAnalysisWorkbench",
+          "description": "Carga dataset. Paso a paso:\n1. Diccionario variables + DAG editor (arrastra flechas).\n2. Identificación: backdoor set mínimo, IV candidates, DiD/RD applicability.\n3. Estimación: \n   - Regresión OLS + confusores (robustos HC3)\n   - Propensity score matching (nearest neighbor, caliper, kernel)\n   - IV 2SLS (first stage F-stat > 10)\n   - DiD (event study plot)\n   - RD (local linear, bandwidth selection)\n4. Diagnósticos: balance covariates (std diff < 0.1), first stage F, placebo tests.\n5. Sensibilidad: E-value, Rosenbaum bounds, Omitted variable bias (Oster).\n6. Reporte: efecto ± IC, supuestos, limitaciones, conclusión cauta. Exporta PDF/HTML."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-4-8-1",
+              "type": "multiple-choice",
+              "question": "Instrumental Variable (IV) válido requiere:",
+              "options": [
+                "Z → X (relevancia), Z ⊥ Y|X (exclusión), Z ⊥ confusores (independencia)",
+                "Z → Y, Z → X, Z correlaciona con error",
+                "Z solo correlaciona con X",
+                "Z es variable confundora"
+              ],
+              "correct": 0,
+              "explanation": "IV: 1) Relevancia (Z→X), 2) Exclusión (Z⊥Y|X), 3) Independencia (Z⊥U). 2SLS: first stage X~Z, second stage Y~X̂."
+            },
+            {
+              "id": "q5-4-8-2",
+              "type": "fill-in",
+              "question": "E-value para RR=2.0: E = RR + √(RR(RR-1)) = 2 + √(2×1) = ___",
+              "answer": "2 + √2 ≈ 3.41",
+              "explanation": "E-value = fuerza mínima asociación confundor no observado necesaria para explicar efecto observado. RR=2 → E≈3.41."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

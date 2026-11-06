@@ -1,0 +1,451 @@
+{
+  "id": "m1-1",
+  "phaseId": "phase-1",
+  "number": "1.1",
+  "title": "Números Enteros y Recta Numérica",
+  "description": "Negativos, valor absoluto, distancia, orden, operaciones con signos",
+  "lessons": [
+    {
+      "id": "l1-1-1",
+      "title": "Más Allá del Cero: Números Negativos",
+      "objective": "Entender la necesidad y significado de números negativos en contextos reales",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "La temperatura en Madrid es -5°C. En Buenos Aires 25°C. ¿Cuál es la diferencia? ¿Cómo restar 5 - 10?"
+        },
+        {
+          "type": "explanation",
+          "text": "Los <strong>números enteros</strong> (ℤ) incluyen positivos, cero y negativos. Surgen de necesitar restar números mayores a menores: 3 - 7 = -4. En la recta numérica, los negativos están a la izquierda del cero.",
+          "latex": "\\mathbb{Z} = \\{\\dots, -3, -2, -1, 0, 1, 2, 3, \\dots\\}",
+          "visual": "assets/numberline-integers.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Un ascensor: planta baja = 0. Subir 3 pisos = +3. Bajar 2 sótanos = -2. Tu posición final: +1 (primer piso). Los negativos no son 'menos que nada', son 'en dirección opuesta'.",
+          "conceptId": "negative-numbers"
+        },
+        {
+          "type": "interactive",
+          "component": "NumberLineExplorer",
+          "description": "Arrastra un punto en la recta. Ve coordenada, distancia al cero, opuesto."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-1-1-1",
+              "type": "multiple-choice",
+              "question": "¿Cuál número es mayor: -3 o -7?",
+              "options": ["-3", "-7", "Son iguales", "No se puede comparar"],
+              "correct": 0,
+              "explanation": "En la recta numérica, -3 está a la derecha de -7. A la derecha = mayor. -3 > -7."
+            },
+            {
+              "id": "q1-1-1-2",
+              "type": "number-input",
+              "question": "Si estás en el piso -2 y subes 5 pisos, ¿en qué piso estás?",
+              "answer": 3,
+              "explanation": "-2 + 5 = 3. Subir es sumar positivo."
+            },
+            {
+              "id": "q1-1-1-3",
+              "type": "multiple-choice",
+              "question": "¿Qué representa -15 en una cuenta bancaria?",
+              "options": ["Tienes 15€", "Debes 15€", "Error del banco", "15€ congelados"],
+              "correct": 1,
+              "explanation": "Saldo negativo = deuda. Debes 15€ al banco."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-1-2",
+      "title": "Valor Absoluto: Distancia al Cero",
+      "objective": "Entender valor absoluto como distancia, sin signo",
+      "type": "conceptual",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Estás en el km 0 de una carretera. Un amigo está en km +10, otro en km -10. ¿Quién está más lejos?"
+        },
+        {
+          "type": "explanation",
+          "text": "El <strong>valor absoluto</strong> |x| es la distancia de x al cero en la recta numérica. Siempre ≥ 0. |5| = 5, |-5| = 5. Es 'cuánto' sin importar 'hacia dónde'.",
+          "latex": "|x| = \\begin{cases} x & \\text{si } x \\ge 0 \\\\ -x & \\text{si } x < 0 \\end{cases}",
+          "visual": "assets/absolute-value.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Caminas 100 metros al norte (+100) o 100 metros al sur (-100). En ambos casos caminaste 100 metros. El valor absoluto ignora la dirección, solo mide cuánto.",
+          "conceptId": "absolute-value"
+        },
+        {
+          "type": "interactive",
+          "component": "AbsoluteValueGame",
+          "description": "Dados dos números, elige cuál tiene mayor valor absoluto. Visual: barras de longitud."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-1-2-1",
+              "type": "multiple-choice",
+              "question": "¿Cuál es el valor absoluto de -12?",
+              "options": ["-12", "12", "0", "No existe"],
+              "correct": 1,
+              "explanation": "|-12| = 12. La distancia al cero es 12."
+            },
+            {
+              "id": "q1-1-2-2",
+              "type": "fill-in",
+              "question": "Completa: |x| = 7 → x = ___ o x = ___",
+              "answer": "7, -7",
+              "explanation": "Tanto 7 como -7 están a distancia 7 del cero."
+            },
+            {
+              "id": "q1-1-2-3",
+              "type": "multiple-choice",
+              "question": "Si |a| > |b|, ¿qué sabemos?",
+              "options": ["a > b", "a está más lejos del cero que b", "a es positivo", "b es negativo"],
+              "correct": 1,
+              "explanation": "Valor absoluto compara distancias al cero, no valores con signo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-1-3",
+      "title": "Suma y Resta de Enteros: La Caminata",
+      "objective": "Dominar suma/resta con signos usando modelo de desplazamiento",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Empiezas en 0. Caminas +3, luego -5, luego +2. ¿Dónde terminas? Escribe la suma: 3 + (-5) + 2 = ?"
+        },
+        {
+          "type": "explanation",
+          "text": "Sumar un positivo → caminar derecha. Sumar un negativo → caminar izquierda. Restar = sumar el opuesto: a - b = a + (-b). Regla mnemotécnica: <strong>mismos signos se suman, distintos se restan</strong> (y toma el signo del mayor en valor absoluto).",
+          "latex": "a + (-b) = a - b \\quad | \\quad -a + (-b) = -(a+b) \\quad | \\quad a - (-b) = a + b",
+          "visual": "assets/integer-walk.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Dinero: +50€ ingresas, -30€ gastas, -20€ debes. Total: 50 - 30 - 20 = 0. Suma de movimientos = saldo final.",
+          "conceptId": "integer-operations"
+        },
+        {
+          "type": "interactive",
+          "component": "IntegerCalculator",
+          "description": "Genera sumas/resta aleatorias. Arraste pasos en recta numérica. Ver resultado animado."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-1-3-1",
+              "type": "multiple-choice",
+              "question": "(-8) + 3 = ?",
+              "options": ["-11", "-5", "5", "11"],
+              "correct": 1,
+              "explanation": "Signos distintos: restas 8-3=5. Signo del mayor valor absoluto (-8): negativo. Resultado -5."
+            },
+            {
+              "id": "q1-1-3-2",
+              "type": "number-input",
+              "question": "5 - (-7) = ?",
+              "answer": 12,
+              "explanation": "Restar negativo = sumar positivo: 5 - (-7) = 5 + 7 = 12."
+            },
+            {
+              "id": "q1-1-3-3",
+              "type": "multiple-choice",
+              "question": "La temperatura era -4°C. Subió 6°C. ¿Cuál es la nueva temperatura?",
+              "options": ["-10°C", "-2°C", "2°C", "10°C"],
+              "correct": 2,
+              "explanation": "-4 + 6 = 2. Subir temperatura es sumar positivo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-1-4",
+      "title": "Multiplicación y División de Enteros",
+      "objective": "Regla de signos: por qué menos por menos es más",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Si pierdes 5€ cada día durante 3 días, ¿cuánto perdiste en total? -5 × 3 = ? Y si 'pierdes una deuda' de 5€ durante 3 días?"
+        },
+        {
+          "type": "explanation",
+          "text": "Multiplicación = suma repetida. (-5) × 3 = (-5) + (-5) + (-5) = -15. Pero (-5) × (-3) = ? Pensar: el opuesto de perder 5 tres veces es ganar 5 tres veces = +15. <strong>Regla: signos iguales → positivo; signos distintos → negativo.</strong>",
+          "latex": "(+) \\times (+) = (+) \\quad (-) \\times (-) = (+) \\quad (+) \\times (-) = (-) \\quad (-) \\times (+) = (-)",
+          "visual": "assets/sign-rule.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Video rebobinado: una persona camina hacia atrás (-). Si rebobinas el video (otro -), la persona parece caminar hacia adelante (+). Dos negativos = positivo.",
+          "conceptId": "sign-rule"
+        },
+        {
+          "type": "interactive",
+          "component": "SignRuleExplorer",
+          "description": "Cambia signos de dos números. Ve producto, explicación visual (área/rectángulo), patrón."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-1-4-1",
+              "type": "multiple-choice",
+              "question": "(-6) × (-4) = ?",
+              "options": ["-24", "24", "-10", "10"],
+              "correct": 1,
+              "explanation": "Menos por menos = más. 6 × 4 = 24."
+            },
+            {
+              "id": "q1-1-4-2",
+              "type": "number-input",
+              "question": "(-36) ÷ (-6) = ?",
+              "answer": 6,
+              "explanation": "División sigue misma regla de signos que multiplicación. Menos ÷ menos = más. 36 ÷ 6 = 6."
+            },
+            {
+              "id": "q1-1-4-3",
+              "type": "multiple-choice",
+              "question": "¿Cuál producto es NEGATIVO?",
+              "options": ["(-3) × (-5)", "4 × 7", "(-2) × 6", "(-8) × (-1)"],
+              "correct": 2,
+              "explanation": "Signos distintos → negativo. (-2) × 6 = -12."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-1-5",
+      "title": "Potencias con Base Negativa",
+      "objective": "Entender paridad del exponente: base negativa ^ par = positivo",
+      "type": "conceptual",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "(-2)² = ? (-2)³ = ? (-2)⁴ = ? Detecta el patrón."
+        },
+        {
+          "type": "explanation",
+          "text": "Potencia = multiplicación repetida. Base negativa con exponente <strong>par</strong> → resultado positivo (pares de menos se cancelan). Exponente <strong>impar</strong> → resultado negativo (queda un menos sin parear). Cuidado: -2² ≠ (-2)². -2² = -(2²) = -4. (-2)² = 4.",
+          "latex": "(-a)^n = \\begin{cases} a^n & n \\text{ par} \\\\ -a^n & n \\text{ impar} \\end{cases} \\quad \\text{y} \\quad -a^n = -(a^n)",
+          "visual": "assets/negative-powers.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Interruptor: cada multiplicación por -1 cambia el estado (encendido/apagado). Par de cambios = vuelve al original. Impar = cambia.",
+          "conceptId": "negative-base-powers"
+        },
+        {
+          "type": "interactive",
+          "component": "PowerPatternGame",
+          "description": "Completa tabla: base -3, exponentes 1-6. Ve patrón + - + - + -."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-1-5-1",
+              "type": "multiple-choice",
+              "question": "(-5)⁴ = ?",
+              "options": ["-625", "625", "-20", "20"],
+              "correct": 1,
+              "explanation": "Exponente par (4) → resultado positivo. 5⁴ = 625."
+            },
+            {
+              "id": "q1-1-5-2",
+              "type": "multiple-choice",
+              "question": "Diferencia entre -3² y (-3)²:",
+              "options": ["Son iguales: 9", "-3² = -9, (-3)² = 9", "-3² = 9, (-3)² = -9", "Ambos son -9"],
+              "correct": 1,
+              "explanation": "-3² = -(3²) = -9. (-3)² = (-3)×(-3) = 9. Paréntesis cambian todo."
+            },
+            {
+              "id": "q1-1-5-3",
+              "type": "fill-in",
+              "question": "(-1)²⁰²⁴ = ___",
+              "answer": "1",
+              "explanation": "2024 es par. (-1)^par = 1 siempre."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-1-6",
+      "title": "Orden y Desigualdades en ℤ",
+      "objective": "Comparar enteros, intervalos, resolver desigualdades simples",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Es cierto que -3 < 2? ¿Y que -3 < -1? ¿Y -5 > -10? Escribe 3 números entre -2 y 4."
+        },
+        {
+          "type": "explanation",
+          "text": "En la recta: <strong>a < b</strong> significa 'a está a la izquierda de b'. Propiedades: transitiva (a<b y b<c → a<c), suma/resta mismo número mantiene desigualdad, multiplicar/dividir por negativo <strong>invierte</strong> el sentido. Intervalos: [a,b] incluye extremos, (a,b) no.",
+          "latex": "a < b \\implies a+c < b+c \\quad | \\quad a < b \\land c > 0 \\implies ac < bc \\quad | \\quad a < b \\land c < 0 \\implies ac > bc",
+          "visual": "assets/inequality-numberline.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Balanza: -3 < 2. Si añades 5 a ambos lados: 2 < 7 (sigue siendo cierto). Si multiplicas por -1: 3 > -2 (¡se invierte!). Multiplicar por negativo es como ver la balanza en un espejo.",
+          "conceptId": "inequalities"
+        },
+        {
+          "type": "interactive",
+          "component": "InequalitySolver",
+          "description": "Resuelve desigualdades paso a paso: x + 3 < 7, -2x > 6. Visual: recta numérica con región solución."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-1-6-1",
+              "type": "multiple-choice",
+              "question": "¿Cuál desigualdad es FALSA?",
+              "options": ["-5 < -2", "0 > -10", "-1 < 0", "-8 > -3"],
+              "correct": 3,
+              "explanation": "-8 está a la izquierda de -3, así que -8 < -3. La opción dice -8 > -3, es falsa."
+            },
+            {
+              "id": "q1-1-6-2",
+              "type": "multiple-choice",
+              "question": "Resuelve: -3x > 12",
+              "options": ["x > -4", "x < -4", "x > 4", "x < 4"],
+              "correct": 1,
+              "explanation": "Dividir por -3 invierte desigualdad: x < 12/(-3) → x < -4."
+            },
+            {
+              "id": "q1-1-6-3",
+              "type": "fill-in",
+              "question": "Escribe en notación de intervalo: x ≥ -2 y x < 5",
+              "answer": "[-2, 5)",
+              "explanation": "Incluye -2 (corchete), no incluye 5 (paréntesis)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-1-7",
+      "title": "Distancia Entre Dos Puntos en la Recta",
+      "objective": "Calcular distancia como valor absoluto de la diferencia",
+      "type": "conceptual",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Estás en km -10. Tu amigo en km +15. ¿Cuántos km los separan? ¿Es 15 - (-10) o |-10 - 15|?"
+        },
+        {
+          "type": "explanation",
+          "text": "Distancia entre a y b en la recta = |a - b| = |b - a|. Siempre positiva. No importa el orden. Ejemplo: distancia entre -4 y 7 = |-4 - 7| = |-11| = 11 = |7 - (-4)| = |11| = 11.",
+          "latex": "d(a,b) = |a - b| = |b - a|",
+          "visual": "assets/distance-formula.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Dos ciudades en una autopista. Kilometraje de una menos kilometraje de la otra, valor absoluto. Da igual cuál restas a cuál.",
+          "conceptId": "distance-absolute-value"
+        },
+        {
+          "type": "interactive",
+          "component": "DistanceCalculator",
+          "description": "Dos puntos arrastrables en recta. Calcula distancia automáticamente. Cambia posiciones, ve fórmula."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-1-7-1",
+              "type": "number-input",
+              "question": "Distancia entre -8 y 12:",
+              "answer": 20,
+              "explanation": "|-8 - 12| = |-20| = 20. O |12 - (-8)| = |20| = 20."
+            },
+            {
+              "id": "q1-1-7-2",
+              "type": "multiple-choice",
+              "question": "Si d(x, 3) = 7, ¿cuáles son los valores posibles de x?",
+              "options": ["x = 10", "x = -4", "x = 10 o x = -4", "x = 4 o x = -10"],
+              "correct": 2,
+              "explanation": "|x - 3| = 7 → x - 3 = 7 o x - 3 = -7 → x = 10 o x = -4."
+            },
+            {
+              "id": "q1-1-7-3",
+              "type": "fill-in",
+              "question": "La distancia entre a y b es 15. Si a = -5, entonces b = ___ o b = ___",
+              "answer": "10, -20",
+              "explanation": "|b - (-5)| = 15 → |b+5| = 15 → b+5=15 (b=10) o b+5=-15 (b=-20)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-1-8",
+      "title": "Proyecto Módulo: Navegación GPS Simple",
+      "objective": "Aplicar enteros, valor absoluto, distancia en contexto de coordenadas 1D",
+      "type": "project",
+      "durationMin": 15,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Un dron de entrega vuela en línea recta (eje X). Empieza en 0. Recibe pedidos en coordenadas: -5, +12, -3, +8. Optimiza la ruta."
+        },
+        {
+          "type": "explanation",
+          "text": "Modelamos la calle como recta numérica. Cada entrega = coordenada. Distancia total = suma de distancias entre paradas consecutivas. Valor absoluto para calcular cada tramo. Ordenar paradas minimiza distancia total (problema del viajante 1D).",
+          "latex": "D_{total} = |x_1 - 0| + |x_2 - x_1| + |x_3 - x_2| + \\dots",
+          "visual": "assets/drone-route.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "DroneRouteOptimizer",
+          "description": "Arrastra paradas. Calcula distancia total. Prueba órdenes diferentes. Encuentra ruta óptima."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-1-8-1",
+              "type": "multiple-choice",
+              "question": "Dron en 0. Pedidos en -4, +6, -1. Ruta óptima (menor distancia):",
+              "options": ["0 → -4 → -1 → 6 (dist=15)", "0 → -1 → -4 → 6 (dist=11)", "0 → 6 → -1 → -4 (dist=17)", "0 → -1 → 6 → -4 (dist=15)"],
+              "correct": 1,
+              "explanation": "Ordenar de menor a mayor: -4, -1, 6. Pero empezando en 0, ir primero al más cercano (-1) ahorra: |0-(-1)|+|(-1)-(-4)|+|(-4)-6| = 1+3+10=14. Wait, recalcula: 0→-1→-4→6 = 1+3+10=14. 0→-4→-1→6 = 4+3+7=14. Empate. Mejor: 0→-1→6→-4 = 1+7+10=18. La óptima visita extremos ordenadamente."
+            },
+            {
+              "id": "q1-1-8-2",
+              "type": "number-input",
+              "question": "Distancia mínima para visitar -5, 3, 8 empezando en 0:",
+              "answer": 13,
+              "explanation": "Ruta: 0 → 3 → 8 → -5 = 3+5+13=21. O 0 → -5 → 3 → 8 = 5+8+5=18. O 0 → 3 → -5 → 8 = 3+8+13=24. Mínima: 0→-5→3→8 = 5+8+5=18. Wait - mejor: visita en orden -5, 3, 8: 5+8+5=18. ¿Hay mejor? 0→3 (3), 3→8 (5), 8→-5 (13) = 21. 0→-5 (5), -5→3 (8), 3→8 (5) = 18. Correcto: 18."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

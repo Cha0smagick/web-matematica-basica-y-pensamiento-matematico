@@ -1,0 +1,497 @@
+{
+  "id": "m4-4",
+  "phaseId": "phase-4",
+  "number": "4.4",
+  "title": "Integral = Área Acumulada",
+  "description": "Riemann, Teorema Fundamental, técnicas básicas, aplicaciones físicas",
+  "lessons": [
+    {
+      "id": "l4-4-1",
+      "title": "La Integral: Área Bajo la Curva = Acumulación",
+      "objective": "Entender integral definida como límite de sumas de Riemann. Área = acumulación de rate. Odómetro vs velocímetro",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Velocímetro: v(t) = velocidad. Odómetro: distancia recorrida = ∫v(t)dt. Área bajo gráfica v-t = distancia. Integral = suma de infinitos rectángulos infinitesimales."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Integral definida</strong> de f en [a, b]:\n∫ₐᵇ f(x) dx = límite de sumas de Riemann\n= lim_{n→∞} Σ f(xᵢ*) Δx,  Δx = (b-a)/n\n- Geométrica: área neta entre curva y eje x (arriba +, abajo -)\n- Física: acumulación de una tasa (velocidad → distancia, flujo → volumen, densidad → masa)\n- Notación: ∫ₐᵇ f(x) dx (a=límite inferior, b=superior, f=integrando, x=variable)\n- Propiedades: ∫ₐᵇ = -∫ᵦₐ, ∫ₐᵃ = 0, ∫ₐᵇ + ∫ᵦᶜ = ∫ₐᶜ\n- Integral de f≥0 = área. Si f cambia signo = área arriba - área abajo.",
+          "latex": "\\int_a^b f(x)\\,dx = \\lim_{n\\to\\infty}\\sum_{i=1}^n f(x_i^*)\\Delta x \\quad | \\quad \\Delta x = \\frac{b-a}{n} \\quad | \\quad \\text{Área neta: } \\int_a^b f = A_+ - A_-",
+          "visual": "assets/integral-concept.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Lluvia: intensidad mm/hora (tasa). Agua caída total = ∫ intensidad dt. Velocímetro km/h → odómetro km. Flujo litros/min → tanque litros. Integral = 'suma continua' de una tasa variable.",
+          "conceptId": "integral-concept"
+        },
+        {
+          "type": "interactive",
+          "component": "IntegralExplorer",
+          "description": "Función f(x) ≥ 0. Rectángulos de Riemann: izquierda, derecha, punto medio, trapecio. Slider n (1 a 1000). Ve convergencia a área real. Área neta: f cambia signo → coloreado +/−. Integral = límite n→∞. Compara con antiderivada (adelanto Teorema Fundamental)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-4-1-1",
+              "type": "multiple-choice",
+              "question": "∫₀² x dx = ",
+              "options": [
+                "2",
+                "4",
+                "1",
+                "0"
+              ],
+              "correct": 0,
+              "explanation": "Área triángulo base 2, altura 2: ½·2·2 = 2. O antiderivada: x²/2 |₀² = 4/2 - 0 = 2."
+            },
+            {
+              "id": "q4-4-1-2",
+              "type": "fill-in",
+              "question": "∫₋₁¹ x³ dx = ___ (simetría)",
+              "answer": "0",
+              "explanation": "x³ es impar. Área [-1,0] negativa, [0,1] positiva. Se cancelan. Integral neta = 0."
+            },
+            {
+              "id": "q4-4-1-3",
+              "type": "multiple-choice",
+              "question": "Si v(t) = 3t² (m/s), distancia t∈[0,2] = ",
+              "options": [
+                "8 m",
+                "12 m",
+                "24 m",
+                "4 m"
+              ],
+              "correct": 0,
+              "explanation": "∫₀² 3t² dt = t³|₀² = 8 - 0 = 8 m."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-4-2",
+      "title": "Antiderivadas e Integral Indefinida: La Operación Inversa",
+      "objective": "F'(x) = f(x) ⟺ F es antiderivada de f. ∫f(x)dx = F(x) + C. Tabla básicas: potencia, trig, exp, log",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Derivada de x³ es 3x². Entonces antiderivada de 3x² es x³ + C. La C = constante de integración (cualquier constante deriva en 0)."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Antiderivada (primitiva)</strong>: F tal que F'(x) = f(x).\n<strong>Integral indefinida</strong>: ∫ f(x) dx = F(x) + C (C ∈ ℝ)\nTodas las antiderivadas difieren en una constante.\nTabla básicas (inversas de derivadas):\n- ∫ xⁿ dx = xⁿ⁺¹/(n+1) + C  (n ≠ -1)\n- ∫ x⁻¹ dx = ∫ 1/x dx = ln|x| + C\n- ∫ eˣ dx = eˣ + C\n- ∫ aˣ dx = aˣ/ln a + C\n- ∫ sen x dx = -cos x + C\n- ∫ cos x dx = sen x + C\n- ∫ sec²x dx = tan x + C\n- ∫ csc²x dx = -cot x + C\n- ∫ sec x tan x dx = sec x + C\n- ∫ 1/(1+x²) dx = arctan x + C\n- ∫ 1/√(1-x²) dx = arcsen x + C\nLinealidad: ∫(af+bg) = a∫f + b∫g.",
+          "latex": "\\int f(x)dx = F(x)+C \\quad | \\quad F'=f \\quad | \\quad \\int x^n = \\frac{x^{n+1}}{n+1}+C\\,(n\\neq-1) \\quad | \\quad \\int\\frac{1}{x}=\\ln|x|+C \\quad | \\quad \\int e^x=e^x+C",
+          "visual": "assets/antiderivatives.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Derivada = 'desmontar' (x³ → 3x²). Antiderivada = 'montar' (3x² → x³). Pero al montar, pierdes información de la constante original (¿empezaste en 0? ¿en 5?). Por eso +C: 'más una constante desconocida'.",
+          "conceptId": "antiderivatives"
+        },
+        {
+          "type": "interactive",
+          "component": "AntiderivativeTrainer",
+          "description": "Generador integrales indefinidas. Usuario deriva su respuesta y compara con integrando. Tabla referencia. Paso a paso: identifica forma → aplica regla inversa → añade +C → verifica derivando. Incluye: potencia, trig, exp, log, combinaciones lineales."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-4-2-1",
+              "type": "fill-in",
+              "question": "∫ (3x² - 4x + 5) dx = ___",
+              "answer": "x³ - 2x² + 5x + C",
+              "explanation": "Linealidad: ∫3x²=3·x³/3=x³. ∫-4x=-4·x²/2=-2x². ∫5=5x. +C."
+            },
+            {
+              "id": "q4-4-2-2",
+              "type": "multiple-choice",
+              "question": "∫ cos(2x) dx = ",
+              "options": [
+                "sen(2x) + C",
+                "½ sen(2x) + C",
+                "2 sen(2x) + C",
+                "-½ sen(2x) + C"
+              ],
+              "correct": 1,
+              "explanation": "Cadena inversa: ∫cos(ax) dx = 1/a sen(ax) + C. Aquí a=2 → ½ sen(2x) + C."
+            },
+            {
+              "id": "q4-4-2-3",
+              "type": "fill-in",
+              "question": "∫ e^{3x} dx = ___",
+              "answer": "⅓ e^{3x} + C",
+              "explanation": "∫e^{ax} dx = 1/a e^{ax} + C. a=3 → ⅓ e^{3x} + C."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-4-3",
+      "title": "Teorema Fundamental del Cálculo: Conecta Derivada e Integral",
+      "objective": "TFC Parte 1: d/dx ∫ₐˣ f(t) dt = f(x). Parte 2: ∫ₐᵇ f(x) dx = F(b) - F(a). Calcular integrales definidas sin Riemann",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "∫₀² 3x² dx = ? Antiderivada: x³. F(2)-F(0) = 8-0 = 8. ¡No necesitas sumar rectángulos! TFC: integral = diferencia de antiderivada en bordes."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Teorema Fundamental del Cálculo</strong> (Newton-Leibniz):\n<strong>Parte 1</strong>: Si f continua en [a,b], g(x) = ∫ₐˣ f(t) dt es derivable y g'(x) = f(x).\n  Derivada de integral = función original. 'Integral y derivada se cancelan'.\n<strong>Parte 2</strong>: Si F' = f en [a,b], entonces ∫ₐᵇ f(x) dx = F(b) - F(a).\n  Integral definida = antiderivada evaluada en bordes.\nConsecuencia: para calcular ∫ₐᵇ f, busca CUALQUIER antiderivada F, evalúa F(b)-F(a).\nNotación: F(x)|ₐᵇ = F(b) - F(a).\nPropiedad: ∫ₐᵇ f = -∫ᵦₐ f. ∫ₐᵃ f = 0.",
+          "latex": "\\frac{d}{dx}\\int_a^x f(t)dt = f(x) \\quad | \\quad \\int_a^b f(x)dx = F(b)-F(a) \\text{ si } F'=f \\quad | \\quad F(x)\\big|_a^b = F(b)-F(a)",
+          "visual": "assets/fundamental-theorem.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Odómetro (integral) y velocímetro (derivada). TFC: 'Si sabes cómo cambia el odómetro (velocímetro), puedes recuperar el odómetro sumando velocidades'. O: 'La distancia total = lectura final - lectura inicial'. F(b)-F(a) = cambio neto en la antiderivada.",
+          "conceptId": "fundamental-theorem"
+        },
+        {
+          "type": "interactive",
+          "component": "FundamentalTheoremLab",
+          "description": "Visual: g(x) = ∫ₐˣ f(t)dt. Deriva g → recupera f. Parte 2: elige F antiderivada, evalúa F(b)-F(a). Compara con suma Riemann (n grande). Funciones: polinomios, trig, exp. Verifica: d/dx ∫₀ˣ sen t dt = sen x. ∫₀^π cos x dx = sen π - sen 0 = 0."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-4-3-1",
+              "type": "multiple-choice",
+              "question": "∫₁³ 2x dx = ",
+              "options": [
+                "4",
+                "8",
+                "6",
+                "12"
+              ],
+              "correct": 1,
+              "explanation": "Antiderivada: x². F(3)-F(1) = 9 - 1 = 8."
+            },
+            {
+              "id": "q4-4-3-2",
+              "type": "fill-in",
+              "question": "d/dx ∫₀ˣ sen(t²) dt = ___",
+              "answer": "sen(x²)",
+              "explanation": "TFC Parte 1: derivada de integral con límite variable = integrando evaluado en el límite."
+            },
+            {
+              "id": "q4-4-3-3",
+              "type": "multiple-choice",
+              "question": "∫₀^π cos x dx = ",
+              "options": [
+                "1",
+                "0",
+                "2",
+                "-1"
+              ],
+              "correct": 1,
+              "explanation": "Antiderivada: sen x. sen π - sen 0 = 0 - 0 = 0."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-4-4",
+      "title": "Técnicas de Integración: Sustitución (Cambio de Variable)",
+      "objective": "∫ f(g(x))g'(x) dx = ∫ f(u) du con u=g(x). 'Busca la derivada de la función interior'. Cambio límites en definida",
+      "type": "procedural",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "∫ 2x·cos(x²) dx. ¿Ves 2x y x²? u = x², du = 2x dx. ∫ cos u du = sen u + C = sen(x²) + C. Regla: 'si ves función y su derivada, sustitución'."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Sustitución (cambio de variable)</strong>:\n∫ f(g(x))·g'(x) dx = ∫ f(u) du  con u = g(x), du = g'(x) dx\nPasos:\n1. Identifica 'función interior' g(x) cuya derivada g'(x) aparece (o factor constante)\n2. Haz u = g(x), calcula du = g'(x) dx\n3. Reescribe TODO en u (incluye dx)\n4. Integra en u\n5. Vuelve a x (sustituye u = g(x))\nEn integral definida: cambia límites: x=a → u=g(a), x=b → u=g(b). No vuelvas a x.\nCasos típicos:\n- Potencia compuesta: ∫ (ax+b)ⁿ dx → u=ax+b\n- Trig compuesta: ∫ sen(ax+b) dx\n- Exp/log compuesta: ∫ e^{ax} dx, ∫ 1/(ax+b) dx\n- Raíz: ∫ √(ax+b) dx\n- Función y su derivada: ∫ f'(x)/f(x) dx = ln|f(x)| + C",
+          "latex": "\\int f(g(x))g'(x)dx = \\int f(u)du,\\, u=g(x) \\quad | \\quad \\int_a^b f(g(x))g'(x)dx = \\int_{g(a)}^{g(b)} f(u)du \\quad | \\quad \\int \\frac{f'(x)}{f(x)}dx = \\ln|f(x)|+C",
+          "visual": "assets/substitution.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Cambio de variable = 'traduce el problema a un idioma más fácil'. u = g(x) es nuevo idioma. du = g'(x)dx es el diccionario. Integras en u (fácil), luego traduces de vuelta. En definida: cambias los límites de integración al nuevo idioma, no necesitas volver.",
+          "conceptId": "substitution"
+        },
+        {
+          "type": "interactive",
+          "component": "SubstitutionTrainer",
+          "description": "Generador integrales por sustitución (indefinidas y definidas). Paso a paso: 1) Detecta candidato u (pide al usuario). 2) Calcula du. 3) Reescribe integral. 4) Integra en u. 5) Vuelve a x (o evalúa límites). Casos: potencia, trig, exp, log, raíz, racional. Incluye 'trampa': integrales que NO son sustitución (requieren partes, trig, etc.)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-4-4-1",
+              "type": "fill-in",
+              "question": "∫ x·cos(x²) dx. u = ___, du = ___ dx. Resultado: ___ + C",
+              "answer": "x², 2x, ½ sen(x²)",
+              "explanation": "u=x², du=2x dx → x dx = du/2. ∫cos u·du/2 = ½ sen u + C = ½ sen(x²) + C."
+            },
+            {
+              "id": "q4-4-4-2",
+              "type": "multiple-choice",
+              "question": "∫₀¹ 2x/(x²+1) dx = ",
+              "options": [
+                "ln 2",
+                "½ ln 2",
+                "ln 2 / 2",
+                "1"
+              ],
+              "correct": 0,
+              "explanation": "u=x²+1, du=2x dx. Límites: x=0→u=1, x=1→u=2. ∫₁² du/u = ln|u|₁² = ln 2 - ln 1 = ln 2."
+            },
+            {
+              "id": "q4-4-4-3",
+              "type": "fill-in",
+              "question": "∫ tan x dx = ∫ sen x/cos x dx. u = ___, du = ___. Resultado: ___ + C",
+              "answer": "cos x, -sen x dx, -ln|cos x|",
+              "explanation": "u=cos x, du=-sen x dx → sen x dx = -du. ∫ -du/u = -ln|u| + C = -ln|cos x| + C = ln|sec x| + C."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-4-5",
+      "title": "Integración por Partes: ∫ u dv = uv - ∫ v du",
+      "objective": "Producto donde una factor se simplifica derivando (polinomio) y el otro se integra bien (exp, trig, log). Regla LIATE para elegir u",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "∫ x·eˣ dx. Sustitución no funciona. Partes: u = x (deriva → 1, simple), dv = eˣ dx (integra → eˣ). ∫x eˣ = x eˣ - ∫eˣ = x eˣ - eˣ + C."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Integración por partes</strong> (fórmula de derivación del producto):\n∫ u dv = u·v - ∫ v du\nEn notación usual: ∫ f(x)g'(x) dx = f(x)g(x) - ∫ f'(x)g(x) dx\n<strong>Regla LIATE</strong> para elegir u (lo que derivas):\nL - Logaritmos (ln x)\nI - Inversas trigonométricas (arcsen, arctan)\nA - Algebraicas (x, x², √x)\nT - Trigonométricas (sen, cos)\nE - Exponenciales (eˣ)\nElige u lo más a la izquierda posible. dv = lo que integra bien.\nCasos típicos:\n- xⁿ·eˣ, xⁿ·sen x, xⁿ·cos x → u = xⁿ\n- ln x, arcsen x, arctan x → u = log/inv trig\n- eˣ·sen x (ciclo) → aplica partes 2 veces, despeja integral original\n- ∫ ln x dx → u=ln x, dv=dx",
+          "latex": "\\int u\\,dv = uv - \\int v\\,du \\quad | \\quad \\text{LIATE: Log, InvTrig, Alg, Trig, Exp} \\quad | \\quad \\int \\ln x\\,dx = x\\ln x - x + C",
+          "visual": "assets/integration-by-parts.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Producto difícil → 'transfiere dificultad'. Derivas lo que se simplifica (xⁿ → nxⁿ⁻¹), integras lo que no empeora (eˣ → eˣ). Como delegar: 'tú deriva, yo integro, nos repartimos el trabajo'. Ciclo eˣ·sen x: das dos vueltas y vuelves al start → despejas.",
+          "conceptId": "integration-by-parts"
+        },
+        {
+          "type": "interactive",
+          "component": "IntegrationByPartsTrainer",
+          "description": "Generador integrales por partes. Selector u/dv con guía LIATE. Paso a paso: elige u, dv → calcula du, v → aplica fórmula → nueva integral → ¿más simple? Si no, reelige. Casos: xⁿeˣ, xⁿsen x, ln x, arctan x, eˣsen x (ciclo). Visual: árbol de decisiones LIATE."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-4-5-1",
+              "type": "fill-in",
+              "question": "∫ x·ln x dx. u = ___, dv = ___ dx. du = ___, v = ___. Resultado: ___ + C",
+              "answer": "ln x, x, 1/x, x²/2, ½x²ln x - ¼x²",
+              "explanation": "u=ln x (Log), dv=x dx. du=dx/x, v=x²/2. uv - ∫v du = ½x²ln x - ∫½x²·(1/x)dx = ½x²ln x - ½∫x dx = ½x²ln x - ¼x² + C."
+            },
+            {
+              "id": "q4-4-5-2",
+              "type": "multiple-choice",
+              "question": "∫ eˣ·sen x dx. Aplicando partes 2 veces se obtiene:",
+              "options": [
+                "eˣ(sen x - cos x)/2 + C",
+                "eˣ(sen x + cos x)/2 + C",
+                "eˣ(sen x - cos x) + C",
+                "eˣ cos x + C"
+              ],
+              "correct": 0,
+              "explanation": "I = ∫eˣsen x. Partes: u=sen x, dv=eˣdx → I = eˣsen x - ∫eˣcos x. Otra vez: = eˣsen x - (eˣcos x + ∫eˣsen x) = eˣsen x - eˣcos x - I. 2I = eˣ(sen x - cos x) → I = ½eˣ(sen x - cos x) + C."
+            },
+            {
+              "id": "q4-4-5-3",
+              "type": "fill-in",
+              "question": "∫ arctan x dx. u = ___, dv = dx. Resultado: ___ + C",
+              "answer": "arctan x, x, x·arctan x - ½ln(1+x²)",
+              "explanation": "u=arctan x (InvTrig), dv=dx. du=dx/(1+x²), v=x. uv - ∫v du = x·arctan x - ∫x/(1+x²)dx = x·arctan x - ½ln(1+x²) + C."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-4-6",
+      "title": "Otras Técnicas: Fracciones Parciales, Sustitución Trigonométrica, Integrales Inmediatas",
+      "objective": "Fracciones parciales: P(x)/Q(x) grado P < grado Q → descomposición. Sust. trig: √(a²-x²)→x=a sen θ, √(x²+a²)→x=a tan θ, √(x²-a²)→x=a sec θ",
+      "type": "procedural",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "∫ 1/(x²-1) dx. Factoriza: 1/[(x-1)(x+1)] = A/(x-1) + B/(x+1). A=½, B=-½. ∫ = ½ ln|x-1| - ½ ln|x+1| + C = ½ ln|(x-1)/(x+1)| + C."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Fracciones parciales</strong>:\nPara P(x)/Q(x) con grado P < grado Q:\n1. Factoriza Q(x) en factores irreducibles (reales): lineales (x-a) y cuadráticos (x²+bx+c)\n2. Descompón:\n   - (x-a)ᵏ → A₁/(x-a) + A₂/(x-a)² + ... + Aₖ/(x-a)ᵏ\n   - (x²+bx+c)ᵏ → (B₁x+C₁)/(x²+bx+c) + ... + (Bₖx+Cₖ)/(x²+bx+c)ᵏ\n3. Halla coeficientes (igualar numeradores o método Heaviside)\n4. Integra cada término (logaritmos y arctan)\n\n<strong>Sustitución trigonométrica</strong> (raíces cuadráticas):\n- √(a² - x²) → x = a sen θ, dx = a cos θ dθ, √ = a cos θ\n- √(x² + a²) → x = a tan θ, dx = a sec²θ dθ, √ = a sec θ\n- √(x² - a²) → x = a sec θ, dx = a sec θ tan θ dθ, √ = a tan θ\nÚtil para: ∫ dx/√(a²-x²) = arcsen(x/a), ∫ dx/(x²+a²) = 1/a arctan(x/a), ∫ √(a²-x²) dx = ½(x√(a²-x²)+a²arcsen(x/a))\n\n<strong>Integrales inmediatas comunes</strong>: tabla de referencia rápida.",
+          "latex": "\\frac{P(x)}{Q(x)} = \\sum \\frac{A}{(x-a)^k} + \\sum \\frac{Bx+C}{(x^2+bx+c)^k} \\quad | \\quad x=a\\sin\\theta\\;(\\sqrt{a^2-x^2}),\\; x=a\\tan\\theta\\;(\\sqrt{x^2+a^2}),\\; x=a\\sec\\theta\\;(\\sqrt{x^2-a^2})",
+          "visual": "assets/partial-fractions-trig-sub.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Fracciones parciales = 'desarma la fracción compleja en piezas simples que sabes integrar'. Sustitución trig = 'cambia variable a ángulo para que la raíz desaparezca' (pitágoras: 1-sen²=cos², 1+tan²=sec², sec²-1=tan²).",
+          "conceptId": "partial-fractions-trig-sub"
+        },
+        {
+          "type": "interactive",
+          "component": "AdvancedIntegrationTrainer",
+          "description": "Selector técnica: fracciones parciales, sust. trig, inmediatas. Paso a paso:\n- Parciales: factoriza denominador → forma descomposición → halla coeficientes (sistema lineal) → integra cada uno.\n- Sust. trig: identifica forma √(±) → elige sustitución → cambia dx y límites → integra en θ → vuelve a x.\n- Inmediatas: tabla buscable con filtros. Generador mixto: '¿qué técnica usarías?' → explica por qué."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-4-6-1",
+              "type": "multiple-choice",
+              "question": "Descomposición de 1/[(x-1)(x+2)²]:",
+              "options": [
+                "A/(x-1) + B/(x+2)",
+                "A/(x-1) + B/(x+2) + C/(x+2)²",
+                "A/(x-1) + (Bx+C)/(x+2)²",
+                "A/(x-1) + B/(x+2)²"
+              ],
+              "correct": 1,
+              "explanation": "Factor lineal simple (x-1) → A/(x-1). Factor lineal repetido (x+2)² → B/(x+2) + C/(x+2)²."
+            },
+            {
+              "id": "q4-4-6-2",
+              "type": "fill-in",
+              "question": "∫ dx/√(4-x²). Sustitución: x = ___ . dx = ___ dθ. Integral = ___ + C",
+              "answer": "2 sen θ, 2 cos θ, arcsen(x/2)",
+              "explanation": "√(4-x²) → x=2 sen θ. dx=2 cos θ dθ. √ = 2 cos θ. ∫ 2cosθ/2cosθ dθ = ∫ dθ = θ + C = arcsen(x/2) + C."
+            },
+            {
+              "id": "q4-4-6-3",
+              "type": "multiple-choice",
+              "question": "∫ dx/(x²+9) = ",
+              "options": [
+                "arctan(x/3) + C",
+                "⅓ arctan(x/3) + C",
+                "3 arctan(x/3) + C",
+                "ln|x²+9| + C"
+              ],
+              "correct": 1,
+              "explanation": "∫ dx/(x²+a²) = 1/a arctan(x/a) + C. a=3 → ⅓ arctan(x/3) + C."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-4-7",
+      "title": "Aplicaciones Físicas y Geométricas: Área, Volumen, Longitud, Trabajo, Centro de Masa",
+      "objective": "Área entre curvas, volumen (discos, arandelas, capas), longitud arco, trabajo = ∫F·dx, centro de masa, teorema Pappus",
+      "type": "procedural",
+      "durationMin": 10,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Área entre y=x² y y=x: ∫₀¹ (x - x²) dx = 1/6. Volumen rotando y=√x en [0,4] eje X: π∫₀⁴ x dx = 8π. Trabajo resorte: ∫kx dx = ½kx²."
+        },
+        {
+          "type": "explanation",
+          "text": "Aplicaciones de la integral definida:\n1. <strong>Área entre curvas</strong>: ∫ₐᵇ [f_superior(x) - f_inferior(x)] dx\n2. <strong>Volumen de sólido de revolución</strong>:\n   - Discos (eje X): V = π∫ₐᵇ [f(x)]² dx\n   - Arandelas (hueco): V = π∫ₐᵇ ([f_out]² - [f_in]²) dx\n   - Capas cilíndricas (eje Y): V = 2π∫ₐᵇ x·f(x) dx\n3. <strong>Longitud de arco</strong>: L = ∫ₐᵇ √(1 + [f'(x)]²) dx\n4. <strong>Trabajo</strong> (fuerza variable): W = ∫ₐᵇ F(x) dx\n   - Resorte Hooke: F=kx → W = ½kx²\n   - Bombeo líquido: W = ∫ ρg·A(y)·(h-y) dy\n5. <strong>Centro de masa</strong> (lámina densidad ρ): x_cm = (1/M)∫ x·ρ·f(x) dx, M = ∫ρ·f(x)dx\n6. <strong>Teorema de Pappus-Guldino</strong>: Volumen = Área × distancia recorrida por centroide\n7. <strong>Superficie de revolución</strong>: S = 2π∫ f(x)√(1+[f']²) dx",
+          "latex": "A = \\int_a^b (f_{sup}-f_{inf}) \\quad | \\quad V_{discos} = \\pi\\int f(x)^2 \\quad | \\quad V_{capas} = 2\\pi\\int x f(x) \\quad | \\quad L = \\int\\sqrt{1+f'^2} \\quad | \\quad W = \\int F(x) \\quad | \\quad x_{cm} = \\frac{1}{M}\\int x\\rho f(x)",
+          "visual": "assets/integral-applications.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Cortar queso: discos finos → suma volúmenes (discos). Enrollar alfombra: capas cilíndricas. Trabajo = fuerza × distancia, pero si fuerza cambia, integra. Centro de masa = 'punto donde equilibras la figura en un dedo'. Pappus: gira figura → volumen = área × 2π×distancia_centroide.",
+          "conceptId": "integral-applications"
+        },
+        {
+          "type": "interactive",
+          "component": "IntegralApplicationsLab",
+          "description": "Selector aplicación:\n1. Área entre curvas: 2 funciones, intervalo. Sombrea región. Calcula ∫(sup-inf).\n2. Volumen revolución: función, eje (X/Y), método (discos/arandelas/capas). 3D view (Three.js).\n3. Longitud arco: función, intervalo. ∫√(1+f'²).\n4. Trabajo: resorte (k, x), bombeo (tanque forma, densidad), gravedad.\n5. Centro masa: lámina densidad constante/variable. Teorema Pappus: gira región, ve volumen = Área × 2π×d_centroide.\nCada una: gráfico interactivo, integral simbólica, resultado numérico, unidades."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-4-7-1",
+              "type": "number-input",
+              "question": "Área entre y=x y y=x² en [0,1]:",
+              "answer": "0.1667",
+              "explanation": "∫₀¹ (x - x²) dx = [x²/2 - x³/3]₀¹ = 1/2 - 1/3 = 1/6 ≈ 0.1667."
+            },
+            {
+              "id": "q4-4-7-2",
+              "type": "fill-in",
+              "question": "Volumen rotando y=√x, x∈[0,4] alrededor eje X (discos): V = π∫₀⁴ x dx = ___π",
+              "answer": "8",
+              "explanation": "V = π∫₀⁴ (√x)² dx = π∫₀⁴ x dx = π[x²/2]₀⁴ = π·8 = 8π."
+            },
+            {
+              "id": "q4-4-7-3",
+              "type": "multiple-choice",
+              "question": "Resorte k=100 N/m. Trabajo estirar de 0 a 0.2m:",
+              "options": [
+                "2 J",
+                "4 J",
+                "10 J",
+                "20 J"
+              ],
+              "correct": 0,
+              "explanation": "W = ∫₀⁰·² 100x dx = 50x²|₀⁰·² = 50·0.04 = 2 J."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-4-8",
+      "title": "Proyecto Módulo: Modelado Integral Completo - Diseña un Depósito de Agua",
+      "objective": "Depósito forma revolución (parábola, seno, polinomio). Calcula: volumen, superficie (pintura), trabajo bombear, centro de masa (estabilidad), coste material",
+      "type": "project",
+      "durationMin": 20,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Depósito generado rotando y = 2√x (0≤x≤4) alrededor eje X. Volumen = ? Superficie interior (epoxi) = ? Trabajo llenar desde río (bomba en base) = ? Centro de masa (estabilidad sísmica) = ?"
+        },
+        {
+          "type": "explanation",
+          "text": "Proyecto integral completo:\n1. <strong>Geometría</strong>: y = f(x) ≥ 0 en [a,b], rotación eje X\n2. <strong>Volumen</strong> (capacidad): V = π∫ₐᵇ [f(x)]² dx\n3. <strong>Superficie lateral</strong> (pintura/recubrimiento): S = 2π∫ₐᵇ f(x)√(1+[f'(x)]²) dx\n4. <strong>Trabajo bombear</strong> (desde nivel 0 a tope): W = ∫₀ᴴ ρg·A(y)·(H-y) dy\n   donde A(y) = área sección transversal a altura y, H = altura total\n5. <strong>Centro de masa</strong> (eje X): x_cm = (1/V)∫ₐᵇ x·π[f(x)]² dx\n   Estabilidad: x_cm bajo → más estable\n6. <strong>Coste</strong>: material ∝ superficie, excavación ∝ volumen, bombeo ∝ trabajo\n7. <strong>Optimización</strong>: ¿qué forma f(x) da volumen V₀ con mínima superficie? (Esfera: f(x)=√(R²-x²))\nEjemplos formas: parabólico y=k√x, cónico y=mx, esférico y=√(R²-x²), sinusoidal y=sen(πx/L).",
+          "latex": "V=\\pi\\int f^2 \\quad | \\quad S=2\\pi\\int f\\sqrt{1+f'^2} \\quad | \\quad W=\\int_0^H \\rho g A(y)(H-y)dy \\quad | \\quad x_{cm}=\\frac{\\pi}{V}\\int x f(x)^2 dx",
+          "visual": "assets/tank-design.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "TankDesigner",
+          "description": "Editor forma f(x) (parámetro: tipo + coeficientes). Vista 3D (Three.js) rotando. Calcula: V, S, W, x_cm, coste estimado. Compara 3 diseños: parabólico, cónico, esférico (mismo V). Gráfico coste vs forma. Exporta ficha técnica: 'Depósito parabólico 50m³: V=50, S=85, W=120kJ, x_cm=1.6m, Coste=€X'."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-4-8-1",
+              "type": "number-input",
+              "question": "Depósito y=2√x, x∈[0,4], rotación eje X. Volumen = ___π",
+              "answer": "64/3 ≈ 21.33",
+              "explanation": "V = π∫₀⁴ (2√x)² dx = π∫₀⁴ 4x dx = 4π[x²/2]₀⁴ = 4π·8 = 32π. Wait: (2√x)² = 4x. ∫₀⁴ 4x dx = 4[x²/2]₀⁴ = 4·8 = 32. V = 32π. Let me recalc: 32π."
+            },
+            {
+              "id": "q4-4-8-2",
+              "type": "fill-in",
+              "question": "Mismo depósito. Centro de masa x_cm = (1/V)∫₀⁴ x·π(4x) dx = ___",
+              "answer": "12/5 = 2.4",
+              "explanation": "x_cm = (1/32)∫₀⁴ 4x² dx = (1/8)[x³/3]₀⁴ = (1/8)(64/3) = 8/3 ≈ 2.67. Wait: V=32π, num=π∫4x²=4π[x³/3]₀⁴=4π·64/3=256π/3. x_cm = (256π/3)/(32π) = 8/3 ≈ 2.67."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

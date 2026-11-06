@@ -1,0 +1,515 @@
+{
+  "id": "m4-1",
+  "phaseId": "phase-4",
+  "number": "4.1",
+  "title": "Tipos de Funciones",
+  "description": "Lineal, cuadrática, exponencial, logarítmica, potencial, racional, trigonométrica",
+  "lessons": [
+    {
+      "id": "l4-1-1",
+      "title": "Función Lineal: Crecimiento Constante",
+      "objective": "Entender f(x) = ax + b como modelo de cambio constante. Pendiente = tasa, corte = valor inicial",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Ahorras 50€/mes. Empezaste con 200€. Dinero = 50x + 200. Cada mes sumas lo MISMO. Eso es lineal: cambio constante."
+        },
+        {
+          "type": "explanation",
+          "text": "Función <strong>lineal (afín)</strong>: f(x) = ax + b (a ≠ 0). Si b=0: f(x)=ax (proporcionalidad directa).\n- <strong>Pendiente a</strong>: tasa de cambio. Por cada 1 en x, y cambia a unidades.\n- <strong>Corte b</strong>: f(0) = b. Valor inicial (cuando x=0).\n- Gráfica: recta. a>0 creciente, a<0 decreciente.\n- Dominio: ℝ. Rango: ℝ.\nEjemplos reales: coste fijo + variable, distancia = velocidad × tiempo, conversión ºC↔ºF, depreciación lineal.",
+          "latex": "f(x) = ax + b \\quad | \\quad a = \\frac{\\Delta y}{\\Delta x} \\text{ (constante)} \\quad | \\quad f(x_2)-f(x_1) = a(x_2-x_1)",
+          "visual": "assets/linear-function.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Escalera: cada escalón misma altura (a). Empiezas en peldaño b. Subir x escalones → altura = ax+b. Coche a velocidad constante: km = velocidad × horas + km_inicial.",
+          "conceptId": "linear-function"
+        },
+        {
+          "type": "interactive",
+          "component": "FunctionTypeExplorer",
+          "description": "Sliders a, b. Gráfica, tabla valores. Puntos clave: (0,b), (1,a+b). Calcula f(x) para x dado. Inversa: dado y, halla x. Compara con proporcionalidad (b=0)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-1-1-1",
+              "type": "multiple-choice",
+              "question": "f(x) = -3x + 7. Pendiente y corte con eje Y:",
+              "options": [
+                "m=-3, b=7",
+                "m=3, b=7",
+                "m=-3, b=-7",
+                "m=7, b=-3"
+              ],
+              "correct": 0,
+              "explanation": "Forma y = mx + b. m = -3 (pendiente), b = 7 (corte Y)."
+            },
+            {
+              "id": "q4-1-1-2",
+              "type": "number-input",
+              "question": "Taxi: 3€ bajada bandera + 1.2€/km. Recorrido 15 km. Coste = ___ €",
+              "answer": "21",
+              "explanation": "f(x) = 1.2x + 3. f(15) = 1.2×15 + 3 = 18 + 3 = 21€."
+            },
+            {
+              "id": "q4-1-1-3",
+              "type": "fill-in",
+              "question": "Función lineal pasa por (2, 5) y (4, 11). Pendiente = ___, ecuación: y = ___x + ___",
+              "answer": "3, 3, -1",
+              "explanation": "m = (11-5)/(4-2) = 3. y - 5 = 3(x-2) → y = 3x -1. Corte -1."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-1-2",
+      "title": "Función Cuadrática: Aceleración Constante (Parábola)",
+      "objective": "f(x) = ax² + bx + c. Vértice, eje, concavidad, raíces. Modelo: caída libre, área, optimización",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Lanzas pelota: altura = -5t² + 20t + 1.5. No sube igual cada segundo: primero rápido, luego frena, baja. Cambio NO constante: acelera (gravedad)."
+        },
+        {
+          "type": "explanation",
+          "text": "Función <strong>cuadrática</strong>: f(x) = ax² + bx + c (a ≠ 0).\n- Gráfica: <strong>parábola</strong>. a>0 abre ↑ (mínimo en vértice), a<0 abre ↓ (máximo).\n- <strong>Vértice</strong>: xᵥ = -b/(2a), yᵥ = f(xᵥ) = -Δ/(4a). Eje simetría: x = xᵥ.\n- <strong>Raíces</strong>: ax²+bx+c=0 → fórmula general. Δ = b²-4ac.\n- Forma vértice: f(x) = a(x-xᵥ)² + yᵥ.\n- Dominio: ℝ. Rango: [yᵥ, ∞) si a>0; (-∞, yᵥ] si a<0.\nModelos: movimiento con aceleración constante (caída libre, tiro parabólico), área rectángulo (x·(P-2x)), ingreso = precio × demanda lineal, optimización.",
+          "latex": "f(x)=ax^2+bx+c \\quad | \\quad x_v=-\\frac{b}{2a},\\, y_v=-\\frac{\\Delta}{4a} \\quad | \\quad \\Delta=b^2-4ac \\quad | \\quad f(x)=a(x-x_v)^2+y_v",
+          "visual": "assets/quadratic-function.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Rebote pelota: altura vs tiempo = parábola. Vértice = altura máxima. Raíces = cuándo toca suelo. Lanzamiento oblicuo: trayectoria x-y = parábola. Cohete: aceleración constante → cuadrática.",
+          "conceptId": "quadratic-function"
+        },
+        {
+          "type": "interactive",
+          "component": "FunctionTypeExplorer",
+          "description": "Sliders a, b, c. Vértice, eje, raíces marcados. Forma vértice. Calcula máx/mín. Raíces reales/complejas. Cambia a: ve inversión concavidad."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-1-2-1",
+              "type": "multiple-choice",
+              "question": "f(x) = -2x² + 8x - 5. Vértice:",
+              "options": [
+                "(2, 3) - máximo",
+                "(2, 3) - mínimo",
+                "(-2, -29) - máximo",
+                "(2, -5) - máximo"
+              ],
+              "correct": 0,
+              "explanation": "xᵥ = -8/-4 = 2. yᵥ = -2(4)+16-5 = 3. a=-2<0 → abre abajo → MÁXIMO en (2,3)."
+            },
+            {
+              "id": "q4-1-2-2",
+              "type": "fill-in",
+              "question": "Rectángulo perímetro 20. Área A(x) = x(10-x). Máx área cuando x = ___, A_máx = ___",
+              "answer": "5, 25",
+              "explanation": "A(x) = -x²+10x. Vértice x=5. A(5)=25. Es cuadrado 5×5."
+            },
+            {
+              "id": "q4-1-2-3",
+              "type": "multiple-choice",
+              "question": "Pelota: h(t) = -5t² + 20t + 2. Tiempo vuelo total (h=0):",
+              "options": [
+                "4 s",
+                "2 s",
+                "4.1 s",
+                "8 s"
+              ],
+              "correct": 2,
+              "explanation": "-5t²+20t+2=0 → 5t²-20t-2=0. t = (20±√(400+40))/10 = (20±√440)/10. t₁≈4.1s (positiva), t₂≈-0.1s. Vuelo ≈ 4.1s."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-1-3",
+      "title": "Función Exponencial: Crecimiento/Decrecimiento Proporcional al Valor",
+      "objective": "f(x) = a·bˣ (b>0, b≠1). Crecimiento: b>1. Decrecimiento: 0<b<1. Semivida, duplicación, interés compuesto",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Bacterias: se dividen cada 20 min. 1 → 2 → 4 → 8 → 16... No sumas, MULTIPLICAS. Interés compuesto: capital × (1+r) cada año. Crecimiento ∝ valor actual."
+        },
+        {
+          "type": "explanation",
+          "text": "Función <strong>exponencial</strong>: f(x) = a·bˣ (a ≠ 0, b > 0, b ≠ 1).\n- Base b > 1: <strong>crecimiento exponencial</strong>. Se duplica cada tiempo fijo (tiempo de duplicación).\n- Base 0 < b < 1: <strong>decrecimiento exponencial</strong>. Semivida: tiempo para mitad.\n- a = valor inicial f(0) = a.\n- Dominio: ℝ. Rango: (0, ∞) si a>0; (-∞, 0) si a<0. Asíntota horizontal: y = 0.\n- Forma base e: f(x) = a·e^{kx}. k = ln b. Crecimiento: k>0. Decrecimiento: k<0.\nEjemplos: población, interés compuesto, radiactividad, enfriamiento (Newton), carga condensador, difusión rumores, epidemias (inicial).",
+          "latex": "f(x) = a\\cdot b^x \\quad (b>0, b\\neq 1) \\quad | \\quad f(x) = a e^{kx},\\, k=\\ln b \\quad | \\quad \\text{Doblamiento: } b=2^{1/T_d} \\quad | \\quad \\text{Semivida: } b=(1/2)^{1/T_{1/2}}",
+          "visual": "assets/exponential-function.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Efecto bola de nieve: rueda, recoge nieve ∝ su tamaño → crece exponencial. Interés compuesto: ganas intereses sobre intereses. Radiactividad: átomos decaen ∝ cuántos quedan → semivida constante.",
+          "conceptId": "exponential-function"
+        },
+        {
+          "type": "interactive",
+          "component": "FunctionTypeExplorer",
+          "description": "Sliders a, b (o a, k). Crecimiento/decrecimiento. Tiempo duplicación/semivida calculados. Compara con lineal: al principio lineal > exp, luego exp >> lineal. Interés compuesto vs simple."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-1-3-1",
+              "type": "multiple-choice",
+              "question": "Población: P(t) = 1000·1.05ᵗ. ¿Qué significa 1.05?",
+              "options": [
+                "Crece 5% cada unidad tiempo",
+                "Crece 105% cada unidad",
+                "Valor inicial",
+                "Tiempo duplicación"
+              ],
+              "correct": 0,
+              "explanation": "Base 1.05 = 1 + 0.05 → crecimiento 5% por período."
+            },
+            {
+              "id": "q4-1-3-2",
+              "type": "number-input",
+              "question": "Capital 1000€ al 3% anual compuesto. Tras 10 años: ___ €",
+              "answer": "1343.92",
+              "explanation": "1000·1.03¹⁰ ≈ 1000·1.3439 = 1343.92€."
+            },
+            {
+              "id": "q4-1-3-3",
+              "type": "fill-in",
+              "question": "Semivida carbono-14 ≈ 5730 años. Fracción tras 11460 años (2 semividas): ___",
+              "answer": "1/4",
+              "explanation": "Cada semivida divide entre 2. 2 semividas → (1/2)² = 1/4."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-1-4",
+      "title": "Función Logarítmica: Inversa de la Exponencial",
+      "objective": "f(x) = log_b(x). Dominio x>0. Rango ℝ. Escala logarítmica: Richter, pH, decibelios. Resolver ecuaciones exponenciales",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "2ˣ = 1000. ¿Cuánto es x? Logaritmo: x = log₂(1000) ≈ 9.97. Logaritmo = exponente al que elevar base para obtener número."
+        },
+        {
+          "type": "explanation",
+          "text": "Función <strong>logarítmica</strong>: f(x) = log_b(x) (b>0, b≠1, x>0). Inversa de bˣ.\n- log_b(x) = y ⟺ bʸ = x\n- Dominio: (0, ∞). Rango: ℝ. Asíntota vertical: x = 0.\n- log_b(1) = 0. log_b(b) = 1.\n- Propiedades: log(xy) = log x + log y; log(x/y) = log x - log y; log(xᵏ) = k log x.\n- Cambio base: log_b(x) = log_a(x)/log_a(b).\n- Base 10: log(x) o lg(x). Base e: ln(x). Base 2: lg₂(x) (informática).\nAplicaciones: resolver ecuaciones exponenciales, escalas logarítmicas (Richter sismos, pH química, dB sonido, magnitud estelar), entropía, complejidad algorítmica O(log n).",
+          "latex": "y = \\log_b x \\iff b^y = x \\quad | \\quad \\log_b(xy)=\\log_b x+\\log_b y \\quad | \\quad \\log_b(x^k)=k\\log_b x \\quad | \\quad \\log_b x = \\frac{\\ln x}{\\ln b}",
+          "visual": "assets/logarithmic-function.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Escala Richter: cada grado = 10× más energía. Terremoto 6 vs 5 = 10×. pH: cada unidad = 10× más ácido. Decibelios: 10 dB más = 10× intensidad. Logaritmo comprime escalas gigantes a números manejables.",
+          "conceptId": "logarithmic-function"
+        },
+        {
+          "type": "interactive",
+          "component": "FunctionTypeExplorer",
+          "description": "Base b variable. Gráfica log_b(x) y su inversa bˣ simétricas en y=x. Calculadora log. Resuelve bˣ = a → x = log_b(a). Escalas: slider valor → pH, dB, Richter."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-1-4-1",
+              "type": "multiple-choice",
+              "question": "log₂(32) = ",
+              "options": [
+                "5",
+                "4",
+                "6",
+                "16"
+              ],
+              "correct": 0,
+              "explanation": "2⁵ = 32 → log₂(32) = 5."
+            },
+            {
+              "id": "q4-1-4-2",
+              "type": "fill-in",
+              "question": "Resuelve: 3ˣ = 50. x = log₃(50) = ln(50)/ln(3) ≈ ___",
+              "answer": "3.56",
+              "explanation": "ln(50)/ln(3) ≈ 3.912/1.099 ≈ 3.56."
+            },
+            {
+              "id": "q4-1-4-3",
+              "type": "multiple-choice",
+              "question": "Sonido 60 dB vs 40 dB. Intensidad relativa:",
+              "options": [
+                "2×",
+                "10×",
+                "100×",
+                "1000×"
+              ],
+              "correct": 2,
+              "explanation": "dB = 10 log₁₀(I/I₀). ΔdB = 20 → 10 log₁₀(ratio) = 20 → ratio = 10² = 100×."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-1-5",
+      "title": "Función Potencial: y = xᵃ. Raíces, inversas, leyes de escala",
+      "objective": "f(x) = xᵃ (a ∈ ℝ). Parábola a=2, hipérbola a=-1, raíz a=1/2. Leyes de potencias en naturaleza",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Área círculo = πr² (a=2). Volumen esfera = (4/3)πr³ (a=3). Gravedad ∝ 1/r² (a=-2). Frecuencia cardíaca ∝ masa^{-1/4}. Leyes de potencias en todas partes."
+        },
+        {
+          "type": "explanation",
+          "text": "Función <strong>potencial</strong>: f(x) = xᵃ (a ∈ ℝ).\nCasos notables:\n- a = 2: cuadrática (parábola)\n- a = 3: cúbica\n- a = 1/2: raíz cuadrada √x\n- a = 1/3: raíz cúbica ∛x\n- a = -1: hipérbola 1/x (inversa proporcional)\n- a = -2: 1/x² (gravedad, Coulomb, intensidad luz)\nPropiedades: f(xy) = f(x)f(y) (multiplicativa). En logaritmos: log f(x) = a log x → recta en log-log.\nLeyes de escala (allometría): Y = k·Xᵃ. Ej: metabolismo ∝ masa^{3/4}, período órbita ∝ radio^{3/2} (Kepler), frecuencia cardíaca ∝ masa^{-1/4}.",
+          "latex": "f(x) = x^a \\quad | \\quad \\log f(x) = a\\log x \\text{ (recta en log-log)} \\quad | \\quad \\text{Leyes allom\\'etricas: } Y \\propto X^a",
+          "visual": "assets/power-function.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Papel cuadriculado log-log: ley de potencias = recta. Pendiente = exponente a. Kepler: T² ∝ r³ → log T = 1.5 log r + cte. Pendiente 1.5 en gráfico log-log. Biología: ratón late 600/min, elefante 30/min. Masa ×10⁴ → frecuencia ÷20 ≈ (10⁴)^{-1/4} = 1/10. ¡Funciona!",
+          "conceptId": "power-function"
+        },
+        {
+          "type": "interactive",
+          "component": "FunctionTypeExplorer",
+          "description": "Slider a (real, -3 a 3). Gráfica xᵃ. Modo log-log: ve recta. Casos: a=2 (parábola), a=-1 (hipérbola), a=0.5 (raíz). Leyes allométricas: elige variable, ve predicción."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-1-5-1",
+              "type": "multiple-choice",
+              "question": "f(x) = x^{-2}. f(3) = ",
+              "options": [
+                "1/9",
+                "9",
+                "-9",
+                "-1/9"
+              ],
+              "correct": 0,
+              "explanation": "3^{-2} = 1/3² = 1/9."
+            },
+            {
+              "id": "q4-1-5-2",
+              "type": "fill-in",
+              "question": "Ley Kepler: T² ∝ r³. Si r se duplica, T se multiplica por ___",
+              "answer": "2√2 ≈ 2.83",
+              "explanation": "T ∝ r^{3/2}. r→2r → T→2^{3/2}T = 2√2·T."
+            },
+            {
+              "id": "q4-1-5-3",
+              "type": "multiple-choice",
+              "question": "En gráfico log-log, y = 5x³ aparece como:",
+              "options": [
+                "Recta pendiente 3",
+                "Recta pendiente 5",
+                "Parábola",
+                "Hipérbola"
+              ],
+              "correct": 0,
+              "explanation": "log y = log 5 + 3 log x. Recta pendiente 3, corte log 5."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-1-6",
+      "title": "Función Racional: Cociente de Polinomios. Asíntotas, Dominio",
+      "objective": "f(x) = P(x)/Q(x). Dominio: Q(x)≠0. Asíntotas verticales (raíces Q), horizontales/oblicuas (grados). Gráfica",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "f(x) = 1/x. En x=0 explota (asíntota vertical). Cuando x→∞, f→0 (asíntota horizontal y=0). Modelo: concentración = masa/volumen, velocidad media = distancia/tiempo."
+        },
+        {
+          "type": "explanation",
+          "text": "Función <strong>racional</strong>: f(x) = P(x)/Q(x) (P, Q polinomios, Q ≠ 0).\n- <strong>Dominio</strong>: ℝ - {raíces de Q(x)}.\n- <strong>Asíntotas verticales</strong>: x = raíces de Q que no cancelan con P (ceros de denominador simplificado).\n- <strong>Asíntotas horizontales</strong>:\n  grado P < grado Q → y = 0\n  grado P = grado Q → y = coef_director_P / coef_director_Q\n  grado P > grado Q → no hay (posible asíntota oblicua)\n- <strong>Asíntota oblicua</strong>: grado P = grado Q + 1. Divide P/Q → cociente lineal = asíntota.\n- Intersecciones eje X: raíces de P (que no cancelen). Eje Y: f(0) si 0∈Dom.\nEjemplos: concentración, velocidad media, ley de rendimientos decrecientes, funciones de transferencia en control.",
+          "latex": "f(x)=\\frac{P(x)}{Q(x)} \\quad | \\quad \\text{Asint. vert.: } Q(x)=0 \\text{ (simplificado)} \\quad | \\quad \\text{Asint. horiz.: } \\lim_{x\\to\\pm\\infty} f(x) \\quad | \\quad \\text{Asint. oblicua: divisi\\'on si } \\deg P = \\deg Q+1",
+          "visual": "assets/rational-function.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Concentración sal: gramos sal / litros agua. Añades agua → concentración baja ∝ 1/volumen (hipérbola). Velocidad media: km / horas. Si tardas ~0 horas → velocidad → ∞ (asíntota vertical en t=0).",
+          "conceptId": "rational-function"
+        },
+        {
+          "type": "interactive",
+          "component": "FunctionTypeExplorer",
+          "description": "Editor P(x), Q(x) (grados 0-3). Factoriza, cancela factores comunes. Marca: dominio, asíntotas V/H/O, intersecciones, comportamiento cerca de asíntotas. Tabla valores."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-1-6-1",
+              "type": "multiple-choice",
+              "question": "f(x) = (x²-4)/(x-2). Dominio y asíntota vertical:",
+              "options": [
+                "Dom ℝ, no hay asíntota",
+                "Dom ℝ\\{2}, asíntota x=2",
+                "Dom ℝ\\{2}, no hay asíntota (hueco)",
+                "Dom ℝ, asíntota x=2"
+              ],
+              "correct": 2,
+              "explanation": "Simplifica: (x-2)(x+2)/(x-2) = x+2 (x≠2). Hueco en x=2 (removible), no asíntota. Dominio ℝ\\{2}."
+            },
+            {
+              "id": "q4-1-6-2",
+              "type": "fill-in",
+              "question": "f(x) = (2x²+3x-1)/(x²-4). Asíntotas verticales: x=___, x=___. Horizontal: y=___",
+              "answer": "2, -2, 2",
+              "explanation": "Verticales: x²-4=0 → x=±2 (no cancelan). Grados iguales (2) → horizontal y = 2/1 = 2."
+            },
+            {
+              "id": "q4-1-6-3",
+              "type": "multiple-choice",
+              "question": "f(x) = (x²+1)/x. Asíntota oblicua:",
+              "options": [
+                "y = x",
+                "y = 1/x",
+                "y = 0",
+                "x = 0"
+              ],
+              "correct": 0,
+              "explanation": "Divide: x²+1 = x·x + 1 → f(x) = x + 1/x. Asíntota oblicua y = x. Vertical x=0."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-1-7",
+      "title": "Funciones Trigonométricas: Periódicas. Ondas, Frecuencia, Fase",
+      "objective": "sen x, cos x, tan x. Periodo 2π (π para tan). Amplitud, fase, desplazamiento. Modelo: ondas, sonido, luz, péndulo, corriente alterna",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Péndulo: ángulo vs tiempo = seno. Corriente alterna: voltaje = 220√2 sen(100πt). Ondas marinas, sonido, luz, ECG: todo periódico → trigonométrica."
+        },
+        {
+          "type": "explanation",
+          "text": "Funciones <strong>trigonométricas básicas</strong>:\n- f(x) = sen x: periodo 2π, amplitud 1, impar, ceros en kπ\n- f(x) = cos x: periodo 2π, amplitud 1, par, ceros en π/2 + kπ\n- f(x) = tan x: periodo π, asíntotas verticales en π/2 + kπ, impar\nGeneral sinusoidal: f(x) = A sen(ωx + φ) + k\n- Amplitud = |A|\n- Periodo = 2π/ω (frecuencia angular ω)\n- Frecuencia = ω/(2π) Hz\n- Fase = -φ/ω (desplazamiento horizontal)\n- Desplazamiento vertical = k\nIdentidad: sen²x + cos²x = 1. Derivadas: (sen x)' = cos x, (cos x)' = -sen x (adelanto cálculo).\nAplicaciones: M.A.S. (péndulo, muelle), ondas (sonido, luz, radio), corriente alterna, mareas, estacionalidad, compresión Fourier.",
+          "latex": "f(x)=A\\sin(\\omega x+\\phi)+k \\quad | \\quad T=\\frac{2\\pi}{\\omega},\\, \\text{Amp}=|A|,\\, \\text{Fase}=-\\phi/\\omega \\quad | \\quad \\sin^2x+\\cos^2x=1",
+          "visual": "assets/trig-functions.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Cuerda guitarra: vibra = suma de senoidales (armónicos). Nota La 440 Hz = sen(880πt). ECG: cada latido = onda compleja = suma de senos (Fourier). MP3: guarda coeficientes de senos, no onda completa.",
+          "conceptId": "trig-functions"
+        },
+        {
+          "type": "interactive",
+          "component": "FunctionTypeExplorer",
+          "description": "Sliders A, ω, φ, k. Gráfica sen, cos, tan. Onda sonora (Web Audio): escucha frecuencia. Espectro: descomposición Fourier simple (suma 3 armónicos). Péndulo: animación + gráfica ángulo-tiempo."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-1-7-1",
+              "type": "multiple-choice",
+              "question": "f(x) = 3 sen(2x - π/2). Amplitud = ___, Periodo = ___, Fase = ___",
+              "options": [
+                "3, π, π/4",
+                "3, 2π, π/2",
+                "2, π, π/4",
+                "3, π, -π/4"
+              ],
+              "correct": 0,
+              "explanation": "A=3, ω=2 → T=2π/2=π. Fase = -φ/ω = -(-π/2)/2 = π/4."
+            },
+            {
+              "id": "q4-1-7-2",
+              "type": "fill-in",
+              "question": "Corriente alterna: V(t) = 311 sen(100πt) voltios. Frecuencia = ___ Hz. Valor eficaz = ___ V",
+              "answer": "50, 220",
+              "explanation": "ω=100π → f=ω/2π=50 Hz. V_pico=311 → V_eficaz=311/√2≈220V."
+            },
+            {
+              "id": "q4-1-7-3",
+              "type": "multiple-choice",
+              "question": "tan x tiene período:",
+              "options": [
+                "π",
+                "2π",
+                "π/2",
+                "4π"
+              ],
+              "correct": 0,
+              "explanation": "tan(x+π) = tan x. Período π."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l4-1-8",
+      "title": "Proyecto Módulo: Modelado de Fenómenos Reales - Elige tu Modelo",
+      "objective": "Dado dataset real (población, enfriamiento, inversión, radiactividad, péndulo), identificar tipo de función, ajustar parámetros, predecir, validar",
+      "type": "project",
+      "durationMin": 20,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Datos: población ciudad 1900-2020. ¿Lineal? ¿Exponencial? ¿Logística? Datos: temperatura café enfriando. ¿Exponencial? Datos: altura pelota cada 0.1s. ¿Cuadrática? Tú eliges modelo, ajustas, predices."
+        },
+        {
+          "type": "explanation",
+          "text": "Metodología modelado:\n1. <strong>Visualiza</strong>: gráfico dispersión. ¿Recta? ¿Curva creciente cóncava/convexa? ¿Periódica? ¿Asíntota?\n2. <strong>Hipotetiza</strong> tipo: lineal, cuadrática, exponencial, log, potencial, racional, trigonométrica, logística.\n3. <strong>Transforma para linearizar</strong> (si aplica):\n   - Exp: log(y) vs x → recta\n   - Pot: log(y) vs log(x) → recta\n   - Cuadrática: diferencias segundas constantes\n4. <strong>Ajusta parámetros</strong> (mínimos cuadrados visual o analítico).\n5. <strong>Valida</strong>: residuos (aleatorios = buen modelo), R², predicción fuera muestra.\n6. <strong>Interpreta</strong>: parámetros en contexto (tasa crecimiento, semivida, vértice, frecuencia...).\nDatasets incluidos: población mundial, enfriamiento café (Newton), interés compuesto vs simple, radiactividad C-14, péndulo simple, marea puerto, epidemia SIR (logística).",
+          "latex": "\\text{Linealizar: } y=ab^x \\to \\ln y = \\ln a + x\\ln b \\quad | \\quad y=kx^a \\to \\ln y = \\ln k + a\\ln x \\quad | \\quad R^2 = 1-\\frac{SS_{res}}{SS_{tot}}",
+          "visual": "assets/model-selection.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "ModelFittingLab",
+          "description": "Selector dataset. Gráfico dispersión. Botones 'Probar lineal', 'Probar exp', 'Probar log', 'Probar pot', 'Probar cuad', 'Probar trig'. Cada uno: transforma ejes si linealiza, ajusta recta (mínimos cuadrados), vuelve a escala original, superpone modelo, muestra R², residuos. Mejor modelo = mayor R² + residuos aleatorios. Exporta reporte: tipo, parámetros, interpretación, predicción 2030."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q4-1-8-1",
+              "type": "multiple-choice",
+              "question": "Datos: log(y) vs x forma recta. Modelo adecuado:",
+              "options": [
+                "Lineal",
+                "Exponencial",
+                "Potencial",
+                "Logarítmica"
+              ],
+              "correct": 1,
+              "explanation": "log(y) = log(a) + x·log(b) → recta. Modelo exponencial y = a·bˣ."
+            },
+            {
+              "id": "q4-1-8-2",
+              "type": "fill-in",
+              "question": "Datos: log(y) vs log(x) forma recta pendiente 2.5. Modelo: y = k·x^___. Si x se duplica, y se multiplica por ___",
+              "answer": "2.5, 2^{2.5} ≈ 5.66",
+              "explanation": "Pendiente log-log = exponente a = 2.5. Ratio = 2^a = 2^{2.5} = 4√2 ≈ 5.66."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

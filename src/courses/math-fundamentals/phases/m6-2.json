@@ -1,0 +1,519 @@
+{
+  "id": "m6-2",
+  "phaseId": "phase-6",
+  "number": "6.2",
+  "title": "Conjuntos y Relaciones",
+  "description": "Operaciones, diagramas Venn, relaciones, funciones como relaciones, cardinales",
+  "lessons": [
+    {
+      "id": "l6-2-1",
+      "title": "Conjuntos: Definición, Notación, Pertenencia, Inclusión",
+      "objective": "Conjunto = colección bien definida. Notación: {x | P(x)}, ∈, ∉, ⊆, ⊂, =, ∅, U. Conjuntos numéricos: ℕ, ℤ, ℚ, ℝ, ℂ",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Conjunto = 'bolsa' con objetos bien definidos. A = {1,2,3}. 2 ∈ A. 4 ∉ A. {1,2} ⊆ A. ∅ = conjunto vacío (ningún elemento). U = universo (todos los elementos en contexto)."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Conjunto</strong>: colección bien definida de objetos distintos (elementos).\n- Notación extensional: A = {1, 2, 3}\n- Notación intensional (comprensión): A = {x | P(x)} = {x ∈ ℕ | x < 4}\n- Pertenencia: x ∈ A (x pertenece a A), x ∉ A (no pertenece)\n- Inclusión: A ⊆ B (A subconjunto de B: todo elemento de A está en B)\n- Inclusión estricta: A ⊂ B (A ⊆ B y A ≠ B)\n- Igualdad: A = B ⟺ A ⊆ B y B ⊆ A\n- Conjunto vacío: ∅ = {}. ∅ ⊆ A para todo A.\n- Conjunto universo: U (todos elementos bajo consideración)\n- Conjuntos numéricos fundamentales:\n  ℕ = {0, 1, 2, 3, ...} (naturales)\n  ℤ = {..., -2, -1, 0, 1, 2, ...} (enteros)\n  ℚ = {p/q | p,q∈ℤ, q≠0} (racionales)\n  ℝ (reales: racionales + irracionales)\n  ℂ = {a+bi | a,b∈ℝ} (complejos)\nJerarquía: ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ",
+          "latex": "A = \\{x \\mid P(x)\\} \\quad | \\quad x \\in A, \\, x \\notin A \\quad | \\quad A \\subseteq B \\iff (\\forall x)(x\\in A \\Rightarrow x\\in B) \\quad | \\quad \\emptyset \\subseteq A \\quad | \\quad \\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R} \\subset \\mathbb{C}",
+          "visual": "assets/sets-basics.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Conjunto = 'carpeta' con documentos. Pertenece = 'documento está en carpeta'. Inclusión = 'carpeta A dentro de carpeta B'. Vacío = carpeta vacía. Universo = 'todo el archivero'. ℕ,ℤ,ℚ,ℝ,ℂ = carpetas anidadas cada vez más grandes.",
+          "conceptId": "sets-basics"
+        },
+        {
+          "type": "interactive",
+          "component": "SetBuilder",
+          "description": "Constructor conjuntos: define por enumeración {1,2,3} o comprensión {x ∈ ℤ | x² < 10}. Visual: diagrama Venn. Operaciones: pertenencia (test x ∈ A), inclusión (A ⊆ B?), igualdad. Generador conjuntos numéricos: ℕ, ℤ, ℚ, ℝ, ℂ con ejemplos. Jerarquía visual anidada."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-2-1-1",
+              "type": "multiple-choice",
+              "question": "{1,2} ⊆ {1,2,3} es:",
+              "options": [
+                "Verdadera",
+                "Falsa",
+                "Indefinida",
+                "Depende"
+              ],
+              "correct": 0,
+              "explanation": "Todos elementos de {1,2} están en {1,2,3}. Inclusión verdadera."
+            },
+            {
+              "id": "q6-2-1-2",
+              "type": "fill-in",
+              "question": "∅ ⊆ A es ___ para todo conjunto A",
+              "answer": "Verdadera",
+              "explanation": "El conjunto vacío es subconjunto de cualquier conjunto (vacío no tiene elementos que violen la condición)."
+            },
+            {
+              "id": "q6-2-1-3",
+              "type": "multiple-choice",
+              "question": "ℚ ⊂ ℝ es:",
+              "options": [
+                "Verdadera",
+                "Falsa"
+              ],
+              "correct": 0,
+              "explanation": "Todo racional es real, pero hay reales que no son racionales (irracionales como √2, π). Inclusión estricta verdadera."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-2-2",
+      "title": "Operaciones con Conjuntos: Unión, Intersección, Diferencia, Complemento, Producto Cartesiano",
+      "objective": "A ∪ B, A ∩ B, A ∖ B, Aᶜ, A × B. Propiedades: conmutativa, asociativa, distributiva, De Morgan, idempotencia, absorción",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "A = {1,2,3}, B = {3,4,5}. A ∪ B = {1,2,3,4,5} (todo). A ∩ B = {3} (común). A ∖ B = {1,2} (en A no en B). A × B = pares ordenados."
+        },
+        {
+          "type": "explanation",
+          "text": "Operaciones fundamentales:\n- <strong>Unión</strong>: A ∪ B = {x | x ∈ A ∨ x ∈ B} (en A o en B o en ambos)\n- <strong>Intersección</strong>: A ∩ B = {x | x ∈ A ∧ x ∈ B} (en A Y en B)\n- <strong>Diferencia</strong>: A ∖ B = {x | x ∈ A ∧ x ∉ B} (en A pero NO en B)\n- <strong>Complemento</strong> (respecto a U): Aᶜ = U ∖ A = {x ∈ U | x ∉ A}\n- <strong>Diferencia simétrica</strong>: A Δ B = (A ∖ B) ∪ (B ∖ A) = (A ∪ B) ∖ (A ∩ B)\n- <strong>Producto cartesiano</strong>: A × B = {(a,b) | a ∈ A, b ∈ B} (pares ordenados)\n<strong>Propiedades algebraicas</strong>:\n- Conmutativas: A ∪ B = B ∪ A, A ∩ B = B ∩ A\n- Asociativas: (A ∪ B) ∪ C = A ∪ (B ∪ C)\n- Distributivas: A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C), A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)\n- Idempotencia: A ∪ A = A, A ∩ A = A\n- Absorción: A ∪ (A ∩ B) = A, A ∩ (A ∪ B) = A\n- Leyes De Morgan: (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ, (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ\n- Complemento doble: (Aᶜ)ᶜ = A\n- A ∪ Aᶜ = U, A ∩ Aᶜ = ∅",
+          "latex": "A \\cup B = \\{x \\mid x\\in A \\lor x\\in B\\} \\quad | \\quad A \\cap B = \\{x \\mid x\\in A \\land x\\in B\\} \\quad | \\quad A \\setminus B = \\{x \\mid x\\in A \\land x\\notin B\\} \\quad | \\quad A^c = U \\setminus A \\quad | \\quad A \\times B = \\{(a,b) \\mid a\\in A, b\\in B\\}",
+          "visual": "assets/set-operations.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Unión = 'mezcla ambas bolsas'. Intersección = 'solo lo que está en ambas'. Diferencia = 'quita de A lo que está en B'. Complemento = 'todo lo que NO está en A'. Producto cartesiano = 'combina cada elemento de A con cada elemento de B' (como coordenadas).",
+          "conceptId": "set-operations"
+        },
+        {
+          "type": "interactive",
+          "component": "SetOperationsLab",
+          "description": "Conjuntos A,B editables (enumera o define propiedad). Visual: Venn diagram interactivo (sombrea A∪B, A∩B, A∖B, B∖A, AΔB, Aᶜ, Bᶜ). Tabla verdad membresía. Calcula: A×B (tabla pares). Verificador propiedades: conmutativa, distributiva, De Morgan. Ejercicios: 'Simplifica (A∪B)∩(A∪Bᶜ)'. Generador ejercicios aleatorios."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-2-2-1",
+              "type": "multiple-choice",
+              "question": "A = {1,2,3}, B = {3,4,5}. A ∩ B = ",
+              "options": [
+                "{3}",
+                "{1,2,3,4,5}",
+                "{1,2}",
+                "{4,5}"
+              ],
+              "correct": 0,
+              "explanation": "Intersección = elementos comunes = {3}."
+            },
+            {
+              "id": "q6-2-2-2",
+              "type": "fill-in",
+              "question": "A = {1,2}, B = {2,3}. A Δ B (diferencia simétrica) = {___, ___}",
+              "answer": "1, 3",
+              "explanation": "A∖B = {1}, B∖A = {3}. Unión = {1,3}. Elementos en exactamente uno de los dos."
+            },
+            {
+              "id": "q6-2-2-3",
+              "type": "multiple-choice",
+              "question": "(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ es:",
+              "options": [
+                "Ley De Morgan",
+                "Distributiva",
+                "Absorción",
+                "Idempotencia"
+              ],
+              "correct": 0,
+              "explanation": "Ley De Morgan: complemento de unión = intersección de complementos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-2-3",
+      "title": "Diagramas de Venn: Visualización, Resolución Problemas, 3+ Conjuntos",
+      "objective": "Dibujar e interpretar Venn 2 y 3 conjuntos. Regiones, cardinalidades. Problemas: 'Encuesta: 40% A, 30% B, 20% ambos...'. Inclusión-exclusión",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Encuesta: 100 personas. 60 toman café, 50 té, 20 ambos. ¿Cuántos toman solo café? 60-20=40. Solo té: 50-20=30. Ninguno: 100-(40+20+30)=10. Venn lo hace visual."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Diagramas de Venn</strong>: representación gráfica de conjuntos (círculos/ovales).\n- 2 conjuntos: 4 regiones (A∩B, A∖B, B∖A, (A∪B)ᶜ)\n- 3 conjuntos: 8 regiones (A∩B∩C, A∩B∖C, A∩C∖B, B∩C∖A, A∖(B∪C), B∖(A∪C), C∖(A∪B), (A∪B∪C)ᶜ)\n<strong>Principio Inclusión-Exclusión</strong>:\n- |A ∪ B| = |A| + |B| - |A ∩ B|\n- |A ∪ B ∪ C| = |A|+|B|+|C| - |A∩B|-|A∩C|-|B∩C| + |A∩B∩C|\n- General: suma individuales - suma pares + suma triples - ...\n<strong>Resolución problemas</strong>:\n1. Dibuja Venn con regiones\n2. Llena desde intersección más interna hacia afuera\n3. Usa totales dados para hallar regiones vacías\n4. Contesta pregunta sumando regiones relevantes",
+          "latex": "|A \\cup B| = |A|+|B|-|A\\cap B| \\quad | \\quad |A \\cup B \\cup C| = \\sum|A| - \\sum|A\\cap B| + |A\\cap B\\cap C| \\quad | \\quad \\text{Regiones 3 conjuntos: } 2^3=8",
+          "visual": "assets/venn-diagrams.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Venn = 'mapa de pertenencias'. Cada región = combinación única de pertenencias. Inclusión-exclusión = 'cuenta sin duplicar': suma individuales, resta duplicados (intersecciones), añade triples restados de más. 3 conjuntos = 8 países en mapa (cada uno = combinación única de 3 fronteras).",
+          "conceptId": "venn-diagrams"
+        },
+        {
+          "type": "interactive",
+          "component": "VennDiagramLab",
+          "description": "Editor Venn 2/3 conjuntos. Arrastra círculos, redimensiona. Input: cardinalidades totales e intersecciones. Auto-calcula regiones (inclusión-exclusión). Sombrea región seleccionada. Problemas tipo encuesta: input datos → auto-llena Venn → preguntas: '¿cuántos solo A?', '¿cuántos A o B pero no C?'. Generador problemas aleatorios con solución paso a paso."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-2-3-1",
+              "type": "number-input",
+              "question": "Encuesta 100 personas: 60 café, 50 té, 20 ambos. Solo café = ___",
+              "answer": "40",
+              "explanation": "Solo café = café - ambos = 60 - 20 = 40."
+            },
+            {
+              "id": "q6-2-3-2",
+              "type": "fill-in",
+              "question": "3 conjuntos A,B,C. |A|=50, |B|=40, |C|=30. |A∩B|=15, |A∩C|=10, |B∩C|=8, |A∩B∩C|=5. |A∪B∪C| = ___",
+              "answer": "92",
+              "explanation": "50+40+30 - 15-10-8 + 5 = 120 - 33 + 5 = 92."
+            },
+            {
+              "id": "q6-2-3-3",
+              "type": "multiple-choice",
+              "question": "En Venn 3 conjuntos, región A ∩ B ∩ Cᶜ representa:",
+              "options": [
+                "En A y B, no en C",
+                "En A, no en B ni C",
+                "En A o B, no en C",
+                "En C, no en A ni B"
+              ],
+              "correct": 0,
+              "explanation": "Intersección A y B, complemento de C = en A y B, pero NO en C."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-2-4",
+      "title": "Relaciones: Definición, Dominio, Recorrido, Representación, Propiedades",
+      "objective": "Relación R ⊆ A × B. Dominio, recorrido (imagen). Representación: conjunto pares, matriz, grafo dirigido, diagrama sagital. Propiedades: reflexiva, simétrica, antisimétrica, transitiva",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "A = {1,2,3}, B = {a,b}. Relación 'mayor que': R = {(2,1), (3,1), (3,2)} ⊆ A×A. Relación 'estudia': R = {(Juan, Mate), (Juan, Fís), (María, Quim)} ⊆ Alumnos × Materias."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Relación binaria</strong> R de A en B: subconjunto de A × B. R ⊆ A × B.\nNotación: a R b ⇔ (a,b) ∈ R.\n- <strong>Dominio</strong>: Dom(R) = {a ∈ A | ∃b ∈ B: (a,b) ∈ R}\n- <strong>Recorrido / Imagen</strong>: Im(R) = {b ∈ B | ∃a ∈ A: (a,b) ∈ R}\n- <strong>Relación en A</strong>: R ⊆ A × A (mismo conjunto)\n<strong>Representaciones</strong>:\n1. Conjunto de pares ordenados\n2. Matriz de incidencia (filas A, columnas B, 1 si relacionado)\n3. Grafo dirigido (nodos = elementos, flechas = relación)\n4. Diagrama de Sagital (dos columnas paralelas A y B, flechas cruzadas)\n<strong>Propiedades (relación en A)</strong>:\n- Reflexiva: ∀a∈A, a R a (∀a, (a,a)∈R)\n- Simétrica: a R b ⇒ b R a\n- Antisimétrica: (a R b ∧ b R a) ⇒ a = b\n- Transitiva: (a R b ∧ b R c) ⇒ a R c\nEjemplos: '=' (reflexiva, simétrica, transitiva), '≤' (reflexiva, antisimétrica, transitiva), '<' (irreflexiva, antisimétrica, transitiva), 'hermano' (simétrica, no reflexiva, no transitiva).",
+          "latex": "R \\subseteq A \\times B \\quad | \\quad Dom(R) = \\{a \\mid \\exists b: (a,b)\\in R\\} \\quad | \\quad Reflexiva: \\forall a, aRa \\quad | \\quad Sim\\'etrica: aRb\\Rightarrow bRa \\quad | \\quad Transitiva: aRb\\land bRc\\Rightarrow aRc",
+          "visual": "assets/relations.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Relación = 'conexiones' entre elementos. Matriz = 'tabla de contactos' (1 = conectados). Grafo = 'mapa de flechas'. Sagital = 'dos columnas, líneas cruzadas'. Propiedades: Reflexiva = 'cada uno se relaciona consigo'. Simétrica = 'si A conoce a B, B conoce a A'. Transitiva = 'amigo de mi amigo es mi amigo' (no siempre cierto).",
+          "conceptId": "relations"
+        },
+        {
+          "type": "interactive",
+          "component": "RelationExplorer",
+          "description": "Define conjunto A (1-6 elementos). Define relación R (matriz clickable, o regla: 'múltiplo de', 'menor que', 'mismo color'). Visualiza: matriz, grafo dirigido (D3.js), diagrama Sagital. Verifica propiedades: reflexiva, simétrica, antisimétrica, transitiva (con explicación contraejemplo si falsa). Cierre reflexivo, simétrico, transitivo (Warshall). Composición R∘S."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-2-4-1",
+              "type": "multiple-choice",
+              "question": "Relación 'es hermano de' en personas:",
+              "options": [
+                "Reflexiva, simétrica, transitiva",
+                "Irreflexiva, simétrica, no transitiva",
+                "Reflexiva, antisimétrica, transitiva",
+                "Simétrica, transitiva, no reflexiva"
+              ],
+              "correct": 1,
+              "explanation": "Nadie es hermano de sí mismo (irreflexiva). Si A hermano B ⇒ B hermano A (simétrica). A hermano B y B hermano C ⇏ A hermano C (pueden ser medio hermanos, no transitiva)."
+            },
+            {
+              "id": "q6-2-4-2",
+              "type": "fill-in",
+              "question": "Relación ≤ en ℝ: reflexiva ___, antisimétrica ___, transitiva ___",
+              "answer": "Sí, Sí, Sí",
+              "explanation": "a≤a (reflexiva). a≤b y b≤a ⇒ a=b (antisimétrica). a≤b y b≤c ⇒ a≤c (transitiva)."
+            },
+            {
+              "id": "q6-2-4-3",
+              "type": "multiple-choice",
+              "question": "Matriz relación reflexiva en A={1,2,3}: diagonal principal:",
+              "options": [
+                "Todos 0",
+                "Todos 1",
+                "Algunos 1",
+                "Alternados"
+              ],
+              "correct": 1,
+              "explanation": "Reflexiva ⇒ (a,a)∈R para todo a ⇒ diagonal principal toda 1s."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-2-5",
+      "title": "Relaciones de Equivalencia y Particiones, Relaciones de Orden",
+      "objective": "Equivalencia: reflexiva, simétrica, transitiva. Clases de equivalencia, partición, cociente A/R. Orden: reflexivo, antisimétrico, transitivo (parcial). Orden total. Máximos/mínimos, supremos/ínfimos",
+      "type": "conceptual",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Relación 'mismo resto al dividir por 3': 0~3~6, 1~4~7, 2~5~8. Tres clases: [0], [1], [2]. Particionan ℤ. Orden 'divide': 2|6, 3|6, pero 2∤3 y 3∤2 (orden parcial)."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Relación de equivalencia</strong> ~ en A:\n- Reflexiva: a ~ a\n- Simétrica: a ~ b ⇒ b ~ a\n- Transitiva: a ~ b ∧ b ~ c ⇒ a ~ c\n<strong>Clase de equivalencia</strong>: [a] = {x ∈ A | x ~ a}\n- Propiedades: a ∈ [a], a ~ b ⇔ [a] = [b], [a] ∩ [b] = ∅ ∨ [a] = [b]\n- <strong>Partición</strong>: las clases forman partición de A (disjuntas, unión = A)\n- <strong>Conjunto cociente</strong>: A/~ = {[a] | a ∈ A}\n- Teorema: toda partición define equivalencia y viceversa.\n\n<strong>Relación de orden parcial</strong> ≤ en A:\n- Reflexiva: a ≤ a\n- Antisimétrica: a ≤ b ∧ b ≤ a ⇒ a = b\n- Transitiva: a ≤ b ∧ b ≤ c ⇒ a ≤ c\n<strong>Orden total</strong>: además, ∀a,b: a ≤ b ∨ b ≤ a (comparables)\n- Ejemplos: ≤ en ℝ (total), ⊆ en P(A) (parcial), | (divide) en ℕ (parcial)\n<strong>Elementos notables</strong>:\n- Máximo: ∀a, a ≤ M. Mínimo: ∀a, m ≤ a\n- Máximal: no ∃x: M < x. Mínimal: no ∃x: x < m\n- Supremo (cota superior mínima), Ínfimo (cota inferior máxima)\n- Teorema: en orden total finito, máximal = máximo, mínimal = mínimo",
+          "latex": "a\\sim b \\iff [a]=[b] \\quad | \\quad A/\\sim = \\{[a]\\mid a\\in A\\} \\quad | \\quad \\text{Orden parcial: reflexiva, antisim\\'etrica, transitiva} \\quad | \\quad \\text{Total: } \\forall a,b, a\\le b \\lor b\\le a",
+          "visual": "assets/equivalence-order.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Equivalencia = 'mismo color'. Clases = montones por color. Partición = 'todos calcetines ordenados por color, sin mezclar, sin perder'. Cociente = 'etiquetas de color'. Orden parcial = 'jerarquía empresa' (no todos comparables). Orden total = 'cola supermercado' (todos en fila). Supremo = 'techo más bajo que cubre a todos'.",
+          "conceptId": "equivalence-order"
+        },
+        {
+          "type": "interactive",
+          "component": "EquivalenceOrderLab",
+          "description": "Define conjunto A y relación (matriz o regla). Verifica: ¿equivalencia? → muestra clases, partición, cociente. ¿orden parcial? → grafo Hasse (reducción transitiva), identifica máx/mín, máximales/mínimales, supremos/ínfimos. ¿orden total? → verifica comparabilidad. Generador: 'Congruencia módulo n', 'Divide en {1..30}', 'Subconjuntos ⊆', 'Lexicográfico'."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-2-5-1",
+              "type": "multiple-choice",
+              "question": "Relación 'congruencia módulo 3' en ℤ. Clase [1] = ",
+              "options": [
+                "{..., -5, -2, 1, 4, 7, ...}",
+                "{..., -6, -3, 0, 3, 6, ...}",
+                "{..., -4, -1, 2, 5, 8, ...}",
+                "{1}"
+              ],
+              "correct": 0,
+              "explanation": "Números con resto 1 al dividir por 3: 1, 4, 7, ... y -2, -5, ..."
+            },
+            {
+              "id": "q6-2-5-2",
+              "type": "fill-in",
+              "question": "Orden parcial en P({a,b}) por inclusión ⊆. Elementos máximos: ___, Mínimos: ___",
+              "answer": "{a,b}, ∅",
+              "explanation": "Máximo = {a,b} (contiene a todos). Mínimo = ∅ (contenido en todos). Orden parcial (no total: {a} y {b} no comparables)."
+            },
+            {
+              "id": "q6-2-5-3",
+              "type": "multiple-choice",
+              "question": "En orden total, todo elemento máximal es:",
+              "options": [
+                "Máximo",
+                "Mínimo",
+                "No comparable",
+                "No existe"
+              ],
+              "correct": 0,
+              "explanation": "En orden total, todos comparables ⇒ máximal = máximo, mínimal = mínimo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-2-6",
+      "title": "Funciones como Relaciones Especiales: Inyectiva, Sobreyectiva,biyectiva, Composición, Inversa",
+      "objective": "Función f: A → B como relación f ⊆ A×B con ∀a∈A ∃!b∈B: (a,b)∈f. Inyectiva (distintos → distintos), Sobreyectiva (todo B alcanzado), Biyectiva (inversa existe). Composición, Inversa",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Función = relación especial: cada entrada tiene EXACTAMENTE una salida. f = {(1,a), (2,b), (3,a)} ⊆ {1,2,3}×{a,b}. Inyectiva: a≠b ⇒ f(a)≠f(b). Sobreyectiva: todo elemento de B es imagen de algún A."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Función como relación</strong>: f ⊆ A × B tal que ∀a ∈ A, ∃!b ∈ B: (a,b) ∈ f.\n- Dominio: A. Codominio: B. Imagen: f(A) = {f(a) | a ∈ A} ⊆ B.\n<strong>Tipos</strong>:\n- <strong>Inyectiva (uno a uno)</strong>: a₁ ≠ a₂ ⇒ f(a₁) ≠ f(a₂). Equivale: f(a₁)=f(a₂) ⇒ a₁=a₂. Horizontal line test.\n- <strong>Sobreyectiva (sobre)</strong>: ∀b ∈ B, ∃a ∈ A: f(a) = b. Imagen = Codominio.\n- <strong>Biyectiva</strong>: inyectiva Y sobreyectiva. Tiene inversa f⁻¹: B → A.\n<strong>Composición</strong>: g ∘ f: A → C, (g∘f)(a) = g(f(a)).\n- Si f,g biyectivas ⇒ g∘f biyectiva. (g∘f)⁻¹ = f⁻¹ ∘ g⁻¹.\n- Si g∘f inyectiva ⇒ f inyectiva. Si g∘f sobreyectiva ⇒ g sobreyectiva.\n<strong>Inversa</strong>: f⁻¹(b) = a ⇔ f(a) = b. (f⁻¹)⁻¹ = f. (g∘f)⁻¹ = f⁻¹∘g⁻¹.\n- f inyectiva ⇒ existe izquierda g: g∘f = id_A. f sobreyectiva ⇒ existe derecha h: f∘h = id_B.",
+          "latex": "f:A\\to B \\text{ biyectiva} \\iff f^{-1}:B\\to A \\text{ existe} \\quad | \\quad (g\\circ f)^{-1} = f^{-1}\\circ g^{-1} \\quad | \\quad f \\text{ inyectiva} \\Leftrightarrow \\exists g: g\\circ f = id_A",
+          "visual": "assets/functions-as-relations.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Inyectiva = 'cada persona tiene DNI único' (distintas → distintas). Sobreyectiva = 'todos los casilleros ocupados' (todo B alcanzado). Biyectiva = 'correspondencia perfecta 1-a-1' (DNI ↔ persona). Composición = 'trámite A→B→C'. Inversa = 'deshace trámite'.",
+          "conceptId": "functions-as-relations"
+        },
+        {
+          "type": "interactive",
+          "component": "FunctionRelationLab",
+          "description": "Define A, B (tamaño 1-5). Define f como matriz (elige b para cada a). Verifica: ¿función? (¿∀a exactamente un b?). Clasifica: inyectiva, sobreyectiva, biyectiva. Si biyectiva: muestra inversa. Composición: define g: B→C, calcula g∘f. Visual: diagrama flechas A→B→C. Test línea horizontal (inyectiva), cobertura B (sobreyectiva). Contar funciones: total B^|A|, inyectivas P(|B|,|A|), biyectivas |A|! (si |A|=|B|)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-2-6-1",
+              "type": "multiple-choice",
+              "question": "f: {1,2,3} → {a,b} definida f(1)=a, f(2)=a, f(3)=b. Es:",
+              "options": [
+                "Inyectiva",
+                "Sobreyectiva",
+                "Biyectiva",
+                "Ninguna"
+              ],
+              "correct": 1,
+              "explanation": "No inyectiva (1 y 2 mapean a a). Sí sobreyectiva (a y b alcanzados). No biyectiva."
+            },
+            {
+              "id": "q6-2-6-2",
+              "type": "fill-in",
+              "question": "f: A→B biyectiva. f⁻¹∘f = id___, f∘f⁻¹ = id___",
+              "answer": "A, B",
+              "explanation": "f⁻¹∘f: A→A identidad en A. f∘f⁻¹: B→B identidad en B."
+            },
+            {
+              "id": "q6-2-6-3",
+              "type": "multiple-choice",
+              "question": "f: ℝ→ℝ, f(x)=x³. Es:",
+              "options": [
+                "Inyectiva no sobreyectiva",
+                "Sobreyectiva no inyectiva",
+                "Biyectiva",
+                "Ninguna"
+              ],
+              "correct": 2,
+              "explanation": "x³ estrictamente creciente (inyectiva). Límite ±∞ = ±∞ (sobreyectiva). Biyectiva. Inversa: ∛x."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-2-7",
+      "title": "Cardinalidad: Finitos, Infinitos Numerables, No Numerables, Cantor",
+      "objective": "Cardinalidad finita = nº elementos. Infinito numerable (ℵ₀): bijección con ℕ. No numerable (𝔠): ℝ, P(ℕ). Teorema Cantor: |A| < |P(A)|. Hipótesis del continuo",
+      "type": "conceptual",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Cuántos naturales? Infinitos. ¿Cuántos pares? También infinitos. ¿Misma cantidad? SÍ, bijección n ↔ 2n. ¿Cuántos reales? Más que naturales (Cantor: diagonalización). Hay infinitos de distintos tamaños."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Cardinalidad</strong>:\n- Finita: |A| = n ∈ ℕ (número elementos)\n- Infinita: no hay bijección con {1,...,n} para ningún n\n<strong>Infinito numerable (contable)</strong> |A| = ℵ₀ (aleph-cero):\n- Existe bijección f: ℕ → A\n- Ejemplos: ℕ, ℤ, ℚ, números algebraicos\n- Unión contable de contables = contable\n- Subconjunto de contable = finito o contable\n<strong>No numerable (no contable)</strong>:\n- |ℝ| = 𝔠 (continuum) > ℵ₀\n- P(ℕ) (partes de ℕ) tiene cardinalidad 2^ℵ₀ = 𝔠\n- Teorema Cantor: |A| < |P(A)| para todo A (diagonalización)\n- No hay máximo cardinal\n<strong>Hipótesis del continuo</strong> (CH): no existe cardinal entre ℵ₀ y 𝔠. Independiente de ZFC (Gödel/Cohen).\n<strong>Aritmética cardinal</strong>: ℵ₀ + ℵ₀ = ℵ₀, ℵ₀ · ℵ₀ = ℵ₀, 2^ℵ₀ = 𝔠, 𝔠 + ℵ₀ = 𝔠, 𝔠 · 𝔠 = 𝔠.",
+          "latex": "|A| = |B| \\iff \\exists f:A\\to B \\text{ biyectiva} \\quad | \\quad |\\mathbb{N}| = \\aleph_0 \\quad | \\quad |\\mathbb{R}| = \\mathfrak{c} = 2^{\\aleph_0} \\quad | \\quad |A| < |P(A)| \\text{ (Cantor)} \\quad | \\quad \\aleph_0 + \\aleph_0 = \\aleph_0, \\, \\mathfrak{c} + \\aleph_0 = \\mathfrak{c}",
+          "visual": "assets/cardinality.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Hotel Hilbert: infinitas habitaciones ocupadas. Llega nuevo huésped → mueve n a n+1, habitable 1 libre. Llega autobús infinito → mueve n a 2n, impares libres. Infinitos mismos 'tamaños' (ℵ₀). Pero reales = 'más infinitos' (𝔠). Cantor: P(A) siempre más grande que A (diagonalización: construye subconjunto no en lista).",
+          "conceptId": "cardinality"
+        },
+        {
+          "type": "interactive",
+          "component": "CardinalityExplorer",
+          "description": "Demostraciones visuales:\n1. ℕ ~ ℤ (bijección: 0,1,-1,2,-2...)\n2. ℕ ~ ℚ (espiral Cantor / zigzag diagonal)\n3. ℕ ≁ ℝ (diagonalización: construye real no en lista)\n3. |A| < |P(A)|: diagonalización general\n4. Aritmética: ℵ₀ + ℵ₀ (intercala), ℵ₀ × ℵ₀ (pares Cantor)\n4. Visual: recta real vs puntos racionales (denso pero contable). Cardinalidad continuum: [0,1] ~ ℝ (bijeción tangente). Hipótesis continuo: ¿existe cardinal entre ℵ₀ y 𝔠?"
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-2-7-1",
+              "type": "multiple-choice",
+              "question": "Cardinalidad de ℚ (racionales):",
+              "options": [
+                "Finita",
+                "ℵ₀ (numerable)",
+                "𝔠 (continuo)",
+                "ℵ₁"
+              ],
+              "correct": 1,
+              "explanation": "ℚ es numerable: bijección con ℕ (zigzag diagonales en matriz p/q)."
+            },
+            {
+              "id": "q6-2-7-2",
+              "type": "fill-in",
+              "question": "Teorema Cantor: |A| < |P(A)|. Para A = ℕ, |ℕ| = ℵ₀, |P(ℕ)| = ___ = 𝔠",
+              "answer": "2^ℵ₀",
+              "explanation": "P(ℕ) biyecta con {0,1}^ℕ (secuencias binarias) ~ [0,1] ~ ℝ. Cardinalidad 2^ℵ₀ = 𝔠."
+            },
+            {
+              "id": "q6-2-7-3",
+              "type": "multiple-choice",
+              "question": "Hipótesis del continuo (CH):",
+              "options": [
+                "Es un teorema probado",
+                "Es independiente de ZFC (ni probado ni refutado)",
+                "Es falsa",
+                "Dice que ℵ₀ = 𝔠"
+              ],
+              "correct": 1,
+              "explanation": "CH: no hay cardinal entre ℵ₀ y 𝔠. Gödel (1940): consistente con ZFC. Cohen (1963): negación consistente. Independiente."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-2-8",
+      "title": "Proyecto Módulo: Análisis de Estructuras de Datos con Teoría de Conjuntos",
+      "objective": "Modelar base de datos, grafo social, sistema archivos, índice búsqueda usando conjuntos, relaciones, funciones. Operaciones: unión (join), intersección (filtro), diferencia (exclusión), producto cartesiano (cross join), particiones (índices)",
+      "type": "project",
+      "durationMin": 20,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Base datos: Usuarios U, Productos P, Compras C ⊆ U×P. Consulta 'usuarios que compraron A y B' = proyección_U( (C∩(U×{A})) ∩ (C∩(U×{B})) ). Índice invertido: palabra → conjunto documentos. Grafo social: relación 'sigue' ⊆ U×U. Componentes conectados = clases equivalencia 'misma comunidad'."
+        },
+        {
+          "type": "explanation",
+          "text": "Aplicaciones teoría conjuntos en CS:\n1. <strong>Bases de datos relacionales</strong>:\n   - Tabla = conjunto tuplas (relación)\n   - SELECT = proyección (π), filtro (σ), unión (∪), intersección (∩), diferencia (-)\n   - JOIN = producto cartesiano + filtro\n   - Índices = particiones / funciones hash\n2. <strong>Grafos y redes</strong>:\n   - Vértices V, Aristas E ⊆ V×V (relación)\n   - Adyacencia = matriz incidencia\n   - Componentes conexas = clases equivalencia 'conexo'\n   - Caminos = composición relación (Rⁿ)\n   - Cierre transitivo = reachability (Warshall/Floyd)\n3. <strong>Sistemas de archivos</strong>:\n   - Directorio = conjunto archivos + subdirectorios (estructura árbol = conjunto jerárquico)\n   - Rutas = secuencias (cadenas) = funciones ℕ* → nombres\n4. <strong>Motores de búsqueda</strong>:\n   - Índice invertido: palabra → conjunto docs (función Dictionary<string, Set<DocID>>)\n   - Consulta AND = intersección conjuntos\n   - Consulta OR = unión conjuntos\n   - Consulta NOT = diferencia (universo - conjunto)\n5. <strong>Estructuras de datos</strong>:\n   - Set/HashSet = conjunto (pertenencia O(1))\n   - Map/Dictionary = función (clave → valor)\n   - Relaciones = grafos, matrices, tablas\nProyecto: diseña esquema BD + consultas SQL equivalentes a operaciones conjuntos. O: grafo social → comunidades (componentes conexas) + influencers (centralidad).",
+          "latex": "JOIN: R \\bowtie S = \\pi_{attrs}(\\sigma_{R.key=S.key}(R \\times S)) \\quad | \\quad \\text{Índice invertido: } w \\mapsto \\{d \\mid w\\in d\\} \\quad | \\quad \\text{Comunidad} = \\text{clase equivalencia conexi\\'on}",
+          "visual": "assets/sets-cs-applications.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "SetsInCSLab",
+          "description": "Mini-motor relacional en memoria:\n1. Define tablas (conjuntos tuplas).\n2. Operaciones: π (proyección), σ (selección), ∪, ∩, -, ×, ⋈ (join).\n3. Consultas SQL → operaciones conjuntos.\n4. Grafo social: define V, E. Algoritmos: BFS/DFS (componentes), PageRank (centralidad), detección comunidades (Label Propagation).\n5. Índice invertido: construye desde corpus textos. Consultas booleanas: AND=∩, OR=∪, NOT=-.\n6. Visualizador: Venn consultas, grafo comunidades, estadísticas índices."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-2-8-1",
+              "type": "multiple-choice",
+              "question": "SQL INNER JOIN entre tablas R y S equivale a:",
+              "options": [
+                "R ∪ S",
+                "R ∩ S",
+                "π(σ_{R.key=S.key}(R × S))",
+                "R - S"
+              ],
+              "correct": 2,
+              "explanation": "JOIN = producto cartesiano + filtro igualdad claves + proyección. Equivalente a intersección filtrada."
+            },
+            {
+              "id": "q6-2-8-2",
+              "type": "fill-in",
+              "question": "Consulta booleana: 'python AND (machine OR learning) NOT tutorial'. Operaciones conjuntos: (python ∩ (machine ∪ learning)) \\ tutorial = ___",
+              "answer": "(python ∩ (machine ∪ learning)) ∖ tutorial",
+              "explanation": "AND = ∩, OR = ∪, NOT = diferencia (universo - conjunto). Paréntesis para precedencia."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,503 @@
+{
+  "id": "m5-2",
+  "phaseId": "phase-5",
+  "number": "5.2",
+  "title": "Probabilidad",
+  "description": "Espacio muestral, eventos, reglas, condicional, Bayes, independencia",
+  "lessons": [
+    {
+      "id": "l5-2-1",
+      "title": "Experimentos Aleatorios, Espacio Muestral, Eventos",
+      "objective": "Definir experimento aleatorio, espacio muestral Ω, eventos (subconjuntos). Operaciones: unión, intersección, complementario, mutuamente excluyentes",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Lanza un dado: Ω = {1,2,3,4,5,6}. Evento 'par' = {2,4,6}. Evento '>4' = {5,6}. Unión = {2,4,5,6}. Intersección = {6}. Complementario de 'par' = {1,3,5}."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Experimento aleatorio</strong>: resultado incierto, repetible en mismas condiciones.\n<strong>Espacio muestral Ω</strong>: conjunto de todos los resultados posibles elementales.\n- Discreto finito: dado, moneda, cartas\n- Discreto infinito: nº lanzamientos hasta cara\n- Continuo: tiempo espera, punto en rectángulo\n<strong>Evento</strong>: subconjunto de Ω (A ⊆ Ω). Ocurre si resultado ∈ A.\nOperaciones:\n- Unión A ∪ B: ocurre A o B (o ambos)\n- Intersección A ∩ B: ocurren A y B\n- Complementario Aᶜ = Ω ∖ A: no ocurre A\n- Diferencia A ∖ B: ocurre A pero no B\n- Mutuamente excluyentes: A ∩ B = ∅ (no pueden ocurrir juntos)\n- Partición: eventos excluyentes que cubren Ω\nDiagramas de Venn: visualización geométrica.",
+          "latex": "\\Omega = \\{\\omega_1,\\omega_2,...\\} \\quad | \\quad A \\subseteq \\Omega \\quad | \\quad A \\cup B, A \\cap B, A^c \\quad | \\quad A \\cap B = \\emptyset \\text{ (excluyentes)}",
+          "visual": "assets/sample-space.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Menú restaurante: Ω = todos los platos. Evento 'vegetariano' = subconjunto platos veg. 'Picante' = otro subconjunto. Unión = vegano O picante. Intersección = vegano Y picante. Complementario = no vegetariano. Mutuamente excluyentes: 'carne' y 'vegetariano' (un plato no puede ser ambos).",
+          "conceptId": "sample-space"
+        },
+        {
+          "type": "interactive",
+          "component": "ProbabilitySpaceExplorer",
+          "description": "Experimentos: dado (1-2), 2 dados (suma), cartas, ruleta, tiempo continuo. Usuario define eventos (click en resultados). Venn diagram interactivo: une/intersecta/complementa. Tabla: resultados, eventos, operaciones. Prueba: '¿A y B son excluyentes?', '¿Cubren Ω?'."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-2-1-1",
+              "type": "multiple-choice",
+              "question": "Lanza dos dados. Ω tiene ___ resultados. Evento 'suma = 7' tiene ___ resultados.",
+              "options": [
+                "36, 6",
+                "12, 2",
+                "36, 5",
+                "18, 3"
+              ],
+              "correct": 0,
+              "explanation": "6×6=36 pares ordenados. Suma 7: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) → 6 casos."
+            },
+            {
+              "id": "q5-2-1-2",
+              "type": "fill-in",
+              "question": "A y B mutuamente excluyentes ⟺ A ∩ B = ___",
+              "answer": "∅",
+              "explanation": "No tienen elementos en común (no pueden ocurrir simultáneamente)."
+            },
+            {
+              "id": "q5-2-1-3",
+              "type": "multiple-choice",
+              "question": "Saca una carta. A = 'es corazones', B = 'es rey'. A ∩ B = ",
+              "options": [
+                "{rey de corazones}",
+                "∅",
+                "{todas las cartas}",
+                "{13 corazones + 4 reyes}"
+              ],
+              "correct": 0,
+              "explanation": "Solo el rey de corazones está en ambos eventos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-2-2",
+      "title": "Definiciones de Probabilidad: Clásica, Frecuentista, Axiomática (Kolmogórov)",
+      "objective": "P(A) = casos favorables / casos posibles (Laplace). Frecuencia relativa límite. Axiomas: P≥0, P(Ω)=1, σ-aditividad",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Probabilidad de cara en moneda justa? Clásica: 1/2. Frecuentista: lanza 10000 veces → frecuencia relativa ≈ 0.5. Axiomática: define reglas que toda probabilidad debe cumplir."
+        },
+        {
+          "type": "explanation",
+          "text": "Tres enfoques:\n1. <strong>Clásica (Laplace)</strong>: P(A) = casos favorables / casos posibles (solo Ω finito equiprobable)\n2. <strong>Frecuentista</strong>: P(A) = límite frecuencia relativa = lim_{n→∞} (frecuencia A en n ensayos)\n3. <strong>Axiomática (Kolmogórov 1933)</strong> - base moderna:\n   - Axioma 1: P(A) ≥ 0  ∀A\n   - Axioma 2: P(Ω) = 1\n   - Axioma 3 (σ-aditividad): Si A₁,A₂,... mutuamente excluyentes → P(∪Aᵢ) = ΣP(Aᵢ)\nConsecuencias:\n- P(∅) = 0\n- P(Aᶜ) = 1 - P(A)\n- A ⊆ B ⇒ P(A) ≤ P(B)\n- P(A ∪ B) = P(A) + P(B) - P(A ∩ B) (inclusión-exclusión)\n- P(A) ≤ 1",
+          "latex": "P(A) = \\frac{|A|}{|\\Omega|} \\text{ (cl\\'asica)} \\quad | \\quad P(A) = \\lim_{n\\to\\infty} \\frac{f_A(n)}{n} \\quad | \\quad P(\\Omega)=1, P(A)\\ge0, P(\\cup A_i)=\\sum P(A_i) \\text{ (axiomas)}",
+          "visual": "assets/probability-definitions.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Clásica: 'en teoría, 1 de 6'. Frecuentista: 'lancio 10000 veces, cuento'. Axiomática: 'reglas del juego que toda probabilidad debe obedecer'. Como reglas ajedrez: definen qué movimientos son válidos sin decir estrategia.",
+          "conceptId": "probability-definitions"
+        },
+        {
+          "type": "interactive",
+          "component": "ProbabilitySimulator",
+          "description": "Experimentos: moneda, dado, ruleta, cartas. Usuario elige definición. Clásica: calcula teórica. Frecuentista: botón 'Lanza N veces' (animado), gráfico frecuencia relativa convergiendo. Axiomática: verifica axiomas en experimento. Ley grandes números visual."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-2-2-1",
+              "type": "multiple-choice",
+              "question": "Axioma de σ-aditividad: para eventos mutuamente excluyentes A₁,A₂,... :",
+              "options": [
+                "P(A₁∪A₂) = P(A₁)+P(A₂)",
+                "P(∪Aᵢ) = ΣP(Aᵢ)",
+                "P(A) + P(Aᶜ) = 1",
+                "P(Ω) = 1"
+              ],
+              "correct": 1,
+              "explanation": "Probabilidad de unión contable = suma probabilidades (si excluyentes). Generaliza aditividad finita."
+            },
+            {
+              "id": "q5-2-2-2",
+              "type": "fill-in",
+              "question": "Dado P(A)=0.4, P(B)=0.5, P(A∩B)=0.2. P(A∪B) = ___",
+              "answer": "0.7",
+              "explanation": "Inclusión-exclusión: P(A)+P(B)-P(A∩B) = 0.4+0.5-0.2 = 0.7."
+            },
+            {
+              "id": "q5-2-2-3",
+              "type": "multiple-choice",
+              "question": "Si A ⊆ B, entonces P(A) ___ P(B)",
+              "options": [
+                "≤",
+                "≥",
+                "=",
+                "No se puede saber"
+              ],
+              "correct": 0,
+              "explanation": "Subconjunto tiene probabilidad menor o igual (B contiene A y posiblemente más)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-2-3",
+      "title": "Probabilidad Condicionada: P(A|B) = P(A∩B)/P(B)",
+      "objective": "Actualizar probabilidad con información nueva. Regla del producto: P(A∩B) = P(A|B)P(B) = P(B|A)P(A). Independencia: P(A|B)=P(A)",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Saca carta. P(rey) = 4/52 = 1/13. Te dicen 'es figura (J,Q,K)'. P(rey|figura) = 4/12 = 1/3. Información cambia probabilidad."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Probabilidad condicionada</strong>:\nP(A|B) = P(A ∩ B) / P(B)  (si P(B) > 0)\n'Probabilidad de A dado que B ha ocurrido'\n<strong>Regla del producto</strong>:\nP(A ∩ B) = P(A|B)·P(B) = P(B|A)·P(A)\nExtensión: P(A∩B∩C) = P(A)·P(B|A)·P(C|A∩B)\n<strong>Independencia</strong>:\nA y B independientes ⟺ P(A|B) = P(A) ⟺ P(B|A) = P(B) ⟺ P(A∩B) = P(A)P(B)\nIntuición: saber B no cambia probabilidad de A.\n<strong>Independencia mutua (3+ eventos)</strong>: todas las combinaciones cumplen producto.\n<strong>Paradojas</strong>: paradoja del niño (niño/niña), Monty Hall (cambiar puerta duplica probabilidad ganar).",
+          "latex": "P(A|B) = \\frac{P(A\\cap B)}{P(B)} \\quad | \\quad P(A\\cap B) = P(A|B)P(B) = P(B|A)P(A) \\quad | \\quad A\\perp B \\iff P(A|B)=P(A) \\iff P(A\\cap B)=P(A)P(B)",
+          "visual": "assets/conditional-probability.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Diagnóstico médico: P(enfermedad) = 1%. Test positivo: P(pos|enf)=99%, P(pos|sano)=5%. P(enf|pos) = ? No es 99%! Bayes: P(enf|pos) = 0.99×0.01 / (0.99×0.01 + 0.05×0.99) ≈ 16.7%. Condicionada = actualizar creencia con evidencia.",
+          "conceptId": "conditional-probability"
+        },
+        {
+          "type": "interactive",
+          "component": "ConditionalProbabilityLab",
+          "description": "Escenarios: cartas, dados, diagnóstico, Monty Hall. Usuario define eventos A,B. Calcula P(A), P(B), P(A∩B), P(A|B), P(B|A). Verifica independencia: ¿P(A|B)=P(A)? Árbol probabilidades: ramas condicionadas. Monty Hall: simulación interactiva (cambia/no cambia), ve convergencia 2/3 vs 1/3."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-2-3-1",
+              "type": "multiple-choice",
+              "question": "P(A)=0.3, P(B)=0.4, P(A∩B)=0.12. ¿A y B independientes?",
+              "options": [
+                "Sí",
+                "No",
+                "No se puede saber",
+                "Solo si P(A|B)=0.3"
+              ],
+              "correct": 0,
+              "explanation": "P(A)P(B) = 0.3×0.4 = 0.12 = P(A∩B). Sí, independientes."
+            },
+            {
+              "id": "q5-2-3-2",
+              "type": "fill-in",
+              "question": "P(A)=0.5, P(B|A)=0.6. P(A∩B) = ___",
+              "answer": "0.3",
+              "explanation": "Regla producto: P(A∩B) = P(A)·P(B|A) = 0.5×0.6 = 0.3."
+            },
+            {
+              "id": "q5-2-3-3",
+              "type": "multiple-choice",
+              "question": "Monty Hall: 3 puertas, 1 coche, 2 cabras. Eliges 1. Presentador abre otra con cabra. ¿Cambias?",
+              "options": [
+                "Da igual (1/2 cada una)",
+                "SÍ cambias (ganas 2/3)",
+                "NO cambias (ganas 2/3)",
+                "Depende del presentador"
+              ],
+              "correct": 1,
+              "explanation": "Inicialmente P(coche)=1/3. Presentador revela info (sabe dónde está cabra). Cambiar da P=2/3. No cambiar se queda en 1/3."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-2-4",
+      "title": "Teorema de la Probabilidad Total y Teorema de Bayes",
+      "objective": "Partición del espacio: P(A) = Σ P(A|Bᵢ)P(Bᵢ). Bayes: P(Bᵢ|A) = P(A|Bᵢ)P(Bᵢ) / Σ P(A|Bⱼ)P(Bⱼ). Diagnóstico, spam filter, fiabilidad",
+      "type": "procedural",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Test enfermedad: P(pos|enf)=0.99, P(pos|sano)=0.05. Prevalencia 1%. P(enf|pos) = ? Bayes: (0.99×0.01) / (0.99×0.01 + 0.05×0.99) ≈ 16.7%. ¡No 99%!"
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Teorema Probabilidad Total</strong>:\nSi {B₁,...,Bₙ} partición de Ω (excluyentes, cubren Ω):\nP(A) = Σᵢ P(A|Bᵢ)P(Bᵢ)\n'Peso promedio de probabilidades condicionadas'\n<strong>Teorema de Bayes</strong>:\nP(Bᵢ|A) = P(A|Bᵢ)P(Bᵢ) / Σⱼ P(A|Bⱼ)P(Bⱼ)\n- P(Bᵢ): probabilidad <strong>a priori</strong> (antes de evidencia A)\n- P(A|Bᵢ): <strong>verosimilitud</strong> (prob evidencia dado hipótesis)\n- P(Bᵢ|A): probabilidad <strong>a posteriori</strong> (después de evidencia)\n- Denominador: P(A) = probabilidad total evidencia (normalización)\nForma odds: Posterior Odds = Prior Odds × Likelihood Ratio\nAplicaciones: diagnóstico médico, filtro spam, fiabilidad sistemas, jurados, machine learning (Naive Bayes).",
+          "latex": "P(A) = \\sum_i P(A|B_i)P(B_i) \\quad | \\quad P(B_i|A) = \\frac{P(A|B_i)P(B_i)}{\\sum_j P(A|B_j)P(B_j)} \\quad | \\quad \\text{Odds: } \\frac{P(B_i|A)}{P(B_j|A)} = \\frac{P(B_i)}{P(B_j)} \\times \\frac{P(A|B_i)}{P(A|B_j)}",
+          "visual": "assets/bayes-theorem.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Sherlock Holmes: hipótesis inicial (prior) + evidencia (verosimilitud) = conclusión actualizada (posterior). Bayes = 'actualizar creencias racionalmente con nueva evidencia'. Filtro spam: prior = %spam histórico. Palabras 'gratis', 'oferta' aumentan verosimilitud spam → posterior sube.",
+          "conceptId": "bayes-theorem"
+        },
+        {
+          "type": "interactive",
+          "component": "BayesCalculator",
+          "description": "Calculadora Bayes interactiva:\n1. Define hipótesis (B₁...Bₙ) y priors\n2. Define evidencia A\n3. Ingresa verosimilitudes P(A|Bᵢ)\n4. Calcula posteriors P(Bᵢ|A) paso a paso\n5. Forma odds: prior odds × likelihood ratio = posterior odds\nEscenarios: diagnóstico (sensibilidad/especificidad), spam filter (palabras clave), fiabilidad (componentes serie/paralelo), jurado (evidencia testigo). Gráfico: prior → posterior barras."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-2-4-1",
+              "type": "number-input",
+              "question": "Test: Sensibilidad 95%, Especificidad 90%. Prevalencia 2%. Valor predictivo positivo (P(enf|pos)) = ___%",
+              "answer": "16.2",
+              "explanation": "P(pos|enf)=0.95, P(pos|sano)=0.10. Prior enf=0.02. P(enf|pos) = 0.95×0.02 / (0.95×0.02 + 0.10×0.98) = 0.019/0.117 ≈ 0.1624 = 16.2%."
+            },
+            {
+              "id": "q5-2-4-2",
+              "type": "fill-in",
+              "question": "Fábrica: Máquina A produce 60% (defectuosos 2%), B produce 40% (defectuosos 5%). Pieza defectuosa → P(vino de A) = ___",
+              "answer": "0.4286 ≈ 42.9%",
+              "explanation": "P(A)=0.6, P(def|A)=0.02. P(B)=0.4, P(def|B)=0.05. P(def)=0.6×0.02+0.4×0.05=0.032. P(A|def)=0.012/0.032=0.375. Wait: 0.6*0.02=0.012, 0.4*0.05=0.02. Total=0.032. P(A|def)=0.012/0.032=0.375. So 37.5%."
+            },
+            {
+              "id": "q5-2-4-3",
+              "type": "multiple-choice",
+              "question": "Forma odds Bayes: Posterior Odds = Prior Odds × ___",
+              "options": [
+                "Likelihood Ratio",
+                "Prior Probability",
+                "Evidence Probability",
+                "Posterior Probability"
+              ],
+              "correct": 0,
+              "explanation": "Odds form: P(H|E)/P(¬H|E) = [P(H)/P(¬H)] × [P(E|H)/P(E|¬H)]. Likelihood ratio = factor actualización."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-2-5",
+      "title": "Independencia, Independencia Condicional, Variables Aleatorias Discretas",
+      "objective": "Independencia múltiple. Independencia condicional (A⊥B|C). Variable aleatoria discreta: función X: Ω→ℝ. Distribución de probabilidad P(X=x)",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Lanza 2 dados. X = suma. P(X=7) = 6/36. X es variable aleatoria: asigna número a cada resultado. Distribución: tabla P(X=x) para x=2..12."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Independencia múltiple</strong>: A₁,...,Aₙ independientes ⟺ ∀ subconjunto: P(∩Aᵢ) = ∏P(Aᵢ)\nPar a par independiente ⇏ mutuamente independientes.\n<strong>Independencia condicional</strong>: A ⊥ B | C ⟺ P(A∩B|C) = P(A|C)P(B|C)\n'A y B independientes DADO C'. Ej: genotipo hermanos independientes dado genotipos padres.\n<strong>Variable aleatoria discreta</strong> X: Ω → ℝ (asigna número a cada resultado).\nDistribución: P(X = xᵢ) = pᵢ, Σpᵢ = 1.\nFunción masa (PMF): f(x) = P(X=x).\nFunción distribución (CDF): F(x) = P(X ≤ x) = Σ_{t≤x} f(t).\nPropiedades CDF: no decreciente, lim_{x→-∞}=0, lim_{x→∞}=1, continua por derecha.\nEjemplos: Bernoulli (éxito/fracaso), Binomial, Geométrica, Poisson.",
+          "latex": "X:\\Omega\\to\\mathbb{R} \\quad | \\quad f(x)=P(X=x),\\; \\sum f(x)=1 \\quad | \\quad F(x)=P(X\\le x)=\\sum_{t\\le x}f(t) \\quad | \\quad A\\perp B|C \\iff P(A\\cap B|C)=P(A|C)P(B|C)",
+          "visual": "assets/discrete-rv.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Variable aleatoria = 'traductor' de resultados a números. Dado → {1,2,3,4,5,6}. Cartas → valor (As=1, J=11, Q=12, K=13). Distribución = 'menú de probabilidades' para cada valor. CDF = 'probabilidad acumulada hasta aquí'.",
+          "conceptId": "discrete-rv"
+        },
+        {
+          "type": "interactive",
+          "component": "DiscreteRVExplorer",
+          "description": "Generador variables discretas: Bernoulli(p), Binomial(n,p), Geométrica(p), Poisson(λ), Uniforme discreta, Personalizada. Tabla PMF + CDF. Gráfico barras PMF + escalón CDF. Calcula media, varianza, percentiles. Simulación: genera n muestras, histograma empírico vs teórico. Independencia: lanza 2 V.A. independientes, ve distribución conjunta."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-2-5-1",
+              "type": "multiple-choice",
+              "question": "Variable aleatoria discreta asigna:",
+              "options": [
+                "Un número a cada resultado elemental",
+                "Un intervalo a cada evento",
+                "Una probabilidad a cada número",
+                "Un evento a cada número"
+              ],
+              "correct": 0,
+              "explanation": "X: Ω → ℝ. Cada resultado elemental ω ↦ X(ω) ∈ ℝ."
+            },
+            {
+              "id": "q5-2-5-2",
+              "type": "fill-in",
+              "question": "Dado justo. X = cara. P(X=1)=1/6, P(X=2)=1/6, ... P(X=6)=1/6. F(3) = P(X≤3) = ___",
+              "answer": "1/2",
+              "explanation": "CDF: F(3) = P(X=1)+P(X=2)+P(X=3) = 3/6 = 1/2."
+            },
+            {
+              "id": "q5-2-5-3",
+              "type": "multiple-choice",
+              "question": "A y B independientes dado C (A⊥B|C) significa:",
+              "options": [
+                "A y B son independientes",
+                "P(A∩B|C) = P(A|C)P(B|C)",
+                "C causa A y B",
+                "A y B son excluyentes"
+              ],
+              "correct": 1,
+              "explanation": "Definición: condicionando a C, A y B se vuelven independientes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-2-6",
+      "title": "Distribuciones Discretas Clásicas: Bernoulli, Binomial, Geométrica, Poisson",
+      "objective": "Bernoulli (1 ensayo), Binomial (n ensayos), Geométrica (hasta 1er éxito), Poisson (eventos raros en intervalo). Media, varianza, forma",
+      "type": "procedural",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Moneda: Bernoulli(p). 10 lanzamientos: Binomial(10,p). Lanza hasta cara: Geométrica(p). Llamadas/hora en call center: Poisson(λ). Cada una modela situación distinta."
+        },
+        {
+          "type": "explanation",
+          "text": "Distribuciones discretas fundamentales:\n1. <strong>Bernoulli(p)</strong>: 1 ensayo, éxito (1) con prob p, fracaso (0) con q=1-p.\n   P(X=1)=p, P(X=0)=1-p.  μ=p, σ²=pq\n2. <strong>Binomial(n,p)</strong>: n ensayos independientes Bernoulli(p). X = nº éxitos.\n   P(X=k) = C(n,k) pᵏ qⁿ⁻ᵏ, k=0..n.  μ=np, σ²=npq\n   Aproximación normal si np>5, nq>5.\n3. <strong>Geométrica(p)</strong>: nº ensayos HASTA 1er éxito (incluye el éxito).\n   P(X=k) = qᵏ⁻¹p, k=1,2,...  μ=1/p, σ²=q/p²\n   Sin memoria: P(X>m+n|X>m) = P(X>n)\n4. <strong>Poisson(λ)</strong>: nº eventos en intervalo fijo (tiempo/espacio), raros, independientes.\n   P(X=k) = e⁻ˡ λᵏ/k!, k=0,1,2,...  μ=λ, σ²=λ\n   Límite Binomial(n,p) con n→∞, p→0, np=λ constante.\nRelaciones: Binomial(n,p) ≈ Poisson(np) si n grande, p pequeño. Geométrica = caso especial Binomial Negativa (r=1).",
+          "latex": "Bernoulli(p): P(X=1)=p \\quad Bin(n,p): P(X=k)=\\binom{n}{k}p^kq^{n-k} \\quad Geo(p): P(X=k)=q^{k-1}p \\quad Poisson(\\lambda): P(X=k)=e^{-\\lambda}\\lambda^k/k!",
+          "visual": "assets/discrete-distributions.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Bernoulli = 1 tiro. Binomial = n tiros, cuenta aciertos. Geométrica = tiros hasta acertar. Poisson = 'eventos raros en ventana': goles partido, errores página, llegadas minuto. Binomial(n,p) con n grande p pequeño ≈ Poisson(np).",
+          "conceptId": "discrete-distributions-classic"
+        },
+        {
+          "type": "interactive",
+          "component": "DiscreteDistributionsLab",
+          "description": "Selector distribución (Bernoulli, Binomial, Geométrica, Poisson, Binomial Negativa, Hipergeométrica). Sliders parámetros. PMF + CDF gráficas. Media, varianza, asimetría, curtosis. Simulación: genera 10000 muestras, histograma vs teórico. Aproximaciones: Binomial→Normal, Binomial→Poisson, Poisson→Normal. Calculadora probabilidades: P(X≤k), P(a≤X≤b), cuantiles."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-2-6-1",
+              "type": "number-input",
+              "question": "Binomial(n=10, p=0.3). P(X=3) = C(10,3)·0.3³·0.7⁷ = ___",
+              "answer": "0.2668",
+              "explanation": "C(10,3)=120. 120×0.027×0.0823543 ≈ 0.2668."
+            },
+            {
+              "id": "q5-2-6-2",
+              "type": "fill-in",
+              "question": "Poisson(λ=2). P(X=0) = ___, P(X≥1) = ___",
+              "answer": "e⁻² ≈ 0.1353, 1-e⁻² ≈ 0.8647",
+              "explanation": "P(X=0)=e⁻². P(X≥1)=1-P(X=0)=1-e⁻²."
+            },
+            {
+              "id": "q5-2-6-3",
+              "type": "multiple-choice",
+              "question": "Geométrica(p=0.2). Media = ___, Propiedad sin memoria: P(X>5+3|X>5) = P(X>___)",
+              "answer": "5, 3",
+              "explanation": "μ=1/p=5. Sin memoria: P(X>m+n|X>m)=P(X>n). Aquí m=5,n=3 → P(X>3)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-2-7",
+      "title": "Simulación y Monte Carlo: Estimación por Muestreo",
+      "objective": "Método Monte Carlo: simular experimento muchas veces para estimar probabilidades, integrales, esperanzas. Ley grandes números, convergencia, error estándar",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Cuánto vale π? Lanza dardos aleatorios en cuadrado 2×2 con círculo radio 1 inscrito. Proporción dentro ≈ π/4. 10000 dardos → π ≈ 3.14. Monte Carlo = estimar por simulación aleatoria."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Método Monte Carlo</strong>: estimar cantidad difícil mediante muestreo aleatorio repetido.\nPrincipio: Ley de los Grandes Números → media muestral converge a esperanza.\nPasos:\n1. Define cantidad a estimar (probabilidad, integral, esperanza)\n2. Diseña experimento aleatorio cuyo resultado tiene esa esperanza\n3. Simula N veces (N grande)\n4. Promedia resultados → estimación\n5. Cuantifica incertidumbre: error estándar = σ/√N, intervalo confianza\nEjemplos:\n- π: puntos uniformes en [0,1]², proporción en círculo → π/4\n- Integral ∫₀¹ f(x)dx: x~U(0,1), media f(x) → integral\n- Probabilidad compleja: simula experimento, cuenta éxitos\n- Valor opción financiera: simula trayectorias precio (Black-Scholes)\n- Cadenas Markov Monte Carlo (MCMC): muestreo distribuciones complejas\n<strong>Convergencia</strong>: error ≈ O(1/√N). Para 10× precisión → 100× simulaciones.\n<strong>Técnicas reducción varianza</strong>: muestreo importancia, estratificado, antitético, variables control.",
+          "latex": "\\hat{\\theta}_N = \\frac{1}{N}\\sum_{i=1}^N X_i \\xrightarrow{N\\to\\infty} \\theta \\quad | \\quad \\text{Error estándar} = \\frac{\\sigma}{\\sqrt{N}} \\quad | \\quad IC_{95\\%}: \\hat{\\theta} \\pm 1.96\\frac{\\hat{\\sigma}}{\\sqrt{N}}",
+          "visual": "assets/monte-carlo.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "¿Cuántos caramelos rojos en frasco? No cuentes todos. Saca 100 al azar, cuenta rojos, extrapola. Monte Carlo = 'muestreo representativo para estimar lo difícil de calcular exacto'. π con dardos = integra área círculo muestreando puntos. Convergencia 1/√N: 100 dardos → error ~10%, 10000 → ~1%.",
+          "conceptId": "monte-carlo"
+        },
+        {
+          "type": "interactive",
+          "component": "MonteCarloLab",
+          "description": "Experimentos clásicos:\n1. π por dardos (puntos en cuadrado/círculo). Animación + convergencia gráfico.\n2. Integral ∫₀¹ e⁻ˣ² dx (no elemental). x~U(0,1), media e⁻ˣ².\n3. Probabilidad compleja: 3 dados, suma > 15. Simula vs exacto.\n4. Caminata aleatoria 1D/2D. Tiempo retorno origen.\n5. Opción europea Black-Scholes: simula trayectorias Geometric Brownian Motion.\n6. MCMC (Metropolis-Hastings): muestrea distribución posterior bayesiana.\nCada uno: control N, gráfico convergencia, error estándar, IC 95%. Compara con valor exacto."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-2-7-1",
+              "type": "multiple-choice",
+              "question": "Monte Carlo para estimar π: puntos aleatorios en [0,1]², cuenta en círculo cuarto. Estimador π̂ = 4 × (puntos_dentro / N). Error estándar ∝:",
+              "options": [
+                "1/N",
+                "1/√N",
+                "1/N²",
+                "Constante"
+              ],
+              "correct": 1,
+              "explanation": "Error estándar Monte Carlo ∝ 1/√N. Para 10× precisión necesitas 100× muestras."
+            },
+            {
+              "id": "q5-2-7-2",
+              "type": "fill-in",
+              "question": "Integral ∫₀¹ x² dx = 1/3. Monte Carlo: x~U(0,1), media x². Con N=10000, error típico ≈ ___",
+              "answer": "0.001",
+              "explanation": "σ(x²) = √(E[X⁴]-E[X²]²) = √(1/5 - 1/9) = √(4/45) ≈ 0.298. SE = 0.298/√10000 ≈ 0.003. Error típico ~0.003."
+            },
+            {
+              "id": "q5-2-7-3",
+              "type": "multiple-choice",
+              "question": "Técnica reducción varianza: generar pares (X, 1-X) para U(0,1). Se llama:",
+              "options": [
+                "Muestreo importancia",
+                "Muestreo antitético",
+                "Muestreo estratificado",
+                "Variables control"
+              ],
+              "correct": 1,
+              "explanation": "Antitético: usa correlación negativa entre pares para reducir varianza. (X, 1-X) correlación -1."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-2-8",
+      "title": "Proyecto Módulo: Análisis de Riesgo y Decisiones bajo Incertidumbre",
+      "objective": "Caso real: lanzamiento producto, inversión, diagnóstico médico, control calidad. Árbol decisiones, valor esperado, utilidad, aversión riesgo, análisis sensibilidad, simulación Monte Carlo",
+      "type": "project",
+      "durationMin": 20,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Lanzar producto: cuesta 1M€. Éxito (30%): gana 5M. Fracaso (70%): pierde 1M. Valor esperado = 0.3×5 - 0.7×1 = 0.8M > 0. ¿Lanzar? Análisis sensibilidad: ¿y si éxito 20%? ¿Y si ganancia 3M? Utilidad: ¿vale la pena arriesgar 1M?"
+        },
+        {
+          "type": "explanation",
+          "text": "Análisis decisión bajo incertidumbre:\n1. <strong>Árbol de decisión</strong>: nodos decisión (cuadrado), nodos azar (círculo), ramas con probabilidades\n2. <strong>Valor Esperado (VE)</strong>: Σ pᵢ·gananciaᵢ. Criterio: maximiza VE (neutral al riesgo)\n3. <strong>Utilidad</strong>: U(x) transforma ganancia en 'satisfacción'. Aversión riesgo: U cóncava (log, √, exponencial negativa). VE utilidad = Σ pᵢU(xᵢ)\n4. <strong>Análisis sensibilidad</strong>: ¿cómo cambia decisión si p varía ±10%? ¿y si ganancias ±20%? Diagrama tornado.\n3. <strong>Valor de información perfecta (EVPI)</strong>: ¿cuánto pagarías por saber resultado antes?\n4. <strong>Simulación Monte Carlo</strong>: variables inciertas (coste, demanda, precio) → distribuciones → simula 10000 escenarios → distribución VE → percentiles (VaR, CVaR)\n5. <strong>Caso real</strong>: diagnóstico médico (test → tratar/no tratar), inversión (cartera), control calidad (aceptar lote), seguros (prima vs riesgo).\nEntregable: árbol decisión, VE, análisis sensibilidad, recomendación con IC 95% Monte Carlo.",
+          "latex": "VE = \\sum p_i x_i \\quad | \\quad U(x) = \\ln x \\text{ (aversi\\'on riesgo)} \\quad | \\quad EVPI = VE_{info\\ perfecta} - VE_{actual} \\quad | \\quad VaR_{95\\%} = \\text{percentil 5\\% perdidas}",
+          "visual": "assets/decision-analysis.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "DecisionAnalysisLab",
+          "description": "Constructor árbol decisión: arrastra nodos decisión/azar, edita probabilidades/ganancias. Calcula VE automático (hacia atrás). Utilidad: selecciona función (log, √, exp-neg, lineal). Sensibilidad: tornado diagram (barras horizontales impacto cada variable). Monte Carlo: define distribuciones inputs (triangular, normal, uniforme) → 10000 simulaciones → histograma resultado + percentiles (P5, P50, P95). Exporta reporte PDF: árbol, VE, sensibilidad, Monte Carlo, recomendación."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-2-8-1",
+              "type": "number-input",
+              "question": "Inversión: 70% gana 100k, 30% pierde 50k. VE = ___ k€",
+              "answer": "55",
+              "explanation": "VE = 0.7×100 + 0.3×(-50) = 70 - 15 = 55 k€."
+            },
+            {
+              "id": "q5-2-8-2",
+              "type": "fill-in",
+              "question": "Utilidad U(x)=√x (aversión riesgo). Ganancia 100k con p=0.5, 0 con p=0.5. Utilidad esperada = ___",
+              "answer": "5",
+              "explanation": "EU = 0.5×√100000 + 0.5×√0 ≈ 0.5×316.2 + 0 = 158.1. Wait: x en miles? If x=100 (100k), √100=10. EU=0.5×10+0=5. Sure: using units where 100k=100 units."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

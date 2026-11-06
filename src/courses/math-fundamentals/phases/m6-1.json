@@ -1,0 +1,527 @@
+{
+  "id": "m6-1",
+  "phaseId": "phase-6",
+  "number": "6.1",
+  "title": "Lógica y Argumentación",
+  "description": "Proposiciones, conectivos, tablas verdad, falacias, pensamiento crítico",
+  "lessons": [
+    {
+      "id": "l6-1-1",
+      "title": "Proposiciones y Conectivos Lógicos",
+      "objective": "Proposiciones (V/F), conectivos: ¬ (no), ∧ (y), ∨ (o), → (si...entonces), ↔ (si y solo si). Tablas de verdad",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Proposición: 'Llueve' (V o F). 'Si llueve, me mojo' (p → q). Conectivos: ¬p (no llueve), p∧q (llueve Y me mojo), p∨q (llueve O me mojo), p↔q (llueve SI Y SOLO SI me mojo)."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Proposición</strong>: enunciado que es VERDADERO (V) o FALSO (F), no ambas.\n<strong>Conectivos</strong>:\n- Negación ¬p: 'no p'. V si p=F, F si p=V.\n- Conjunción p ∧ q: 'p y q'. V solo si ambos V.\n- Disyunción p ∨ q: 'p o q (o ambos)'. F solo si ambos F.\n- Implicación p → q: 'si p entonces q'. F solo si p=V y q=F. Equivale a ¬p ∨ q.\n- Bicondicional p ↔ q: 'p si y solo si q'. V si ambos mismo valor.\n<strong>Tablas de verdad</strong>: enumeran todos los casos.\n- Prioridad: ¬ > ∧ > ∨ > → > ↔\n- Leyes: De Morgan (¬(p∧q) = ¬p ∨ ¬q), Doble negación (¬¬p = p), Distributiva, etc.\n<strong>Tautología</strong>: siempre V (p ∨ ¬p). <strong>Contradicción</strong>: siempre F (p ∧ ¬p). <strong>Contingencia</strong>: depende valores.",
+          "latex": "p \\to q \\equiv \\neg p \\lor q \\quad | \\quad \\neg(p\\land q) \\equiv \\neg p \\lor \\neg q \\quad | \\quad p \\leftrightarrow q \\equiv (p\\to q)\\land(q\\to p) \\quad | \\quad \\text{Tautolog\\'ia: } p\\lor\\neg p",
+          "visual": "assets/propositional-logic.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Interruptores lógicos: ∧ = serie (ambos cerrados = luz). ∨ = paralelo (uno cerrado = luz). → = 'si entra corriente A, sale por B'. ↔ = 'A y B siempre mismo estado'. Tabla verdad = 'manual de todas las combinaciones posibles'.",
+          "conceptId": "propositional-logic"
+        },
+        {
+          "type": "interactive",
+          "component": "LogicCircuitBuilder",
+          "description": "Constructor circuitos lógicos: arrastra compuertas (NOT, AND, OR, XOR, IMPLIES, IFF). Conecta entradas (p, q, r...). Genera tabla verdad automática. Simplifica expresión (Leyes De Morgan, absorción, etc.). Modo reto: 'Construye circuito para (p→q)∧(q→r)→(p→r)'. Verifica tautologías."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-1-1-1",
+              "type": "multiple-choice",
+              "question": "p → q es FALSO solo cuando:",
+              "options": [
+                "p=V, q=V",
+                "p=V, q=F",
+                "p=F, q=V",
+                "p=F, q=F"
+              ],
+              "correct": 1,
+              "explanation": "Implicación solo falsa si antecedente V y consecuente F. 'Si llueve me mojo' es falso si llueve (V) y NO me mojo (F)."
+            },
+            {
+              "id": "q6-1-1-2",
+              "type": "fill-in",
+              "question": "¬(p ∧ q) equivale a ___ ∨ ___ (Ley De Morgan)",
+              "answer": "¬p, ¬q",
+              "explanation": "Ley De Morgan: negación de conjunción = disyunción de negaciones."
+            },
+            {
+              "id": "q6-1-1-3",
+              "type": "multiple-choice",
+              "question": "(p → q) ∧ (q → p) es equivalente a:",
+              "options": [
+                "p ∨ q",
+                "p ↔ q",
+                "p ∧ q",
+                "¬p ∨ ¬q"
+              ],
+              "correct": 1,
+              "explanation": "Bicondicional = implicación doble sentido. p ↔ q ≡ (p→q)∧(q→p)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-1-2",
+      "title": "Lógica de Predicados: Cuantificadores ∀, ∃",
+      "objective": "Predicados P(x). Cuantificador universal ∀x (para todo) y existencial ∃x (existe). Negación: ¬∀x P(x) ≡ ∃x ¬P(x). Orden cuantificadores importa",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "'Todos los humanos son mortales': ∀x (Humano(x) → Mortal(x)). 'Existe un número primo par': ∃x (Primo(x) ∧ Par(x)). Cuantificadores generalizan proposiciones."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Predicado</strong>: P(x) = propiedad de x (se vuelve proposición al instanciar x).\n<strong>Cuantificador universal</strong> ∀x P(x): 'para todo x, P(x)'. V si P(x) V para TODO x en universo discurso.\n<strong>Cuantificador existencial</strong> ∃x P(x): 'existe x tal que P(x)'. V si P(x) V para AL MENOS UN x.\n<strong>Negación</strong>:\n- ¬∀x P(x) ≡ ∃x ¬P(x) ('no todos' = 'existe alguno que no')\n- ¬∃x P(x) ≡ ∀x ¬P(x) ('no existe' = 'todos no')\n<strong>Orden importa</strong>:\n- ∀x ∃y P(x,y): 'para cada x existe un y' (y puede depender de x)\n- ∃y ∀x P(x,y): 'existe un y que funciona para TODOS los x' (y fijo)\nEj: ∀x ∃y (y > x) V (para cada x hay mayor). ∃y ∀x (y > x) F (no hay máximo).\n<strong>Traducción lenguaje natural</strong>: 'todos', 'cada', 'cualquiera' → ∀. 'alguno', 'existe', 'hay' → ∃.",
+          "latex": "\\neg\\forall x P(x) \\equiv \\exists x \\neg P(x) \\quad | \\quad \\neg\\exists x P(x) \\equiv \\forall x \\neg P(x) \\quad | \\quad \\forall x\\exists y \\neq \\exists y\\forall x",
+          "visual": "assets/predicate-logic.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "∀ = 'para cada cajón'. ∃ = 'hay al menos un cajón'. Negación: 'no todos los cajones tienen calcetines' = 'existe un cajón sin calcetines'. Orden: 'cada persona ama a alguien' (∀∃) vs 'existe alguien a quien todos aman' (∃∀). Muy distinto.",
+          "conceptId": "predicate-logic"
+        },
+        {
+          "type": "interactive",
+          "component": "QuantifierExplorer",
+          "description": "Universo discurso: números, personas, figuras. Usuario escribe fórmula con ∀, ∃. Evaluador: muestra instancias, verifica V/F. Visual: universo como grid, cuantificadores como 'para cada fila' / 'existe columna'. Negación: transforma fórmula paso a paso. Orden cuantificadores: compara ∀x∃y vs ∃y∀x con ejemplos concretos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-1-2-1",
+              "type": "multiple-choice",
+              "question": "Negación de '∀x (P(x) → Q(x))':",
+              "options": [
+                "∃x (P(x) ∧ ¬Q(x))",
+                "∀x (¬P(x) ∨ Q(x))",
+                "∃x (¬P(x) ∧ Q(x))",
+                "∀x (P(x) ∧ ¬Q(x))"
+              ],
+              "correct": 0,
+              "explanation": "¬∀x(P→Q) ≡ ∃x¬(P→Q) ≡ ∃x¬(¬P∨Q) ≡ ∃x(P∧¬Q). 'No todos los P son Q' = 'Existe P que no es Q'."
+            },
+            {
+              "id": "q6-1-2-2",
+              "type": "fill-in",
+              "question": "∀x ∃y (x < y) en números reales es ___, ∃y ∀x (x < y) es ___",
+              "answer": "Verdadera, Falsa",
+              "explanation": "Para cada x existe mayor (y=x+1). No existe y mayor que TODOS los x (no hay máximo en ℝ)."
+            },
+            {
+              "id": "q6-1-2-3",
+              "type": "multiple-choice",
+              "question": "'Todos los estudiantes aprobaron al menos un examen':",
+              "options": [
+                "∀x ∃y (Estudiante(x) ∧ Examen(y) ∧ Aprobó(x,y))",
+                "∀x (Estudiante(x) → ∃y (Examen(y) ∧ Aprobó(x,y)))",
+                "∃y ∀x (Estudiante(x) → Aprobó(x,y))",
+                "∀x ∀y (Estudiante(x) ∧ Examen(y) → Aprobó(x,y))"
+              ],
+              "correct": 1,
+              "explanation": "Para cada x, si es estudiante, existe y examen que aprobó. Estructura: ∀x (E(x) → ∃y (Ex(y) ∧ A(x,y)))."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-1-3",
+      "title": "Reglas de Inferencia: Modus Ponens, Modus Tollens, Silogismo, Reductio ad Absurdum",
+      "objective": "Argumentos válidos: Modus Ponens (p→q, p ⊢ q), Modus Tollens (p→q, ¬q ⊢ ¬p), Silogismo hipotético, Dilema, Reductio. Falacias formales",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Si llueve, suelo mojado. Llueve. Luego, suelo mojado. (Modus Ponens). Si llueve, suelo mojado. Suelo NO mojado. Luego, NO llueve. (Modus Tollens). Reglas para derivar conclusiones seguras."
+        },
+        {
+          "type": "explanation",
+          "text": "Reglas de inferencia válidas (argumentos donde premisas V ⇒ conclusión V):\n1. <strong>Modus Ponens</strong>: p → q, p ⊢ q\n2. <strong>Modus Tollens</strong>: p → q, ¬q ⊢ ¬p\n3. <strong>Silogismo hipotético</strong>: p → q, q → r ⊢ p → r\n4. <strong>Silogismo disyuntivo</strong>: p ∨ q, ¬p ⊢ q\n5. <strong>Adición</strong>: p ⊢ p ∨ q\n6. <strong>Simplificación</strong>: p ∧ q ⊢ p\n7. <strong>Conjunción</strong>: p, q ⊢ p ∧ q\n8. <strong>Resolución</strong>: p ∨ q, ¬p ∨ r ⊢ q ∨ r\n9. <strong>Reductio ad absurdum</strong>: asume ¬p, deriva contradicción (q ∧ ¬q) ⊢ p\n10. <strong>Dilema constructivo</strong>: (p→q)∧(r→s), p∨r ⊢ q∨s\n<strong>Falacias formales</strong> (inválidas):\n- Afirmar consecuente: p→q, q ⊢ p (FALSO)\n- Negar antecedente: p→q, ¬p ⊢ ¬q (FALSO)\n- Negación conjunta: ¬(p∧q), ¬p ⊢ ¬q (FALSO)",
+          "latex": "Modus Ponens: p\\to q, p \\vdash q \\quad | \\quad Modus Tollens: p\\to q, \\neg q \\vdash \\neg p \\quad | \\quad Silogismo: p\\to q, q\\to r \\vdash p\\to r \\quad | \\quad Reductio: \\neg p \\vdash \\bot \\Rightarrow p",
+          "visual": "assets/inference-rules.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Modus Ponens = 'si llave gira, puerta abre. Llave gira. Puerta abre.' Modus Tollens = 'si llave gira, puerta abre. Puerta NO abre. Llave NO gira.' Reductio = 'supongamos puerta no abre con llave correcta → contradicción (llave gira y abre) → llave correcta abre'. Falacia afirmar consecuente = 'puerta abre → llave giró' (podría ser viento).",
+          "conceptId": "inference-rules"
+        },
+        {
+          "type": "interactive",
+          "component": "InferenceTrainer",
+          "description": "Generador argumentos: premisas + conclusión. Usuario identifica: ¿válido? ¿qué regla? Falacias: identifica tipo (afirmar consecuente, negar antecedente, etc.). Constructor pruebas: premisas dadas, objetivo conclusión. Usuario aplica reglas paso a paso. Verificador: cada paso válido? Niveles: proposicional, predicados (instanciación universal ∀xP(x)⊢P(a), generalización existencial P(a)⊢∃xP(x))."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-1-3-1",
+              "type": "multiple-choice",
+              "question": "Premisas: p → q, ¬q. Conclusión válida:",
+              "options": [
+                "p",
+                "¬p",
+                "q",
+                "¬q"
+              ],
+              "correct": 1,
+              "explanation": "Modus Tollens: p→q, ¬q ⊢ ¬p."
+            },
+            {
+              "id": "q6-1-3-2",
+              "type": "multiple-choice",
+              "question": "Falacia: 'Si estudias, apruebas. Aprobaste. Luego, estudiaste.'",
+              "options": [
+                "Modus Ponens",
+                "Modus Tollens",
+                "Afirmar consecuente",
+                "Negar antecedente"
+              ],
+              "correct": 2,
+              "explanation": "p→q, q ⊢ p. Afirmar consecuente. Podrías aprobar sin estudiar (suerte, copiado, examen fácil)."
+            },
+            {
+              "id": "q6-1-3-3",
+              "type": "fill-in",
+              "question": "Reductio ad absurdum: para probar p, asumes ¬p y derivas ___ (contradicción)",
+              "answer": "q ∧ ¬q",
+              "explanation": "Derivas una contradicción (q y no q simultáneamente). Eso prueba que ¬p es falso, luego p es verdadero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-1-4",
+      "title": "Falacias Informales: Ad Hominem, Hombre de Paja, Falso Dilema, Pendiente Resbaladiza, Apelación Autoridad",
+      "objective": "Identificar falacias en argumentos cotidianos, medios, política. Ad hominem (ataca persona), Hombre de paja (deforma argumento), Falso dilema (solo 2 opciones), Pendiente resbaladiza (cadena catastrófica), Apelación autoridad/popularidad/tradición",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "'Eres tonto, tu argumento es falso' (Ad hominem). 'Quieres reducir impuestos → quieres que pobres mueran' (Hombre de paja). 'O nos das todo o país colapsa' (Falso dilema). 'Si permitimos X, luego Y, luego Z → catástrofe' (Pendiente resbaladiza). 'Einstein lo dijo, así que es verdad' (Apelación autoridad)."
+        },
+        {
+          "type": "explanation",
+          "text": "Falacias informales (errores de contenido/contexto, no forma):\n1. <strong>Ad hominem</strong>: ataca persona, no argumento. 'Eres corrupto, tu ley es mala'.\n2. <strong>Hombre de paja (Straw man)</strong>: deforma argumento rival para refutarlo fácil. 'Quieres regular armas → quieres prohibir todas'.\n3. <strong>Falso dilema (Falsa dicotomía)</strong>: presenta solo 2 opciones extremas. 'O todo o nada'.\n4. <strong>Pendiente resbaladiza</strong>: cadena causal sin evidencia. 'Si permitimos A → B → C → catástrofe'.\n5. <strong>Apelación a la autoridad</strong>: 'Experto lo dice → es verdad' (sin evaluar evidencia).\n6. <strong>Apelación a la popularidad</strong>: 'Todos lo creen → es verdad'.\n6. <strong>Apelación a la tradición</strong>: 'Siempre se hizo así → es correcto'.\n7. <strong>Causa cuestionable</strong>: correlación = causalidad (post hoc ergo propter hoc).\n8. <strong>Generalización apresurada</strong>: muestra pequeña → conclusión general.\n9. <strong>Petición de principio</strong>: asume lo que prueba (circular).\n10. <strong>Equivocación</strong>: usa término con 2 sentidos.\nPensamiento crítico: pide evidencia, define términos, busca contraejemplos, distingue opinión/hecho, evalúa fuentes.",
+          "latex": "Falacias: Ad Hom, Straw Man, Falso Dilema, Slippery Slope, Appeal Authority/Popularity/Tradition, Post Hoc, Hasty Generalization, Begging Question, Equivocation",
+          "visual": "assets/informal-fallacies.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Detector falacias = 'filtro spam mental'. Ad hominem = 'ataca mensajero, no mensaje'. Hombre paja = 'derriba muñeco, no enemigo real'. Falso dilema = 'solo 2 puertas, ignora ventana'. Pendiente = 'efecto dominó sin prueba'. Autoridad = 'confía en credencial, no en evidencia'.",
+          "conceptId": "informal-fallacies"
+        },
+        {
+          "type": "interactive",
+          "component": "FallacyDetector",
+          "description": "Galería argumentos reales (políticos, publicidad, redes, noticias). Usuario identifica falacia (múltiple choice). Explicación por qué es falacia. Constructor contraargumento: 'reformula sin falacia'. Niveles: fácil (explícita), medio (sutil), experto (múltiples falacias). Estadísticas: % aciertos por tipo falacia."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-1-4-1",
+              "type": "multiple-choice",
+              "question": "'No escuches a Juan, es vegetariano, su opinión sobre carne no vale' es:",
+              "options": [
+                "Ad hominem",
+                "Hombre de paja",
+                "Falso dilema",
+                "Apelación autoridad"
+              ],
+              "correct": 0,
+              "explanation": "Ataca a la persona (ser vegetariano) en lugar de refutar su argumento sobre la carne."
+            },
+            {
+              "id": "q6-1-4-2",
+              "type": "multiple-choice",
+              "question": "'O nos dejas subir impuestos o la economía colapsa' es:",
+              "options": [
+                "Ad hominem",
+                "Hombre de paja",
+                "Falso dilema",
+                "Pendiente resbaladiza"
+              ],
+              "correct": 2,
+              "explanation": "Presenta solo 2 opciones extremas (subir impuestos O colapso), ignorando alternativas intermedias."
+            },
+            {
+              "id": "q6-1-4-3",
+              "type": "fill-in",
+              "question": "Falacia: 'Mi abuelo fumó toda la vida y vivió 90 años, así que fumar no es tan malo' = ___",
+              "answer": "Generalización apresurada / Evidencia anecdótica",
+              "explanation": "Un caso (n=1) no prueba regla general. Sesgo supervivencia (los que murieron no cuentan)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-1-5",
+      "title": "Pensamiento Crítico: Evaluar Evidencia, Sesgos Cognitivos, Verificación Hechos",
+      "objective": "Sesgos: confirmación, disponibilidad, anclaje, supervivencia, atribución. Evaluar fuentes, verificar hechos, distinguir correlación/causalidad, magnitud efecto vs significancia",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Lees noticia que confirma tu opinión → la compartes sin verificar (sesgo confirmación). Ves 3 accidentes avión en noticias → crees volar peligroso (disponibilidad). Primer precio ves = ancla negociación (anclaje)."
+        },
+        {
+          "type": "explanation",
+          "text": "Sesgos cognitivos principales:\n1. <strong>Confirmación</strong>: busca/recuerda info que confirma creencias, ignora contraria.\n2. <strong>Disponibilidad</strong>: juzga probabilidad por facilidad recordar ejemplos (noticias, vivencias).\n3. <strong>Anclaje</strong>: primer valor recibido influye juicios posteriores.\n4. <strong>Supervivencia</strong>: solo ves 'supervivientes' (éxitos), ignoras fracasos invisibles.\n4. <strong>Atribución fundamental</strong>: atribuye conducta otros a personalidad, propia a situación.\n5. <strong>Efecto halo</strong>: una cualidad positiva contamina juicio global.\n6. <strong>Sesgo retrospectiva</strong>: 'ya lo sabía' tras saber resultado.\n<strong>Evaluar evidencia</strong>:\n- Fuente: primaria vs secundaria, revisada por pares, conflictos interés\n- Metodología: diseño experimental, tamaño muestra, controles, cegamiento\n- Resultados: tamaño efecto (Cohen's d), IC 95%, p-valor, replicabilidad\n- Significancia estadística ≠ importancia práctica\n<strong>Verificación hechos (fact-checking)</strong>: fuentes primarias, consensos científicos, organizaciones reputadas, fechas, contexto completo.",
+          "latex": "Sesgos: Confirmación, Disponibilidad, Anclaje, Supervivencia, Atribución, Halo, Retrospectiva \\quad | \\quad Evidencia: Fuente, Metodolog\\'ia, Tama\\~no efecto, IC, Replicabilidad \\quad | \\quad Fact-check: Primaria, Consenso, Reputaci\\'on, Contexto",
+          "visual": "assets/critical-thinking.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Sesgos = 'gafas deformantes' que todos llevamos. Confirmación = solo ves lo que buscas. Disponibilidad = 'lo que brilla en memoria'. Anclaje = 'primera cifra fija referencia'. Supervivencia = 'solo ves ganadores, no perdedores'. Pensamiento crítico = 'limpiar gafas y verificar mapa'.",
+          "conceptId": "critical-thinking"
+        },
+        {
+          "type": "interactive",
+          "component": "CriticalThinkingLab",
+          "description": "Escenarios: noticias, estudios, anuncios, argumentos. Usuario: 1) Identifica sesgos presentes. 2) Evalúa calidad evidencia (fuente, método, tamaño efecto). 3) Fact-check: busca fuente primaria, consenso. 4) Reformula conclusión cauta. Base datos sesgos interactiva: nombre, definición, ejemplo, contramedida. Test sesgos propios: test sesgo confirmación (Wason), anclaje (rueda fortuna), disponibilidad (estimación riesgos)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-1-5-1",
+              "type": "multiple-choice",
+              "question": "Solo buscas noticias que confirman tu opinión política. Sesgo:",
+              "options": [
+                "Disponibilidad",
+                "Confirmación",
+                "Anclaje",
+                "Supervivencia"
+              ],
+              "correct": 1,
+              "explanation": "Sesgo confirmación: busca/recuerda info que confirma creencias previas."
+            },
+            {
+              "id": "q6-1-5-2",
+              "type": "fill-in",
+              "question": "Estudio: n=1000000, p<0.001, tamaño efecto d=0.01. Conclusión: ___",
+              "answer": "Estadísticamente significativo pero prácticamente irrelevante",
+              "explanation": "Gran n detecta efectos minúsculos. d=0.01 es despreciable. Significancia ≠ importancia."
+            },
+            {
+              "id": "q6-1-5-3",
+              "type": "multiple-choice",
+              "question": "Solo ves emprendedores exitosos en revistas. Crees 'emprender es fácil'. Sesgo:",
+              "options": [
+                "Confirmación",
+                "Disponibilidad",
+                "Supervivencia",
+                "Anclaje"
+              ],
+              "correct": 2,
+              "explanation": "Sesgo supervivencia: solo ves 'supervivientes' (éxitos), no los que fracasaron y no salen en revistas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-1-6",
+      "title": "Argumentación Efectiva: Estructura, Evidencia, Réplica, Escritura Persuasiva",
+      "objective": "Estructura argumento: tesis, premisas, evidencia, conclusión. Tipos evidencia. Anticipar objeciones. Falacias propias. Escritura clara: tesis clara, párrafos cohesivos, conectores lógicos",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Ensayo persuasivo: Tesis clara → Premisas apoyadas en evidencia → Anticipa objeciones → Réplica → Conclusión. No: 'Creo que... porque sí'. Sí: 'La evidencia X sugiere Y, aunque objeción Z, réplica W, por tanto conclusión'."
+        },
+        {
+          "type": "explanation",
+          "text": "Estructura argumento sólido:\n1. <strong>Tesis clara</strong>: una frase, debatible, específica.\n2. <strong>Premisas</strong>: razones que apoyan tesis. Cada premisa = afirmación + evidencia.\n3. <strong>Evidencia</strong>: datos, estudios, expertos, ejemplos, analogías, estadísticas. Cita fuentes.\n4. <strong>Conectores lógicos</strong>: por tanto, sin embargo, además, por ejemplo, en contraste, por consiguiente.\n5. <strong>Objeciones anticipadas</strong>: 'Podría argüirse que...' + réplica fundamentada.\n6. <strong>Conclusión</strong>: reafirma tesis, resume puntos clave, implicaciones/llamada acción.\n<strong>Tipos evidencia</strong> (jerarquía):\n- Meta-análisis / Revisiones sistemáticas\n- Ensayos controlados aleatorios (RCT)\n- Estudios cohortes / casos-controles\n- Opinión experto / Mecanismo teórico\n<strong>Escritura persuasiva</strong>: voz activa, verbos precisos, párrafos cohesivos (1 idea), variedad oracional, tono respetuoso, admite incertidumbre ('la evidencia sugiere', no 'prueba').",
+          "latex": "Estructura: Tesis \\to Premisas+Evidencia \\to Objeci\\'on+R\\'eplica \\to Conclusi\\'on \\quad | \\quad Jerarqu\\'ia evidencia: Meta-an\\'alisis > RCT > Cohortes > Opini\\'on experta",
+          "visual": "assets/argumentation.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Abogado en juicio: Tesis = 'mi cliente inocente'. Premisas = 'estaba en otro lugar' (coartada) + 'no hay ADN' (evidencia forense). Anticipa objeción: 'testigo lo vio' → Réplica: 'testigo poco fiable (condenas previas)'. Conclusión: 'duda razonable → inocente'.",
+          "conceptId": "argumentation"
+        },
+        {
+          "type": "interactive",
+          "component": "ArgumentBuilder",
+          "description": "Constructor ensayo: 1) Escribe tesis. 2) Añade premisas + evidencia (buscador fuentes integrado). 3) Conectores lógicos (sugeridos). 4) Añade objeciones + réplicas. 4) Conclusión. Verificador: coherencia lógica, evidencia citada, falacias detectadas, claridad (Flesch-Kincaid). Exporta: esquema, ensayo Markdown/PDF, presentación diapositivas."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-1-6-1",
+              "type": "multiple-choice",
+              "question": "Mejor evidencia para afirmación causal 'X causa Y':",
+              "options": [
+                "Opinión experto",
+                "Estudio observacional",
+                "Ensayos controlados aleatorios (RCT)",
+                "Testimonio personal"
+              ],
+              "correct": 2,
+              "explanation": "RCT es estándar oro para causalidad (aleatorización controla confundidores)."
+            },
+            {
+              "id": "q6-1-6-2",
+              "type": "fill-in",
+              "question": "Estructura párrafo persuasivo: Oración ___, Evidencia ___, Análisis ___, Transición ___",
+              "answer": "temática, apoyo, explicación, siguiente",
+              "explanation": "TEA: Topic sentence, Evidence, Analysis, Transition."
+            },
+            {
+              "id": "q6-1-6-3",
+              "type": "multiple-choice",
+              "question": "Al anticipar objeciones, debes:",
+              "options": [
+                "Ignorarlas",
+                "Presentar la versión más débil (hombre de paja)",
+                "Presentar la versión más fuerte (steel man) y refutarla",
+                "Atacar a quien objeta"
+              ],
+              "correct": 2,
+              "explanation": "Steel man: presenta la versión MÁS FUERTE del argumento contrario y refútala. Demuestra honestidad intelectual."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-1-7",
+      "title": "Lógica en Programación: Booleanos, Condicionales, Bucles, Asertos, Verificación",
+      "objective": "Conectivos en código: &&, ||, !. Cortocircuito. Tablas verdad en condicionales. Asertos (assert), precondiciones/postcondiciones, invariantes bucle. Verificación formal intro",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "if (usuario.logueado && usuario.activo) { permitirAcceso(); } → lógica booleana en código. Cortocircuito: usuario.logueado falso → no evalúa usuario.activo. Asertos: assert(x > 0, 'x debe ser positivo')."
+        },
+        {
+          "type": "explanation",
+          "text": "Lógica en programación:\n- Booleanos: true/false. Conectivos: && (AND), || (OR), ! (NOT).\n- Cortocircuito: false && X = false (no evalúa X). true || X = true (no evalúa X).\n- Tablas verdad en condicionales: if (p && q) ≡ if (p) if (q).\n- Precedencia: ! > && > || > == > =.\n- De Morgan en código: !(a && b) ≡ !a || !b.\n- Asertos: assert(condición, mensaje). Verifican invariantes en tiempo desarrollo.\n- Contratos: precondiciones (requisitos entrada), postcondiciones (garantías salida), invariantes (siempre verdaderos en bucle).\n- Verificación formal: Hoare logic {P} C {Q}. Si P verdadero antes C, Q verdadero después.\n- Tipos como proposiciones (Curry-Howard): programa = prueba, tipo = proposición.\n- Property-based testing: genera inputs aleatorios, verifica propiedad ∀x. P(x).",
+          "latex": "Cortocircuito: false && X = false \\quad | \\quad \\neg(a\\land b) \\equiv \\neg a \\lor \\neg b \\quad | \\quad \\{P\\} C \\{Q\\} \\text{ (Hoare)} \\quad | \\quad \\text{Property-based: } \\forall x. P(x)",
+          "visual": "assets/logic-programming.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Código = lógica ejecutable. Cortocircuito = 'si primer guardia dice no, segundo no molesta'. Asertos = 'puntos de control calidad'. Invariante bucle = 'verdad que no cambia mientras giras'. Hoare = 'contrato: si entras con P, sales con Q'. Tipos = proposiciones, programas = pruebas.",
+          "conceptId": "logic-programming"
+        },
+        {
+          "type": "interactive",
+          "component": "LogicInCodeLab",
+          "description": "Editor código (JavaScript/Python). Ejercicios: 1) Simplifica condición (De Morgan, absorción). 2) Añade asertos correctos. 3) Identifica invariante bucle. 4) Escribe pre/post condiciones función. 5) Property-based: escribe propiedad (ej: reverse(reverse(x)) = x), genera tests aleatorios. Visual: tabla verdad condición, árbol decisión, traza ejecución con valores booleanos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-1-7-1",
+              "type": "multiple-choice",
+              "question": "En JavaScript/Python: !(!a && !b) equivale a:",
+              "options": [
+                "a && b",
+                "a || b",
+                "!a || !b",
+                "!a && !b"
+              ],
+              "correct": 1,
+              "explanation": "De Morgan: !(!a && !b) = !!a || !!b = a || b."
+            },
+            {
+              "id": "q6-1-7-2",
+              "type": "fill-in",
+              "question": "Cortocircuito: true || funcionCostosa() → funcionCostosa() ___ evaluada",
+              "answer": "NO",
+              "explanation": "true || X = true sin evaluar X (cortocircuito OR)."
+            },
+            {
+              "id": "q6-1-7-3",
+              "type": "multiple-choice",
+              "question": "Invariante de bucle while (i < n) { i++; sum += a[i]; }:",
+              "options": [
+                "i < n",
+                "sum = suma a[0..i-1]",
+                "i > 0",
+                "sum = 0"
+              ],
+              "correct": 1,
+              "explanation": "Invariante: 'sum es suma de elementos a[0] hasta a[i-1]'. Verdadero antes, durante, después cada iteración."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-1-8",
+      "title": "Proyecto Módulo: Análisis Crítico de Artículo de Opinión / Noticia / Estudio",
+      "objective": "Elige artículo real (opinión, noticia, paper). Identifica: tesis, premisas, evidencia, falacias, sesgos, calidad evidencia, conclusiones. Escribe análisis crítico estructurado. Propone versión mejorada",
+      "type": "project",
+      "durationMin": 20,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Elige editorial de periódico / paper científico / post viral. Analiza: ¿Cuál es la tesis? ¿Qué premisas usa? ¿Qué evidencia cita? ¿Hay falacias (ad hominem, hombre paja, falso dilema)? ¿Sesgos (confirmación, supervivencia)? ¿Calidad evidencia? Escribe análisis 500 palabras. Reescribe versión honesta y rigurosa."
+        },
+        {
+          "type": "explanation",
+          "text": "Metodología análisis crítico:\n1. <strong>Identificación</strong>: Tesis principal (1 frase). Premisas clave (2-4).\n2. <strong>Estructura lógica</strong>: ¿Premisas apoyan tesis? ¿Saltos lógicos? ¿Falacias formales/informales?\n3. <strong>Evidencia</strong>: ¿Qué cita? ¿Fuentes primarias/secundarias? ¿Calidad (RCT, meta-análisis, anecdótico)? ¿Tamaño efecto reportado? ¿IC?\n4. <strong>Sesgos y falacias</strong>: Confirmación, disponibilidad, anclaje, supervivencia. Ad hominem, hombre paja, falso dilema, pendiente resbaladiza, apelación autoridad/popularidad.\n5. <strong>Contexto y motivaciones</strong>: ¿Quién escribe? ¿Conflictos interés? ¿Audiencia objetivo? ¿Framing?\n6. <strong>Veredicto</strong>: Fortalezas, debilidades, conclusión justificada. Calificación: Riguroso / Aceptable / Dudoso / Engañoso.\n6. <strong>Versión mejorada</strong>: Reescribe tesis honesta, premisas con evidencia verificada, admite limitaciones, concede puntos válidos contrarios,结论 cauta.\nEjemplos para analizar: editorial clima, paper nutrición, post viral salud, discurso político, anuncio fármaco.",
+          "latex": "An\\'alisis: Tesis \\to Premisas \\to Evidencia \\to Falacias/Sesgos \\to Contexto \\to Veredicto \\to Versi\\'on mejorada \\quad | \\quad Checklist: \\checkmark Tesis clara \\checkmark Premisas v\\'alidas \\checkmark Evidencia calidad \\checkmark Sin falacias \\checkmark Sesgos declarados \\checkmark Conclusi\\'on cauta",
+          "visual": "assets/critical-analysis-project.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "CriticalAnalysisWorkbench",
+          "description": "Pega texto / URL artículo. Paso a paso guiado:\n1. Extractor tesis/premisas (NLP asistido + revisión manual).\n2. Detector falacias/sesgos (reglas + ML ligero) → usuario valida.\n3. Evaluador evidencia: busca citas, clasifica calidad (RCT, meta, observacional, anecdótico).\n4. Checklist interactivo (marca ✓/✗ cada criterio).\n5. Generador análisis: rellena plantilla estructurada.\n6. Reescritor asistido: sugiere versión honesta (cambia 'prueba' por 'sugiere', añave 'aunque...', 'limitación:...').\n7. Exporta: análisis PDF, versión mejorada Markdown, checklist CSV."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-1-8-1",
+              "type": "multiple-choice",
+              "question": "Artículo cita 'estudio demuestra que X'. Al buscar, es estudio observacional n=50. Calidad evidencia:",
+              "options": [
+                "Alta (RCT)",
+                "Media (cohortes)",
+                "Baja (observacional pequeño)",
+                "Muy alta (meta-análisis)"
+              ],
+              "correct": 2,
+              "explanation": "Observacional n=50: bajo poder, confundidores no controlados. No permite causalidad."
+            },
+            {
+              "id": "q6-1-8-2",
+              "type": "fill-in",
+              "question": "Checklist análisis crítico: Tesis ___, Premisas ___, Evidencia ___, Falacias ___, Sesgos ___, Contexto ___, Conclusión ___",
+              "answer": "clara, válidas, calidad, detectados, identificados, considerado, cauta",
+              "explanation": "Lista verificación mínima para análisis riguroso."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

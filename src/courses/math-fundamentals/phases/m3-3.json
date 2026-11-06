@@ -1,0 +1,448 @@
+{
+  "id": "m3-3",
+  "phaseId": "phase-3",
+  "number": "3.3",
+  "title": "Transformaciones",
+  "description": "Traslación, rotación, reflexión, dilatación, simetría, teselados, arte",
+  "lessons": [
+    {
+      "id": "l3-3-1",
+      "title": "Traslación: Deslizar sin Rotar ni Deformar",
+      "objective": "Vector traslación (a,b). P(x,y) → P'(x+a, y+b). Propiedades: conserva distancias, ángulos, orientación",
+      "type": "conceptual",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Mueves una ficha de ajedrez 3 casillas derecha y 2 arriba. Vector (3, 2). La ficha no gira, no cambia tamaño, solo posición."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Traslación</strong> T_v por vector v = (a, b):\nT_v(P) = P' = (x + a, y + b)\nPropiedades:\n- Isometría (conserva distancias y ángulos)\n- Conserva orientación (sentido horario/antihorario)\n- No tiene puntos fijos (salvo vector nulo)\n- Composición: T_v ∘ T_w = T_{v+w} (suma de vectores)\n- Inversa: T_{-v}\nEn plano: desliza toda figura rígidamente. En coordenadas: suma componente a componente.",
+          "latex": "T_{(a,b)}(x,y) = (x+a, y+b) \\quad | \\quad T_v \\circ T_w = T_{v+w} \\quad | \\quad T_v^{-1} = T_{-v}",
+          "visual": "assets/translation.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Ascensor: subes 3 pisos (vector vertical). Tu orientación no cambia (sigues mirando norte). Distancia a tu compañero (que también subió 3) es igual. Mover mesa en habitación: todo se desliza igual.",
+          "conceptId": "translation"
+        },
+        {
+          "type": "interactive",
+          "component": "TranslationLab",
+          "description": "Figura (polígono editable). Vector arrastrable. Figura original + traducida. Vector mostrado. Composición: dos traslaciones = una resultante. Inversa: vector opuesto. Test: 'Traslada triángulo para que vértice A coincida con B'."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-3-1-1",
+              "type": "fill-in",
+              "question": "Traslación T(3, -2) aplicada a P(1, 5): P' = (___ , ___)",
+              "answer": "4, 3",
+              "explanation": "(1+3, 5-2) = (4, 3)."
+            },
+            {
+              "id": "q3-3-1-2",
+              "type": "multiple-choice",
+              "question": "Composición T(2,3) ∘ T(-1,4) = ",
+              "options": [
+                "T(1, 7)",
+                "T(3, -1)",
+                "T(1, -7)",
+                "T(-3, 7)"
+              ],
+              "correct": 0,
+              "explanation": "Sumas componentes: (2-1, 3+4) = (1, 7)."
+            },
+            {
+              "id": "q3-3-1-3",
+              "type": "multiple-choice",
+              "question": "La inversa de T(a,b) es:",
+              "options": [
+                "T(-a, -b)",
+                "T(b, a)",
+                "T(-b, -a)",
+                "T(a, -b)"
+              ],
+              "correct": 0,
+              "explanation": "T(a,b) ∘ T(-a,-b) = T(0,0) = identidad. Vector opuesto."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-3-2",
+      "title": "Rotación: Girar en Torno a un Punto",
+      "objective": "Rotación centro O, ángulo α. Fórmulas: x' = x cosα - y sinα, y' = x sinα + y cosα. Sentido antihorario positivo",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Giras una llave 90° en cerradura. Centro = cerradura, ángulo = 90°. Punto de la llave describe arco circular."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Rotación</strong> R_{O,α} (centro O, ángulo α, antihorario +):\n- Centro O fijo (punto fijo único)\n- Distancias a O conservadas (isometría)\n- Ángulos conservados\n- Orientación conservada (antihorario)\nFórmulas (centro origen):\nx' = x cosα - y sinα\ny' = x sinα + y cosα\nCentro arbitrario C(h,k): traslada a origen → rota → traslada back:\nP' = C + R_α(P - C)\nÁngulos notables: 90°: (x,y)→(-y,x); 180°: (x,y)→(-x,-y); 270°: (x,y)→(y,-x).",
+          "latex": "R_\\alpha(x,y) = (x\\cos\\alpha - y\\sin\\alpha,\\; x\\sin\\alpha + y\\cos\\alpha) \\quad | \\quad R_{90}(x,y)=(-y,x), \\, R_{180}(x,y)=(-x,-y)",
+          "visual": "assets/rotation.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Tierra girando: centro = eje polos, α = 360°/día. Tu posición rota. Reloj: manecilla rota centro = centro reloj. Giroscopio: mantiene orientación en espacio inercial mientras soporte rota.",
+          "conceptId": "rotation"
+        },
+        {
+          "type": "interactive",
+          "component": "RotationLab",
+          "description": "Figura + centro rotación arrastrable. Slider ángulo -360° a 360°. Matriz rotación mostrada. Puntos fijos: solo centro. Composición rotaciones mismo centro = suma ángulos. Diferente centro = rotación + traslación (Teorema de Chasles)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-3-2-1",
+              "type": "fill-in",
+              "question": "Rotación 90° antihorario origen. P(3, 2) → P' = (___ , ___)",
+              "answer": "-2, 3",
+              "explanation": "R_90(x,y) = (-y, x) → (-2, 3)."
+            },
+            {
+              "id": "q3-3-2-2",
+              "type": "multiple-choice",
+              "question": "Rotación 180° respecto a origen es equivalente a:",
+              "options": [
+                "Reflexión en origen",
+                "Traslación",
+                "Dilatación 2",
+                "Identidad"
+              ],
+              "correct": 0,
+              "explanation": "R_180(x,y) = (-x,-y) = simetría central (punto fijo origen)."
+            },
+            {
+              "id": "q3-3-2-3",
+              "type": "fill-in",
+              "question": "R_90° centro (1,1) aplicada a P(2, 3). P' = (___ , ___)",
+              "answer": "-1, 2",
+              "explanation": "P - C = (1, 2). R_90(1,2) = (-2, 1). + C = (-2+1, 1+1) = (-1, 2)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-3-3",
+      "title": "Reflexión (Simetría Axial): Espejo Matemático",
+      "objective": "Reflexión respecto a eje X, Y, y=x, y=-x, recta general. Invierte orientación",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Te miras en espejo vertical. Tu mano derecha parece izquierda. Orientación invertida. Eje espejo = recta de simetría."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Reflexión</strong> S_r (eje/recta r):\n- Isometría (conserva distancias y ángulos)\n- <strong>Invierte orientación</strong> (sentido horario ↔ antihorario)\n- Puntos de r son fijos (recta punto a punto)\n- Segmento PP' ⟂ r y r lo biseca\nReflexiones básicas:\n- Eje X: S_X(x,y) = (x, -y)\n- Eje Y: S_Y(x,y) = (-x, y)\n- Recta y=x: S_{y=x}(x,y) = (y, x) (intercambia coords)\n- Recta y=-x: S_{y=-x}(x,y) = (-y, -x)\n- Recta general ax+by+c=0: fórmula con proyección\nComposición: S_r ∘ S_r = Identidad. Dos reflexiones ejes perpendiculares = rotación 180°. Dos reflexiones paralelas = traslación (2×distancia).",
+          "latex": "S_X(x,y)=(x,-y) \\quad S_Y(x,y)=(-x,y) \\quad S_{y=x}(x,y)=(y,x) \\quad | \\quad S_r \\circ S_r = Id \\quad | \\quad S_{r_1} \\circ S_{r_2} = \\text{Rot/Trasl}",
+          "visual": "assets/reflection.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Plegar papel: pliegue = eje simetría. Puntos coinciden al doblar. Orientación: escritura normal en espejo se ve al revés (invertida). Dos espejos perpendiculares: ves tu imagen rotada 180° (no invertida).",
+          "conceptId": "reflection"
+        },
+        {
+          "type": "interactive",
+          "component": "ReflectionLab",
+          "description": "Figura + recta de reflexión arrastrable (pendiente, intercepto). Reflejo en vivo. Ejes X, Y, y=x, y=-x como presets. Composición: 2 reflexiones → rota o traslada. Test orientación: 'R' reflejada en Y → 'Я' (invertida)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-3-3-1",
+              "type": "fill-in",
+              "question": "Reflexión respecto a y=x. P(3, -2) → P' = (___ , ___)",
+              "answer": "-2, 3",
+              "explanation": "S_{y=x}(x,y) = (y, x) → (-2, 3)."
+            },
+            {
+              "id": "q3-3-3-2",
+              "type": "multiple-choice",
+              "question": "Composición S_X ∘ S_Y (refleja en Y, luego en X):",
+              "options": [
+                "Rotación 180° origen",
+                "Traslación",
+                "Reflexión en y=x",
+                "Identidad"
+              ],
+              "correct": 0,
+              "explanation": "S_Y: (x,y)→(-x,y). S_X: (-x,y)→(-x,-y). Resultado: (-x,-y) = rotación 180° (o simetría central)."
+            },
+            {
+              "id": "q3-3-3-3",
+              "type": "multiple-choice",
+              "question": "La reflexión respecto a una recta:",
+              "options": [
+                "Conserva orientación",
+                "Invierte orientación",
+                "Cambia distancias",
+                "No tiene puntos fijos"
+              ],
+              "correct": 1,
+              "explanation": "Reflexión es isometría INVERSA (invierte orientación). Puntos de la recta son fijos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-3-4",
+      "title": "Dilatación (Homotecia): Cambiar Tamaño, Mantener Forma",
+      "objective": "Centro O, razón k. P' = O + k(P-O). k>0 misma orientación, k<0 invierte. Semejanza",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Foto en fotocopiadora: 100% (k=1) = igual. 200% (k=2) = doble tamaño. 50% (k=0.5) = mitad. -100% (k=-1) = mismo tamaño, rotado 180°."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Homotecia / Dilatación</strong> H_{O,k} (centro O, razón k ≠ 0):\nP' = O + k·(P - O)\n- Centro O fijo (único punto fijo si k≠1)\n- Conserva ángulos (semejanza)\n- Distancias multiplicadas por |k|\n- Áreas × k², Volúmenes × k³\n- Orientación: k>0 conserva, k<0 invierte (equivalente a homotecia |k| + rotación 180°)\n- k=1: identidad. k=-1: simetría central (rotación 180°)\nComposición: H_{O,k} ∘ H_{O,k'} = H_{O,kk'}.\nSemejanza: dos figuras son semejantes si una es imagen de la otra por homotecia (+ isometría).",
+          "latex": "H_{O,k}(P) = O + k(P-O) \\quad | \\quad d(P',Q') = |k| d(P,Q) \\quad | \\quad \\text{Áreas} \\times k^2 \\quad | \\quad k<0 \\Rightarrow \\text{invierte orientaci\\'on}",
+          "visual": "assets/dilation.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Proyector de diapositivas: lente = centro, zoom = razón k. Aleja pantalla → imagen mayor (k>1). Acercar → menor (0<k<1). Imagen invertida (k<0) = diapositiva al revés. Sombra: sol = centro (lejos ≈ paralelos), objeto = figura, suelo = imagen (k variable).",
+          "conceptId": "dilation"
+        },
+        {
+          "type": "interactive",
+          "component": "DilationLab",
+          "description": "Figura + centro + slider k (-3 a 3). Imagen homotética en vivo. Medidas: lados ×|k|, área ×k². k negativo: muestra rotación 180°. Composición: dos homotecias mismo centro = producto razones. Centro distinto = homotecia + traslación."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-3-4-1",
+              "type": "fill-in",
+              "question": "Homotecia centro (0,0), k=2. P(3, -1) → P' = (___ , ___)",
+              "answer": "6, -2",
+              "explanation": "k·P = 2·(3, -1) = (6, -2)."
+            },
+            {
+              "id": "q3-3-4-2",
+              "type": "multiple-choice",
+              "question": "Triángulo área 6 cm². Homotecia k = -3. Área imagen = ",
+              "options": [
+                "18 cm²",
+                "54 cm²",
+                "-18 cm²",
+                "-54 cm²"
+              ],
+              "correct": 1,
+              "explanation": "Área × k² = 6 × 9 = 54 cm². Signo de k no afecta área (siempre positiva)."
+            },
+            {
+              "id": "q3-3-4-3",
+              "type": "fill-in",
+              "question": "H_{O,2} ∘ H_{O,3} = H_{O,___}",
+              "answer": "6",
+              "explanation": "Composición mismo centro: multiplican razones: 2×3=6."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-3-5",
+      "title": "Simetrías de Figuras: Grupos de Simetría, Teselados",
+      "objective": "Simetrías de polígonos regulares (D_n), frisos, teselados del plano (17 grupos)",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Copos de nieve: simetría D_6 (6 rotaciones + 6 reflexiones). Alhambra: teselados perfectos. Solo 17 formas de teselar el plano."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Simetrías de figura</strong>: transformaciones que dejan la figura coincidente consigo misma.\n- <strong>Polígono regular n lados</strong>: grupo diedral D_n (orden 2n)\n  n rotaciones (0, 360/n, 2·360/n, ...) + n reflexiones (ejes por vértices y/o puntos medios)\n- <strong>Círculo</strong>: grupo continuo O(2) (infinitas rotaciones + infinitas reflexiones)\n<strong>Teselados (mosaicos)</strong>: recubrir plano sin huecos ni superposiciones.\n- Regulares: solo triángulo (6), cuadrado (4), hexágono (3) en vértice\n- Semirregulares (Arquímedes): 8 tipos, combinan polígonos regulares\n- 17 grupos de simetría del plano (grupos cristalográficos)\nFrisos (bandas): 7 grupos (traslación + reflexiones/rotaciones/deslizamientos).",
+          "latex": "D_n = \\langle r, s | r^n=s^2=1, srs=r^{-1} \\rangle \\quad | \\quad \\text{Teselados regulares: } \\{3,6\\}, \\{4,4\\}, \\{6,3\\}",
+          "visual": "assets/symmetry-tessellation.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Piso de baño: azulejos cuadrados (teselado {4,4}). Panal abejas: hexágonos ({6,3}) - óptimo área/perímetro. Alhambra: todas las combinaciones matemáticas posibles usadas artísticamente. 17 grupos = todas las 'coreografías' posibles de simetrías en el plano.",
+          "conceptId": "symmetry-tessellation"
+        },
+        {
+          "type": "interactive",
+          "component": "TessellationBuilder",
+          "description": "Selector: polígono regular (3,4,6) o semirregulares. Genera teselado. Muestra grupo simetría. Editor frisos: patrón base + 7 tipos friso. Detecta simetrías: rota, refleja, desliza. Exporta SVG para imprimir/colorear."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-3-5-1",
+              "type": "multiple-choice",
+              "question": "Grupo de simetrías de un pentágono regular:",
+              "options": [
+                "D_5 (orden 10)",
+                "D_5 (orden 5)",
+                "C_5 (orden 5)",
+                "D_10 (orden 20)"
+              ],
+              "correct": 0,
+              "explanation": "Pentágono regular: 5 rotaciones + 5 reflexiones = D_5, orden 10."
+            },
+            {
+              "id": "q3-3-5-2",
+              "type": "multiple-choice",
+              "question": "¿Cuál polígono regular NO tesela el plano solo?",
+              "options": [
+                "Triángulo equilátero",
+                "Cuadrado",
+                "Pentágono regular",
+                "Hexágono regular"
+              ],
+              "correct": 2,
+              "explanation": "Ángulo interior pentágono = 108°. 360/108 no es entero. No llenan vértice sin huecos."
+            },
+            {
+              "id": "q3-3-5-3",
+              "type": "fill-in",
+              "question": "Número de grupos de simetría del plano (teselados): ___",
+              "answer": "17",
+              "explanation": "17 grupos cristalográficos (demostrados por Fedorov, Schönflies, Barlow ~1890)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-3-6",
+      "title": "Transformaciones Compuestas: El Teorema de Chasles",
+      "objective": "Toda isometría del plano = traslación, rotación, reflexión, o reflexión deslizada. Composición de isometrías",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Mueves un libro: lo deslizas (traslación), lo giras (rotación), lo volteas (reflexión). Cualquier movimiento rígido es combinación de estos."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Teorema de Chasles</strong>: Toda isometría del plano (transformación que conserva distancias) es exactamente una de:\n1. Traslación\n2. Rotación\n3. Reflexión\n4. Reflexión deslizada (glide reflection) = reflexión + traslación paralela al eje\nNo hay más. Composición de isometrías es isometría.\nTabla de composición (simplificada):\n- Traslación ∘ Traslación = Traslación\n- Rotación ∘ Rotación (mismo centro) = Rotación (suma ángulos)\n- Rotación ∘ Rotación (distinto centro) = Rotación o Traslación (si suma ángulos = 360°)\n- Reflexión ∘ Reflexión (ejes paralelos) = Traslación (2×distancia)\n- Reflexión ∘ Reflexión (ejes secantes) = Rotación (2×ángulo entre ejes)\n- Reflexión deslizada = Reflexión ∘ Traslación paralela",
+          "latex": "Isom(E²) = \\{T_v, R_{O,\\alpha}, S_r, G_{r,v}\\} \\quad | \\quad S_{r_1} \\circ S_{r_2} = \\begin{cases} T_{2d} & r_1 \\parallel r_2 \\\\ R_{O,2\\theta} & r_1 \\cap r_2 = O \\end{cases}",
+          "visual": "assets/chasles-theorem.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Coreografía: solo 4 movimientos básicos. Cualquier baile rígido (sin deformar) es secuencia de estos 4. Composición = coreografía compuesta. Tabla de composición = 'qué sale si hago A luego B'.",
+          "conceptId": "chasles-theorem"
+        },
+        {
+          "type": "interactive",
+          "component": "IsometryComposer",
+          "description": "Selecciona 2 isometrías (tipo + parámetros). Compón: aplica 1ª, luego 2ª. Identifica resultado (traslación/rotación/reflexión/glide). Muestra parámetros resultantes. Tabla completa interactiva. Test: '¿Qué composición da traslación (3,0)?'."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-3-6-1",
+              "type": "multiple-choice",
+              "question": "Composición de dos reflexiones con ejes paralelos separados 5 cm:",
+              "options": [
+                "Traslación 10 cm perpendicular a ejes",
+                "Rotación 180°",
+                "Reflexión deslizada",
+                "Identidad"
+              ],
+              "correct": 0,
+              "explanation": "S_r1 ∘ S_r2 (r1∥r2, dist=d) = Traslación vector 2d perpendicular a ejes. 2×5=10 cm."
+            },
+            {
+              "id": "q3-3-6-2",
+              "type": "multiple-choice",
+              "question": "Composición de reflexión en y=x y luego en y=-x:",
+              "options": [
+                "Rotación 90°",
+                "Rotación 180°",
+                "Traslación",
+                "Reflexión en origen"
+              ],
+              "correct": 1,
+              "explanation": "Ejes y=x e y=-x perpendiculares (ángulo 90°). Composición = rotación 2×90° = 180° en origen."
+            },
+            {
+              "id": "q3-3-6-3",
+              "type": "fill-in",
+              "question": "Reflexión deslizada = reflexión en recta r + traslación ______ a r.",
+              "answer": "paralela",
+              "explanation": "Glide reflection: reflect + translate parallel to mirror line."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-3-7",
+      "title": "Proyecto Módulo: Crear un Mosaico (Teselado) Artístico Tipo Escher",
+      "objective": "Diseñar figura base, aplicar transformaciones (traslación, rotación, reflexión, glide) para crear patrón que cubra el plano",
+      "type": "project",
+      "durationMin": 20,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Escher: pájaros que se encajan, peces que se transforman en pájaros. Tú crearás tu propio teselado partiendo de un polígono base (cuadrado, triángulo, hexágono) y modificando bordes con transformaciones."
+        },
+        {
+          "type": "explanation",
+          "text": "Método Escher simplificado:\n1. Elige polígono base que tesela: cuadrado, triángulo equilátero, hexágono regular\n2. Modifica un borde: recorta forma curva\n3. Aplica transformación a borde opuesto:\n   - Cuadrado: traslación (borde derecho = izquierdo + vector)\n   - Triángulo: rotación 120° o 180° según lado\n   - Hexágono: rotación 60°/120°/180°\n4. Repite para otros pares de bordes\n5. Resultado: figura 'monstruo' que tesela perfectamente\n6. Decora interior (ojos, escamas, colores)\nHerramientas: editor SVG interactivo. Exporta patrón repetido (3×3, 5×5). Colorea regiones.",
+          "latex": "Base: \\square, \\triangle, \\hexagon \\quad | \\quad \\text{Borde } B_2 = T_v(B_1) \\text{ o } R_\\alpha(B_1) \\quad | \\quad \\text{Teselado resultante}",
+          "visual": "assets/escher-tessellation.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "EscherTileMaker",
+          "description": "Paso a paso guiado: 1) Elige base. 2) Edita borde 1 (bezier). 3) Auto-aplica transformación a borde pareado. 4) Repite. 5) Vista previa teselado 5×5. 6) Editor decoración interior (simetría automática). 7) Exporta SVG/PNG. Galería ejemplos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-3-7-1",
+              "type": "multiple-choice",
+              "question": "En teselado basado en cuadrado, borde superior modificado. Borde inferior debe ser:",
+              "options": [
+                "Igual (traslación vertical)",
+                "Rotado 180°",
+                "Reflejado horizontal",
+                "Invertido color"
+              ],
+              "correct": 0,
+              "explanation": "Cuadrado: bordes opuestos relacionados por traslación. Si modificas arriba, abajo = misma forma trasladada."
+            },
+            {
+              "id": "q3-3-7-2",
+              "type": "fill-in",
+              "question": "Teselado basado en triángulo equilátero. Modificas un lado. Los otros dos lados se obtienen por rotaciones de ___° y ___°",
+              "answer": "120, 240",
+              "explanation": "Triángulo equilátero: simetría rotacional 120°. Lados se rotan 120° y 240° (o -120°)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

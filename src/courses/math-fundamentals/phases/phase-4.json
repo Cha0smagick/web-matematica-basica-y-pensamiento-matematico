@@ -1,0 +1,20 @@
+{
+  "id": "phase-4",
+  "number": 4,
+  "title": "Navegante del Cambio",
+  "subtitle": "Funciones y Cálculo Intuitivo - Límites, derivadas, integrales, optimización",
+  "description": "Cálculo sin ε-δ intimidante: límites como 'acercarse', derivadas como velocímetros, integrales como odómetros, optimización real. 4 módulos, 35 lecciones.",
+  "icon": "📈",
+  "color": "#8b5cf6",
+  "estimatedHours": 12,
+  "prerequisites": ["phase-3"],
+  "modules": ["m4-1", "m4-2", "m4-3", "m4-4"],
+  "projectIntegrator": {
+    "id": "phase4-project",
+    "title": "Optimiza tu Negocio",
+    "description": "Modela costos, ingresos y ganancia. Encuentra producción óptima con derivadas. Calcula área total con integrales.",
+    "estimatedMinutes": 90
+  },
+  "unlockCondition": "phase-3-complete",
+  "lessons": {}
+}

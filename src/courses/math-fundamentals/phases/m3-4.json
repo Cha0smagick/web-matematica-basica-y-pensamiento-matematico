@@ -1,0 +1,436 @@
+{
+  "id": "m3-4",
+  "phaseId": "phase-3",
+  "number": "3.4",
+  "title": "Trigonometría Básica",
+  "description": "Sen, cos, tan en triángulo rectángulo, círculo unitario, alturas, navegación",
+  "lessons": [
+    {
+      "id": "l3-4-1",
+      "title": "Razones Trigonométricas en Triángulo Rectángulo: SOH-CAH-TOA",
+      "objective": "sen = opuesto/hipotenusa, cos = adyacente/hipotenusa, tan = opuesto/adyacente. Valores notables 30°, 45°, 60°",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Triángulo rectángulo 3-4-5. Ángulo α opuesto a 3: sen α = 3/5 = 0.6, cos α = 4/5 = 0.8, tan α = 3/4 = 0.75. Mnemotecnia: SOH-CAH-TOA."
+        },
+        {
+          "type": "explanation",
+          "text": "En triángulo rectángulo con ángulo agudo θ:\n- <strong>Seno</strong>: sen θ = cateto opuesto / hipotenusa (SOH)\n- <strong>Coseno</strong>: cos θ = cateto adyacente / hipotenusa (CAH)\n- <strong>Tangente</strong>: tan θ = cateto opuesto / cateto adyacente (TOA) = sen θ / cos θ\nRecíprocas: csc = 1/sen, sec = 1/cos, cot = 1/tan.\n<strong>Valores notables</strong> (memorizar):\n- 30°: sen=1/2, cos=√3/2, tan=√3/3\n- 45°: sen=√2/2, cos=√2/2, tan=1\n- 60°: sen=√3/2, cos=1/2, tan=√3\n- 0°: sen=0, cos=1, tan=0\n- 90°: sen=1, cos=0, tan=∞ (indefinida)\nRelación: sen²θ + cos²θ = 1 (identidad pitagórica).",
+          "latex": "\\sin\\theta = \\frac{op}{hip}, \\quad \\cos\\theta = \\frac{ad}{hip}, \\quad \\tan\\theta = \\frac{op}{ad} = \\frac{\\sin\\theta}{\\cos\\theta} \\quad | \\quad \\sin^2\\theta+\\cos^2\\theta=1",
+          "visual": "assets/trig-ratios.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Escalera apoyada en pared: ángulo con suelo = θ. Longitud escalera = hipotenusa. Altura alcance = opuesto = hip·sen θ. Distancia base = adyacente = hip·cos θ. Pendiente = tan θ = altura/base.",
+          "conceptId": "trig-ratios"
+        },
+        {
+          "type": "interactive",
+          "component": "TrigRatioExplorer",
+          "description": "Triángulo rectángulo arrastrable (vértice ángulo recto fijo, hipotenusa fija, ángulo variable). Valores sen, cos, tan en vivo. Tabla valores notables. Calculadora: dado ángulo y un lado, halla otros. Inversa: dado lados, halla ángulo (arcsen, arccos, arctan)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-4-1-1",
+              "type": "multiple-choice",
+              "question": "En triángulo rectángulo, sen 30° = ",
+              "options": [
+                "1/2",
+                "√3/2",
+                "√2/2",
+                "1"
+              ],
+              "correct": 0,
+              "explanation": "sen 30° = 1/2. Cos 30° = √3/2."
+            },
+            {
+              "id": "q3-4-1-2",
+              "type": "fill-in",
+              "question": "Si tan θ = 3/4 y θ agudo, entonces sen θ = ___, cos θ = ___",
+              "answer": "3/5, 4/5",
+              "explanation": "Triángulo 3-4-5: op=3, ad=4, hip=5. sen=3/5, cos=4/5."
+            },
+            {
+              "id": "q3-4-1-3",
+              "type": "multiple-choice",
+              "question": "Identidad pitagórica: sen²θ + cos²θ = ",
+              "options": [
+                "1",
+                "tan²θ",
+                "sec²θ",
+                "0"
+              ],
+              "correct": 0,
+              "explanation": "Identidad fundamental: sen²θ + cos²θ = 1 para todo θ."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-4-2",
+      "title": "Círculo Unitario: Extender sen, cos a Cualquier Ángulo",
+      "objective": "Punto (cos θ, sen θ) en círculo radio 1. Ángulos > 90°, negativos, > 360°. Signos por cuadrantes (ASTC)",
+      "type": "conceptual",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "En círculo radio 1, ángulo θ desde eje X+. Coordenadas del punto: (cos θ, sen θ). Así definimos trigonometría para CUALQUIER ángulo."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Círculo unitario</strong>: x² + y² = 1, centro origen.\nÁngulo θ en posición estándar (vértice origen, lado inicial eje X+, lado terminal rotado θ antihorario).\nP(θ) = (cos θ, sen θ) = intersección lado terminal con círculo.\n- sen θ = coordenada y (proyección vertical)\n- cos θ = coordenada x (proyección horizontal)\n- tan θ = y/x = sen θ / cos θ (pendiente recta terminal)\nExtiende a: θ > 90° (obtusos), θ < 0° (horario), θ > 360° (vueltas completas).\n<strong>Signos por cuadrantes</strong> (regla ASTC - All Students Take Calculus):\n- Q I (0-90°): Todos + (A)\n- Q II (90-180°): Solo Sen + (S) → cos -, tan -\n- Q III (180-270°): Solo Tan + (T) → sen -, cos -\n- Q IV (270-360°): Solo Cos + (C) → sen -, tan -\nÁngulos coterminales: θ + k·360° mismo punto. sen(θ+360°k)=sen θ, cos(θ+360°k)=cos θ (periodicidad 360°).",
+          "latex": "P(\\theta)=(\\cos\\theta,\\sin\\theta) \\quad | \\quad \\sin(\\theta+360^\\circ)=\\sin\\theta \\quad | \\quad \\text{ASTC: I(+++), II(S--), III(--T), IV(C--)}",
+          "visual": "assets/unit-circle.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Rueda de bicicleta radio 1. Válvula en (1,0). Giras rueda θ grados. Posición válvula = (cos θ, sen θ). Altura válvula = sen θ. Distancia horizontal = cos θ. Vueltas completas = mismo lugar (periodicidad).",
+          "conceptId": "unit-circle"
+        },
+        {
+          "type": "interactive",
+          "component": "UnitCircleExplorer",
+          "description": "Círculo unitario. Slider θ (-720° a 720°). Punto P(θ) moviéndose. Coordenadas (cos, sen) en vivo. Proyecciones en ejes. Tangente = segmento recta tangente en (1,0) hasta corte con recta terminal. Cuadrantes coloreados ASTC. Tabla valores: θ, sen, cos, tan, signos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-4-2-1",
+              "type": "multiple-choice",
+              "question": "sen 120° = ",
+              "options": [
+                "√3/2",
+                "1/2",
+                "-√3/2",
+                "-1/2"
+              ],
+              "correct": 0,
+              "explanation": "120° en Q II (sen +). sen 120° = sen(180-120) = sen 60° = √3/2."
+            },
+            {
+              "id": "q3-4-2-2",
+              "type": "fill-in",
+              "question": "cos 210° = ___, tan 210° = ___",
+              "answer": "-√3/2, √3/3",
+              "explanation": "210° en Q III (cos -, tan +). Ángulo referencia = 210-180=30°. cos 210° = -cos 30° = -√3/2. tan 210° = tan 30° = √3/3."
+            },
+            {
+              "id": "q3-4-2-3",
+              "type": "multiple-choice",
+              "question": "sen(-30°) = ",
+              "options": [
+                "1/2",
+                "-1/2",
+                "√3/2",
+                "-√3/2"
+              ],
+              "correct": 1,
+              "explanation": "sen(-θ) = -sen θ (impar). sen(-30°) = -sen 30° = -1/2."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-4-3",
+      "title": "Identidades Trigonométricas Fundamentales",
+      "objective": "Pitagóricas, paridad, complementarios, suma/doble ángulo (intro), resolver ecuaciones simples",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "sen²θ + cos²θ = 1 → divide por cos²θ: tan²θ + 1 = sec²θ. Divide por sen²θ: 1 + cot²θ = csc²θ. Tres identidades pitagóricas."
+        },
+        {
+          "type": "explanation",
+          "text": "Identidades clave:\n1. <strong>Pitagóricas</strong>:\n   - sen²θ + cos²θ = 1\n   - 1 + tan²θ = sec²θ\n   - 1 + cot²θ = csc²θ\n2. <strong>Paridad</strong>:\n   - sen(-θ) = -sen θ (impar)\n   - cos(-θ) = cos θ (par)\n   - tan(-θ) = -tan θ (impar)\n3. <strong>Complementarios</strong> (90° - θ):\n   - sen(90°-θ) = cos θ\n   - cos(90°-θ) = sen θ\n   - tan(90°-θ) = cot θ\n4. <strong>Suplementarios</strong> (180° - θ):\n   - sen(180°-θ) = sen θ\n   - cos(180°-θ) = -cos θ\n5. <strong>Periodicidad</strong>: sen(θ+360°)=sen θ, cos(θ+360°)=cos θ, tan(θ+180°)=tan θ\n6. <strong>Doble ángulo</strong> (intro): sen 2θ = 2 sen θ cos θ, cos 2θ = cos²θ - sen²θ = 2cos²θ-1 = 1-2sen²θ\nResolver ecuaciones: sen θ = 1/2 → θ = 30° + k·360° o 150° + k·360°.",
+          "latex": "\\sin^2\\theta+\\cos^2\\theta=1 \\quad | \\quad \\sin(-\\theta)=-\\sin\\theta \\quad | \\quad \\sin(90^\\circ-\\theta)=\\cos\\theta \\quad | \\quad \\sin 2\\theta = 2\\sin\\theta\\cos\\theta",
+          "visual": "assets/trig-identities.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Identidades = 'traducciones' entre funciones. sen y cos son 'gemelos complementarios' (se intercambian en 90°-θ). Paridad: cos es simétrico (espejo), sen es antisimétrico (rotación 180°). Periodicidad = rueda que repite vueltas.",
+          "conceptId": "trig-identities"
+        },
+        {
+          "type": "interactive",
+          "component": "TrigIdentityVerifier",
+          "description": "Editor identidad: lado izquierdo vs derecho. Test numérico: evalúa en θ aleatorios. Verificador simbólico (simplifica). Generador ejercicios: 'Simplifica: (1-sen²θ)/cos²θ'. Ecuaciones: 'Resuelve 2sen²θ - 1 = 0'. Pasos: identidades → factoriza → ángulos base + periodicidad."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-4-3-1",
+              "type": "fill-in",
+              "question": "Simplifica: (1 - sen²θ) / cos²θ = ___",
+              "answer": "1",
+              "explanation": "1 - sen²θ = cos²θ (pitagórica). cos²θ / cos²θ = 1."
+            },
+            {
+              "id": "q3-4-3-2",
+              "type": "multiple-choice",
+              "question": "sen(150°) = ",
+              "options": [
+                "1/2",
+                "√3/2",
+                "-1/2",
+                "-√3/2"
+              ],
+              "correct": 0,
+              "explanation": "sen(180-30) = sen 30° = 1/2. (Q II, sen +)."
+            },
+            {
+              "id": "q3-4-3-3",
+              "type": "fill-in",
+              "question": "Resuelve: cos θ = -√2/2, θ ∈ [0°, 360°). θ = ___°, ___°",
+              "answer": "135, 225",
+              "explanation": "cos θ = -√2/2 → Q II y III (cos -). Ángulo ref 45°. θ = 180-45=135°, 180+45=225°."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-4-4",
+      "title": "Resolución de Triángulos Oblícuos: Ley de Senos y Ley de Cosenos",
+      "objective": "Ley senos: a/sen A = b/sen B = c/sen C. Ley cosenos: a² = b² + c² - 2bc cos A. Casos: AAL, LAL, LLL, LLA (ambiguo)",
+      "type": "procedural",
+      "durationMin": 10,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Triángulo NO rectángulo. Lados a,b,c opuestos a A,B,C. Ley senos: proporción lado/sen ángulo opuesto = constante (2R). Ley cosenos: generaliza Pitágoras con corrección -2bc cos A."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Ley de Senos</strong>:\na / sen A = b / sen B = c / sen C = 2R (R = radio circunscrita)\nÚtil: AAL (2 ángulos + 1 lado), LLA (2 lados + ángulo NO entre ellos → caso ambiguo 0/1/2 soluciones)\n<strong>Ley de Cosenos</strong>:\na² = b² + c² - 2bc cos A\nb² = a² + c² - 2ac cos B\nc² = a² + b² - 2ab cos C\nÚtil: LAL (2 lados + ángulo ENTRE ellos), LLL (3 lados → halla ángulos)\n<strong>Caso ambiguo LLA</strong>: dado a, b, A (a opuesto a A).\n- a < b sen A → 0 soluciones\n- a = b sen A → 1 solución (rectángulo)\n- b sen A < a < b → 2 soluciones (ángulo B agudo u obtuso)\n- a ≥ b → 1 solución\nÁrea triángulo: A = ½ bc sen A = ½ ab sen C = √[s(s-a)(s-b)(s-c)] (Herón, s = semiperímetro).",
+          "latex": "\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R \\quad | \\quad a^2 = b^2 + c^2 - 2bc\\cos A \\quad | \\quad \\text{Área} = \\frac{1}{2}bc\\sin A = \\sqrt{s(s-a)(s-b)(s-c)}",
+          "visual": "assets/law-sines-cosines.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Navegación: barco ve faro A (rumbo α), avanza d, ve faro A (rumbo β). Triángulo barco-faro-barco. Ley senos halla distancia a faro. GPS: trilateración = intersección 3 círculos = ley cosenos.",
+          "conceptId": "law-sines-cosines"
+        },
+        {
+          "type": "interactive",
+          "component": "TriangleSolverOblique",
+          "description": "Selector caso: AAL, LAL, LLL, LLA. Input datos. Paso a paso: identifica ley, calcula, verifica suma ángulos=180°, desigualdad triangular. LLA: detector caso ambiguo (0/1/2 sols). Área calculada. Circunscrita/inscrita radio."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-4-4-1",
+              "type": "number-input",
+              "question": "Triángulo: a=7, b=9, A=30°. Ley senos: sen B = ___",
+              "answer": "0.643",
+              "explanation": "a/sen A = b/sen B → 7/sen30 = 9/sen B → 7/0.5 = 9/sen B → 14 = 9/sen B → sen B = 9/14 ≈ 0.643. B ≈ 40° o 140° (caso ambiguo)."
+            },
+            {
+              "id": "q3-4-4-2",
+              "type": "fill-in",
+              "question": "Triángulo: b=5, c=8, A=60°. Ley cosenos: a² = ___, a = ___",
+              "answer": "49, 7",
+              "explanation": "a² = 5²+8²-2·5·8·cos60° = 25+64-80·0.5 = 89-40 = 49. a = 7."
+            },
+            {
+              "id": "q3-4-4-3",
+              "type": "multiple-choice",
+              "question": "Caso LLA: a=8, b=10, A=30°. b sen A = 5. Como a=8: 5 < 8 < 10 → ",
+              "options": [
+                "0 soluciones",
+                "1 solución",
+                "2 soluciones",
+                "Infinitas"
+              ],
+              "correct": 2,
+              "explanation": "b sen A < a < b → 2 soluciones (B agudo y B obtuso)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-4-5",
+      "title": "Aplicaciones: Alturas, Distancias Inaccesibles, Navegación, Rumbo",
+      "objective": "Altura edificio (ángulo elevación), ancho río (trigonometría), rumbo/navegación (senos/cosenos), GPS básico",
+      "type": "procedural",
+      "durationMin": 10,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Altura de árbol sin subirte? Mide sombra 10m, ángulo sol 30°. Altura = 10·tan30° ≈ 5.77m. ¿Ancho río? Mide base 20m en tu orilla, ángulos a árbol opuesto 40° y 50°. Ley senos."
+        },
+        {
+          "type": "explanation",
+          "text": "Aplicaciones clásicas:\n1. <strong>Altura inaccesible</strong> (edificio, árbol, montaña):\n   - Mide distancia horizontal d, ángulo elevación α → h = d·tan α\n   - Si no puedes medir d: dos puntos, ángulos α, β → h = (d·tan α·tan β) / (tan β - tan α)\n2. <strong>Distancia inaccesible</strong> (ancho río, distancia a barco):\n   - Base conocida b, ángulos α, β → ley senos\n3. <strong>Navegación / Rumbo</strong>:\n   - Rumbo = ángulo desde Norte (0°) en sentido horario\n   - Vector velocidad: v_N = v·cos(rumbo), v_E = v·sen(rumbo)\n   - Corriente: suma vectorial\n   - Problema: 'Barco rumbo 045°, 10 nudos. Corriente 180°, 2 nudos. Rumbo real y velocidad?'\n4. <strong>GPS básico</strong>: trilateración. Distancias a 3 satélites → intersección 3 esferas → 2 puntos (uno en superficie Tierra). Ley cosenos en 3D.",
+          "latex": "h = d\\tan\\alpha \\quad | \\quad \\text{Rumbo } \\theta: v_N=v\\cos\\theta, v_E=v\\sin\\theta \\quad | \\quad \\text{Trilateraci\\'on: } d_i = \\sqrt{(x-x_i)^2+(y-y_i)^2+(z-z_i)^2}",
+          "visual": "assets/trig-applications.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Teodolito (topógrafo): telescopio mide ángulos horizontales/verticales. Con base medida y ángulos → todo triángulo resuelto. Navegación antigua: sextante mide ángulo sol/estrella → latitud. Longitud = cronómetro + ángulo hora. GPS = sextante automático con satélites.",
+          "conceptId": "trig-applications"
+        },
+        {
+          "type": "interactive",
+          "component": "TrigApplicationsLab",
+          "description": "Escenarios: 1) Altura edificio (ángulo elevación + distancia). 2) Ancho río (base + 2 ángulos). 3) Navegación (rumbo + velocidad + corriente). 4) GPS 2D (3 distancias → intersección círculos). Input datos → dibuja triángulo → resuelve paso a paso → resultado."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-4-5-1",
+              "type": "number-input",
+              "question": "Ángulo elevación a tope edificio 35°, distancia 50m. Altura ≈ ___ m",
+              "answer": "35.0",
+              "explanation": "h = 50·tan35° ≈ 50·0.7002 = 35.01 m."
+            },
+            {
+              "id": "q3-4-5-2",
+              "type": "fill-in",
+              "question": "Barco rumbo 060° (NE), velocidad 15 nudos. Corriente hacia 180° (S), 3 nudos. Componente Norte resultante = ___ nudos",
+              "answer": "12.99",
+              "explanation": "Barco: N = 15·cos60° = 7.5, E = 15·sen60° ≈ 12.99. Corriente: N = -3, E = 0. Resultante N = 7.5 - 3 = 4.5. E = 12.99. Vel = √(4.5²+12.99²) ≈ 13.7 nudos. Rumbo = arctan(12.99/4.5) ≈ 71°."
+            },
+            {
+              "id": "q3-4-5-3",
+              "type": "multiple-choice",
+              "question": "Para medir ancho río sin cruzarlo, necesitas:",
+              "options": [
+                "Una base en tu orilla y dos ángulos al árbol opuesto",
+                "Solo un ángulo y la distancia al árbol",
+                "Un GPS",
+                "Nadar al otro lado"
+              ],
+              "correct": 0,
+              "explanation": "Mide base b en tu orilla. Ángulos α, β desde extremos de base al punto opuesto. Ley senos halla distancia perpendicular (ancho)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-4-6",
+      "title": "Introducción a Funciones Trigonométricas: Gráficas, Periodo, Amplitud, Fase",
+      "objective": "y = A sen(Bx + C) + D. Amplitud |A|, periodo 2π/|B|, fase -C/B, desplazamiento vertical D",
+      "type": "conceptual",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Sonido puro = onda senoidal. A = volumen (amplitud), B = tono (frecuencia), C = desfase temporal, D = offset DC. ECG latido = ondas periódicas."
+        },
+        {
+          "type": "explanation",
+          "text": "Función sinusoidal general:\ny = A sen(Bx + C) + D  o  y = A cos(Bx + C) + D\nParámetros:\n- <strong>Amplitud</strong> = |A| (distancia max al eje central). A<0 → refleja en eje X\n- <strong>Periodo</strong> = 2π / |B| (en radianes) = 360° / |B| (en grados). B>1 comprime, 0<B<1 estira\n- <strong>Desfase horizontal (fase)</strong> = -C / B. Positivo → derecha, negativo → izquierda\n- <strong>Desplazamiento vertical</strong> = D. Eje central y = D\n- <strong>Valor máximo</strong> = D + |A|, <strong>Mínimo</strong> = D - |A|\nConversión: A sen(Bx+C) = A cos(Bx + C - π/2). sen y cos son misma forma, fase π/2.\nAplicaciones: sonido, luz, mareas, corriente alterna, péndulo, resortes.",
+          "latex": "y = A\\sin(Bx+C)+D \\quad | \\quad \\text{Amp}=|A|, \\, T=\\frac{2\\pi}{|B|}, \\, \\text{Fase}=-\\frac{C}{B}, \\, \\text{Eje central } y=D",
+          "visual": "assets/sinusoidal-function.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Onda en cuerda: A = qué tan fuerte la golpeas (altura). B = qué tan tensa/gruesa (frecuencia). C = dónde empieza el golpe (inicio). D = altura reposo de la cuerda. ECG: cada latido = ciclo. Frecuencia cardíaca = 1/periodo.",
+          "conceptId": "sinusoidal-functions"
+        },
+        {
+          "type": "interactive",
+          "component": "SinusoidalExplorer",
+          "description": "4 sliders: A, B, C, D. Gráfica y = A sen(Bx+C)+D en vivo. Marca: amplitud, periodo, fase, eje central. Puntos clave: máx, mín, cruces cero. Botón 'Escucha' (Web Audio API) genera tono frecuencia B. Compara sen vs cos (fase π/2)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-4-6-1",
+              "type": "multiple-choice",
+              "question": "y = 3 sen(2x - π) + 1. Amplitud = ___, Periodo = ___, Fase = ___, Eje central = ___",
+              "options": [
+                "3, π, π/2, 1",
+                "3, 2π, π/2, 1",
+                "3, π, -π/2, 1",
+                "2, π, π/2, 1"
+              ],
+              "correct": 0,
+              "explanation": "A=3 → Amp=3. B=2 → T=2π/2=π. Fase = -C/B = -(-π)/2 = π/2 (derecha). D=1 → eje central y=1."
+            },
+            {
+              "id": "q3-4-6-2",
+              "type": "fill-in",
+              "question": "y = -2 cos(4x) + 3. Máximo = ___, Mínimo = ___",
+              "answer": "5, 1",
+              "explanation": "A=-2 → Amp=2, refleja. D=3. Máx = D+|A| = 3+2=5. Mín = D-|A| = 3-2=1."
+            },
+            {
+              "id": "q3-4-6-3",
+              "type": "multiple-choice",
+              "question": "Función sen(2x) vs sen(x):",
+              "options": [
+                "Mismo periodo, doble amplitud",
+                "Mitad periodo, misma amplitud",
+                "Doble periodo, mitad amplitud",
+                "Iguales"
+              ],
+              "correct": 1,
+              "explanation": "B=2 → Periodo = 2π/2 = π (mitad que sen x). Amplitud = 1 (misma)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-4-7",
+      "title": "Proyecto Módulo: Diseño de Rampa Accesible y Cálculo de Sombras Solares",
+      "objective": "Aplicar trigonometría a arquitectura: pendiente rampa (normativa), sombra edificio (ángulo solar estacional), orientación paneles solares",
+      "type": "project",
+      "durationMin": 20,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Normativa: rampa max 8% (≈4.57°). Edificio 20m altura, latitud 40°N. ¿Longitud sombra solsticio invierno (sol 26.5° elevación)? ¿Inclinación óptima panel solar?"
+        },
+        {
+          "type": "explanation",
+          "text": "Parte 1: <strong>Rampa accesible</strong>\n- Pendiente % = (subida/avance)×100 = tan θ × 100\n- Normativa: ≤ 8% → θ ≤ arctan(0.08) ≈ 4.57°\n- Para salvar altura h: longitud rampa L = h / sen θ ≥ h / sen(4.57°) ≈ 12.55·h\n- Descansos cada 10m (normativa)\n\nParte 2: <strong>Sombra solar</strong>\n- Elevación solar α depende latitud φ, declinación δ, hora solar ω\n- α = arcsin(sen φ sen δ + cos φ cos δ cos ω)\n- Longitud sombra L = h / tan α = h · cot α\n- Solsticio invierno (δ ≈ -23.44°), mediodía (ω=0): α = 90° - φ - 23.44°\n  Ej: φ=40° → α = 26.56°. Edificio 20m → sombra = 20·cot(26.56°) ≈ 40m\n\nParte 3: <strong>Panel solar óptimo</strong>\n- Inclinación β ≈ φ (latitud) para máximo anual\n- Verano: β = φ - 15°, Invierno: β = φ + 15°\n- Azimut: 0° (Sur en hemisferio N), 180° (Norte en hemisferio S)",
+          "latex": "Pendiente\\% = \\tan\\theta \\times 100 \\quad | \\quad L_{sombra} = h \\cot\\alpha \\quad | \\quad \\alpha = \\arcsin(\\sin\\phi\\sin\\delta + \\cos\\phi\\cos\\delta\\cos\\omega) \\quad | \\quad \\beta_{opt} \\approx \\phi",
+          "visual": "assets/ramp-solar.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "ArchitecturalTrigLab",
+          "description": "3 tabs:\n1. Rampa: input altura h, % pendiente max. Calcula θ, L, #descansos, perfil.\n2. Sombra: input latitud, fecha (declinación δ), hora, altura edificio. Calcula α, L_sombra. Gráfica sombra día/año.\n3. Panel solar: latitud, mes. Calcula β óptima, azimut. Simulación producción anual (irradiancia × cos ángulo incidencia). Exporta reporte PDF."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-4-7-1",
+              "type": "number-input",
+              "question": "Rampa para salvar 1.2m altura, pendiente max 8%. Longitud mínima ≈ ___ m",
+              "answer": "15.06",
+              "explanation": "θ = arctan(0.08) ≈ 4.574°. L = 1.2 / sen(4.574°) ≈ 1.2 / 0.0797 ≈ 15.06 m."
+            },
+            {
+              "id": "q3-4-7-2",
+              "type": "fill-in",
+              "question": "Latitud 40°N, solsticio invierno (δ=-23.44°), mediodía. Elevación solar α = ___°",
+              "answer": "26.56",
+              "explanation": "α = 90° - φ + δ = 90 - 40 - 23.44 = 26.56°. (O: α = 90 - |φ-δ| = 90 - |40-(-23.44)| = 26.56°)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "phase-5",
+  "number": 5,
+  "title": "Analista de Datos",
+  "subtitle": "Estadística y Probabilidad - Descriptiva, inferencia, distribuciones, decisiones",
+  "description": "Datos reales, no abstractos: detecta mentiras en gráficas, entiende riesgos, usa la campana de Gauss, aprende inferencia con tests A/B. 4 módulos, 25 lecciones.",
+  "icon": "📊",
+  "color": "#06b6d4",
+  "estimatedHours": 10,
+  "prerequisites": ["phase-4"],
+  "modules": ["m5-1", "m5-2", "m5-3", "m5-4"],
+  "projectIntegrator": {
+    "id": "phase5-project",
+    "title": "Detective de Datos",
+    "description": "Analiza un dataset real anonimizado: limpia, visualiza, encuentra patrones, testea hipótesis, presenta hallazgos.",
+    "estimatedMinutes": 90
+  },
+  "unlockCondition": "phase-4-complete",
+  "lessons": {}
+}

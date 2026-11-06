@@ -1,0 +1,520 @@
+{
+  "id": "m5-3",
+  "phaseId": "phase-5",
+  "number": "5.3",
+  "title": "Distribuciones",
+  "description": "Binomial, normal (campana), estandarización, Teorema Límite Central",
+  "lessons": [
+    {
+      "id": "l5-3-1",
+      "title": "Variables Aleatorias Continuas: Densidad, Distribución, Esperanza",
+      "objective": "PDF f(x) ≥ 0, ∫f = 1. CDF F(x) = ∫_{-∞}^x f(t)dt. E[X] = ∫xf(x)dx, Var = ∫(x-μ)²f(x)dx. Uniforme, exponencial",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Altura personas: cualquier valor en [1.5, 2.0]m. No cuenta valores, mide DENSIDAD. Área bajo curva = probabilidad. P(1.70 < X < 1.75) = área franja."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Variable aleatoria continua</strong>: toma cualquier valor en intervalo.\n<strong>Función de densidad (PDF)</strong> f(x):\n- f(x) ≥ 0 ∀x\n- ∫_{-∞}^{∞} f(x) dx = 1\n- P(a < X < b) = ∫_a^b f(x) dx (área bajo curva)\n- P(X = a) = 0 (punto individual tiene probabilidad 0)\n<strong>Función de distribución (CDF)</strong> F(x) = P(X ≤ x) = ∫_{-∞}^x f(t) dt\n- F'(x) = f(x) donde f continua\n- F no decreciente, continua, lim_{-∞}=0, lim_{∞}=1\n<strong>Esperanza y varianza</strong>:\n- E[X] = ∫ x f(x) dx\n- Var(X) = E[(X-μ)²] = ∫ (x-μ)² f(x) dx = E[X²] - μ²\n<strong>Distribuciones básicas</strong>:\n- Uniforme U(a,b): f(x)=1/(b-a) en [a,b]. μ=(a+b)/2, σ²=(b-a)²/12\n- Exponencial Exp(λ): f(x)=λe^{-λx} (x≥0). μ=1/λ, σ²=1/λ². Sin memoria.\n- Gamma, Beta, Weibull, Log-normal (avanzadas).",
+          "latex": "f(x)\\ge0, \\int f=1 \\quad | \\quad F(x)=\\int_{-\\infty}^x f(t)dt \\quad | \\quad E[X]=\\int xf(x)dx \\quad | \\quad U(a,b): f=1/(b-a) \\quad | \\quad Exp(\\lambda): f=\\lambda e^{-\\lambda x}",
+          "visual": "assets/continuous-rv.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Densidad = 'concentración de probabilidad por unidad'. Como densidad población (hab/km²): área × densidad = población. Aquí: intervalo × densidad ≈ probabilidad. Uniforme = densidad constante. Exponencial = decae (eventos raros: tiempo hasta próximo).",
+          "conceptId": "continuous-rv"
+        },
+        {
+          "type": "interactive",
+          "component": "ContinuousRVExplorer",
+          "description": "Selector distribución: Uniforme, Exponencial, Normal, Gamma, Beta, Log-normal, Weibull. Sliders parámetros. Gráfica PDF + CDF. Sombrea área P(a<X<b). Calcula media, varianza, percentiles, momentos. Simulación: genera muestras (transformada inversa, Box-Muller), histograma vs teórico. Transformaciones: Y=g(X) → densidad Y."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-3-1-1",
+              "type": "multiple-choice",
+              "question": "X ~ Uniforme(0, 10). P(2 < X < 5) = ",
+              "options": [
+                "0.3",
+                "0.5",
+                "0.2",
+                "0.7"
+              ],
+              "correct": 0,
+              "explanation": "Densidad = 1/10. Área = (5-2)×1/10 = 3/10 = 0.3."
+            },
+            {
+              "id": "q5-3-1-2",
+              "type": "fill-in",
+              "question": "X ~ Exp(λ=2). Media = ___, Varianza = ___",
+              "answer": "0.5, 0.25",
+              "explanation": "μ=1/λ=1/2=0.5. σ²=1/λ²=1/4=0.25."
+            },
+            {
+              "id": "q5-3-1-3",
+              "type": "multiple-choice",
+              "question": "Para variable continua, P(X = a) = ",
+              "options": [
+                "f(a)",
+                "F(a)",
+                "0",
+                "1"
+              ],
+              "correct": 2,
+              "explanation": "Probabilidad en un punto individual es 0 (área de línea = 0)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-3-2",
+      "title": "Distribución Normal (Gaussiana): La Campana Universal",
+      "objective": "N(μ, σ²): forma campana, simétrica, 68-95-99.7. Parámetros μ (centro), σ (ancho). Notación N(μ,σ²). Normal estándar Z ~ N(0,1)",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Alturas, pesos, notas examen, errores medición: todo tiende a campana. Normal = 'ley de los errores' (Gauss). 68% en μ±σ, 95% en μ±2σ, 99.7% en μ±3σ."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Distribución Normal N(μ, σ²)</strong>:\nf(x) = (1/√(2πσ²)) e^{-(x-μ)²/(2σ²)}\n- Simétrica en μ (media = mediana = moda)\n- Parámetros: μ (centro), σ (dispersión, σ>0)\n- Inflexiones en μ±σ\n- Regla empírica (68-95-99.7):\n  68.27% en μ±σ\n  95.45% en μ±2σ\n  99.73% en μ±3σ\n- Notación: X ~ N(μ, σ²)\n- Normal estándar: Z ~ N(0, 1) (μ=0, σ=1)\n- Cualquier X ~ N(μ,σ²) → Z = (X-μ)/σ ~ N(0,1) (estandarización)\n- Φ(z) = CDF estándar (tablas / software)\n- Cuantiles: z_α tal que P(Z > z_α) = α. z_{0.025}=1.96, z_{0.05}=1.645\n- Suma de normales independientes: N(μ₁,σ₁²) + N(μ₂,σ₂²) = N(μ₁+μ₂, σ₁²+σ₂²)",
+          "latex": "N(\\mu,\\sigma^2): f(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-(x-\\mu)^2/(2\\sigma^2)} \\quad | \\quad Z=\\frac{X-\\mu}{\\sigma}\\sim N(0,1) \\quad | \\quad 68-95-99.7\\% \\text{ regla}",
+          "visual": "assets/normal-distribution.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Campana de Gauss: μ = dónde está centrada, σ = qué tan ancha. Estandarizar = 'cambiar unidades a desviaciones típicas'. Z = cuántos σ estás de la media. Φ(z) = 'porcentaje a la izquierda de z'. Tablas Z = 'diccionario universal' para cualquier normal.",
+          "conceptId": "normal-distribution"
+        },
+        {
+          "type": "interactive",
+          "component": "NormalDistributionExplorer",
+          "description": "Sliders μ, σ. Campana Normal + área sombreada. Regla 68-95-99.7 visual. Estandarizador: X ~ N(μ,σ) → Z = (X-μ)/σ. Calculadora: P(a<X<b), cuantiles (percentiles), intervalos simétricos. Q-Q plot vs normal. Suma de normales: sliders μ₁,σ₁,μ₂,σ₂ → resultado N(μ₁+μ₂, σ₁²+σ₂²). Aproximación Binomial/Poisson → Normal (continuidad)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-3-2-1",
+              "type": "multiple-choice",
+              "question": "X ~ N(100, 15²). P(85 < X < 115) ≈ ",
+              "options": [
+                "0.68",
+                "0.95",
+                "0.997",
+                "0.5"
+              ],
+              "correct": 0,
+              "explanation": "μ±σ = 100±15 = [85,115]. Regla empírica: 68%."
+            },
+            {
+              "id": "q5-3-2-2",
+              "type": "fill-in",
+              "question": "Z ~ N(0,1). P(Z > 1.96) = ___, P(-1.96 < Z < 1.96) = ___",
+              "answer": "0.025, 0.95",
+              "explanation": "Cuantil 0.025 = 1.96. Cola superior 2.5%. Intervalo central 95%."
+            },
+            {
+              "id": "q5-3-2-3",
+              "type": "multiple-choice",
+              "question": "X ~ N(50, 10²). P(X > 70) = P(Z > ___) ≈ ___",
+              "options": [
+                "2, 0.0228",
+                "1.5, 0.0668",
+                "2, 0.0456",
+                "1, 0.1587"
+              ],
+              "correct": 0,
+              "explanation": "Z = (70-50)/10 = 2. P(Z>2) ≈ 0.0228."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-3-3",
+      "title": "Estandarización y Uso de Tablas Z / Software",
+      "objective": "Z = (X-μ)/σ. Calcular probabilidades y cuantiles. Inversa: dado p, hallar x. Uso de Φ(z) y Φ⁻¹(p). Continuity correction para discretas",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "X ~ N(170, 10²). P(X > 185) = ? Z = (185-170)/10 = 1.5. P(Z > 1.5) = 1 - Φ(1.5) ≈ 0.0668. Estandarizar = traducir cualquier normal a estándar."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Estandarización</strong>: Z = (X - μ) / σ ~ N(0,1)\n- P(X ≤ x) = Φ((x-μ)/σ)\n- P(X > x) = 1 - Φ((x-μ)/σ)\n- P(a < X < b) = Φ((b-μ)/σ) - Φ((a-μ)/σ)\n<strong>Cuantiles (inversa)</strong>: dado p, hallar x tal que P(X ≤ x) = p\n- x = μ + σ·Φ⁻¹(p)\n- Φ⁻¹(0.95) = 1.645, Φ⁻¹(0.975) = 1.96, Φ⁻¹(0.995) = 2.576\n<strong>Corrección por continuidad</strong> (aproximar discretas con normal):\n- Binomial(n,p) ≈ N(np, npq)\n- P(X ≤ k) ≈ Φ((k+0.5 - np)/√(npq))\n- P(X = k) ≈ Φ((k+0.5-np)/√(npq)) - Φ((k-0.5-np)/√(npq))\n<strong>Software</strong>: Φ(z) = pnorm(z), Φ⁻¹(p) = qnorm(p) (R), norm.cdf/norm.ppf (SciPy), NORM.DIST/NORM.INV (Excel).",
+          "latex": "Z = \\frac{X-\\mu}{\\sigma} \\quad | \\quad P(X\\le x) = \\Phi(\\frac{x-\\mu}{\\sigma}) \\quad | \\quad x = \\mu + \\sigma\\Phi^{-1}(p) \\quad | \\quad \\text{Correcci\\'on continuidad: } k\\pm0.5",
+          "visual": "assets/standardization.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Estandarización = 'cambiar moneda a dólares para comparar'. Z = 'cuántos σ de la media'. Tablas Z = 'diccionario universal'. Corrección 0.5 = 'ajuste fino' al aproximar escalones (discreto) con rampa (continua).",
+          "conceptId": "standardization"
+        },
+        {
+          "type": "interactive",
+          "component": "ZScoreCalculator",
+          "description": "Calculadora Z: input μ, σ, x → Z, P(X≤x), P(X>x), P(a<X<b). Inversa: input p → x. Tablas Z interactivas (busca z, ve Φ(z); busca p, ve z). Corrección continuidad: Binomial n,p → normal aproximada, compara exacta vs aprox con/sin corrección 0.5. Software: botones R/Python/Excel equivalentes."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-3-3-1",
+              "type": "fill-in",
+              "question": "X ~ N(50, 5²). P(X < 58) = Φ(___) ≈ ___",
+              "answer": "1.6, 0.9452",
+              "explanation": "Z = (58-50)/5 = 1.6. Φ(1.6) ≈ 0.9452."
+            },
+            {
+              "id": "q5-3-3-2",
+              "type": "multiple-choice",
+              "question": "Binomial(100, 0.5) ≈ N(50, 25). P(X ≤ 40) con corrección continuidad:",
+              "options": [
+                "Φ((40-50)/5)",
+                "Φ((40.5-50)/5)",
+                "Φ((39.5-50)/5)",
+                "Φ((40-50)/5)"
+              ],
+              "correct": 1,
+              "explanation": "P(X ≤ 40) ≈ P(X < 40.5) → Z = (40.5-50)/5 = -1.9. Φ(-1.9)."
+            },
+            {
+              "id": "q5-3-3-3",
+              "type": "fill-in",
+              "question": "X ~ N(μ, σ²). Percentil 90: x = μ + σ × ___",
+              "answer": "1.2816",
+              "explanation": "Φ⁻¹(0.90) ≈ 1.2816. x = μ + 1.2816σ."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-3-4",
+      "title": "Muestreo y Distribuciones Muestrales: Media Muestral, Teorema Límite Central",
+      "objective": "Muestra aleatoria simple. Estadístico. Distribución muestral de la media: E[X̄]=μ, Var(X̄)=σ²/n. Teorema Límite Central: X̄ ≈ N(μ, σ²/n) para n grande",
+      "type": "conceptual",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Lanzas 30 dados, calculas media. Repites 10000 veces. Histograma de las 10000 medias → campana normal. ¡Incluso si dado es uniforme! Teorema Límite Central: la media muestral SIEMPRE tiende a normal."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Muestreo aleatorio simple</strong>: n observaciones independientes, misma distribución.\n<strong>Estadístico</strong>: función de la muestra (no depende de parámetros desconocidos).\n<strong>Distribución muestral</strong>: distribución de un estadístico (variable aleatoria).\n<strong>Media muestral</strong> X̄ = (1/n)ΣXᵢ:\n- E[X̄] = μ (insesgada)\n- Var(X̄) = σ²/n (precisión mejora con n)\n- Desviación estándar (error estándar): σ/√n\n<strong>Teorema Límite Central (TLC)</strong>:\nSi X₁,...,Xₙ i.i.d. con media μ y varianza σ² finitas, entonces:\n√n (X̄ - μ) / σ → N(0,1) en distribución cuando n → ∞\nEquivalentemente: X̄ ≈ N(μ, σ²/n) para n grande.\n- 'Grande' depende de forma original: n≥30 suele bastar, n≥10 si original casi normal, n≥50 si muy asimétrica.\n- TLC aplica a suma: ΣXᵢ ≈ N(nμ, nσ²)\n- Base para: intervalos confianza, tests hipótesis, control calidad.",
+          "latex": "E[\\bar{X}]=\\mu, \\, Var(\\bar{X})=\\sigma^2/n \\quad | \\quad \\frac{\\bar{X}-\\mu}{\\sigma/\\sqrt{n}} \\xrightarrow{d} N(0,1) \\quad | \\quad \\bar{X} \\approx N(\\mu, \\sigma^2/n) \\text{ para } n \\text{ grande}",
+          "visual": "assets/clt.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Promedio de clase: cada alumno = variable aleatoria. Promedio clase = media muestral. Si repites con muchas clases, los promedios forman campana. TLC = 'el promedio siempre se comporta bien (normal) si la muestra es suficientemente grande', sin importar forma original.",
+          "conceptId": "clt"
+        },
+        {
+          "type": "interactive",
+          "component": "CLTLab",
+          "description": "Distribución original: elige (uniforme, exponencial, Bernoulli, asimétrica, bimodal). Slider n (tamaño muestra). Simula 10000 muestras, histograma medias muestrales. Superpone normal teórica N(μ, σ²/n). Ve convergencia: n=5, 10, 30, 50, 100. Mide: media histograma vs μ, σ_hist vs σ/√n, asimetría, curtosis. Test normalidad Shapiro-Wilk."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-3-4-1",
+              "type": "multiple-choice",
+              "question": "Población μ=100, σ=15. Muestra n=36. Error estándar de la media = ",
+              "options": [
+                "15",
+                "2.5",
+                "5",
+                "0.417"
+              ],
+              "correct": 1,
+              "explanation": "SE = σ/√n = 15/√36 = 15/6 = 2.5."
+            },
+            {
+              "id": "q5-3-4-2",
+              "type": "fill-in",
+              "question": "TLC dice: X̄ ≈ N(μ, σ²/n) para n grande. Si población original es normal, X̄ es normal para ___",
+              "answer": "cualquier n ≥ 1",
+              "explanation": "Suma de normales es normal exacta. TLC da normal aproximada para otras formas."
+            },
+            {
+              "id": "q5-3-4-3",
+              "type": "multiple-choice",
+              "question": "Regla práctica 'n ≥ 30' para TLC:",
+              "options": [
+                "Siempre exacta",
+                "Funciona bien si original no muy asimétrica",
+                "Solo para poblaciones normales",
+                "Innecesaria con software moderno"
+              ],
+              "correct": 1,
+              "explanation": "n≥30 es regla práctica. Si original muy asimétrica/colas pesadas, puede necesitar n>50 o transformación."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-3-5",
+      "title": "Otras Distribuciones Importantes: t-Student, Chi-Cuadrado, F-Snedecor",
+      "objective": "t-Student (muestra pequeña, σ desconocida), Chi-cuadrado (varianza, bondad ajuste, independencia), F-Snedecor (comparar varianzas, ANOVA)",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Media muestra n=10, σ desconocida → usa t-Student (colas más gruesas). Test varianza → chi-cuadrado. Comparar 2 varianzas / ANOVA → F-Snedecor. Familia de distribuciones para inferencia."
+        },
+        {
+          "type": "explanation",
+          "text": "Distribuciones derivadas de normal (para inferencia):\n1. <strong>t-Student (ν grados libertad)</strong>:\n   - Surge: (X̄ - μ) / (S/√n) ~ t_{n-1} si Xᵢ ~ N(μ,σ²)\n   - Simétrica, colas más gruesas que normal (ν pequeño)\n   - ν → ∞ → N(0,1)\n   - Uso: IC media σ desconocida, test media, regresión\n2. <strong>Chi-cuadrado (χ²_ν)</strong>:\n   - Suma de ν normales estándar al cuadrado: ΣZᵢ² ~ χ²_ν\n   - Asimétrica derecha, μ=ν, σ²=2ν\n   - Uso: test varianza (n-1)S²/σ² ~ χ²_{n-1}, bondad ajuste, independencia tablas contingencia\n3. <strong>F-Snedecor (ν₁, ν₂)</strong>:\n   - Cociente de chi-cuadrados independientes /ν: (χ²_{ν₁}/ν₁) / (χ²_{ν₂}/ν₂) ~ F_{ν₁,ν₂}\n   - Asimétrica derecha\n   - Uso: test igualdad varianzas (S₁²/S₂² ~ F), ANOVA (ratio varianzas inter/intra)\nRelaciones: t²_ν = F_{1,ν}. χ²_ν = Gamma(ν/2, 1/2).",
+          "latex": "t_\\nu = \\frac{Z}{\\sqrt{\\chi^2_\\nu/\\nu}} \\quad | \\quad \\chi^2_\\nu = \\sum_{i=1}^\\nu Z_i^2 \\quad | \\quad F_{\\nu_1,\\nu_2} = \\frac{\\chi^2_{\\nu_1}/\\nu_1}{\\chi^2_{\\nu_2}/\\nu_2} \\quad | \\quad t^2_\\nu = F_{1,\\nu}",
+          "visual": "assets/t-chi-f-distributions.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Familia inferencia: Normal (σ conocida, n grande) → t-Student (σ desconocida, n pequeño, colas gordas = más cauteloso). Chi-cuadrado = 'suma de cuadrados' (bondad ajuste, varianza). F = 'ratio de varianzas' (ANOVA: ¿diferencias entre grupos > diferencias dentro?).",
+          "conceptId": "t-chi-f-distributions"
+        },
+        {
+          "type": "interactive",
+          "component": "InferenceDistributionsLab",
+          "description": "Selector: t-Student, Chi-cuadrado, F-Snedecor. Sliders grados libertad. PDF + CDF. Cuantiles: input α → valor crítico. Compara t_ν vs Normal (colas). Chi-cuadrado: test varianza (input n, s², σ₀² → estadístico, p-valor). F: test varianzas (dos muestras), ANOVA (k grupos). Gráficas: regiones rechazo, p-valor sombreado."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-3-5-1",
+              "type": "multiple-choice",
+              "question": "t-Student con ν grados libertad vs Normal estándar:",
+              "options": [
+                "Mismas colas",
+                "Colas más gruesas (más probabilidad en extremos)",
+                "Colas más finas",
+                "Más centrada"
+              ],
+              "correct": 1,
+              "explanation": "t_ν tiene colas más pesadas (kurtosis > 0). ν→∞ → Normal."
+            },
+            {
+              "id": "q5-3-5-2",
+              "type": "fill-in",
+              "question": "Muestra n=15 de población normal. Test media: estadístico (X̄-μ)/(S/√n) sigue distribución ___ con ___ g.l.",
+              "answer": "t-Student, 14",
+              "explanation": "σ desconocida, n pequeño → t-Student. g.l. = n-1 = 14."
+            },
+            {
+              "id": "q5-3-5-3",
+              "type": "multiple-choice",
+              "question": "ANOVA un factor: estadístico F = ",
+              "options": [
+                "Varianza entre grupos / Varianza dentro grupos",
+                "Media entre / Media dentro",
+                "Suma cuadrados entre / Suma cuadrados dentro",
+                "Varianza total / Varianza error"
+              ],
+              "correct": 0,
+              "explanation": "F = MSE_entre / MSE_dentro = (SCE_entre/g.l._entre) / (SCE_dentro/g.l._dentro)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-3-6",
+      "title": "Aproximaciones: Normal a Binomial/Poisson, Poisson a Normal, t a Normal",
+      "objective": "Cuándo y cómo aproximar. Corrección continuidad. Regla: np>5, nq>5 (Binomial→Normal). λ>10 (Poisson→Normal). ν>30 (t→Normal)",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Binomial(1000, 0.01) → Poisson(10) → Normal(10,10). Binomial(100, 0.5) → Normal(50, 25). t_50 ≈ Normal. Aproximar simplifica cálculos y permite usar tablas Z."
+        },
+        {
+          "type": "explanation",
+          "text": "Aproximaciones útiles:\n1. <strong>Binomial → Poisson</strong>: n grande, p pequeño, np = λ moderado.\n   Bin(n,p) ≈ Pois(λ=np) si n≥20, p≤0.05, np≤10\n2. <strong>Binomial → Normal</strong>: np > 5 y nq > 5 (o npq > 5)\n   Bin(n,p) ≈ N(np, npq) con corrección continuidad ±0.5\n3. <strong>Poisson → Normal</strong>: λ > 10 (o λ > 20 para mejor)\n   Pois(λ) ≈ N(λ, λ) con corrección continuidad\n4. <strong>t-Student → Normal</strong>: ν > 30 (cola similar)\n5. <strong>Chi-cuadrado → Normal</strong>: ν > 30, (χ²_ν - ν)/√(2ν) ≈ N(0,1)\n6. <strong>F-Snedecor → Normal</strong>: ν₁,ν₂ grandes\n\n<strong>Reglas prácticas</strong>:\n- Binomial: n≥30, p∈(0.1,0.9) → Normal. n≥100, p<0.01 → Poisson.\n- Corrección continuidad: siempre al aproximar discreta con continua\n- Software moderno: a menudo innecesario (calcula exacto), pero útil para entender.",
+          "latex": "Bin(n,p) \\approx Pois(np) \\text{ si } n\\text{ grande, } p\\text{ pequeño} \\quad | \\quad Bin(n,p) \\approx N(np,npq) \\text{ si } np,nq>5 \\quad | \\quad Pois(\\lambda) \\approx N(\\lambda,\\lambda) \\text{ si } \\lambda>10 \\quad | \\quad t_\\nu \\approx N(0,1) \\text{ si } \\nu>30",
+          "visual": "assets/approximations.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Cambiar moneda: Binomial (pesetas) → Poisson (euros redondeados) → Normal (euros con céntimos). Corrección 0.5 = 'redondeo correcto' al cambiar de enteros a continuos. t-Student = 'normal con chaleco salvavidas' (colas gordas). Para ν>30, chaleco innecesario.",
+          "conceptId": "approximations"
+        },
+        {
+          "type": "interactive",
+          "component": "ApproximationLab",
+          "description": "Selector: Binomial→Poisson, Binomial→Normal, Poisson→Normal, t→Normal. Sliders parámetros originales. Compara: PMF exacta vs PMF/PDF aproximada. Calcula error máximo, error en colas. Con/sin corrección continuidad. Regla decisión: '¿qué aproximación usarías?' con justificación. Tabla resumen reglas."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-3-6-1",
+              "type": "multiple-choice",
+              "question": "Binomial(n=200, p=0.02). Mejor aproximación:",
+              "options": [
+                "Normal",
+                "Poisson(4)",
+                "Poisson(200)",
+                "t-Student"
+              ],
+              "correct": 1,
+              "explanation": "n grande, p pequeño, np=4 moderado → Poisson(np=4). Normal requeriría np>5 (4<5)."
+            },
+            {
+              "id": "q5-3-6-2",
+              "type": "fill-in",
+              "question": "Poisson(λ=25). Aproximación Normal: N(___, ___)",
+              "answer": "25, 25",
+              "explanation": "Pois(λ) ≈ N(λ, λ) para λ>10. μ=λ=25, σ²=λ=25."
+            },
+            {
+              "id": "q5-3-6-3",
+              "type": "multiple-choice",
+              "question": "t-Student con ν=50. ¿Aproximar por Normal?",
+              "options": [
+                "No, ν muy pequeño",
+                "Sí, ν>30 colas similares",
+                "Solo si α<0.01",
+                "Nunca"
+              ],
+              "correct": 1,
+              "explanation": "ν=50 > 30 → t_50 indistinguible de N(0,1) para propósitos prácticos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-3-7",
+      "title": "Transformaciones de Variables: Y = g(X), Función Delta, Simulación",
+      "objective": "Densidad de Y = g(X): f_Y(y) = f_X(g⁻¹(y)) |d/dy g⁻¹(y)|. Función delta: Var(g(X)) ≈ [g'(μ)]²σ². Simulación: genera X, aplica g",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "X ~ N(0,1). Y = X². ¿Distribución Y? Chi-cuadrado 1 g.l. Y = e^X. Log-normal. Transformar variable = cambiar forma distribución. Función delta: aproximar varianza sin integrar."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Transformación Y = g(X)</strong> (g monótona, derivable):\nf_Y(y) = f_X(g⁻¹(y)) · |d/dy g⁻¹(y)|\nEjemplos:\n- Y = aX + b: f_Y(y) = (1/|a|) f_X((y-b)/a)\n- Y = X² (X>0): f_Y(y) = f_X(√y)/(2√y)\n- Y = e^X: f_Y(y) = f_X(ln y)/y  (Log-normal si X normal)\n- Y = ln X: f_Y(y) = f_X(e^y) e^y\n<strong>Método delta (aproximación varianza)</strong>:\nVar(g(X)) ≈ [g'(μ)]² σ²   (expansión Taylor orden 1)\nE[g(X)] ≈ g(μ) + ½ g''(μ) σ²  (orden 2)\nÚtil para: propagación errores, intervalos confianza funciones parámetros.\n<strong>Simulación</strong>: genera X ~ f_X, calcula Y = g(X). Histograma Y ≈ f_Y. Funciona para cualquier g (no monótona, multidimensional).",
+          "latex": "f_Y(y) = f_X(g^{-1}(y)) |\\frac{d}{dy}g^{-1}(y)| \\quad | \\quad Var(g(X)) \\approx [g'(\\mu)]^2\\sigma^2 \\quad | \\quad Y=g(X): \\text{simula } X, \\text{ calcula } Y",
+          "visual": "assets/transformation-rv.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Cambio variable = 'traducir distribución'. Y = aX+b = 'cambia escala y origen'. Y = X² = 'pliega negativos sobre positivos'. Y = e^X = 'estira escala logarítmica'. Función delta = 'aproxima varianza usando pendiente en el centro'. Simulación = 'prueba empírica: genera, transforma, mira histograma'.",
+          "conceptId": "transformation-rv"
+        },
+        {
+          "type": "interactive",
+          "component": "TransformationLab",
+          "description": "X distribución conocida (Normal, Uniforme, Exponencial, Gamma, Beta). Usuario define g(x) (editor expresión). Calcula: 1) Teórica f_Y(y) (fórmula Jacobiano). 2) Delta method: media/varianza aprox. 3) Simulación: 100000 muestras X → Y=g(X) → histograma + densidad kernel. Compara teórica vs simulada. Gráfico g(x) y transformación densidad. Multidimensional: (X,Y) → (U,V) con Jacobiano."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-3-7-1",
+              "type": "multiple-choice",
+              "question": "X ~ N(0,1). Y = X². Distribución Y:",
+              "options": [
+                "Normal",
+                "Chi-cuadrado 1 g.l.",
+                "Exponencial(1/2)",
+                "Gamma(1/2, 1/2)"
+              ],
+              "correct": 1,
+              "explanation": "X² con X ~ N(0,1) ~ χ²_1 (chi-cuadrado 1 grado libertad)."
+            },
+            {
+              "id": "q5-3-7-2",
+              "question": "X ~ Uniforme(0,1). Y = -ln X. Distribución Y:",
+              "options": [
+                "Exponencial(1)",
+                "Normal",
+                "Beta",
+                "Gamma"
+              ],
+              "correct": 0,
+              "explanation": "P(Y>y) = P(-ln X > y) = P(X < e^{-y}) = e^{-y}. Función supervivencia exponencial(1)."
+            },
+            {
+              "id": "q5-3-7-3",
+              "type": "fill-in",
+              "question": "Función delta: X media μ, varianza σ². Y = g(X). Var(Y) ≈ ___",
+              "answer": "[g'(μ)]² σ²",
+              "explanation": "Aproximación Taylor orden 1: g(X) ≈ g(μ) + g'(μ)(X-μ). Var ≈ g'(μ)² Var(X)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l5-3-8",
+      "title": "Proyecto Módulo: Análisis de Distribución Real - Ajuste y Validación",
+      "objective": "Dataset real (tiempos espera, tallas, ingresos, fallos). Identificar distribución candidata, estimar parámetros (MLE), bondad ajuste (Kolmogorov-Smirnov, Anderson-Darling, Q-Q plot), validar",
+      "type": "project",
+      "durationMin": 20,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Dataset: tiempos entre llegadas clientes (exponencial?), tallas zapatos (normal?), nº reclamaciones/día (Poisson?), tiempos fallo máquina (Weibull?). Tú eliges distribución, ajustas, validas, decides si sirve."
+        },
+        {
+          "type": "explanation",
+          "text": "Metodología ajuste distribuciones:\n1. <strong>Exploración</strong>: histograma, boxplot, media, varianza, asimetría, curtosis, Q-Q plot vs normales/exp/gamma/weibull/log-normal\n2. <strong>Selección candidatos</strong>: según forma (simétrica→normal, asim+→gamma/weibull/logN, cuenta→Poisson/binom/negbin, tiempo→exp/weibull/gamma)\n3. <strong>Estimación parámetros</strong>:\n   - Momentos: iguala momentos muestrales/teóricos\n   - MLE (Máxima Verosimilitud): maximiza L(θ) = ∏f(xᵢ|θ) → θ̂\n   - Mínimos cuadrados en Q-Q plot\n4. <strong>Bondad de ajuste</strong>:\n   - Gráficos: Q-Q plot, P-P plot, histograma vs densidad ajustada\n   - Test formales: Kolmogorov-Smirnov (KS), Anderson-Darling (AD - más sensible colas), Chi-cuadrado (agrupado), Shapiro-Wilk (normalidad)\n   - p-valor > 0.05 → no rechaza ajuste\n5. <strong>Validación</strong>: out-of-sample (divide train/test), bootstrap IC parámetros, análisis residuos\n6. <strong>Decisión</strong>: ¿sirve para propósito? (simulación, IC, control, predicción)\nEntregable: reporte 'Distribución X(θ̂) ajusta bien/no a variable Y. p-valor KS=..., AD=... Recomendación: usar/no usar'.",
+          "latex": "MLE: \\hat{\\theta} = \\arg\\max_\\theta \\sum \\ln f(x_i|\\theta) \\quad | \\quad KS = \\sup_x |F_n(x)-F(x)| \\quad | \\quad AD = n\\int \\frac{(F_n-F)^2}{F(1-F)}dF \\quad | \\quad Q-Q: \\text{cuantiles muestrales vs te\\'oricos}",
+          "visual": "assets/distribution-fitting.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "DistributionFittingLab",
+          "description": "Carga dataset (CSV). Paso a paso:\n1. EDA univariado: hist, box, stats, asimetría/curtosis\n2. Q-Q plots múltiples: vs Normal, Log-normal, Exponencial, Gamma, Weibull, Poisson, Binomial\n3. Estimación MLE: optimizador (Nelder-Mead, BFGS) para cada candidato\n4. Bondad ajuste: KS, AD, Chi-cuadrado, p-valores. Tabla comparativa.\n4. Bootstrap: IC 95% parámetros (1000 remuestreos)\n5. Simulación: genera 10000 datos ajustados, compara con originales (hist, ECDF)\n5. Decisión: semáforo verde/amarillo/rojo por distribución. Exporta reporte técnico."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q5-3-8-1",
+              "type": "multiple-choice",
+              "question": "Test Kolmogorov-Smirnov mide:",
+              "options": [
+                "Diferencia máxima entre ECDF y CDF teórica",
+                "Suma cuadrados diferencias",
+                "Correlación cuantiles",
+                "Media diferencias"
+              ],
+              "correct": 0,
+              "explanation": "KS = sup_x |F_n(x) - F(x)|. Distancia máxima uniforme."
+            },
+            {
+              "id": "q5-3-8-2",
+              "type": "fill-in",
+              "question": "Anderson-Darling da más peso a:",
+              "answer": "las colas de la distribución",
+              "explanation": "AD integra (F_n-F)²/[F(1-F)] → da peso a colas (F≈0 o 1). KS da peso uniforme."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

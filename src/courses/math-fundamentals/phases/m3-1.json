@@ -1,0 +1,515 @@
+{
+  "id": "m3-1",
+  "phaseId": "phase-3",
+  "number": "3.1",
+  "title": "Geometría Plana",
+  "description": "Ángulos, triángulos (clasificación, desigualdad), cuadriláteros, círculos",
+  "lessons": [
+    {
+      "id": "l3-1-1",
+      "title": "Puntos, Rectas, Planos y Ángulos: El Vocabulario Básico",
+      "objective": "Definir objetos primitivos y medir/classificar ángulos",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Un ángulo es la abertura entre dos rayos con mismo origen. ¿Cuánto mide la esquina de una hoja de papel? 90° (recto). ¿Y la de una pizza cortada en 8? 45°."
+        },
+        {
+          "type": "explanation",
+          "text": "Objetos primitivos (indefinidos): <strong>punto</strong> (posición, sin tamaño), <strong>recta</strong> (infinita, sin ancho), <strong>plano</strong> (superficie infinita).\nÁngulo: dos semirrectas (lados) con mismo origen (vértice). Medida en grados (0° a 360°) o radianes.\nClasificación:\n- Agudo: < 90°\n- Recto: = 90°\n- Obtuso: > 90° y < 180°\n- Llano: = 180°\n- Complejo/Reflex: > 180° y < 360°\nRelaciones: complementarios (suman 90°), suplementarios (suman 180°), opuestos por vértice (iguales), adyacentes (comparten lado y vértice, no interior).",
+          "latex": "\\angle ABC \\quad | \\quad \\text{Agudo: } < 90^\\circ, \\text{ Recto: } 90^\\circ, \\text{ Obtuso: } > 90^\\circ \\quad | \\quad \\alpha+\\beta=90^\\circ \\text{ (comp)}, \\alpha+\\beta=180^\\circ \\text{ (supl)}",
+          "visual": "assets/angles-classification.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Puerta abriéndose: 0° cerrada, 90° perpendicular al marco, 180° pegada a la pared. Complementarios = dos puertas que juntas forman un ángulo recto. Suplementarios = puerta y su prolongación forman línea recta.",
+          "conceptId": "angles-basics"
+        },
+        {
+          "type": "interactive",
+          "component": "AngleExplorer",
+          "description": "Arrastra vértice/lados. Medidor goniométrico digital. Clasifica en vivo. Pares: complementarios, suplementarios, opuestos vértice. Ejercicio: 'Construye ángulo de 37°'."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-1-1-1",
+              "type": "multiple-choice",
+              "question": "El complementario de 28° es:",
+              "options": [
+                "62°",
+                "152°",
+                "72°",
+                "28°"
+              ],
+              "correct": 0,
+              "explanation": "Complementarios suman 90°: 90 - 28 = 62°."
+            },
+            {
+              "id": "q3-1-1-2",
+              "type": "fill-in",
+              "question": "Dos ángulos opuestos por el vértice miden (3x+10)° y (5x-30)°. x = ___, ángulo = ___°",
+              "answer": "20, 70",
+              "explanation": "Opuestos por vértice son iguales: 3x+10 = 5x-30 → 2x=40 → x=20. Ángulo = 3(20)+10 = 70°."
+            },
+            {
+              "id": "q3-1-1-3",
+              "type": "multiple-choice",
+              "question": "Dos ángulos adyacentes forman un ángulo llano. Si uno mide 115°, el otro mide:",
+              "options": [
+                "65°",
+                "75°",
+                "245°",
+                "115°"
+              ],
+              "correct": 0,
+              "explanation": "Ángulo llano = 180°. Adyacentes que forman llano son suplementarios: 180 - 115 = 65°."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-1-2",
+      "title": "Paralelas y Transversal: Ángulos Característicos",
+      "objective": "Identificar y usar ángulos alternos internos, correspondientes, colaterales internos",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Dos rectas paralelas cortadas por una transversal. Se forman 8 ángulos. ¿Cuáles son iguales? ¿Cuáles suman 180°?"
+        },
+        {
+          "type": "explanation",
+          "text": "Rectas paralelas r // s cortadas por transversal t:\n- <strong>Alternos internos</strong>: entre paralelas, lados opuestos de t → IGUALES\n- <strong>Alternos externos</strong>: fuera de paralelas, lados opuestos de t → IGUALES\n- <strong>Correspondientes</strong>: mismo lado de t, uno interno otro externo → IGUALES\n- <strong>Colaterales internos</strong>: entre paralelas, mismo lado de t → SUPLEMENTARIOS (suman 180°)\n- <strong>Colaterales externos</strong>: fuera, mismo lado → SUPLEMENTARIOS\nRecíproco: si alternos internos iguales → rectas paralelas.",
+          "latex": "r \\parallel s \\implies \\angle_{alt.int.} = \\angle_{alt.int.} \\quad | \\quad \\angle_{corresp.} = \\angle_{corresp.} \\quad | \\quad \\angle_{col.int.} + \\angle_{col.int.} = 180^\\circ",
+          "visual": "assets/parallel-transversal.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Vías de tren (paralelas) y un cruce a nivel (transversal). Los postes del cruce forman ángulos. Ángulos 'espejo' (alternos) son iguales. Ángulos 'mismo lado' (colaterales) completan la recta = 180°.",
+          "conceptId": "parallel-transversal"
+        },
+        {
+          "type": "interactive",
+          "component": "ParallelLinesLab",
+          "description": "Dos paralelas + transversal arrastrable. Resalta pares: alternos, correspondientes, colaterales. Valores numéricos. Cambia pendiente transversal, ve invariantes. Test: 'Si este ángulo es 65°, ¿cuánto mide su alternado interno?'."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-1-2-1",
+              "type": "multiple-choice",
+              "question": "Si r // s y una transversal forma ángulos correspondientes de (2x+15)° y (5x-30)°, entonces x = ",
+              "options": [
+                "15",
+                "10",
+                "5",
+                "20"
+              ],
+              "correct": 0,
+              "explanation": "Correspondientes son iguales: 2x+15 = 5x-30 → 3x=45 → x=15."
+            },
+            {
+              "id": "q3-1-2-2",
+              "type": "fill-in",
+              "question": "Ángulos colaterales internos: uno mide 110°. El otro mide ___°",
+              "answer": "70",
+              "explanation": "Colaterales internos son suplementarios: 180 - 110 = 70°."
+            },
+            {
+              "id": "q3-1-2-3",
+              "type": "multiple-choice",
+              "question": "Para probar que dos rectas son paralelas, basta que:",
+              "options": [
+                "Dos ángulos correspondientes sean iguales",
+                "Dos ángulos adyacentes sumen 180°",
+                "Dos ángulos opuestos por vértice sean iguales",
+                "Se corten en un punto"
+              ],
+              "correct": 0,
+              "explanation": "Recíproco: correspondientes iguales → paralelas. También alternos internos iguales o colaterales internos suplementarios."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-1-3",
+      "title": "Triángulos: Clasificación y Suma de Ángulos Internos",
+      "objective": "Clasificar por lados y ángulos. Demostrar suma 180° con paralelas",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Recorta un triángulo de papel. Arranca sus tres vértices y pégalos juntos formando una línea recta. Siempre suman 180°."
+        },
+        {
+          "type": "explanation",
+          "text": "Triángulo: polígono de 3 lados, 3 vértices, 3 ángulos internos.\nClasificación por <strong>lados</strong>:\n- Equilátero: 3 lados iguales → 3 ángulos 60°\n- Isósceles: 2 lados iguales → 2 ángulos iguales (base)\n- Escaleno: 3 lados distintos → 3 ángulos distintos\nClasificación por <strong>ángulos</strong>:\n- Acutángulo: 3 ángulos < 90°\n- Rectángulo: 1 ángulo = 90° (hipotenusa lado opuesto)\n- Obtusángulo: 1 ángulo > 90°\n<strong>Teorema</strong>: Suma ángulos internos = 180°. Demostración: traza paralela a base por vértice opuesto → alternos internos.\nÁngulo exterior = suma dos interiores no adyacentes.",
+          "latex": "\\alpha+\\beta+\\gamma = 180^\\circ \\quad | \\quad \\text{Exterior } \\delta = \\alpha+\\beta \\quad | \\quad \\text{Equilátero: } 60^\\circ,60^\\circ,60^\\circ",
+          "visual": "assets/triangle-classification.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Escalera de tijera: tres barras unidas en vértices. Si abres/cierras, los ángulos cambian pero SIEMPRE suman 180°. Es una propiedad rígida de la forma triangular.",
+          "conceptId": "triangle-angle-sum"
+        },
+        {
+          "type": "interactive",
+          "component": "TriangleAngleSum",
+          "description": "Triángulo arrastrable (3 vértices). Medidor de cada ángulo. Suma en vivo = 180°. Botón 'Demostración': traza paralela, muestra alternos internos. Clasificador automático por lados/ángulos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-1-3-1",
+              "type": "fill-in",
+              "question": "Triángulo con ángulos 40°, 70°, tercer ángulo = ___°. Clasificación por ángulos: ___",
+              "answer": "70, acutángulo",
+              "explanation": "180 - 40 - 70 = 70°. Dos ángulos iguales → isósceles. Todos < 90° → acutángulo."
+            },
+            {
+              "id": "q3-1-3-2",
+              "type": "multiple-choice",
+              "question": "Triángulo rectángulo isósceles. Sus ángulos son:",
+              "options": [
+                "45°, 45°, 90°",
+                "30°, 60°, 90°",
+                "90°, 90°, 0°",
+                "60°, 60°, 60°"
+              ],
+              "correct": 0,
+              "explanation": "Rectángulo: 90°. Isósceles: otros dos iguales. (180-90)/2 = 45° cada uno."
+            },
+            {
+              "id": "q3-1-3-3",
+              "type": "fill-in",
+              "question": "Ángulo exterior de un triángulo mide 120°. Uno de los interiores no adyacentes mide 45°. El otro interior no adyacente mide ___°",
+              "answer": "75",
+              "explanation": "Exterior = suma dos interiores no adyacentes: 120 = 45 + x → x = 75°."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-1-4",
+      "title": "Desigualdad Triangular y Casos de Congruencia",
+      "objective": "Lado < suma otros dos. Congruencia: LLL, LAL, ALA, AAL",
+      "type": "conceptual",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Puedes formar triángulo con palitos de 3, 4 y 10 cm? No: 3+4=7 < 10. El más largo debe ser MENOR que suma de los otros dos."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Desigualdad triangular</strong>: En todo triángulo, cada lado es menor que la suma de los otros dos y mayor que su diferencia.\n|a - b| < c < a + b (y permutaciones).\n<strong>Congruencia</strong>: Dos triángulos son congruentes (iguales en forma y tamaño) si cumplen un criterio:\n- <strong>LLL</strong>: 3 lados iguales\n- <strong>LAL</strong>: 2 lados y ángulo ENTRE ellos iguales\n- <strong>ALA</strong>: 2 ángulos y lado ENTRE ellos iguales\n- <strong>AAL</strong>: 2 ángulos y lado NO entre ellos (equivale a ALA por suma 180°)\nNO valen: AAA (solo semejanza), LLA (ambiguo, 0-2 soluciones).",
+          "latex": "|a-b| < c < a+b \\quad | \\quad \\triangle ABC \\cong \\triangle DEF \\text{ si LLL, LAL, ALA, AAL}",
+          "visual": "assets/triangle-inequality-congruence.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Construir triángulo con 3 cañas: si una es muy larga, las otras no llegan a juntarse (desigualdad). Congruencia = molde: si cortas 3 cañas con esas medidas, solo se arman de UNA forma (LLL). LAL = dos cañas y ángulo fijo entre ellas → tercera forzada.",
+          "conceptId": "triangle-inequality-congruence"
+        },
+        {
+          "type": "interactive",
+          "component": "TriangleBuilder",
+          "description": "3 sliders para lados. Check: ¿cumple desigualdad? Sí/No. Si sí: dibuja triángulo único (LLL). Modo congruencia: da 3 datos (LLL/LAL/ALA), usuario arma triángulo, verifica unicidad. Muestra caso ambiguo LLA."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-1-4-1",
+              "type": "multiple-choice",
+              "question": "¿Cuál ternas NO forma triángulo?",
+              "options": [
+                "5, 6, 7",
+                "3, 4, 8",
+                "7, 7, 10",
+                "8, 15, 17"
+              ],
+              "correct": 1,
+              "explanation": "3+4=7 < 8. No cumple desigualdad triangular (el mayor debe ser < suma otros dos)."
+            },
+            {
+              "id": "q3-1-4-2",
+              "type": "fill-in",
+              "question": "Dos lados miden 8 y 13. El tercer lado x debe cumplir: ___ < x < ___",
+              "answer": "5, 21",
+              "explanation": "|13-8| < x < 13+8 → 5 < x < 21."
+            },
+            {
+              "id": "q3-1-4-3",
+              "type": "multiple-choice",
+              "question": "Criterio de congruencia que NO garantiza congruencia:",
+              "options": [
+                "LLL",
+                "LAL",
+                "ALA",
+                "LLA"
+              ],
+              "correct": 3,
+              "explanation": "LLA (dos lados y ángulo opuesto a uno) es ambiguo: 0, 1 o 2 triángulos posibles (caso SSA)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-1-5",
+      "title": "Puntos Notables del Triángulo: Baricentro, Incentro, Circuncentro, Ortocentro",
+      "objective": "Construir y entender propiedades de mediatrices, bisectrices, medianas, alturas",
+      "type": "conceptual",
+      "durationMin": 10,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Dobla papel triangular: vértice a vértice (mediatriz), lado a lado (bisectriz), vértice a punto medio opuesto (mediana), vértice perpendicular a lado opuesto (altura). Cada pliegue pasa por un punto notable."
+        },
+        {
+          "type": "explanation",
+          "text": "Cuatro puntos notables (Euler):\n1. <strong>Circuncentro (O)</strong>: intersección 3 <strong>mediatrices</strong> (perpendiculares en puntos medios). Centro circunscrita. Equidistante a vértices. Dentro (acutángulo), en hipotenusa (rectángulo), fuera (obtusángulo).\n2. <strong>Incentro (I)</strong>: intersección 3 <strong>bisectrices</strong> (dividen ángulos). Centro inscrita. Equidistante a lados. Siempre dentro.\n3. <strong>Baricentro (G)</strong>: intersección 3 <strong>medianas</strong> (vértice a punto medio opuesto). Centro de gravedad. Divide medianas 2:1 (vértice:base). Siempre dentro.\n4. <strong>Ortocentro (H)</strong>: intersección 3 <strong>alturas</strong> (perpendiculares vértice-lado opuesto). Dentro (acutángulo), en vértice recto (rectángulo), fuera (obtusángulo).\n<strong>Recta de Euler</strong>: O, G, H alineados. G divide OH en razón 2:1 (OG:GH = 1:2).",
+          "latex": "O: mediatrices \\quad I: bisectrices \\quad G: medianas (2:1) \\quad H: alturas \\quad | \\quad O,G,H \\text{ alineados (Euler)}, \\, \\overrightarrow{OG} = \\frac{1}{3}\\overrightarrow{OH}",
+          "visual": "assets/triangle-centers.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Triángulo de cartón. Clava alfiler en baricentro (G): se equilibra perfecto (centro gravedad). Circuncentro: clava 3 clavos en vértices, pasa goma elástica → circuncentro es centro de la goma. Incentro: máximocírculo que cabe dentro tocando 3 lados.",
+          "conceptId": "triangle-centers"
+        },
+        {
+          "type": "interactive",
+          "component": "TriangleCentersExplorer",
+          "description": "Triángulo arrastrable. Checkboxes: mediatrices→O, bisectrices→I, medianas→G, alturas→H. Circunscrita/inscrita. Recta Euler. Medidas OG, GH. Verifica 2:1. Tipo triángulo cambia posición centros."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-1-5-1",
+              "type": "multiple-choice",
+              "question": "El baricentro divide cada mediana en razón:",
+              "options": [
+                "1:1",
+                "2:1 (vértice:base)",
+                "1:2 (vértice:base)",
+                "3:1"
+              ],
+              "correct": 1,
+              "explanation": "Desde vértice a baricentro = 2/3 mediana. Baricentro a base = 1/3. Razón 2:1."
+            },
+            {
+              "id": "q3-1-5-2",
+              "type": "fill-in",
+              "question": "En triángulo rectángulo, el circuncentro está en el punto medio de la ___, y el ortocentro en el vértice del ángulo ___",
+              "answer": "hipotenusa, recto",
+              "explanation": "Rectángulo: circuncentro = medio hipotenusa. Ortocentro = vértice ángulo recto (alturas son los catetos)."
+            },
+            {
+              "id": "q3-1-5-3",
+              "type": "multiple-choice",
+              "question": "Si en la recta de Euler OG = 4 cm, ¿cuánto mide GH?",
+              "options": [
+                "2 cm",
+                "4 cm",
+                "8 cm",
+                "12 cm"
+              ],
+              "correct": 2,
+              "explanation": "OG:GH = 1:2. OG=4 → GH=8."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-1-6",
+      "title": "Cuadriláteros: Clasificación, Propiedades y Áreas",
+      "objective": "Paralelogramo, rectángulo, rombo, cuadrado, trapecio, cometa. Fórmulas de área",
+      "type": "conceptual",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Todos los cuadriláteros tienen 4 lados y suma ángulos = 360°. Pero cada familia tiene propiedades extra: paralelos, iguales, perpendiculares..."
+        },
+        {
+          "type": "explanation",
+          "text": "Jerarquía cuadriláteros:\n- <strong>Trapecio</strong>: 1 par lados paralelos (bases). Área = (B+b)·h/2\n- <strong>Paralelogramo</strong>: 2 pares paralelos. Lados opuestos iguales, ángulos opuestos iguales, diagonales se bisecan. Área = b·h\n  - <strong>Rectángulo</strong>: paralelogramo + 4 ángulos 90°. Diagonales iguales. Área = base·altura\n  - <strong>Rombo</strong>: paralelogramo + 4 lados iguales. Diagonales perpendiculares, bisectan ángulos. Área = D·d/2\n  - <strong>Cuadrado</strong>: rectángulo + rombo. Área = l²\n- <strong>Cometa (deltoides)</strong>: 2 pares lados adyacentes iguales. Diagonales perpendiculares, una bisecta a otra. Área = D·d/2\nSuma ángulos internos = 360° (divide en 2 triángulos).",
+          "latex": "A_{trap} = \\frac{(B+b)h}{2} \\quad | \\quad A_{paral} = bh \\quad | \\quad A_{rect} = ab \\quad | \\quad A_{rombo} = A_{cometa} = \\frac{Dd}{2} \\quad | \\quad A_{cuad} = l^2",
+          "visual": "assets/quadrilaterals.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Familia: Trapecio (abuelo) → Paralelogramo (padre) → Rectángulo y Rombo (hijos) → Cuadrado (nieto, hereda de ambos). Cometa es primo lejano (diagonales ⟂).",
+          "conceptId": "quadrilaterals"
+        },
+        {
+          "type": "interactive",
+          "component": "QuadrilateralClassifier",
+          "description": "Arrastra vértices de cuadrilátero. Detector automático: ¿paralelos? ¿iguales? ¿perpendiculares? Clasifica en jerarquía. Calcula área con fórmula correspondiente. Muestra diagonales, ángulos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-1-6-1",
+              "type": "multiple-choice",
+              "question": "Un cuadrilátero con diagonales perpendiculares, que se bisecan, y 4 lados iguales es:",
+              "options": [
+                "Rectángulo",
+                "Rombo",
+                "Cuadrado",
+                "Trapecio isósceles"
+              ],
+              "correct": 1,
+              "explanation": "Rombo: 4 lados iguales, diagonales ⟂ y se bisecan. Si además ángulos 90° → cuadrado."
+            },
+            {
+              "id": "q3-1-6-2",
+              "type": "fill-in",
+              "question": "Trapecio: bases 8 y 14, altura 6. Área = ___",
+              "answer": "66",
+              "explanation": "(8+14)·6/2 = 22·3 = 66."
+            },
+            {
+              "id": "q3-1-6-3",
+              "type": "multiple-choice",
+              "question": "En un paralelogramo, ángulos consecutivos son:",
+              "options": [
+                "Iguales",
+                "Suplementarios",
+                "Complementarios",
+                "Opuestos por vértice"
+              ],
+              "correct": 1,
+              "explanation": "Lados paralelos → ángulos internos conjugados (colaterales) suman 180°."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-1-7",
+      "title": "Círculo: Elementos, Ángulos en la Circunferencia, Potencia de un Punto",
+      "objective": "Radio, diámetro, cuerda, arco, tangente. Ángulo central vs inscrito. Teorema de la cuerda y secante-tangente",
+      "type": "conceptual",
+      "durationMin": 10,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Ángulo en el centro = 2 × ángulo inscrito que abarca mismo arco. Si ángulo inscrito apoya en diámetro → siempre 90° (Thales)."
+        },
+        {
+          "type": "explanation",
+          "text": "Elementos: centro O, radio r, diámetro d=2r, cuerda, arco, sector, segmento, tangente (⟂ radio en punto tangencia), secante.\n<strong>Ángulo central</strong> (vértice en O) = medida del arco (grados).\n<strong>Ángulo inscrito</strong> (vértice en circunferencia) = ½ ángulo central mismo arco.\nCorolario: ángulo inscrito en semicírculo (apoya en diámetro) = 90°.\n<strong>Potencia de punto P</strong>:\n- P exterior: secante PAB y secante PCD → PA·PB = PC·PD = PT² (PT tangente)\n- P interior: cuerdas AB y CD se cortan en P → PA·PB = PC·PD\n- P en circunferencia: potencia = 0.\nPotencia = PO² - r².",
+          "latex": "\\angle_{centro} = 2\\angle_{inscrito} \\quad | \\quad \\angle_{semic\\acute{i}rculo} = 90^\\circ \\quad | \\quad PA\\cdot PB = PC\\cdot PD = PT^2 = PO^2-r^2",
+          "visual": "assets/circle-theorems.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Pizza: corte central (desde centro) mide lo mismo que el trozo. Corte desde borde (inscrito) mide LA MITAD. Tangente = cuchara que toca borde sin entrar. Potencia = 'influencia' del punto sobre círculo: producto de segmentos de cualquier secante es constante.",
+          "conceptId": "circle-theorems"
+        },
+        {
+          "type": "interactive",
+          "component": "CircleTheoremLab",
+          "description": "Círculo arrastrable. Ángulo central + inscrito mismo arco. Vértice inscrito movible por circunferencia. Verifica 1/2. Thales: diámetro fijo, vértice en circunferencia → 90°. Potencia: punto exterior/interior, arrastra secantes, producto constante."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-1-7-1",
+              "type": "multiple-choice",
+              "question": "Ángulo central mide 110°. Ángulo inscrito que abarca mismo arco mide:",
+              "options": [
+                "55°",
+                "110°",
+                "220°",
+                "70°"
+              ],
+              "correct": 0,
+              "explanation": "Inscrito = ½ central = 55°."
+            },
+            {
+              "id": "q3-1-7-2",
+              "type": "fill-in",
+              "question": "Desde punto P exterior, tangente PT = 6, secante PAB con PA = 4. PB = ___",
+              "answer": "9",
+              "explanation": "PT² = PA·PB → 36 = 4·PB → PB = 9."
+            },
+            {
+              "id": "q3-1-7-3",
+              "type": "multiple-choice",
+              "question": "Potencia de punto P respecto a círculo centro O radio 5. Si PO = 13, potencia = ",
+              "options": [
+                "144",
+                "169",
+                "25",
+                "194"
+              ],
+              "correct": 0,
+              "explanation": "Potencia = PO² - r² = 169 - 25 = 144."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-1-8",
+      "title": "Proyecto Módulo: Diseño de un Parque con Zonas Geométricas",
+      "objective": "Aplicar triángulos, cuadriláteros, círculos en plano real: áreas, perímetros, circulaciones",
+      "type": "project",
+      "durationMin": 15,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Terreno rectangular 100×60 m. Diseña: zona juegos (círculo radio 10m), cancha fútbol (rectángulo 40×20), zona picnic (triángulo equilátero lado 15m), senderos (trapecios). Calcula áreas, perímetros, material valla, césped."
+        },
+        {
+          "type": "explanation",
+          "text": "Plano a escala. Zonas:\n- Juegos: círculo r=10 → A=π·100≈314 m², P=20π≈63 m\n- Fútbol: rectángulo 40×20 → A=800 m², P=120 m\n- Picnic: equilátero l=15 → A=(√3/4)·225≈97.4 m², P=45 m\n- Senderos: trapecios entre zonas. Área total = suma. Perímetro vallado = envolvente convexa.\nOptimización: minimiza longitud vallado, maximiza área verde. Usa propiedades geométricas (ej: sendero tangente a círculo).",
+          "latex": "A_{total} = \\sum A_i \\quad | \\quad P_{valla} = \\text{perímetro envolvente} \\quad | \\quad \\text{Optimizar: } \\min P, \\max A_{verde}",
+          "visual": "assets/park-design.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "ParkDesigner",
+          "description": "Lienzo 100×60. Arrastra formas geométricas (círculo, rect, triángulo, trap). Snap a grid. Calculadora áreas/perímetros en vivo. Lista materiales: valla (m), césped (m²), pavimento (m²). Exporta plano SVG + reporte CSV."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-1-8-1",
+              "type": "number-input",
+              "question": "Césped necesario para círculo r=10m + triángulo equilátero l=15m (m²):",
+              "answer": "411.4",
+              "explanation": "π·100 + (√3/4)·225 ≈ 314.16 + 97.43 = 411.59 ≈ 411.6 m²."
+            },
+            {
+              "id": "q3-1-8-2",
+              "type": "fill-in",
+              "question": "Valla para cercar rectángulo 40×20 y círculo r=10 separados 5m entre sí. Perímetro total aprox = ___ m",
+              "answer": "183",
+              "explanation": "Rect: 120m. Circ: 62.8m. Separación añade ~0m si no comparten valla. Total ≈ 183m. (Si comparten lado, resta)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

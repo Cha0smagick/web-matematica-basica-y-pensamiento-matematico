@@ -1,0 +1,451 @@
+{
+  "id": "m1-2",
+  "phaseId": "phase-1",
+  "number": "1.2",
+  "title": "Potencias y Raíces",
+  "description": "Crecimiento exponencial, notación científica, raíces como inversas, leyes",
+  "lessons": [
+    {
+      "id": "l1-2-1",
+      "title": "Potencias: Multiplicación Repetida y Crecimiento",
+      "objective": "Entender aⁿ como a × a × ... × a (n veces) y ver crecimiento explosivo",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Un papel de 0.1mm de grosor. Lo doblas a la mitad 42 veces. ¿Qué grosor tiene? ¿Llega a la Luna?"
+        },
+        {
+          "type": "explanation",
+          "text": "Potencia aⁿ = a multiplicado por sí mismo n veces. Base a, exponente n. 2¹⁰ = 1024 ≈ 10³. 2⁴² ≈ 4.4×10¹² mm = 4.4×10⁶ km. Distancia Luna ≈ 3.8×10⁵ km. ¡Sí, supera la Luna! El crecimiento exponencial es asombroso.",
+          "latex": "a^n = \\underbrace{a \\times a \\times \\dots \\times a}_{n \\text{ veces}} \\quad (n \\in \\mathbb{N})",
+          "visual": "assets/paper-folding.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Bacterias: una se divide en 2 cada 20 min. En 24h (72 divisiones): 2⁷² ≈ 4.7×10²¹. Más bacterias que estrellas en el universo observable. El exponente pequeño → resultado astronómico.",
+          "conceptId": "exponential-growth"
+        },
+        {
+          "type": "interactive",
+          "component": "ExponentialGrowthVisualizer",
+          "description": "Slider para exponentes 1-20. Gráfica 2ⁿ, 3ⁿ, 10ⁿ. Compara con crecimiento lineal n, cuadrático n²."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-2-1-1",
+              "type": "multiple-choice",
+              "question": "2¹⁰ = ?",
+              "options": ["512", "1024", "2048", "1000"],
+              "correct": 1,
+              "explanation": "2¹⁰ = 1024. Potencia útil de memorizar: ≈ 10³ (kilo)."
+            },
+            {
+              "id": "q1-2-1-2",
+              "type": "number-input",
+              "question": "Si 3ˣ = 81, ¿cuánto vale x?",
+              "answer": 4,
+              "explanation": "3⁴ = 3×3×3×3 = 9×9 = 81."
+            },
+            {
+              "id": "q1-2-1-3",
+              "type": "multiple-choice",
+              "question": "¿Cuál crece más rápido para n grande?",
+              "options": ["n", "n²", "2ⁿ", "10n"],
+              "correct": 2,
+              "explanation": "Exponencial 2ⁿ supera a cualquier polinomial (n, n², n³...) para n suficientemente grande."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-2-2",
+      "title": "Leyes de los Exponentes: Producto y Cociente",
+      "objective": "Derivar y usar aᵐ·aⁿ = aᵐ⁺ⁿ y aᵐ/aⁿ = aᵐ⁻ⁿ",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "2³ × 2⁴ = (2×2×2) × (2×2×2×2) = ¿cuántos 2 en total? Escribe como 2^?"
+        },
+        {
+          "type": "explanation",
+          "text": "Multiplicar potencias misma base → <strong>sumar exponentes</strong>: aᵐ·aⁿ = aᵐ⁺ⁿ. Dividir → <strong>restar exponentes</strong>: aᵐ/aⁿ = aᵐ⁻ⁿ (a ≠ 0). Funcionan para enteros, luego extenderemos a racionales/reales.",
+          "latex": "a^m \\cdot a^n = a^{m+n} \\quad | \\quad \\frac{a^m}{a^n} = a^{m-n} \\ (a \\neq 0)",
+          "visual": "assets/exponent-laws-product.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Ladrillos: 3 filas de 2 ladrillos (2³) y 4 filas de 2 ladrillos (2⁴). Juntas = 7 filas de 2 ladrillos = 2⁷. Sumar filas = sumar exponentes.",
+          "conceptId": "exponent-laws"
+        },
+        {
+          "type": "interactive",
+          "component": "ExponentLawExplorer",
+          "description": "Elige base y exponentes. Ve expansión, suma/resta, resultado. Prueba con negativos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-2-2-1",
+              "type": "fill-in",
+              "question": "5⁶ × 5⁴ = 5^___",
+              "answer": "10",
+              "explanation": "Misma base (5), multiplicando → sumar exponentes: 6+4=10."
+            },
+            {
+              "id": "q1-2-2-2",
+              "type": "multiple-choice",
+              "question": "10⁸ ÷ 10³ = ?",
+              "options": ["10⁵", "10¹¹", "10²⁴", "10⁻⁵"],
+              "correct": 0,
+              "explanation": "Misma base, dividiendo → restar exponentes: 8-3=5. 10⁵."
+            },
+            {
+              "id": "q1-2-2-3",
+              "type": "fill-in",
+              "question": "x⁷ · x³ · x² = x^___",
+              "answer": "12",
+              "explanation": "7+3+2=12. Se extiende a cualquier número de factores."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-2-3",
+      "title": "Potencia de Potencia y Potencia de Producto",
+      "objective": "(aᵐ)ⁿ = aᵐⁿ y (ab)ⁿ = aⁿbⁿ",
+      "type": "procedural",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "(2³)⁴ = 2³ × 2³ × 2³ × 2³ = 2^(3+3+3+3) = 2^?. ¿Patrón?"
+        },
+        {
+          "type": "explanation",
+          "text": "Potencia de potencia → <strong>multiplicar exponentes</strong>: (aᵐ)ⁿ = aᵐⁿ. Potencia de producto → <strong>distribuir exponente</strong>: (ab)ⁿ = aⁿbⁿ. Cuidado: (a+b)ⁿ ≠ aⁿ+bⁿ (error clásico).",
+          "latex": "(a^m)^n = a^{mn} \\quad | \\quad (ab)^n = a^n b^n \\quad | \\quad \\left(\\frac{a}{b}\\right)^n = \\frac{a^n}{b^n}",
+          "visual": "assets/power-of-power.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Cajas: (caja con 3 cajas de 2 canicas)⁴ = 4 cajas grandes, cada una con 3 cajas medianas, cada una con 2 canicas. Total: 4×3×2 = 24 canicas = 2¹²? No: (2³)⁴ = 2¹² = 4096 canicas. Multiplicar niveles = multiplicar exponentes.",
+          "conceptId": "power-of-power"
+        },
+        {
+          "type": "interactive",
+          "component": "PowerDistributor",
+          "description": "Arrastra exponente fuera/dentro de paréntesis. Ve expansión paso a paso. Detecta error (a+b)²."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-2-3-1",
+              "type": "multiple-choice",
+              "question": "(3⁴)² = ?",
+              "options": ["3⁶", "3⁸", "3¹⁶", "9⁴"],
+              "correct": 1,
+              "explanation": "Multiplica exponentes: 4×2=8. 3⁸."
+            },
+            {
+              "id": "q1-2-3-2",
+              "type": "multiple-choice",
+              "question": "(2·5)³ = ?",
+              "options": ["2³·5³ = 8·125 = 1000", "10³ = 1000", "Ambas son correctas", "Ninguna"],
+              "correct": 2,
+              "explanation": "(ab)ⁿ = aⁿbⁿ. (2·5)³ = 2³·5³ = 8·125 = 1000. También 10³ = 1000."
+            },
+            {
+              "id": "q1-2-3-3",
+              "type": "multiple-choice",
+              "question": "Error clásico: (x+2)² = ?",
+              "options": ["x²+4 (INCORRECTO)", "x²+4x+4 (CORRECTO)", "2x+4", "x²+2"],
+              "correct": 1,
+              "explanation": "(a+b)² = a² + 2ab + b². (x+2)² = x² + 4x + 4. No se distribuye el exponente a la suma."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-2-4",
+      "title": "Exponentes Negativos y Cero: La Extensión Natural",
+      "objective": "Definir a⁰=1 y a⁻ⁿ=1/aⁿ para mantener las leyes",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "2³=8, 2²=4, 2¹=2, 2⁰=?, 2⁻¹=?, 2⁻²=? Completa el patrón dividiendo entre 2 cada paso."
+        },
+        {
+          "type": "explanation",
+          "text": "Para que aᵐ/aⁿ = aᵐ⁻ⁿ funcione siempre: a³/a³ = a⁰. Pero a³/a³ = 1. Así que <strong>a⁰ = 1 (a ≠ 0)</strong>. Y a⁰/a³ = a⁻³ → 1/a³ = a⁻³. Así <strong>a⁻ⁿ = 1/aⁿ</strong>. Negativo = inverso multiplicativo, no número negativo.",
+          "latex": "a^0 = 1 \\ (a \\neq 0) \\quad | \\quad a^{-n} = \\frac{1}{a^n} \\quad | \\quad \\frac{1}{a^{-n}} = a^n",
+          "visual": "assets/negative-exponents.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Video a cámara lenta: 2³ = 8 frames. Cada paso atrás divide entre 2. 2⁰ = 1 frame (imagen base). 2⁻¹ = medio frame (zoom out). 2⁻² = cuarto frame. Negativo = 'deshacer' la multiplicación.",
+          "conceptId": "zero-negative-exponents"
+        },
+        {
+          "type": "interactive",
+          "component": "ExponentPatternTable",
+          "description": "Tabla base 2, exponentes -5 a 5. Completa huecos. Ve patrón simétrico: 2⁻ⁿ = 1/2ⁿ."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-2-4-1",
+              "type": "multiple-choice",
+              "question": "7⁰ = ?",
+              "options": ["0", "1", "7", "Indefinido"],
+              "correct": 1,
+              "explanation": "Cualquier número (≠0) elevado a 0 es 1."
+            },
+            {
+              "id": "q1-2-4-2",
+              "type": "fill-in",
+              "question": "5⁻³ = 1/___",
+              "answer": "125",
+              "explanation": "5⁻³ = 1/5³ = 1/125."
+            },
+            {
+              "id": "q1-2-4-3",
+              "type": "multiple-choice",
+              "question": "Simplifica: x⁵·x⁻³ / x⁻² = ?",
+              "options": ["x⁴", "x⁰", "x¹⁰", "x⁻⁶"],
+              "correct": 0,
+              "explanation": "x⁵·x⁻³ = x². x²/x⁻² = x²⁻⁽⁻²⁾ = x⁴. O: x⁵⁺⁽⁻³⁾⁻⁽⁻²⁾ = x⁴."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-2-5",
+      "title": "Raíces: La Operación Inversa de Potencia",
+      "objective": "Entender √[n]{a} como el número que elevado a n da a",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Qué número elevado al cuadrado da 25? ¿Y al cubo da 27? Raíz cuadrada = 'deshacer' cuadrado."
+        },
+        {
+          "type": "explanation",
+          "text": "Raíz enésima √[n]{a} = b significa bⁿ = a. Raíz cuadrada (n=2): √a. Raíz cúbica (n=3): ∛a. Propiedad clave: √[n]{aⁿ} = |a| (par) o a (impar). √[n]{a} = a¹/ⁿ. Conecta raíces con exponentes fraccionarios.",
+          "latex": "\\sqrt[n]{a} = b \\iff b^n = a \\quad | \\quad \\sqrt[n]{a} = a^{1/n} \\quad | \\quad \\sqrt[n]{a^n} = |a| \\ (n \\text{ par})",
+          "visual": "assets/roots-inverse.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Caja fuerte: potencia = cerrar con n vueltas. Raíz = abrir (¿cuántas vueltas di?). Raíz cuadrada de 16 = 4 porque 4²=16. Pero (-4)²=16 también. Por convención √16 = 4 (raíz principal, no negativa).",
+          "conceptId": "roots"
+        },
+        {
+          "type": "interactive",
+          "component": "RootFinder",
+          "description": "Dado a y n, encuentra b. Visual: bⁿ crece hasta a. Prueba cuadradas, cúbicas, cuartas."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-2-5-1",
+              "type": "number-input",
+              "question": "√144 = ?",
+              "answer": 12,
+              "explanation": "12² = 144. Raíz principal (positiva)."
+            },
+            {
+              "id": "q1-2-5-2",
+              "type": "multiple-choice",
+              "question": "∛(-64) = ?",
+              "options": ["-4", "4", "8", "No existe (negativo)"],
+              "correct": 0,
+              "explanation": "Raíz cúbica de negativo existe: (-4)³ = -64. Índice impar → conserva signo."
+            },
+            {
+              "id": "q1-2-5-3",
+              "type": "fill-in",
+              "question": "√[4]{81} = ___",
+              "answer": "3",
+              "explanation": "3⁴ = 3×3×3×3 = 9×9 = 81."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-2-6",
+      "title": "Exponentes Fraccionarios: Raíces como Potencias",
+      "objective": "a^{m/n} = √[n]{a^m} = (√[n]{a})^m",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Si 2¹ = 2 y 2² = 4, ¿qué valor tendría sentido para 2^{1/2}? Pista: (2^{1/2})² = 2¹ = 2."
+        },
+        {
+          "type": "explanation",
+          "text": "Definimos a^{1/n} = √[n]{a} para que (a^{1/n})ⁿ = a¹ = a (ley de potencias). Luego a^{m/n} = (a^{1/n})^m = (√[n]{a})^m = √[n]{a^m}. Unifica potencias y raíces en una notación. Válido para a > 0 (o a ≥ 0 si denominador par).",
+          "latex": "a^{1/n} = \\sqrt[n]{a} \\quad | \\quad a^{m/n} = \\sqrt[n]{a^m} = (\\sqrt[n]{a})^m",
+          "visual": "assets/fractional-exponents.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Medio paso: caminar 1 metro (2¹). Medio metro = √2 ≈ 1.414. Dos medios metros = 1 metro completo. a^{1/2}·a^{1/2} = a¹. La raíz es 'medio exponente'.",
+          "conceptId": "fractional-exponents"
+        },
+        {
+          "type": "interactive",
+          "component": "FractionalExponentCalc",
+          "description": "Calculadora a^{m/n}. Elige base, numerador, denominador. Ve como raíz y como potencia decimal."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-2-6-1",
+              "type": "multiple-choice",
+              "question": "16^{3/4} = ?",
+              "options": ["8", "6", "12", "4"],
+              "correct": 0,
+              "explanation": "16^{3/4} = (∜16)³ = 2³ = 8. O: ∜(16³) = ∜4096 = 8."
+            },
+            {
+              "id": "q1-2-6-2",
+              "type": "fill-in",
+              "question": "27^{2/3} = ___",
+              "answer": "9",
+              "explanation": "27^{2/3} = (∛27)² = 3² = 9."
+            },
+            {
+              "id": "q1-2-6-3",
+              "type": "multiple-choice",
+              "question": "¿Cuál es equivalente a √[5]{x³}?",
+              "options": ["x^{3/5}", "x^{5/3}", "x^{15}", "x^{8}"],
+              "correct": 0,
+              "explanation": "√[n]{a^m} = a^{m/n}. Aquí n=5, m=3 → x^{3/5}."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-2-7",
+      "title": "Notación Científica: Números Gigantes y Minúsculos",
+      "objective": "Escribir y operar con a × 10ⁿ (1 ≤ a < 10, n entero)",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Masa de la Tierra: 5,972,000,000,000,000,000,000,000 kg. Radio del átomo de hidrógeno: 0.000000000053 m. ¿Cómo escribir sin ceros infinitos?"
+        },
+        {
+          "type": "explanation",
+          "text": "Notación científica: a × 10ⁿ donde 1 ≤ |a| < 10 y n ∈ ℤ. n positivo → número grande (mueve coma derecha). n negativo → número pequeño (mueve coma izquierda). Operaciones: multiplicar → multiplica a, suma exponentes 10. Dividir → divide a, resta exponentes.",
+          "latex": "N = a \\times 10^n \\quad (1 \\le |a| < 10, \\ n \\in \\mathbb{Z}) \\quad | \\quad (a\\times10^m)(b\\times10^n) = (ab)\\times10^{m+n}",
+          "visual": "assets/scientific-notation.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Prefijos métricos: kilo (10³), mega (10⁶), giga (10⁹), micro (10⁻⁶), nano (10⁻⁹), pico (10⁻¹²). Notación científica = prefijos universales para CUALQUIER magnitud.",
+          "conceptId": "scientific-notation"
+        },
+        {
+          "type": "interactive",
+          "component": "SciNotationConverter",
+          "description": "Escribe número normal → ve científica. Slider mueve coma. Operaciones: multiplica/divide dos números científicos."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-2-7-1",
+              "type": "multiple-choice",
+              "question": "0.000045 en notación científica:",
+              "options": ["4.5 × 10⁻⁵", "45 × 10⁻⁶", "0.45 × 10⁻⁴", "4.5 × 10⁵"],
+              "correct": 0,
+              "explanation": "Mueve coma 5 lugares derecha: 4.5. Exponente -5. 4.5 × 10⁻⁵."
+            },
+            {
+              "id": "q1-2-7-2",
+              "type": "fill-in",
+              "question": "(3 × 10⁴) × (2 × 10⁻²) = ___ × 10^___",
+              "answer": "6, 2",
+              "explanation": "3×2=6. 10⁴×10⁻²=10². Resultado: 6 × 10² = 600."
+            },
+            {
+              "id": "q1-2-7-3",
+              "type": "multiple-choice",
+              "question": "Velocidad luz ≈ 3 × 10⁸ m/s. Año luz = velocidad × segundos en año (≈ 3.15 × 10⁷). Año luz ≈ ?",
+              "options": ["9.45 × 10¹⁵ m", "9.45 × 10¹⁴ m", "9.45 × 10¹³ m", "9.45 × 10¹⁶ m"],
+              "correct": 0,
+              "explanation": "(3×10⁸)×(3.15×10⁷) = 9.45×10¹⁵ m."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l1-2-8",
+      "title": "Proyecto Módulo: Escala del Universo",
+      "objective": "Usar potencias de 10, notación científica, raíces para comparar escalas",
+      "type": "project",
+      "durationMin": 15,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Desde Planck (10⁻³⁵ m) hasta universo observable (10²⁷ m). 62 órdenes de magnitud. ¿Dónde estás tú (≈10⁰ m)?"
+        },
+        {
+          "type": "explanation",
+          "text": "Escala logarítmica: cada paso ×10. Humanos ~1-2 m (10⁰). Célula ~10⁻⁵ m. Átomo ~10⁻¹⁰ m. Planck ~10⁻³⁵ m. Tierra ~10⁷ m. Sol ~10⁹ m. Año luz ~10¹⁶ m. Galaxia ~10²¹ m. Universo ~10²⁷ m. Raíces: lado cubo volumen V = ∛V. Distancias 3D.",
+          "latex": "L_{cubo} = \\sqrt[3]{V} \\quad | \\quad \\text{Órdenes de magnitud: } \\log_{10}(\\text{tamaño})",
+          "visual": "assets/universe-scale.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "UniverseScaleExplorer",
+          "description": "Zoom continuo 10⁻³⁵ a 10²⁷. Objetos representativos en cada escala. Click para info. Compara ratios."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q1-2-8-1",
+              "type": "multiple-choice",
+              "question": "¿Cuántas veces más grande es el Sol (1.4×10⁹ m) que la Tierra (1.3×10⁷ m)?",
+              "options": ["≈10 veces", "≈100 veces", "≈1000 veces", "≈10000 veces"],
+              "correct": 1,
+              "explanation": "(1.4×10⁹)/(1.3×10⁷) ≈ 1.08×10² ≈ 108 veces. ~100 veces."
+            },
+            {
+              "id": "q1-2-8-2",
+              "type": "number-input",
+              "question": "Un cubo de 1 km³ (10⁹ m³). Lado en metros:",
+              "answer": 1000,
+              "explanation": "∛(10⁹) = 10³ = 1000 m = 1 km."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

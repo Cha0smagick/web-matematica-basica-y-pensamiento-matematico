@@ -1,0 +1,404 @@
+{
+  "id": "m2-3",
+  "phaseId": "phase-2",
+  "number": "2.3",
+  "title": "Ecuaciones Cuadráticas",
+  "description": "Fórmula general, discriminante, vértice, gráfica parábola, problemas",
+  "lessons": [
+    {
+      "id": "l2-3-1",
+      "title": "Ecuación Cuadrática: Forma Estándar y Raíces",
+      "objective": "Reconocer ax²+bx+c=0, entender que puede tener 0, 1 o 2 soluciones reales",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "x² = 9 tiene dos soluciones: 3 y -3. x² = 0 tiene una: 0. x² = -4 ¿tiene solución real? No (en reales)."
+        },
+        {
+          "type": "explanation",
+          "text": "Ecuación cuadrática: ax² + bx + c = 0 (a ≠ 0). Gráficamente = parábola y = ax²+bx+c cortando eje x.\nNúmero de soluciones reales = intersecciones con eje x:\n- 2 soluciones: parábola cruza eje x dos veces\n- 1 solución (raíz doble): parábola toca eje x (vértice en eje x)\n- 0 soluciones reales: parábola no toca eje x (está toda arriba o toda abajo)\nEn complejos SIEMPRE hay 2 soluciones (contando multiplicidad).",
+          "latex": "ax^2+bx+c=0 \\quad (a\\neq 0) \\quad | \\quad \\text{Soluciones} = \\text{raíces de } y=ax^2+bx+c",
+          "visual": "assets/quadratic-roots.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Lanzar pelota: altura = -5t² + v₀t + h₀. ¿Cuándo toca suelo? h=0 → ecuación cuadrática. Dos veces: subida y bajada (o una en vértice si lanza desde suelo). Si lanza desde agujero, puede no tocar 'suelo' (eje x).",
+          "conceptId": "quadratic-equation"
+        },
+        {
+          "type": "interactive",
+          "component": "QuadraticRootVisualizer",
+          "description": "Sliders a, b, c. Gráfica parábola. Eje x resaltado. Raíces marcadas. Discriminante calculado. Casos: 2, 1, 0 raíces reales."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-3-1-1",
+              "type": "multiple-choice",
+              "question": "Ecuación x² - 6x + 9 = 0 tiene:",
+              "options": ["Dos soluciones distintas", "Una solución doble", "Ninguna solución real", "Infinitas"],
+              "correct": 1,
+              "explanation": "(x-3)² = 0 → x=3 (raíz doble). Discriminante = 0."
+            },
+            {
+              "id": "q2-3-1-2",
+              "type": "multiple-choice",
+              "question": "2x² + 3x + 5 = 0. ¿Soluciones reales?",
+              "options": ["Sí, dos", "Sí, una", "No", "Depende"],
+              "correct": 2,
+              "explanation": "Discriminante Δ = 9 - 40 = -31 < 0. No hay raíces reales. Parábola toda arriba (a=2>0)."
+            },
+            {
+              "id": "q2-3-1-3",
+              "type": "fill-in",
+              "question": "Para que x² + kx + 4 = 0 tenga una única solución real, k = ___ o k = ___",
+              "answer": "4, -4",
+              "explanation": "Δ = k² - 16 = 0 → k² = 16 → k = ±4. Entonces (x±2)²=0."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-3-2",
+      "title": "Resolver por Factorización: Propiedad del Producto Nulo",
+      "objective": "Si A·B=0 entonces A=0 o B=0. Aplicar a cuadráticas factorizables",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "(x-3)(x+2) = 0. ¿Cuándo es cero un producto? Cuando AL MENOS un factor es cero. x-3=0 → x=3. x+2=0 → x=-2."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Propiedad del producto nulo</strong>: A·B = 0 ⟺ A=0 o B=0.\nPasos para resolver ax²+bx+c=0 por factorización:\n1. Factoriza el trinomio (si es posible en racionales)\n2. Iguala cada factor a 0\n3. Resuelve las ecuaciones lineales resultantes\n4. Verifica en original\nEjemplo: x²-5x+6=0 → (x-2)(x-3)=0 → x-2=0 o x-3=0 → x=2, x=3.\nSolo funciona si trinomio se factoriza en racionales (discriminante cuadrado perfecto).",
+          "latex": "ax^2+bx+c = a(x-r_1)(x-r_2) = 0 \\implies x=r_1 \\lor x=r_2",
+          "visual": "assets/zero-product.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Dos interruptores en serie. La luz (producto) está apagada (0) si EL PRIMERO O EL SEGUNDO está apagado. Encuentra posiciones que apagan cada interruptor.",
+          "conceptId": "zero-product"
+        },
+        {
+          "type": "interactive",
+          "component": "FactorizationSolver",
+          "description": "Ecuación cuadrática. Intenta factorizar. Si logra: muestra factores, iguala a 0, resuelve. Si no: avisa 'no factorizable en ℚ, usa fórmula general'. Verifica raíces."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-3-2-1",
+              "type": "fill-in",
+              "question": "Resuelve por factorización: x² - 4x - 12 = 0. Factores: (x-___)(x+___)=0. Soluciones: x=___, x=___",
+              "answer": "6, 2, 6, -2",
+              "explanation": "Busca p+q=-4, pq=-12 → -6, 2. (x-6)(x+2)=0 → x=6, x=-2."
+            },
+            {
+              "id": "q2-3-2-2",
+              "type": "multiple-choice",
+              "question": "2x² - 8x = 0. Factor común:",
+              "options": ["2x(x-4)=0 → x=0, x=4", "2(x-4)=0 → x=4", "x(2x-8)=0 → x=0, x=4", "No se puede"],
+              "correct": 0,
+              "explanation": "Factor común 2x: 2x(x-4)=0 → 2x=0 (x=0) o x-4=0 (x=4). No pierdas x=0 dividiendo por x."
+            },
+            {
+              "id": "q2-3-2-3",
+              "type": "fill-in",
+              "question": "x² - 9 = 0 → (x-___)(x+___)=0 → x=±___",
+              "answer": "3, 3, 3",
+              "explanation": "Diferencia de cuadrados: (x-3)(x+3)=0 → x=3, x=-3."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-3-3",
+      "title": "Fórmula General: La Herramienta Universal",
+      "objective": "Derivación y uso de x = (-b ± √(b²-4ac)) / 2a",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Completa el cuadrado en ax²+bx+c=0: divide por a, mueve c/a, añade (b/2a)²... Llega a la fórmula general."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Fórmula general (Bhaskara)</strong>:\n$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$\nDerivación: ax²+bx+c=0 → x²+(b/a)x = -c/a → x²+(b/a)x+(b/2a)² = (b/2a)² - c/a → (x+b/2a)² = (b²-4ac)/4a² → raíz cuadrada → fórmula.\n<strong>Discriminante</strong> Δ = b² - 4ac:\n- Δ > 0: dos raíces reales distintas\n- Δ = 0: una raíz real doble\n- Δ < 0: dos raíces complejas conjugadas\nSIEMPRE funciona (en ℂ).",
+          "latex": "x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a} \\quad | \\quad \\Delta = b^2-4ac",
+          "visual": "assets/quadratic-formula.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Receta universal para cualquier cuadrática. Ingredientes: a, b, c. Pasos: calcula Δ, raíz de Δ, -b ± raízΔ, divide 2a. Como GPS: siempre te lleva a destino (raíces).",
+          "conceptId": "quadratic-formula"
+        },
+        {
+          "type": "interactive",
+          "component": "QuadraticFormulaCalculator",
+          "description": "Input a, b, c. Paso a paso: Δ = b²-4ac, √Δ, -b±√Δ, /2a. Raíces exactas (simplifica radical) y decimales. Gráfica parábola con raíces marcadas."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-3-3-1",
+              "type": "fill-in",
+              "question": "Resuelve 2x² - 5x - 3 = 0. a=2, b=-5, c=-3. Δ = ___ . x = (___ ± ___) / ___ . Raíces: x₁=___, x₂=___",
+              "answer": "49, 5, 7, 4, 3, -0.5",
+              "explanation": "Δ = 25 - 4(2)(-3) = 25+24=49. √Δ=7. x = (5±7)/4. x₁=12/4=3, x₂=-2/4=-0.5."
+            },
+            {
+              "id": "q2-3-3-2",
+              "type": "multiple-choice",
+              "question": "En x² + 2x + 5 = 0, las raíces son:",
+              "options": ["Reales y distintas", "Reales e iguales", "Complejas conjugadas", "No existen"],
+              "correct": 2,
+              "explanation": "Δ = 4 - 20 = -16 < 0. Raíces complejas: -1 ± 2i."
+            },
+            {
+              "id": "q2-3-3-3",
+              "type": "fill-in",
+              "question": "Para que 3x² + kx + 12 = 0 tenga raíz doble, k = ___ o k = ___",
+              "answer": "12, -12",
+              "explanation": "Δ = k² - 144 = 0 → k² = 144 → k = ±12."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-3-4",
+      "title": "Ecuaciones Incompletas: ax²+c=0 y ax²+bx=0",
+      "objective": "Resolver casos especiales más simples: factor común o raíz cuadrada directa",
+      "type": "procedural",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "4x² - 25 = 0 → 4x² = 25 → x² = 25/4 → x = ±5/2. Y x(3x-7)=0 → x=0 o x=7/3."
+        },
+        {
+          "type": "explanation",
+          "text": "Dos tipos <strong>incompletas</strong>:\n1. <strong>ax² + c = 0</strong> (b=0): x² = -c/a → x = ±√(-c/a). Requiere -c/a ≥ 0 para soluciones reales.\n2. <strong>ax² + bx = 0</strong> (c=0): factor común x(ax+b)=0 → x=0 o x=-b/a. ¡Nunca dividas por x! Pierdes x=0.\nSon casos de la fórmula general con b=0 o c=0, pero más rápidos.",
+          "latex": "ax^2+c=0 \\implies x=\\pm\\sqrt{-\\frac{c}{a}} \\quad | \\quad ax^2+bx=0 \\implies x(ax+b)=0 \\implies x=0, x=-\\frac{b}{a}",
+          "visual": "assets/incomplete-quadratics.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "ax²+c=0: balanza x² contra número. ax²+bx=0: x es factor común, como 'x veces algo = 0' → x=0 o 'algo'=0.",
+          "conceptId": "incomplete-quadratics"
+        },
+        {
+          "type": "interactive",
+          "component": "IncompleteQuadraticSolver",
+          "description": "Detecta tipo incompleta. Muestra método directo vs fórmula general. Practica ambos. Enfatiza: NO dividas por x en ax²+bx=0."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-3-4-1",
+              "type": "multiple-choice",
+              "question": "Resuelve: 3x² - 27 = 0",
+              "options": ["x = ±3", "x = ±9", "x = 3", "x = 9"],
+              "correct": 0,
+              "explanation": "3x² = 27 → x² = 9 → x = ±3."
+            },
+            {
+              "id": "q2-3-4-2",
+              "type": "fill-in",
+              "question": "Resuelve: 5x² + 15x = 0 → x = ___, x = ___",
+              "answer": "0, -3",
+              "explanation": "5x(x+3)=0 → x=0 o x=-3."
+            },
+            {
+              "id": "q2-3-4-3",
+              "type": "multiple-choice",
+              "question": "Error clásico en 2x² = 8x: dividir por x → 2x=8 → x=4. ¿Qué se pierde?",
+              "options": ["x=0", "x=2", "x=-4", "Nada"],
+              "correct": 0,
+              "explanation": "Dividir por x asume x≠0. Pierdes solución x=0. Correcto: 2x²-8x=0 → 2x(x-4)=0 → x=0, x=4."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-3-5",
+      "title": "Vértice de la Parábola: Máximo/Mínimo",
+      "objective": "Encontrar vértice xᵥ = -b/2a, yᵥ = -Δ/4a. Interpretar como óptimo",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Parábola y = -x² + 4x + 5. ¿Dónde está su punto más alto? Eje de simetría x = -b/2a = -4/-2 = 2. Alto máximo: y(2) = 9."
+        },
+        {
+          "type": "explanation",
+          "text": "Parábola y = ax²+bx+c:\n- <strong>Eje de simetría</strong>: xᵥ = -b/(2a)\n- <strong>Vértice</strong>: V(xᵥ, yᵥ) con yᵥ = -Δ/(4a) = c - b²/(4a)\n- Si a > 0: parábola abre ↑ → vértice = MÍNIMO\n- Si a < 0: parábola abre ↓ → vértice = MÁXIMO\nForma vértice: y = a(x-xᵥ)² + yᵥ. Completar cuadrado para hallarla.",
+          "latex": "x_v = -\\frac{b}{2a} \\quad | \\quad y_v = -\\frac{\\Delta}{4a} \\quad | \\quad y = a(x-x_v)^2 + y_v",
+          "visual": "assets/vertex-parabola.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Lanzamiento proyectil: altura = -5t² + v₀t + h₀. v₀=20, h₀=1.5. Máximo en t = -20/-10 = 2s. Alto = -5(4)+40+1.5=21.5m. Vértice = punto más alto de la trayectoria.",
+          "conceptId": "vertex-parabola"
+        },
+        {
+          "type": "interactive",
+          "component": "VertexFinder",
+          "description": "Sliders a, b, c. Calcula xᵥ, yᵥ. Marca vértice en gráfica. Eje simetría. Forma vértice. Indica máx/mín. Arrastra vértice, ve a,b,c cambiar."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-3-5-1",
+              "type": "fill-in",
+              "question": "Vértice de y = 2x² - 8x + 5: xᵥ = ___, yᵥ = ___. Es mínimo o máximo? ___",
+              "answer": "2, -3, mínimo",
+              "explanation": "xᵥ = 8/4 = 2. yᵥ = 2(4)-16+5 = -3. a=2>0 → abre arriba → mínimo."
+            },
+            {
+              "id": "q2-3-5-2",
+              "type": "multiple-choice",
+              "question": "Parábola y = -3x² + 6x - 2. Vértice:",
+              "options": ["(1, 1) - máximo", "(1, 1) - mínimo", "(-1, -11) - máximo", "(1, -1) - máximo"],
+              "correct": 0,
+              "explanation": "xᵥ = -6/-6 = 1. yᵥ = -3+6-2 = 1. a=-3<0 → abre abajo → MÁXIMO en (1,1)."
+            },
+            {
+              "id": "q2-3-5-3",
+              "type": "fill-in",
+              "question": "Forma vértice de y = x² - 4x + 7: y = (x-___)² + ___",
+              "answer": "2, 3",
+              "explanation": "Completa cuadrado: x²-4x+7 = (x²-4x+4)+3 = (x-2)²+3. Vértice (2,3)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-3-6",
+      "title": "Gráfica de Parábola: Intersecciones, Eje, Vértice, Concavidad",
+      "objective": "Dibujar parábola completa: raíces, vértice, eje, intersección y, concavidad",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Para dibujar y = x² - 4x - 5: raíces (intersecciones x), vértice, eje simetría, corte y (x=0), concavidad. 5 puntos clave."
+        },
+        {
+          "type": "explanation",
+          "text": "Pasos para graficar y = ax²+bx+c:\n1. <strong>Concavidad</strong>: a>0 (∪, mín), a<0 (∩, máx)\n2. <strong>Intersección Y</strong>: x=0 → y=c → (0,c)\n3. <strong>Vértice</strong>: xᵥ=-b/2a, yᵥ=-Δ/4a\n4. <strong>Raíces (intersecciones X)</strong>: resuelve ax²+bx+c=0 (fórmula general). Si Δ<0, no cruza eje X\n5. <strong>Eje simetría</strong>: x = xᵥ (línea vertical punteada)\n6. <strong>Punto simétrico al corte Y</strong>: (2xᵥ, c)\n7. Dibuja curva suave por estos puntos.",
+          "latex": "Puntos clave: (0,c), (x_v,y_v), (x_1,0), (x_2,0), (2x_v,c) \\quad \\text{Eje: } x=x_v",
+          "visual": "assets/parabola-graph.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Esqueleto de parábola: 5 puntos = estructura. Curva = piel. Simetría = espejo en eje vertical. Concavidad = sonrisa (a>0) o ceño (a<0).",
+          "conceptId": "parabola-graph"
+        },
+        {
+          "type": "interactive",
+          "component": "ParabolaGrapher",
+          "description": "Input a,b,c. Calcula y marca: corte Y, vértice, raíces (si reales), eje simetría, punto simétrico. Dibuja parábola animada. Checklist: ¿todos los puntos?"
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-3-6-1",
+              "type": "multiple-choice",
+              "question": "Parábola y = -x² + 2x + 3. Corte con eje Y:",
+              "options": ["(0,3)", "(0,-3)", "(3,0)", "(-3,0)"],
+              "correct": 0,
+              "explanation": "x=0 → y=3. (0,3)."
+            },
+            {
+              "id": "q2-3-6-2",
+              "type": "fill-in",
+              "question": "y = 2x² - 4x - 6. Raíces: x=___, x=___. Vértice: (___ , ___). Eje: x=___. Concavidad: ___",
+              "answer": "3, -1, 1, -8, 1, arriba",
+              "explanation": "2x²-4x-6=0 → x²-2x-3=0 → (x-3)(x+1)=0 → x=3,-1. xᵥ=4/4=1. yᵥ=2-4-6=-8. Eje x=1. a=2>0 ∪."
+            },
+            {
+              "id": "q2-3-6-3",
+              "type": "multiple-choice",
+              "question": "Si Δ < 0 y a > 0, la parábola:",
+              "options": ["Cruza eje X dos veces", "Toca eje X", "No cruza eje X, está toda arriba", "No cruza eje X, está toda abajo"],
+              "correct": 2,
+              "explanation": "Δ<0 → no raíces reales. a>0 → abre arriba → toda la parábola está sobre eje X (y>0 ∀x)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-3-7",
+      "title": "Problemas con Cuadráticas: Área, Movimiento, Números, Optimización",
+      "objective": "Modelar situaciones reales que llevan a ecuaciones cuadráticas",
+      "type": "procedural",
+      "durationMin": 10,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Rectángulo: base = altura + 3. Área = 40. ¿Dimensiones? x(x+3)=40 → x²+3x-40=0. Resuelve."
+        },
+        {
+          "type": "explanation",
+          "text": "Tipos clásicos:\n1. <strong>Área/Geometría</strong>: rectángulo, triángulo, círculos. x(x+k)=A → cuadrática\n2. <strong>Movimiento (caída libre/proyectil)</strong>: h = -½gt² + v₀t + h₀. ¿Cuándo h=0? ¿Altura máx?\n3. <strong>Números</strong>: 'producto de dos números es..., suma es...' → x(A-x)=P\n4. <strong>Optimización</strong>: ingreso = precio × cantidad. Precio = p₀ - kx. Ingreso = x(p₀-kx) = -kx²+p₀x → vértice = máx\n5. <strong>Trabajo/Velocidad</strong>: 1/t₁ + 1/t₂ = 1/t_total → cuadrática en t\nPasos: define variable → ecuación → resuelve → DESCARTA soluciones no físicas (negativas, etc.) → verifica.",
+          "latex": "Proyectil: h(t)=-\\frac{1}{2}gt^2+v_0t+h_0 \\quad | \\quad \\text{Ingreso: } I(x)=x(p_0-kx) \\quad | \\quad \\text{Área: } x(x+k)=A",
+          "visual": "assets/quadratic-word-problems.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Traductor: problema → ecuación. 'Producto de dos números consecutivos es 56' → x(x+1)=56. 'Altura máxima de pelota' → vértice de parábola. Siempre interpreta la raíz en contexto.",
+          "conceptId": "quadratic-word-problems"
+        },
+        {
+          "type": "interactive",
+          "component": "QuadraticWordProblemBuilder",
+          "description": "Plantillas: área, proyectil, números, ingreso, trabajo. Rellena datos. Genera ecuación. Resuelve. Filtra raíces válidas. Verifica en enunciado."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-3-7-1",
+              "type": "number-input",
+              "question": "Rectángulo: base = altura + 4. Área = 96. Altura = ?",
+              "answer": 8,
+              "explanation": "x(x+4)=96 → x²+4x-96=0 → (x+12)(x-8)=0 → x=8 (positivo). Base=12."
+            },
+            {
+              "id": "q2-3-7-2",
+              "type": "multiple-choice",
+              "question": "Pelota lanzada arriba: h(t) = -5t² + 20t + 1. Altura máxima:",
+              "options": ["20 m", "21 m", "25 m", "1 m"],
+              "correct": 1,
+              "explanation": "v₀=20, g=10. t_max = v₀/g = 2s. h_max = -5(4)+40+1 = 21m. O vértice: -b/2a = 2, y = -20+40+1=21."
+            },
+            {
+              "id": "q2-3-7-3",
+              "type": "fill-in",
+              "question": "Dos números difieren en 5. Su producto es 84. El mayor es ___",
+              "answer": "12",
+              "explanation": "x(x+5)=84 → x²+5x-84=0 → (x+12)(x-7)=0 → x=7. Números: 7, 12. Mayor=12."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

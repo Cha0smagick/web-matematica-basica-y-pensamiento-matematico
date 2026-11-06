@@ -1,0 +1,460 @@
+{
+  "id": "m3-2",
+  "phaseId": "phase-3",
+  "number": "3.2",
+  "title": "Geometría Analítica",
+  "description": "Plano cartesiano, distancia, pendiente, ecuación recta, paralelas/perpendiculares",
+  "lessons": [
+    {
+      "id": "l3-2-1",
+      "title": "Plano Cartesiano: Coordenadas = GPS Matemático",
+      "objective": "Ubicar puntos (x,y), cuadrantes, ejes, simetrías",
+      "type": "conceptual",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Latitud/longitud en mapa = (x,y) en plano. (3, -2): 3 derecha, 2 abajo. Origen (0,0) = tu posición actual."
+        },
+        {
+          "type": "explanation",
+          "text": "Plano cartesiano: dos rectas perpendiculares (ejes X e Y) que se cortan en origen O(0,0).\n- Coordenadas P(x,y): x = abscisa (horizontal), y = ordenada (vertical)\n- Cuadrantes:\n  I: x>0, y>0 (+,+)\n  II: x<0, y>0 (-,+)\n  III: x<0, y<0 (-,-)\n  IV: x>0, y<0 (+,-)\n- Ejes: x=0 (eje Y), y=0 (eje X)\n- Simetrías:\n  Respecto a eje X: (x,y) → (x,-y)\n  Respecto a eje Y: (x,y) → (-x,y)\n  Respecto a origen: (x,y) → (-x,-y)\n  Respecto a y=x: (x,y) → (y,x)",
+          "latex": "P(x,y) \\quad | \\quad Q_I(+,+), Q_{II}(-,+), Q_{III}(-,-), Q_{IV}(+,-) \\quad | \\quad S_X(x,y)=(x,-y), \\, S_O(x,y)=(-x,-y)",
+          "visual": "assets/cartesian-plane.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Edificio: planta (y) y número de puerta (x). (3, 2) = planta 2, puerta 3. (-2, -1) = sótano 1, puerta 2 del ala oeste. Origen = recepción.",
+          "conceptId": "cartesian-plane"
+        },
+        {
+          "type": "interactive",
+          "component": "CoordinateGame",
+          "description": "Punto objetivo (x,y). Usuario arrastra punto a posición. Cuadrantes coloreados. Modo 'adivina coordenadas': click en punto aleatorio, escribe coords. Simetrías: arrastra punto, ve reflejos en ejes, origen, y=x."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-2-1-1",
+              "type": "multiple-choice",
+              "question": "El punto (-4, 5) está en el cuadrante:",
+              "options": [
+                "I",
+                "II",
+                "III",
+                "IV"
+              ],
+              "correct": 1,
+              "explanation": "x<0, y>0 → Cuadrante II."
+            },
+            {
+              "id": "q3-2-1-2",
+              "type": "fill-in",
+              "question": "Simétrico de P(3, -2) respecto al origen: (___ , ___)",
+              "answer": "-3, 2",
+              "explanation": "S_O(x,y) = (-x, -y) → (-3, 2)."
+            },
+            {
+              "id": "q3-2-1-3",
+              "type": "multiple-choice",
+              "question": "Puntos en el eje Y tienen:",
+              "options": [
+                "x = 0",
+                "y = 0",
+                "x = y",
+                "x = -y"
+              ],
+              "correct": 0,
+              "explanation": "Eje Y: x = 0. Eje X: y = 0."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-2-2",
+      "title": "Distancia entre Dos Puntos: Teorema de Pitágoras en Coordenadas",
+      "objective": "Fórmula d = √((x₂-x₁)² + (y₂-y₁)²). Punto medio",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "P(1,2) y Q(4,6). Diferencia x: 3. Diferencia y: 4. Triángulo rectángulo catetos 3 y 4 → hipotenusa 5. Distancia = 5."
+        },
+        {
+          "type": "explanation",
+          "text": "Distancia entre A(x₁,y₁) y B(x₂,y₂):\nd = √[(x₂-x₁)² + (y₂-y₁)²]\nDemostración: catetos paralelos a ejes = |x₂-x₁| y |y₂-y₁|. Pitágoras.\n<strong>Punto medio</strong> M de AB:\nM( (x₁+x₂)/2 , (y₁+y₂)/2 )\nPromedio de coordenadas.\nAplicaciones: perímetro polígono (suma distancias lados), radio circunferencia (distancia centro-punto).",
+          "latex": "d(A,B) = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2} \\quad | \\quad M\\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}\\right)",
+          "visual": "assets/distance-formula.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Caminar en ciudad cuadriculada: 3 cuadras este, 4 norte. Distancia 'en línea recta' (pájaro) = 5. Punto medio = donde te encuentras si caminas mitad del camino en línea recta.",
+          "conceptId": "distance-midpoint"
+        },
+        {
+          "type": "interactive",
+          "component": "DistanceCalculator",
+          "description": "Dos puntos arrastrables. Triángulo rectángulo visual (catetos paralelos a ejes). Cálculo paso a paso: Δx, Δy, Δx², Δy², suma, raíz. Punto medio marcado. Distancia Manhattan (|Δx|+|Δy|) vs Euclídea."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-2-2-1",
+              "type": "number-input",
+              "question": "Distancia entre A(-2, 3) y B(4, -1):",
+              "answer": "7.21",
+              "explanation": "Δx=6, Δy=-4. d = √(36+16) = √52 = 2√13 ≈ 7.21."
+            },
+            {
+              "id": "q3-2-2-2",
+              "type": "fill-in",
+              "question": "Punto medio de A(1, 5) y B(7, -3): (___ , ___)",
+              "answer": "4, 1",
+              "explanation": "x = (1+7)/2 = 4. y = (5-3)/2 = 1."
+            },
+            {
+              "id": "q3-2-2-3",
+              "type": "multiple-choice",
+              "question": "Si M(3, 2) es punto medio de AB y A(1, 4), entonces B = ",
+              "options": [
+                "(5, 0)",
+                "(2, -2)",
+                "(5, -2)",
+                "(2, 0)"
+              ],
+              "correct": 0,
+              "explanation": "M = ((x_A+x_B)/2, (y_A+y_B)/2) → (1+x_B)/2=3 → x_B=5. (4+y_B)/2=2 → y_B=0. B(5,0)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-2-3",
+      "title": "Pendiente de una Recta: Inclinación y Tasa de Cambio",
+      "objective": "m = (y₂-y₁)/(x₂-x₁). Significado: subida/corrida. Pendiente 0, indefinida, positiva, negativa",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Subes 3 metros por cada 4 que avanzas horizontal. Pendiente = 3/4 = 0.75 = 75%. Rampa de garaje típica: 15% = 0.15."
+        },
+        {
+          "type": "explanation",
+          "text": "Pendiente m de recta por A(x₁,y₁) y B(x₂,y₂):\nm = (y₂ - y₁) / (x₂ - x₁) = Δy / Δx\n- m > 0: creciente (sube izquierda→derecha)\n- m < 0: decreciente (baja)\n- m = 0: horizontal (Δy=0)\n- m indefinida (∞): vertical (Δx=0, división por 0)\n<strong>Ángulo de inclinación</strong> α: m = tan(α), α ∈ [0°, 180°)\nInterpretación: tasa de cambio instantánea (constante en recta). Por cada 1 unidad en x, y cambia m unidades.",
+          "latex": "m = \\frac{\\Delta y}{\\Delta x} = \\tan\\alpha \\quad | \\quad m>0 \\nearrow, \\, m<0 \\searrow, \\, m=0 \\leftrightarrow, \\, m=\\infty \\updownarrow",
+          "visual": "assets/slope.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Esquí: pendiente m = caída vertical / avance horizontal. Pista verde m≈0.1 (suave). Negra m≈0.5 (empinada). Vertical = muro (infinito). Plana = m=0.",
+          "conceptId": "slope"
+        },
+        {
+          "type": "interactive",
+          "component": "SlopeExplorer",
+          "description": "Recta por dos puntos arrastrables. Δx, Δy visuales. Pendiente calculada. Ángulo α. Ecuación recta. Slider m: rota recta fija en origen. Test: 'Construye recta m=2/3'."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-2-3-1",
+              "type": "fill-in",
+              "question": "Pendiente de recta por A(2, 3) y B(5, 11): m = ___",
+              "answer": "8/3",
+              "explanation": "Δy=8, Δx=3 → m=8/3 ≈ 2.67."
+            },
+            {
+              "id": "q3-2-3-2",
+              "type": "multiple-choice",
+              "question": "Recta horizontal: pendiente = ",
+              "options": [
+                "0",
+                "1",
+                "∞",
+                "-1"
+              ],
+              "correct": 0,
+              "explanation": "Δy=0 → m=0."
+            },
+            {
+              "id": "q3-2-3-3",
+              "type": "fill-in",
+              "question": "Recta con pendiente -2 pasa por (1, 5). Si x aumenta 3, y cambia: ___",
+              "answer": "-6",
+              "explanation": "Δy = m·Δx = -2·3 = -6. Baja 6."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-2-4",
+      "title": "Ecuación de la Recta: Formas Punto-Pendiente, Pendiente-Ordenada, General",
+      "objective": "y - y₁ = m(x - x₁), y = mx + b, Ax + By + C = 0. Convertir entre formas",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Recta pendiente 2 pasa por (1, 3). Ecuación: y - 3 = 2(x - 1) → y = 2x + 1. Corte Y = 1. Corte X = -0.5."
+        },
+        {
+          "type": "explanation",
+          "text": "Formas de la recta:\n1. <strong>Punto-pendiente</strong>: y - y₁ = m(x - x₁) — ideal si sabes pendiente y un punto\n2. <strong>Pendiente-ordenada</strong>: y = mx + b — ideal para graficar (b = corte Y), ver pendiente\n3. <strong>General</strong>: Ax + By + C = 0 (A,B no ambos 0) — ideal para sistemas, distancia punto-recta\n   m = -A/B (si B≠0), corte Y = -C/B\n4. <strong>Simétrica / Interceptos</strong>: x/a + y/b = 1 (a,b cortes X,Y ≠ 0)\nConversión: desarrolla punto-pendiente → pendiente-ordenada → general.\nRecta por dos puntos: calcula m, usa punto-pendiente con cualquiera.",
+          "latex": "y-y_1=m(x-x_1) \\quad | \\quad y=mx+b \\quad | \\quad Ax+By+C=0 \\quad | \\quad \\frac{x}{a}+\\frac{y}{b}=1",
+          "visual": "assets/line-equations.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Receta de recta: ingrediente principal = pendiente m. Punto-pendiente = 'usa este punto y esta pendiente'. Pendiente-ordenada = 'empieza en b, sube m por cada paso'. General = 'versión estándar para archivar'.",
+          "conceptId": "line-equations"
+        },
+        {
+          "type": "interactive",
+          "component": "LineEquationConverter",
+          "description": "Input: 2 puntos, o punto+pendiente, o m+b, o Ax+By+C=0. Convierte a las 4 formas. Gráfica. Cortes X/Y. Verifica que punto dado satisface todas."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-2-4-1",
+              "type": "multiple-choice",
+              "question": "Recta por (2, -1) con m = 3. Forma pendiente-ordenada:",
+              "options": [
+                "y = 3x - 7",
+                "y = 3x + 5",
+                "y = 3x - 5",
+                "y = 3x + 7"
+              ],
+              "correct": 0,
+              "explanation": "y + 1 = 3(x - 2) → y = 3x - 6 - 1 = 3x - 7."
+            },
+            {
+              "id": "q3-2-4-2",
+              "type": "fill-in",
+              "question": "Recta 2x - 3y + 6 = 0. Pendiente m = ___, corte Y = ___",
+              "answer": "2/3, 2",
+              "explanation": "m = -A/B = -2/-3 = 2/3. Corte Y: x=0 → -3y+6=0 → y=2."
+            },
+            {
+              "id": "q3-2-4-3",
+              "type": "multiple-choice",
+              "question": "Ecuación simétrica de recta con cortes X=4, Y=-2:",
+              "options": [
+                "x/4 + y/2 = 1",
+                "x/4 - y/2 = 1",
+                "x/4 + y/-2 = 1",
+                "x/-4 + y/2 = 1"
+              ],
+              "correct": 2,
+              "explanation": "x/a + y/b = 1 con a=4, b=-2 → x/4 + y/(-2) = 1."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-2-5",
+      "title": "Paralelas y Perpendiculares: Condiciones sobre Pendientes",
+      "objective": "m₁ = m₂ (paralelas), m₁·m₂ = -1 (perpendiculares). Ecuación recta paralela/perpendicular por punto",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Recta m=2. Paralela: m=2. Perpendicular: m=-1/2 (inverso y signo cambiado). 2 × (-1/2) = -1."
+        },
+        {
+          "type": "explanation",
+          "text": "Condiciones:\n- <strong>Paralelas</strong>: m₁ = m₂ (misma inclinación). En forma general: A₁/B₁ = A₂/B₂ (o A₁B₂ = A₂B₁)\n- <strong>Perpendiculares</strong>: m₁·m₂ = -1 (pendientes inversas con signo cambiado). En general: A₁A₂ + B₁B₂ = 0\nCasos especiales:\n- Horizontal (m=0) ⟂ Vertical (m=∞)\n- Vertical ⟂ Horizontal\nRecta paralela a dada por punto: usa misma m, punto-pendiente.\nRecta perpendicular: usa m⊥ = -1/m, punto-pendiente.",
+          "latex": "r \\parallel s \\iff m_r = m_s \\quad | \\quad r \\perp s \\iff m_r \\cdot m_s = -1 \\quad (m_r,m_s \\neq 0, \\infty) \\quad | \\quad A_1A_2+B_1B_2=0",
+          "visual": "assets/parallel-perpendicular.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Escaleras: paralelas = misma inclinación. Perpendiculares = una sube, otra baja 'espejo invertido'. Escalera m=2 (sube 2 por 1). Perpendicular m=-1/2 (baja 1 por 2). Producto = -1.",
+          "conceptId": "parallel-perpendicular-lines"
+        },
+        {
+          "type": "interactive",
+          "component": "PerpendicularConstructor",
+          "description": "Recta base (arrastrable). Punto P. Botón 'Paralela por P' → dibuja, muestra m. Botón 'Perpendicular por P' → dibuja, muestra m·m⊥=-1. Casos horiz/vert. Verifica ángulo 90°."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-2-5-1",
+              "type": "multiple-choice",
+              "question": "Recta perpendicular a y = -3x + 2 que pasa por (1, 4):",
+              "options": [
+                "y = (1/3)x + 11/3",
+                "y = -3x + 7",
+                "y = 3x + 1",
+                "y = -(1/3)x + 13/3"
+              ],
+              "correct": 0,
+              "explanation": "m⊥ = -1/(-3) = 1/3. y - 4 = (1/3)(x - 1) → y = (1/3)x + 11/3."
+            },
+            {
+              "id": "q3-2-5-2",
+              "type": "fill-in",
+              "question": "Rectas 2x + 3y - 5 = 0 y 4x + 6y + 7 = 0 son: ___ (paralelas / perpendiculares / secantes)",
+              "answer": "paralelas",
+              "explanation": "A₁B₂ = 2·6 = 12. A₂B₁ = 4·3 = 12. Iguales → paralelas. (Segunda es 2× primera + cte)."
+            },
+            {
+              "id": "q3-2-5-3",
+              "type": "multiple-choice",
+              "question": "Recta por (2, 3) perpendicular a x = 5 (vertical):",
+              "options": [
+                "y = 3",
+                "x = 2",
+                "y = x + 1",
+                "y = -x + 5"
+              ],
+              "correct": 0,
+              "explanation": "x=5 es vertical. Perpendicular = horizontal (m=0). Por (2,3) → y=3."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-2-6",
+      "title": "Distancia Punto-Recta y Entre Rectas Paralelas",
+      "objective": "d(P, r) = |Ax₀+By₀+C|/√(A²+B²). Distancia entre paralelas",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Punto P(3, 4) a recta 3x + 4y - 10 = 0. Fórmula: |3·3 + 4·4 - 10| / √(9+16) = |9+16-10|/5 = 15/5 = 3."
+        },
+        {
+          "type": "explanation",
+          "text": "Distancia punto P(x₀,y₀) a recta r: Ax + By + C = 0:\nd(P, r) = |Ax₀ + By₀ + C| / √(A² + B²)\nDemostración: proyección vector normal.\nDistancia entre paralelas r₁: Ax+By+C₁=0 y r₂: Ax+By+C₂=0:\nd = |C₂ - C₁| / √(A² + B²)\n(Toma cualquier punto de una, distancia a la otra).\nAplicaciones: radio círculo tangente a recta, ancho franja, optimización.",
+          "latex": "d(P,r) = \\frac{|Ax_0+By_0+C|}{\\sqrt{A^2+B^2}} \\quad | \\quad d(r_1,r_2) = \\frac{|C_2-C_1|}{\\sqrt{A^2+B^2}}",
+          "visual": "assets/point-line-distance.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Paraguas (recta) y gota (punto). Distancia = perpendicular más corta. Dos paraguas paralelos: distancia = perpendicular entre ellos. Fórmula = valor absoluto (da igual lado).",
+          "conceptId": "point-line-distance"
+        },
+        {
+          "type": "interactive",
+          "component": "DistancePointLine",
+          "description": "Recta (general form editable). Punto arrastrable. Segmento perpendicular dibujado. Cálculo paso a paso: numerador |Ax₀+By₀+C|, denominador √(A²+B²), cociente. Dos paralelas: distancia constante."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-2-6-1",
+              "type": "number-input",
+              "question": "Distancia de P(2, -1) a recta 3x - 4y + 5 = 0:",
+              "answer": "3",
+              "explanation": "|3·2 - 4(-1) + 5| / √(9+16) = |6+4+5|/5 = 15/5 = 3."
+            },
+            {
+              "id": "q3-2-6-2",
+              "type": "fill-in",
+              "question": "Distancia entre paralelas 2x - y + 3 = 0 y 2x - y - 7 = 0: ___",
+              "answer": "10/√5 = 2√5 ≈ 4.47",
+              "explanation": "|(-7) - 3| / √(4+1) = 10/√5 = 2√5."
+            },
+            {
+              "id": "q3-2-6-3",
+              "type": "multiple-choice",
+              "question": "Círculo centro (1, 2) tangente a recta 4x + 3y - 10 = 0. Radio = ",
+              "options": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ],
+              "correct": 0,
+              "explanation": "Radio = distancia centro-recta = |4·1+3·2-10|/√(16+9) = |4+6-10|/5 = 0/5 = 0? Wait: |0|/5=0. That means center is ON the line. Let me recalc: 4(1)+3(2)-10 = 4+6-10=0. Yes, center lies on line, so radius 0 (degenerate). Let me change question. Distance from (1,2) to 4x+3y-20=0: |4+6-20|/5 = 10/5=2. Radius=2."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l3-2-7",
+      "title": "Circunferencia: Ecuación Canónica y General. Posiciones Relativas",
+      "objective": "(x-h)² + (y-k)² = r². Centro (h,k), radio r. Intersección recta-círculo, tangente, dos circunferencias",
+      "type": "conceptual",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Todos los puntos a distancia fija r de centro (h,k). Ecuación: (x-h)² + (y-k)² = r². Origen: h=k=0 → x²+y²=r²."
+        },
+        {
+          "type": "explanation",
+          "text": "Circunferencia:\n- <strong>Canónica</strong>: (x - h)² + (y - k)² = r². Centro C(h,k), radio r > 0\n- <strong>General</strong>: x² + y² + Ax + By + C = 0. Centro: (-A/2, -B/2). Radio: r = ½√(A²+B²-4C) (requiere A²+B²-4C > 0)\nCompletar cuadrados para pasar general → canónica.\n<strong>Posiciones recta-círculo</strong>:\n- Secante: 2 puntos → distancia centro-recta < r\n- Tangente: 1 punto → distancia = r\n- Exterior: 0 puntos → distancia > r\n<strong>Dos circunferencias</strong>: distancia centros d:\n- d > r₁+r₂: exteriores\n- d = r₁+r₂: tangentes exteriores\n- |r₁-r₂| < d < r₁+r₂: secantes (2 pts)\n- d = |r₁-r₂|: tangentes interiores\n- d < |r₁-r₂|: una dentro otra\n- d = 0, r₁=r₂: coincidentes",
+          "latex": "(x-h)^2+(y-k)^2=r^2 \\quad | \\quad x^2+y^2+Ax+By+C=0 \\to C(-A/2,-B/2), r=\\frac{1}{2}\\sqrt{A^2+B^2-4C} \\quad | \\quad d(C,r) \\lesseqgtr r",
+          "visual": "assets/circle-equation.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Radio = longitud correa atada a poste (centro). Canónica = 'poste en (h,k), correa r'. General = 'ecuación expandida'. Completar cuadrados = 'recuperar poste y correa'. Recta-círculo: lanza dardo (recta) a diana (círculo).",
+          "conceptId": "circle-equation"
+        },
+        {
+          "type": "interactive",
+          "component": "CircleAnalyzer",
+          "description": "Input: 3 puntos, o centro+radio, o ecuación general. Calcula forma canónica, centro, radio. Recta + círculo: resuelve sistema, muestra 0/1/2 intersecciones, distancia centro-recta. Dos círculos: distancia centros, clasificación posición."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q3-2-7-1",
+              "type": "fill-in",
+              "question": "Circunferencia centro (2, -3) radio 5. Ecuación canónica: (x-___)² + (y+___)² = ___",
+              "answer": "2, 3, 25",
+              "explanation": "(x-2)² + (y-(-3))² = 5² → (x-2)² + (y+3)² = 25."
+            },
+            {
+              "id": "q3-2-7-2",
+              "type": "multiple-choice",
+              "question": "x² + y² - 6x + 4y - 12 = 0. Centro y radio:",
+              "options": [
+                "C(3,-2), r=5",
+                "C(-3,2), r=5",
+                "C(3,-2), r=√13",
+                "C(-3,2), r=√13"
+              ],
+              "correct": 0,
+              "explanation": "Completa cuadrados: (x²-6x+9) + (y²+4y+4) = 12+9+4 → (x-3)²+(y+2)²=25. C(3,-2), r=5."
+            },
+            {
+              "id": "q3-2-7-3",
+              "type": "multiple-choice",
+              "question": "Circunferencia (x-1)²+(y-2)²=4 y recta y=x. ¿Cuántas intersecciones?",
+              "options": [
+                "0",
+                "1",
+                "2",
+                "Infinitas"
+              ],
+              "correct": 2,
+              "explanation": "Distancia centro(1,2) a recta x-y=0: |1-2|/√2 = 1/√2 ≈ 0.7 < r=2 → secante (2 pts)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

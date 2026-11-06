@@ -1,0 +1,503 @@
+{
+  "id": "m6-3",
+  "phaseId": "phase-6",
+  "number": "6.3",
+  "title": "Demostraciones",
+  "description": "Directa, contrapositiva, contradicción, inducción, contraejemplo",
+  "lessons": [
+    {
+      "id": "l6-3-1",
+      "title": "¿Qué es una Demostración? Estructura, Lógica, Estilo",
+      "objective": "Demostración = argumento lógico riguroso que establece verdad. Estructura: enunciado, hipótesis, desarrollo, conclusión. Estilo: claro, paso a paso, justificado. Diferencia con verificación numérica",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Verificar 1+2+...+100 = 5050 sumando no es demostración. Demostración: S = 1+...+100, también S = 100+...+1. Sumando: 2S = 101×100 → S=5050. Válido para CUALQUIER n."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Demostración matemática</strong>: argumento lógico deductivo que establece la verdad de un enunciado a partir de axiomas, definiciones y resultados previos.\n<strong>Estructura estándar</strong>:\n1. <strong>Enunciado claro</strong>: teorema, lema, proposición, corolario\n2. <strong>Hipótesis</strong>: qué se asume (dado)\n3. <strong>Tesis</strong>: qué se quiere probar (conclusión)\n4. <strong>Desarrollo</strong>: cadena de implicaciones lógicas, cada paso justificado (definición, axioma, teorema previo, álgebra)\n5. <strong>Conclusión</strong>: reafirma tesis, marca fin (■, QED, ∎)\n<strong>Estilo</strong>:\n- Lenguaje preciso, sin ambigüedades\n- Un paso por línea (o párrafo)\n- Cada afirmación justificada\n- Notación consistente\n- Distingue: 'por hipótesis', 'por definición', 'por teorema X', 'por álgebra'\n<strong>Tipos de enunciados</strong>:\n- Teorema: resultado principal, importante\n- Lema: resultado auxiliar para probar teorema\n- Corolario: consecuencia directa de teorema\n- Proposición: resultado menor, autónomo\n- Conjetura: enunciado creído verdadero, no probado aún",
+          "latex": "Estructura: Hip\\'otesis \\Rightarrow \\text{paso 1} \\Rightarrow \\text{paso 2} \\Rightarrow \\dots \\Rightarrow Tesis \\quad | \\quad \\text{Justificaciones: Def, Ax, Teo, \\'Algebra} \\quad | \\quad \\blacksquare",
+          "visual": "assets/proof-structure.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Demostración = 'receta lógica' que cualquiera puede seguir y verificar. Como construir edificio: cimientos (axiomas/definiciones) → pilares (lemas/teoremas previos) → planta objetivo (teorema). Cada ladrillo (paso) debe estar bien colocado y justificado. Verificación numérica = 'probé y funcionó'; demostración = 'funciona SIEMPRE y aquí está por qué'.",
+          "conceptId": "proof-structure"
+        },
+        {
+          "type": "interactive",
+          "component": "ProofStructureLab",
+          "description": "Editor demostraciones estructurado: 1) Enunciado (teorema/lema). 2) Hipótesis / Tesis. 3) Pasos: cada línea = afirmación + justificación (dropdown: Def, Ax, Teo, Algebra, Previo). 4) Validador: ¿cada paso sigue lógicamente? ¿Justificación válida? 5) Plantillas: demostración directa, contrapositiva, contradicción, inducción. 6) Exporta: LaTeX, Markdown, texto plano. Biblioteca lemas/teoremas comunes (desigualdades, álgebra, trigonometría)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-3-1-1",
+              "type": "multiple-choice",
+              "question": "En demostración, cada paso debe estar:",
+              "options": [
+                "Justificado",
+                "Intuitivo",
+                "Obvio",
+                "Abreviado"
+              ],
+              "correct": 0,
+              "explanation": "Cada afirmación debe tener justificación explícita (definición, axioma, teorema previo, manipulación algebraica válida)."
+            },
+            {
+              "id": "q6-3-1-2",
+              "type": "fill-in",
+              "question": "Diferencia entre lema y corolario: lema = ___, corolario = ___",
+              "answer": "resultado auxiliar para probar teorema, consecuencia directa de teorema",
+              "explanation": "Lema = herramienta para probar algo mayor. Corolario = 'regalo' que sale directo de teorema ya probado."
+            },
+            {
+              "id": "q6-3-1-3",
+              "type": "multiple-choice",
+              "question": "Símbolo tradicional fin de demostración:",
+              "options": [
+                "■",
+                "★",
+                "♥",
+                "◆"
+              ],
+              "correct": 0,
+              "explanation": "■ (QED, quod erat demonstrandum). También ∎ o Q.E.D."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-3-2",
+      "title": "Demostración Directa: De Hipótesis a Tesis",
+      "objective": "Asume hipótesis, aplica definiciones/teoremas/álgebra, llega a tesis. Ejemplos: suma pares es par, producto impares es impar, desigualdades",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Demuestra: suma de dos números pares es par. Sean 2a y 2b pares. Suma = 2a+2b = 2(a+b). a+b entero ⇒ 2(a+b) par. ■ Directa: hipótesis → álgebra → tesis."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Demostración directa</strong>: asume hipótesis verdaderas, encadena deducciones válidas hasta alcanzar tesis.\nEstrategia:\n1. Escribe hipótesis claramente (simboliza)\n2. Escribe tesis claramente (qué debes llegar)\n3. Aplica definiciones (desempaqueta conceptos)\n4. Usa álgebra, teoremas previos, lógica\n5. Llega a expresión que coincide con tesis\n5. Concluye\n<strong>Ejemplos clásicos</strong>:\n- Par + par = par: 2a+2b=2(a+b)\n- Impar × impar = impar: (2a+1)(2b+1)=2(2ab+a+b)+1\n- Si a|b y b|c ⇒ a|c (divisibilidad)\n- Desigualdades: si a<b y c<d ⇒ a+c<b+d\n- Funciones: si f,g crecientes ⇒ f+g creciente\n<strong>Consejos</strong>:\n- Trabaja hacia adelante (de hipótesis) Y hacia atrás (desde tesis) → punto medio\n- Desempaqueta definiciones: 'par' → '2k', 'divisible' → 'existe k', 'límite' → 'ε-δ'\n- No asumas lo que quieres probar (petición de principio)",
+          "latex": "Directa: H \\Rightarrow \\dots \\Rightarrow T \\quad | \\quad \\text{Par: } 2a, 2b \\Rightarrow 2a+2b=2(a+b) \\text{ par} \\quad | \\quad \\text{Impar}^2: (2k+1)^2=4k^2+4k+1=2(2k^2+2k)+1 \\text{ impar}",
+          "visual": "assets/direct-proof.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Directa = 'camino recto de A a B'. Hipótesis = punto partida. Tesis = destino. Cada paso = calle bien pavimentada (justificada). No atajos (falacias). Si te atascas, trabaja desde destino hacia atrás (ingeniería inversa).",
+          "conceptId": "direct-proof"
+        },
+        {
+          "type": "interactive",
+          "component": "DirectProofTrainer",
+          "description": "Generador teoremas para demostración directa: paridad, divisibilidad, desigualdades, funciones, conjuntos, trigonometría. Editor pasos: cada línea = afirmación + justificación (dropdown). Validador: verifica cada paso (álgebra simbólica, lógica). Pistas: 'desempaqueta definición', 'usa teorema X', 'factoriza', 'completa cuadrado'. Biblioteca plantillas: paridad, divisibilidad, desigualdades, límites, derivadas."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-3-2-1",
+              "type": "fill-in",
+              "question": "Demuestra directo: producto de dos impares es impar. (2a+1)(2b+1) = 4ab+2a+2b+1 = 2(___) + 1",
+              "answer": "2ab+a+b",
+              "explanation": "(2a+1)(2b+1) = 4ab+2a+2b+1 = 2(2ab+a+b)+1. Forma 2k+1 ⇒ impar."
+            },
+            {
+              "id": "q6-3-2-2",
+              "type": "multiple-choice",
+              "question": "Demostrar: si a|b y b|c entonces a|c. Primer paso:",
+              "options": [
+                "Escribe a|b ⇒ ∃k: b=ak",
+                "Escribe c = ak",
+                "Divide c entre a",
+                "Asume a=c"
+              ],
+              "correct": 0,
+              "explanation": "Definición divisibilidad: a|b ⇔ ∃k∈ℤ: b=ak. Igual b|c ⇒ ∃m: c=bm. Luego c = (ak)m = a(km) ⇒ a|c."
+            },
+            {
+              "id": "q6-3-2-3",
+              "type": "fill-in",
+              "question": "Demuestra: suma de dos múltiplos de 5 es múltiplo de 5. 5a + 5b = 5(___)",
+              "answer": "a+b",
+              "explanation": "5a+5b = 5(a+b). a+b entero ⇒ múltiplo de 5."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-3-3",
+      "title": "Demostración por Contrapositiva: ¬Q ⇒ ¬P equivale a P ⇒ Q",
+      "objective": "En lugar de P ⇒ Q, demuestra ¬Q ⇒ ¬P. Útil cuando negar tesis simplifica. Ej: si n² par ⇒ n par. Contrapositiva: n impar ⇒ n² impar",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Demuestra: si n² es par, entonces n es par. Directa difícil. Contrapositiva: si n NO es par (impar), entonces n² NO es par (impar). n=2k+1 → n²=4k²+4k+1=2(2k²+2k)+1 impar. ■"
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Contrapositiva</strong>: P ⇒ Q es lógicamente equivalente a ¬Q ⇒ ¬P.\nEn lugar de demostrar 'si P entonces Q', demuestras 'si NO Q entonces NO P'.\nCuándo usar:\n- La negación de la tesis (¬Q) es más fácil de manejar que la hipótesis (P)\n- La tesis es una negación (Q = 'no R')\n- La hipótesis es compleja, la tesis simple\n<strong>Ejemplos</strong>:\n- n² par ⇒ n par. Contrapositiva: n impar ⇒ n² impar. Fácil: (2k+1)² = 2(2k²+2k)+1 impar.\n- Si ab irracional ⇒ a irracional o b irracional. Contrapositiva: a,b racionales ⇒ ab racional.\n- Si f continua en [a,b] y f(a)f(b)<0 ⇒ ∃c: f(c)=0 (Bolzano). Contrapositiva: ∀c f(c)≠0 ⇒ f(a)f(b)≥0.\n<strong>Regla práctica</strong>: si al intentar directa te atas al inicio, prueba contrapositiva.",
+          "latex": "P \\Rightarrow Q \\equiv \\neg Q \\Rightarrow \\neg P \\quad | \\quad \\text{Ej: } n^2 \\text{ par } \\Rightarrow n \\text{ par } \\equiv n \\text{ impar } \\Rightarrow n^2 \\text{ impar} \\quad | \\quad (2k+1)^2=4k^2+4k+1=2(2k^2+2k)+1",
+          "visual": "assets/contrapositive-proof.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Contrapositiva = 'camino alternativo'. En lugar de subir montaña por cara norte (difícil), das vuelta y subes por cara sur (fácil). Llegas a misma cima. Lógicamente idéntico: 'si llueve me mojo' ≡ 'si no me mojo, no llovió'.",
+          "conceptId": "contrapositive-proof"
+        },
+        {
+          "type": "interactive",
+          "component": "ContrapositiveTrainer",
+          "description": "Generador enunciados P⇒Q. Usuario decide: ¿directa o contrapositiva? Si contrapositiva: escribe ¬Q, ¬P, demuestra ¬Q⇒¬P. Compara dificultad. Ejemplos: paridad, divisibilidad, irracionalidad, continuidad, monotonicidad, desigualdades. Verificador: ¿¬Q⇒¬P probado? ¿Equivale a original?"
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-3-3-1",
+              "type": "multiple-choice",
+              "question": "Contrapositiva de 'si x > 0 entonces x² > 0':",
+              "options": [
+                "si x² > 0 entonces x > 0",
+                "si x² ≤ 0 entonces x ≤ 0",
+                "si x ≤ 0 entonces x² ≤ 0",
+                "si x < 0 entonces x² > 0"
+              ],
+              "correct": 1,
+              "explanation": "P: x>0, Q: x²>0. ¬Q: x²≤0 (≡ x=0). ¬P: x≤0. Contrapositiva: x²≤0 ⇒ x≤0."
+            },
+            {
+              "id": "q6-3-3-2",
+              "type": "fill-in",
+              "question": "Demuestra contrapositiva: si ab es par, entonces a par o b par. Contrapositiva: a impar Y b impar ⇒ ab ___",
+              "answer": "impar",
+              "explanation": "Contrapositiva: ¬(a par ∨ b par) ≡ a impar ∧ b impar. Demuestra: impar×impar = impar ⇒ ab impar (no par)."
+            },
+            {
+              "id": "q6-3-3-3",
+              "type": "multiple-choice",
+              "question": "Cuándo es recomendable usar contrapositiva:",
+              "options": [
+                "Siempre",
+                "Cuando ¬Q es más simple que P",
+                "Solo en paridad",
+                "Nunca"
+              ],
+              "correct": 1,
+              "explanation": "Útil cuando la negación de la tesis (¬Q) es más manejable que la hipótesis original (P)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-3-4",
+      "title": "Demostración por Contradicción (Reductio ad Absurdum)",
+      "objective": "Asume lo contrario de lo que quieres probar, deriva contradicción (Q ∧ ¬Q). Conclusión: lo asumido es falso, luego tesis verdadera. √2 irracional, infinitud primos, P→Q asumiendo P∧¬Q",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "√2 irracional. Asume contrario: √2 = a/b (fracción irreducible). 2 = a²/b² ⇒ a²=2b² ⇒ a² par ⇒ a par ⇒ a=2k ⇒ 4k²=2b² ⇒ b²=2k² ⇒ b par. a,b ambos pares ⇒ contradicción (no irreducible). ■"
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Reductio ad absurdum (por contradicción)</strong>:\nPara probar P:\n1. Asume ¬P (lo contrario de lo que quieres probar)\n2. Deduce consecuencias lógicas\n3. Llega a una contradicción (Q ∧ ¬Q, o hecho conocido falso, o ¬P contradice hipótesis)\n3. Conclusión: ¬P es falso, por tanto P es verdadero\n<strong>Esquema para P ⇒ Q</strong>: asume P ∧ ¬Q, deriva contradicción.\n<strong>Ejemplos clásicos</strong>:\n- √2 irracional (asume racional)\n- Infinitud primos (asume finitos p₁...pₙ, considera N=p₁...pₙ+1)\n- No hay máximo en ℕ (asume M máximo, M+1 mayor)\n- √p irracional para p primo\n- No existe máximo en conjunto abierto\n- Teorema: si f continua en [a,b] y f(a)f(b)<0, ∃c: f(c)=0 (asume ∀x f(x)≠0, deriva contradicción con Bolzano)\n<strong>Cuándo usar</strong>:\n- Tesis es negación (demostrar 'no existe', 'es irracional', 'no hay máximo')\n- Directa y contrapositiva parecen difíciles\n- Hipótesis permiten construir objeto que lleva a contradicción",
+          "latex": "\\text{Para probar } P: \\text{asume } \\neg P \\vdash \\bot (Q\\land\\neg Q) \\Rightarrow P \\quad | \\quad \\sqrt{2}=\\frac{a}{b} \\Rightarrow a^2=2b^2 \\Rightarrow a,b \\text{ pares } \\Rightarrow \\bot \\quad | \\quad \\text{Infinitud primos: } N=p_1\\dots p_n+1 \\Rightarrow \\text{nuevo primo}",
+          "visual": "assets/contradiction-proof.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Contradicción = 'prueba por descartar lo imposible'. Sherlock: 'eliminas lo imposible, lo que queda, por improbable, es verdad'. Asumes culpable X, pruebas coartada irrompible → contradicción → X inocente. En matemáticas: asumes √2 racional, construyes fracción irreducible que resulta reducible → contradicción → √2 irracional.",
+          "conceptId": "contradiction-proof"
+        },
+        {
+          "type": "interactive",
+          "component": "ContradictionTrainer",
+          "description": "Generador teoremas para contradicción: irracionalidad (√p, √2+√3), infinitud (primos, puntos en circunferencia), no existencia (máximo en abierto, solución entera), propiedades (si a²+b²=c² entonces...). Editor: 1) Escribe tesis. 2) Escribe negación (asumo). 3) Pasos deducción. 4) Identifica contradicción (marca Q y ¬Q). 5) Concluye. Verificador: ¿contradicción real? ¿Usó hipótesis correctamente?"
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-3-4-1",
+              "type": "fill-in",
+              "question": "Demuestra por contradicción: √3 irracional. Asume √3 = a/b irreducible. 3 = a²/b² ⇒ a² = 3b² ⇒ a² múltiplo 3 ⇒ a múltiplo 3 ⇒ a=3k ⇒ 9k²=3b² ⇒ b²=3k² ⇒ b múltiplo 3. Contradicción: ___",
+              "answer": "a y b ambos múltiplos de 3 (no irreducible)",
+              "explanation": "a=3k, b=3m ⇒ a/b = 3k/3m = k/m, contradice irreducible."
+            },
+            {
+              "id": "q6-3-4-2",
+              "type": "multiple-choice",
+              "question": "Infinitud primos por contradicción: asume finitos p₁...pₙ. Define N = p₁...pₙ + 1. N es:",
+              "options": [
+                "Primo",
+                "Compuesto",
+                "O primo o tiene divisor primo no en lista",
+                "Par"
+              ],
+              "correct": 2,
+              "explanation": "N no divisible por ningún pᵢ (resto 1). Si N primo → nuevo primo. Si N compuesto → tiene divisor primo ≠ pᵢ. En ambos casos, contradice finitud."
+            },
+            {
+              "id": "q6-3-4-3",
+              "type": "fill-in",
+              "question": "Demuestra por contradicción: no existe máximo en ℕ. Asume M máximo. Entonces M+1 ∈ ℕ y M+1 > M. Contradicción: ___",
+              "answer": "M no es máximo",
+              "explanation": "M+1 ∈ ℕ y M+1 > M contradice que M sea el máximo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-3-5",
+      "title": "Inducción Matemática: Base, Paso Inductivo, Variante Fuerte, Estructural",
+      "objective": "Principio inducción: P(1) verdadera ∧ (P(k) ⇒ P(k+1)) ⇒ ∀n P(n). Base, hipótesis inductiva, paso inductivo. Inducción fuerte: asume P(1)...P(k) ⇒ P(k+1). Inducción estructural (listas, árboles)",
+      "type": "procedural",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Suma primeros n impares = n². Base n=1: 1=1² ✓. Paso: asume 1+3+...+(2k-1)=k². Suma siguiente: k²+(2k+1)=(k+1)² ✓. Por inducción, verdadero ∀n≥1. Dominó: ficha 1 cae, cada ficha tira siguiente ⇒ todas caen."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Principio de inducción matemática</strong>:\nPara probar P(n) ∀n ∈ ℕ (o n ≥ n₀):\n1. <strong>Base</strong>: demuestra P(n₀) verdadera (usualmente n₀=1)\n2. <strong>Paso inductivo</strong>: asume P(k) verdadera para k ≥ n₀ arbitrario (hipótesis inductiva), demuestra P(k+1) verdadera\n3. Conclusión: P(n) verdadera ∀n ≥ n₀\n<strong>Inducción fuerte (completa)</strong>:\nPaso: asume P(n₀), P(n₀+1), ..., P(k) todas verdaderas ⇒ demuestra P(k+1)\nÚtil cuando P(k+1) depende de varios anteriores (Fibonacci, división, árboles).\n<strong>Inducción estructural</strong>: en estructuras recursivas (listas, árboles, fórmulas).\n- Base: casos base estructura\n- Paso: asume propiedad en subestructuras ⇒ propiedad en estructura\n<strong>Errores comunes</strong>:\n- Olvidar base\n- Asumir P(k+1) en lugar de deducirla\n- Usar hipótesis inductiva incorrectamente\n- Base incorrecta (n₀ equivocado)\n<strong>Variantes</strong>: inducción descendente (k ⇒ k-1), doble inducción (dos variables), inducción transfinita (ordinales).",
+          "latex": "P(1) \\land (\\forall k\\ge1, P(k)\\Rightarrow P(k+1)) \\Rightarrow \\forall n\\ge1 P(n) \\quad | \\quad \\text{Fuerte: } P(1)\\land\\dots\\land P(k) \\Rightarrow P(k+1) \\quad | \\quad \\text{Estructural: base + paso constructores}",
+          "visual": "assets/induction-proof.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Dominó: ficha 1 cae (base). Cada ficha tira la siguiente (paso inductivo). Si primera cae y cada una tira siguiente ⇒ todas caen. Inducción fuerte = 'cada ficha apoyada en TODAS las anteriores'. Estructural = 'construyes edificio piso a piso: base (cimientos), cada piso apoyado en inferiores'.",
+          "conceptId": "induction-proof"
+        },
+        {
+          "type": "interactive",
+          "component": "InductionTrainer",
+          "description": "Generador problemas inducción: sumas (∑i, ∑i², ∑i³), divisibilidad (n³-n múltiplo 6), desigualdades (2ⁿ>n²), recurrencias (Fibonacci), geometría (regiones círculo), algoritmos (correctitud). Editor: 1) Escribe P(n). 2) Base: verifica n₀. 3) Hipótesis: escribe P(k). 4) Paso: demuestra P(k+1) usando P(k). 5) Inducción fuerte: opción 'usa P(1)...P(k)'. 5) Estructural: define estructura recursiva. Verificador: cada paso válido? ¿Base cubierta? ¿Hipótesis usada correctamente?"
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-3-5-1",
+              "type": "fill-in",
+              "question": "Demuestra por inducción: 1+2+...+n = n(n+1)/2. Base n=1: 1 = 1(2)/2 = 1 ✓. Hipótesis: 1+...+k = k(k+1)/2. Paso: suma k+1: k(k+1)/2 + (k+1) = (k+1)(___)/2",
+              "answer": "k+2",
+              "explanation": "k(k+1)/2 + (k+1) = (k+1)(k/2 + 1) = (k+1)(k+2)/2 = (k+1)((k+1)+1)/2. P(k+1) verificada."
+            },
+            {
+              "id": "q6-3-5-2",
+              "type": "multiple-choice",
+              "question": "Inducción fuerte se usa cuando:",
+              "options": [
+                "P(k+1) depende solo de P(k)",
+                "P(k+1) depende de varios P(i) anteriores",
+                "Base es difícil",
+                "Tesis es falsa"
+              ],
+              "correct": 1,
+              "explanation": "Fuerte: asume P(1)...P(k) todas verdaderas. Útil para Fibonacci, división, árboles donde paso necesita múltiples anteriores."
+            },
+            {
+              "id": "q6-3-5-3",
+              "type": "fill-in",
+              "question": "Error común inducción: 'asumimos P(k+1) y deducimos P(k)'. Esto es:",
+              "answer": "inverso / circular / petición de principio",
+              "explanation": "Debes asumir P(k) y deducir P(k+1). Asumir conclusión es petición de principio (falacia)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-3-6",
+      "title": "Contraejemplo: Refutar Afirmaciones Universales",
+      "objective": "Para refutar ∀x P(x), basta un x₀ tal que ¬P(x₀). Busca contraejemplo. Diferencia: refutar ∃x P(x) requiere probar ¬∃x P(x) ≡ ∀x ¬P(x) (más difícil)",
+      "type": "procedural",
+      "durationMin": 6,
+      "content": [
+        {
+          "type": "hook",
+          "text": "'Todos los cisnes son blancos'. Un cisne negro refuta. 'Todos los primos son impares'. 2 es primo y par → contraejemplo. Para refutar '∀x P(x)', basta UN caso donde P sea falso."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Contraejemplo</strong>: para refutar una afirmación universal ∀x P(x), basta exhibir UN elemento x₀ tal que ¬P(x₀) (P(x₀) es falso).\n- Una sola excepción basta para refutar 'para todo'\n- No hace falta probar que es falsa 'a menudo', solo UNA vez\n<strong>Estrategia busca contraejemplo</strong>:\n- Casos frontera (0, 1, -1, vacío, infinito)\n- Casos simétricos / asimétricos\n- Valores extremos (muy grandes, muy pequeños)\n- Casos degenerados (conjuntos vacíos, funciones constantes)\n- Contraejemplos famosos:\n  - 'Todos primos impares' → 2\n  - 'a²+b²=(a+b)²' → a=1,b=1: 1+1≠4\n  - 'f continua ⇒ f derivable' → |x| en 0\n  - 'límite existe ⇒ función continua' → sin(1/x) en 0\n  - 'convergente puntual ⇒ convergente uniforme' → xⁿ en [0,1]\n<strong>Refutar existencia ∃x P(x)</strong>: más difícil. Debes probar ∀x ¬P(x) (ningún x cumple). Requiere demostración general, no solo un caso.",
+          "latex": "\\text{Refutar } \\forall x P(x): \\text{basta } x_0: \\neg P(x_0) \\quad | \\quad \\text{Refutar } \\exists x P(x): \\text{probar } \\forall x \\neg P(x) \\quad | \\quad \\text{Contraejemplos: } 2 \\text{ primo par}, |x| \\text{ no derivable en } 0",
+          "visual": "assets/counterexample.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Contrato 'todos mis productos duran 10 años'. Un cliente trae uno roto a los 2 años → contrato roto. No necesitas probar que TODOS fallan, solo UNO. 'Todos los políticos son corruptos' → uno honesto refuta. Contraejemplo = 'agujero en la armadura universal'.",
+          "conceptId": "counterexample"
+        },
+        {
+          "type": "interactive",
+          "component": "CounterexampleFinder",
+          "description": "Generador conjeturas falsas: '∀x∈ℝ, x²>x', '∀n∈ℕ, n²+n+41 primo', '∀f continua, f derivable', '∀A,B matrices, AB=BA'. Usuario: 1) Identifica si universal o existencial. 2) Si universal: busca contraejemplo (casos frontera, extremos, simplicidad). 3) Verifica: ¿P(x₀) falso? 4) Si existencial: explica por qué un caso no refuta. Generador: 'Encuentra contraejemplo a: ∀x∈ℤ, x³>x'."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-3-6-1",
+              "type": "multiple-choice",
+              "question": "Contraejemplo a '∀x∈ℝ, x² ≥ x':",
+              "options": [
+                "x = 2",
+                "x = 0.5",
+                "x = -1",
+                "x = 10"
+              ],
+              "correct": 1,
+              "explanation": "x=0.5: 0.25 ≥ 0.5 es FALSO. Un solo contraejemplo basta."
+            },
+            {
+              "id": "q6-3-6-2",
+              "type": "fill-in",
+              "question": "Refutar '∀n∈ℕ, n²+n+41 es primo'. n=___ da 41²=1681=41×41 (compuesto)",
+              "answer": "40",
+              "explanation": "n=40: 40²+40+41 = 1600+40+41 = 1681 = 41×41 (compuesto). Euler: n²+n+41 da primos para n=0..39."
+            },
+            {
+              "id": "q6-3-6-3",
+              "type": "multiple-choice",
+              "question": "Para refutar '∃x P(x)' (existe x tal que P(x)):",
+              "options": [
+                "Basta un caso donde P(x) sea falso",
+                "Debes probar que para TODO x, P(x) es falso",
+                "Basta un caso donde P(x) sea verdadero",
+                "Es imposible refutar"
+              ],
+              "correct": 1,
+              "explanation": "Refutar existencia = probar universalidad de negación: ¬∃x P(x) ≡ ∀x ¬P(x). Requiere demostración general, no un caso."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-3-7",
+      "title": "Estrategias de Resolución: Análisis/Síntesis, Trabajar Hacia Atrás, Casos, Invariantes, Simetría",
+      "objective": "Toolkit estrategias: análisis/síntesis (desde tesis a hipótesis), trabajar hacia atrás, división en casos, invariantes (cantidad que no cambia), simetría, extremal, pigeonhole, coloreo, invariante monovariante",
+      "type": "procedural",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Problema: cubrir tablero 8×8 sin 2 esquinas opuestas con dominós 2×1. Imposible. Invarianza: cada dominó cubre 1 blanco + 1 negro. Esquinas opuestas = mismo color. Quedan 32 de un color, 30 del otro. Imposible cubrir."
+        },
+        {
+          "type": "explanation",
+          "text": "Estrategias poderosas:\n1. <strong>Análisis/Síntesis</strong>: trabaja desde tesis hacia hipótesis (análisis), luego invierte camino (síntesis). '¿Qué necesito para llegar a tesis?'\n2. <strong>Trabajar hacia atrás</strong>: desde meta hacia inicio. Útil en ecuaciones, geometría, algoritmos.\n3. <strong>División en casos</strong>: agota posibilidades. Par/impar, signo, módulo, intervalos. 'Divide y vencerás'.\n4. <strong>Invariante</strong>: cantidad que NO cambia bajo operaciones permitidas. Paridad, suma módulo n, color, área, perímetro, determinante, traza.\n5. <strong>Simetría</strong>: explota simetría del problema. Reduce casos, simplifica cálculos.\n6. <strong>Principio extremal</strong>: considera objeto máximo/mínimo (área, distancia, valor). A menudo revela contradicción o estructura.\n7. <strong>Principio de la palomera (pigeonhole)</strong>: n+1 objetos en n cajas ⇒ al menos una caja con ≥2. Generalización: n objetos en k cajas ⇒ alguna con ≥⌈n/k⌉.\n8. <strong>Coloreo</strong>: asigna colores a elementos para revelar invariante (ajedrez, bipartito).\n9. <strong>Invariante monovariante</strong>: cantidad que cambia en una dirección (siempre aumenta/disminuye). Garantiza terminación.\n10. <strong>Doble conteo</strong>: cuenta mismo conjunto de dos formas → igualdad.",
+          "latex": "Invariante: I(estado) = constante \\quad | \\quad Palomera: n+1 objetos en n cajas \\Rightarrow \\exists caja: \\ge 2 \\quad | \\quad Doble conteo: \\sum_{i} |A_i| = \\sum_{j} |B_j| \\quad | \\quad Coloreo: bipartito \\Rightarrow \\text{paridad}",
+          "visual": "assets/proof-strategies.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Invariante = 'lo que no cambia aunque muevas piezas'. Coloreo = 'pinta de colores para ver patrón'. Palomera = 'si 5 palomas en 4 huecos, alguna comparte'. Extremal = 'mira el más grande/pequeño'. Doble conteo = 'cuenta filas y columnas, debe dar igual'. Simetría = 'si problema simétrico, solución simétrica'.",
+          "conceptId": "proof-strategies"
+        },
+        {
+          "type": "interactive",
+          "component": "StrategyLab",
+          "description": "Biblioteca problemas clásicos por estrategia:\n- Invariante: tablero ajedrez + dominós, juego 15-puzzle, paridad permutaciones\n- Palomera: 5 puntos en cuadrado unitario → 2 dist ≤ √2/2; 13 personas → 2 mismo mes\n- Extrema: punto más lejano, triangulación, convexo\n- Coloreo: tablero damas, bipartito, teorema 4 colores\n- Monovariante: algoritmo Euclides (resto disminuye), burbuja (inversiones disminuyen)\n- Doble conteo: handshake lemma (∑deg = 2|E|), sumas diagonales matriz\n- Simetría: problemas geométricos, polinomios simétricos\nUsuario elige estrategia, ve problema, intenta resolver, ve solución con estrategia destacada."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-3-7-1",
+              "type": "multiple-choice",
+              "question": "En tablero 8×8, quitas 2 esquinas opuestas. ¿Se puede cubrir con dominós 2×1? Invarianza: cada dominó cubre 1 blanco + 1 negro. Esquinas opuestas = mismo color. Quedan 32 de un color, 30 del otro. ¿Posible?",
+              "options": [
+                "Sí",
+                "No",
+                "Depende orientación",
+                "Solo si rotas tablero"
+              ],
+              "correct": 1,
+              "explanation": "Imposible. Cada dominó cubre 1 blanco + 1 negro. Quedan 32 de un color, 30 del otro → imposible emparejar todos."
+            },
+            {
+              "id": "q6-3-7-2",
+              "type": "fill-in",
+              "question": "Principio palomera: 10 personas en fiesta. Al menos ___ personas nacieron en mismo mes",
+              "answer": "2",
+              "explanation": "10 personas (palomas) en 12 meses (huecos). 10 ≤ 12, pero principio dice: si n>k, al menos 2 en mismo. Aquí n=10, k=12, no garantiza 2 en mismo mes. Wait: 10 personas, 12 meses → PUEDE ser todos distintos meses. Principio palomera garantiza ≥2 solo si n > k. Ejemplo correcto: 13 personas → al menos 2 mismo mes (13>12)."
+            },
+            {
+              "id": "q6-3-7-3",
+              "type": "multiple-choice",
+              "question": "Doble conteo: en grafo, suma grados vértices = ___",
+              "answer": "2 × número aristas",
+              "explanation": "Cada arista contribuye 2 a suma grados (uno por cada extremo). ∑deg(v) = 2|E|."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-3-8",
+      "title": "Proyecto Módulo: Mini-Olimpiada de Demostraciones",
+      "objective": "Colección 10 problemas variados (álgebra, teoría números, geometría, combinatoria, análisis). Cada uno: enunciado, pista estrategia, solución completa con justificaciones. Autoevaluación: claridad, rigor, creatividad. Rúbrica: correcto, elegante, completo",
+      "type": "project",
+      "durationMin": 25,
+      "content": [
+        {
+          "type": "hook",
+          "text": "10 problemas olímpicos mini: 1) Suma cubos = cuadrado suma. 2) Infinitud primos forma 4k+3. 3) Puntos en plano, distancias enteras. 4) Funcional f(x+y)=f(x)+f(y). 4) Invariante tablero. 5) Inducción Fibonacci. 6) Contraejemplo convergencia. 7) Geometría círculo. 8) Combinatoria palomera. 9) Desigualdad medios. 10) Contradicción irracionalidad. Tú eliges 3, resuelves, autoevalúas con rúbrica."
+        },
+        {
+          "type": "explanation",
+          "text": "Problemas selección (nivel accesible pero rico):\n1. <strong>Álgebra</strong>: Demuestra 1³+2³+...+n³ = (1+2+...+n)²\n2. <strong>Teoría números</strong>: Infinitos primos de la forma 4k+3 (adaptación Euclides)\n3. <strong>Geometría/Combinatoria</strong>: 5 puntos en cuadrado unitario → 2 a distancia ≤ √2/2\n4. <strong>Análisis/Funcional</strong>: f:ℝ→ℝ continua, f(x+y)=f(x)+f(y) ⇒ f(x)=cx\n5. <strong>Invariante</strong>: Tablero 8×8 menos 2 esquinas opuestas → imposible cubrir con dominós 2×1\n6. <strong>Inducción</strong>: F₁+F₂+...+Fₙ = Fₙ₊₂ - 1 (Fibonacci)\n7. <strong>Contraejemplo</strong>: fₙ(x)=xⁿ en [0,1] converge puntual a f(x)={0 si x<1, 1 si x=1} (no continua) → convergencia puntual NO implica uniforme\n8. <strong>Geometría</strong>: Potencia punto respecto circunferencia: PA·PB = PC·PD\n9. <strong>Desigualdad</strong>: Media aritmética ≥ Media geométrica ≥ Media armónica (AM-GM-HM)\n10. <strong>Contradicción</strong>: √2 + √3 irracional (asume racional, eleva al cuadrado)\n\n<strong>Rúbrica autoevaluación</strong> (0-10 cada):\n- Correctitud lógica (pasos válidos, sin saltos)\n- Rigor (definiciones usadas, casos frontera cubiertos)\n- Claridad (estructura clara, justificaciones explícitas)\n- Elegancia (conciso, evita cálculos innecesarios, insight)\n- Completitud (casos frontera, base inductiva, contraejemplos si refuta)\n\n<strong>Autoevaluación</strong>: califica tu solución, identifica puntos débiles, reescribe mejorando.",
+          "latex": "\\text{Problemas: } \\sum k^3 = (\\sum k)^2, \\; \\infty \\text{ primos } 4k+3, \\; \\text{5 puntos } \\to \\sqrt{2}/2, \\; f(x+y)=f(x)+f(y) \\to cx, \\; \\text{domin\\'os}, \\; \\sum F_i = F_{n+2}-1, \\; x^n \\not\\to \\text{unif}, \\; AM\\ge GM\\ge HM, \\; \\sqrt{2}+\\sqrt{3} \\notin \\mathbb{Q}",
+          "visual": "assets/olympiad-proofs.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "OlympiadProofLab",
+          "description": "Selecciona 3 problemas de 10. Para cada uno:\n1. Lee enunciado + pista estrategia (opcional).\n2. Escribe demostración en editor estructurado (pasos + justificaciones).\n3. Autoevalúa con rúbrica (5 criterios, 0-10 cada).\n4. Ve solución modelo + comparación lado a lado.\n4. Identifica: ¿dónde fallé? ¿Qué estrategia usé? ¿Qué mejoraría?\n5. Reescribe versión mejorada.\n5. Estadísticas: % problemas resueltos, puntuación media, estrategia más usada, tiempo medio.\nExporta: portfolio demostraciones (PDF), certificado completion."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-3-8-1",
+              "type": "multiple-choice",
+              "question": "Estrategia para 'demuestra que suma primeros n impares = n²':",
+              "options": [
+                "Contradicción",
+                "Inducción matemática",
+                "Contrapositiva",
+                "Análisis dimensional"
+              ],
+              "correct": 1,
+              "explanation": "Inducción natural: base n=1 (1=1²), paso: k² + (2k+1) = (k+1)²."
+            },
+            {
+              "id": "q6-3-8-2",
+              "type": "fill-in",
+              "question": "Problema: 5 puntos en cuadrado unitario. Demuestra que 2 están a distancia ≤ √2/2. Estrategia: ___",
+              "answer": "Principio palomera (divide cuadrado en 4 cuadrados 1/2×1/2, diagonal = √2/2)",
+              "explanation": "Divide en 4 subcuadrados lado 1/2 (palomera: 5 puntos en 4 cajas). Diagonal subcuadrado = √(0.5²+0.5²) = √0.5 = √2/2."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

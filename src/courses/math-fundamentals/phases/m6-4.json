@@ -1,0 +1,527 @@
+{
+  "id": "m6-4",
+  "phaseId": "phase-6",
+  "number": "6.4",
+  "title": "Matemáticas en el Mundo",
+  "description": "Modelado, criptografía RSA, redes neuronales simples, arte matemático",
+  "lessons": [
+    {
+      "id": "l6-4-1",
+      "title": "Modelado Matemático: Ciclo, Supuestos, Validación, Sensibilidad",
+      "objective": "Ciclo: problema real → modelo matemático → solución → interpretación → validación. Supuestos, variables, parámetros. Tipos: determinista, estocástico, discreto, continuo",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "¿Cómo predecir propagación epidemia? Modelo SIR: Susceptibles → Infectados → Recuperados. Ecuaciones diferenciales. Parámetros: β (contagio), γ (recuperación). R₀ = β/γ. Si R₀>1 → epidemia."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Modelado matemático</strong>: traducir problema real a lenguaje matemático, resolver, interpretar.\n<strong>Ciclo del modelado</strong>:\n1. <strong>Problema real</strong>: define pregunta, identifica variables relevantes\n2. <strong>Supuestos</strong>: simplifica (homogeneidad, linealidad, equilibrio, etc.)\n3. <strong>Formulación</strong>: ecuaciones (diferenciales, algebraicas, estocásticas), variables, parámetros\n4. <strong>Solución</strong>: analítica, numérica, simulación\n5. <strong>Interpretación</strong>: vuelve al contexto real, ¿tiene sentido?\n6. <strong>Validación</strong>: compara predicciones con datos reales, ajusta parámetros\n7. <strong>Sensibilidad</strong>: ¿cómo cambia salida si parámetros varían ±10%?\n<strong>Tipos modelos</strong>:\n- Determinista: misma entrada → misma salida (ecuaciones diferenciales)\n- Estocástico: incorpora aleatoriedad (cadenas Markov, Monte Carlo)\n- Discreto: tiempo/espacio discretos (mapas, autómata celular)\n- Continuo: tiempo/espacio continuos (EDO, EDP)\n- Híbrido: combinación\n<strong>Ejemplos</strong>:\n- Población: Malthus (exponencial), Verhulst (logístico), Lotka-Volterra (depredador-presa)\n- Epidemias: SIR, SEIR, meta-población\n- Economía: oferta-demanda, equilibrio Nash, Black-Scholes\n- Ingeniería: circuito RL, péndulo, puente (elementos finitos)\n- Clima: balance energía, modelos circulación general",
+          "latex": "SIR: \\dot{S}=-\\beta SI, \\dot{I}=\\beta SI-\\gamma I, \\dot{R}=\\gamma I \\quad | \\quad R_0=\\beta/\\gamma \\quad | \\quad \\text{Logístico: } \\dot{N}=rN(1-N/K) \\quad | \\quad \\text{Sensibilidad: } \\frac{\\partial y}{\\partial p}",
+          "visual": "assets/modeling-cycle.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Modelo = 'mapa simplificado del territorio'. Supuestos = 'ignoramos detalles irrelevantes'. Validación = 'comparamos mapa con terreno real'. Sensibilidad = '¿qué pasa si movemos una montaña en el mapa?'. Buen modelo = útil para decisiones, no necesariamente 'verdadero'.",
+          "conceptId": "modeling"
+        },
+        {
+          "type": "interactive",
+          "component": "ModelingLab",
+          "description": "Simuladores interactivos:\n1. SIR epidemia: sliders β, γ, población, I₀. Gráficas S,I,R. R₀ calculado. Intervenciones: cuarentena (reduce β), vacuna (mueve S→R).\n2. Logístico población: r, K, N₀. Gráfica N(t). Sobrepastoreo: añade cosecha constante.\n3. Depredador-presa Lotka-Volterra: α,β,γ,δ. Ciclos límite. Fase portrait.\n4. Enfriamiento Newton: T₀, T_amb, k. Ajusta a datos reales café.\n5. Circuito RL: R, L, V. Corriente transitorio + estable.\n6. Sensibilidad: tornado diagram (barras horizontales impacto cada parámetro en salida). Monte Carlo: distribuciones parámetros → distribución salida."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-4-1-1",
+              "type": "multiple-choice",
+              "question": "En modelo SIR, R₀ = β/γ. Si R₀ > 1:",
+              "options": [
+                "Epidemia se extingue",
+                "Epidemia crece",
+                "Endemia estable",
+                "No hay transmisión"
+              ],
+              "correct": 1,
+              "explanation": "R₀ > 1 ⇒ cada infectado contagia a más de 1 persona en promedio ⇒ epidemia crece."
+            },
+            {
+              "id": "q6-4-1-2",
+              "type": "fill-in",
+              "question": "Logístico: dN/dt = rN(1-N/K). K = ___ (capacidad carga). r = ___ (tasa intrínseca)",
+              "answer": "capacidad de carga, tasa intrínseca de crecimiento",
+              "explanation": "K = población máxima sostenible. r = tasa crecimiento cuando N≈0."
+            },
+            {
+              "id": "q6-4-1-3",
+              "type": "multiple-choice",
+              "question": "Validación de modelo:",
+              "options": [
+                "Comparar predicciones con datos independientes",
+                "Ajustar parámetros hasta que encaje",
+                "Solo verificar unidades",
+                "Publicar sin testear"
+              ],
+              "correct": 0,
+              "explanation": "Validación = probar con datos NO usados en calibración (out-of-sample)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-4-2",
+      "title": "Criptografía RSA: Aritmética Modular, Teorema Euler, Clave Pública/Privada",
+      "objective": "Módulo n = pq. φ(n) = (p-1)(q-1). e público (coprimo con φ). d = e⁻¹ mod φ(n). Cifrado: c = mᵉ mod n. Descifrado: m = cᵈ mod n. Firma digital",
+      "type": "procedural",
+      "durationMin": 10,
+      "content": [
+        {
+          "type": "hook",
+          "text": "RSA: Alice quiere enviar mensaje secreto a Bob. Bob genera clave pública (n,e) y privada (d). Alice cifra con (n,e): c = mᵉ mod n. Bob descifra con d: m = cᵈ mod n. Seguridad: factorizar n = pq es difícil."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Aritmética modular</strong>: a ≡ b (mod n) ⟺ n | (a-b). Operaciones: (a+b) mod n, (a·b) mod n, aᵏ mod n.\n<strong>Teorema de Euler</strong>: si gcd(a,n)=1, a^{φ(n)} ≡ 1 (mod n). φ(n) = n∏(1-1/p) (p primos divisores n).\n- Caso n = pq (p,q primos): φ(n) = (p-1)(q-1)\n<strong>RSA (Rivest-Shamir-Adleman 1977)</strong>:\n1. Genera primos grandes p, q (1024-2048 bits cada uno)\n2. n = p·q (módulo público)\n3. φ(n) = (p-1)(q-1)\n4. Elige e público: 1 < e < φ(n), gcd(e, φ(n)) = 1 (común e=65537)\n4. Calcula d = e⁻¹ mod φ(n) (inverso multiplicativo, clave privada)\n5. Clave pública: (n, e). Clave privada: (n, d) [o (p,q,d)]\n<strong>Cifrado</strong>: c = mᵉ mod n (m < n)\n<strong>Descifrado</strong>: m = cᵈ mod n\nFunciona porque: cᵈ = (mᵉ)ᵈ = m^{ed} = m^{1+kφ(n)} = m·(m^{φ(n)})ᵏ ≡ m·1ᵏ = m (mod n) por Euler.\n<strong>Firma digital</strong>: Alice firma: s = H(m)ᵈ mod n. Bob verifica: H(m) ≡ sᵉ mod n.\n<strong>Seguridad</strong>: romper RSA ⇔ factorizar n (creído difícil). Ataques: factorización (GNFS), canal lateral, padding oracle, cuántica (Shor). Post-cuántico: lattice, hash, código, isogenias.",
+          "latex": "n=pq, \\phi(n)=(p-1)(q-1), ed\\equiv1\\pmod{\\phi(n)} \\quad | \\quad c=m^e\\bmod n, \\; m=c^d\\bmod n \\quad | \\quad m^{ed}=m^{1+k\\phi(n)}\\equiv m\\pmod n",
+          "visual": "assets/rsa-crypto.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Candado público (n,e): cualquiera puede cerrar (cifrar). Llave privada (d): solo dueño puede abrir (descifrar). Seguridad: candado hecho de dos primos gigantes multiplicados. Abrir sin llave = factorizar número gigante (imposible en práctica). Firma = 'sello personal' que cualquiera puede verificar con candado público.",
+          "conceptId": "rsa-crypto"
+        },
+        {
+          "type": "interactive",
+          "component": "RSALab",
+          "description": "Generador claves RSA educativo (primos pequeños para demo):\n1. Elige p,q (primos 3-4 dígitos). Calcula n, φ, elige e, calcula d (Euclides extendido).\n2. Cifra mensaje m (número < n): c = mᵉ mod n (exponentiation binaria).\n3. Descifra: m = cᵈ mod n.\n3. Firma: s = mᵈ mod n. Verifica: sᵉ mod n = m.\n4. Ataques demo: factoriza n pequeño (prueba división, Pollard rho). Padding: PKCS#1 v1.5 vs OAEP. Ataque padding oracle (Bleichenbacher). Cuántica: Shor algoritmo (simulado pequeño)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-4-2-1",
+              "type": "multiple-choice",
+              "question": "RSA: p=3, q=11. n=33, φ=20. e=3 (gcd(3,20)=1). d = e⁻¹ mod 20 = ",
+              "options": [
+                "7",
+                "13",
+                "17",
+                "3"
+              ],
+              "correct": 0,
+              "explanation": "3×7=21≡1 (mod 20). d=7. Cifrado: c=m³ mod 33. Descifrado: m=c⁷ mod 33."
+            },
+            {
+              "id": "q6-4-2-2",
+              "type": "fill-in",
+              "question": "RSA descifrado funciona porque: cᵈ = (mᵉ)ᵈ = m^{ed} = m^{1+kφ(n)} ≡ m·(m^{φ(n)})ᵏ ≡ m·1ᵏ = m (mod n). Usa teorema: ___",
+              "answer": "Euler",
+              "explanation": "Teorema Euler: a^{φ(n)} ≡ 1 (mod n) si gcd(a,n)=1. Aquí a=m, ed=1+kφ(n)."
+            },
+            {
+              "id": "q6-4-2-3",
+              "type": "multiple-choice",
+              "question": "Seguridad RSA se basa en dificultad de:",
+              "options": [
+                "Calcular mᵉ mod n",
+                "Factorizar n = pq",
+                "Calcular φ(n)",
+                "Encontrar d dado e"
+              ],
+              "correct": 1,
+              "explanation": "Romper RSA (encontrar d sin conocer p,q) es equivalente a factorizar n. Si factorizas n, calculas φ y luego d."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-4-3",
+      "title": "Redes Neuronales Simples: Perceptrón, Retropropagación, Gradiente Descendente",
+      "objective": "Neurona: y = σ(w·x + b). Funciones activación: sigmoide, ReLU, tanh. Red feedforward. Loss: MSE, cross-entropy. Backprop: cadena regla. Gradiente descendente: w ← w - η∇L. Overfitting, regularización",
+      "type": "procedural",
+      "durationMin": 10,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Neurona artificial: entradas xᵢ, pesos wᵢ, sesgo b. Suma ponderada z = Σwᵢxᵢ + b. Activación σ(z) = salida. Aprende ajustando w,b para minimizar error. Red = muchas neuronas en capas."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Perceptrón (neurona)</strong>: y = σ(w·x + b)\n- x ∈ ℝⁿ entrada, w ∈ ℝⁿ pesos, b ∈ ℝ sesgo\n- σ = función activación no lineal\n  - Sigmoide: σ(z) = 1/(1+e⁻ᶻ) ∈ (0,1)\n  - ReLU: σ(z) = max(0,z) (popular, evita gradiente desvaneciente)\n  - Tanh: σ(z) = (eᶻ-e⁻ᶻ)/(eᶻ+e⁻ᶻ) ∈ (-1,1)\n  - Softmax: σ(z)ᵢ = e^{zᵢ}/Σe^{zⱼ} (clasificación multiclase)\n<strong>Red feedforward (MLP)</strong>: capas entrada → ocultas → salida. Profundidad = nº capas ocultas.\n<strong>Función pérdida (loss)</strong>:\n- MSE: L = ½Σ(yᵢ - ŷᵢ)² (regresión)\n- Cross-entropy: L = -Σyᵢ log ŷᵢ (clasificación)\n<strong>Retropropagación (Backpropagation)</strong>:\n1. Forward pass: calcula salida, loss\n2. Backward pass: gradiente ∇L respecto a cada peso (regla cadena)\n   ∂L/∂w = (∂L/∂ŷ)·(∂ŷ/∂z)·(∂z/∂w)\n3. Actualización: w ← w - η·∇L (gradiente descendente)\n<strong>Optimizadores</strong>: SGD, Momentum, Adam (adaptive moments).\n<strong>Regularización</strong>: L2 (weight decay), Dropout (apaga neuronas aleatoriamente), Early stopping, Batch norm.\n<strong>Overfitting</strong>: modelo memoriza entrenamiento, falla en test. Curvas aprendizaje: train loss ↓, val loss ↑.",
+          "latex": "y = \\sigma(w\\cdot x + b) \\quad | \\quad L = \\frac{1}{2}\\sum(y-\\hat{y})^2 \\quad | \\quad \\frac{\\partial L}{\\partial w} = \\frac{\\partial L}{\\partial \\hat{y}}\\frac{\\partial \\hat{y}}{\\partial z}\\frac{\\partial z}{\\partial w} \\quad | \\quad w \\leftarrow w - \\eta\\nabla L",
+          "visual": "assets/neural-networks.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Neurona = 'pequeño decisor'. Pesos = 'importancia de cada entrada'. Sesgo = 'umbral'. Activación = 'decisión final'. Red = 'comité de decisores en jerarquía'. Backprop = 'repartir culpa del error hacia atrás'. Gradiente descendente = 'baja por la montaña del error siguiendo la pendiente más pronunciada'. Overfitting = 'memoriza respuestas examen en lugar de aprender'.",
+          "conceptId": "neural-networks"
+        },
+        {
+          "type": "interactive",
+          "component": "NeuralNetworkLab",
+          "description": "Constructor red neuronal visual:\n1. Arquitectura: capas entrada/ocultas/salida, neuronas por capa, activación.\n2. Dataset: clasificación (espiral, lunas, círculos, MNIST dígitos) o regresión.\n3. Entrenamiento: optimizador (SGD/Adam), learning rate, batch size, epochs, regularización (L2, dropout).\n4. Visualización en vivo: frontera decisión, loss/accuracy curves, gradientes, pesos.\n5. Experimentos: cambia arquitectura, activación, LR, regularización → ve overfitting/underfitting.\n6. Explicabilidad: feature importance, activaciones capa oculta, gradientes entrada (saliency map).\n7. Exporta: modelo (JSON), código Python/PyTorch, reporte entrenamiento."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-4-3-1",
+              "type": "multiple-choice",
+              "question": "Función activación ReLU: σ(z) = ",
+              "options": [
+                "max(0,z)",
+                "1/(1+e⁻ᶻ)",
+                "(eᶻ-e⁻ᶻ)/(eᶻ+e⁻ᶻ)",
+                "eᶻ/Σeᶻ"
+              ],
+              "correct": 0,
+              "explanation": "ReLU(z) = max(0,z). Lineal por tramos, evita gradiente desvaneciente, computacionalmente barata."
+            },
+            {
+              "id": "q6-4-3-2",
+              "type": "fill-in",
+              "question": "Backpropagation usa regla: ∂L/∂w = (∂L/∂ŷ) × (∂ŷ/∂z) × (∂z/∂w). z = w·x + b. ∂z/∂w = ___",
+              "answer": "x",
+              "explanation": "z = w·x + b. Derivada respecto a w: ∂z/∂w = x."
+            },
+            {
+              "id": "q6-4-3-3",
+              "type": "multiple-choice",
+              "question": "Overfitting se detecta cuando:",
+              "options": [
+                "Train loss baja, val loss baja",
+                "Train loss baja, val loss sube",
+                "Train loss alta, val loss baja",
+                "Ambas loss constantes"
+              ],
+              "correct": 1,
+              "explanation": "Overfitting: modelo memoriza entrenamiento (train loss ↓) pero falla en validación (val loss ↑)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-4-4",
+      "title": "Arte Matemático: Simetría, Fractales, Teselados, Curvas, Visualización",
+      "objective": "Simetría (grupos diedrales, frisos, teselados 17 grupos). Fractales: Mandelbrot, Julia, Koch, Sierpinski, dimensión Hausdorff. Curvas: Bézier, Lissajous, espirales. Visualización datos: proyecciones, mapas",
+      "type": "conceptual",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Conjunto Mandelbrot: zₙ₊₁ = zₙ² + c. Puntos que no divergen = negro. Frontera infinita complejidad. Dimensión fractal ≈ 2. Arte islámico: teselados Alhambra (17 grupos). Curvas Bézier: fuentes, SVG, animación."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Simetría y teselados</strong>:\n- Grupos diedrales Dₙ (n rotaciones + n reflexiones)\n- 7 grupos frisos (banda infinita)\n- 17 grupos cristalográficos (teselados plano) - Alhambra los tiene todos\n- Penrose: teselado aperiódico (no periódico, simetría 5-pliegues)\n<strong>Fractales</strong>:\n- Auto-similaridad: parte = todo a distinta escala\n- Dimensión Hausdorff: no entera (Koch: log4/log3≈1.26, Sierpinski: log3/log2≈1.58)\n- Mandelbrot: M = {c ∈ ℂ | zₙ₊₁=zₙ²+c no diverge desde 0}\n- Julia: J_c = {z | zₙ₊₁=z²+c acotado}\n- Koch: triángulo → añade pico medio lado → repite\n- Sierpinski: triángulo → quita centro → repite\n<strong>Curvas paramétricas</strong>:\n- Bézier: B(t) = Σᵢ C(n,i) tⁱ(1-t)ⁿ⁻ⁱ Pᵢ (fuentes, SVG, animación)\n- Lissajous: x = A sin(ω₁t+φ), y = B sin(ω₂t) (osciloscopio)\n- Espirales: Arquímedes r=aθ, Logarítmica r=ae^{bθ}, Fermat r²=a²θ\n- Cicloide, epicicloide, hipocicloide (ruedas)\n<strong>Visualización datos</strong>:\n- Proyecciones: PCA, t-SNE, UMAP (alta dimensión → 2D/3D)\n- Mapas: coropléticos, puntos, flujos, calor\n- Gráficos: violin, ridge, sankey, chord, sunburst",
+          "latex": "Mandelbrot: z_{n+1}=z_n^2+c \\quad | \\quad \\text{Koch dim} = \\log_3 4 \\approx 1.26 \\quad | \\quad \\text{Bézier: } B(t)=\\sum_{i=0}^n \\binom{n}{i}t^i(1-t)^{n-i}P_i \\quad | \\quad \\text{Lissajous: } x=A\\sin(\\omega_1 t+\\phi), y=B\\sin(\\omega_2 t)",
+          "visual": "assets/math-art.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Fractal = 'zoom infinito revela más detalle'. Mandelbrot = 'mapa de todos los Julia'. Bézier = 'cuerda elástica con clavos de control'. Lissajous = 'bailarín armónico'. Teselado = 'piso infinito sin huecos'. Visualización = 'traduce números a formas que cerebro entiende al instante'.",
+          "conceptId": "math-art"
+        },
+        {
+          "type": "interactive",
+          "component": "MathArtStudio",
+          "description": "Estudio creativo matemático:\n1. Fractales: Mandelbrot/Julia (zoom profundo, colores, órbita), Koch/Sierpinski/Árbol fractal (iteraciones).\n2. Teselados: 17 grupos pared, Penrose aperiódico, Escher-style (modifica borde polígono base).\n3. Curvas: Bézier editor (arrastra puntos control), Lissajous (frecuencias/fase), Espirales, Cicloides.\n4. Simetría: grupos diedrales, frisos, cristales (genera patrón desde celda unidad).\n5. Visualización datos: carga CSV → PCA/t-SNE/UMAP → scatter 2D/3D interactivo. Mapas coropléticos (GeoJSON).\n5. Exporta: SVG/PNG alta resolución, animación GIF/MP4, código Python (matplotlib/manim), parámetros para impresora 3D (fractales sólidos)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-4-4-1",
+              "type": "multiple-choice",
+              "question": "Dimensión fractal curva Koch: log_3(4) ≈ ",
+              "options": [
+                "1.26",
+                "1.58",
+                "1.89",
+                "2.0"
+              ],
+              "correct": 0,
+              "explanation": "Koch: cada segmento → 4 segmentos 1/3. Dim = log(4)/log(3) ≈ 1.2619."
+            },
+            {
+              "id": "q6-4-4-2",
+              "type": "fill-in",
+              "question": "Conjunto Mandelbrot: c ∈ M ⟺ sucesión z₀=0, z_{n+1}=z_n²+c ___",
+              "answer": "no diverge (acotada)",
+              "explanation": "M = {c ∈ ℂ | zₙ₊₁ = zₙ² + c, z₀=0 permanece acotada}. Frontera = fractal."
+            },
+            {
+              "id": "q6-4-4-3",
+              "type": "multiple-choice",
+              "question": "Curva Bézier cúbica (4 puntos control) grado:",
+              "options": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ],
+              "correct": 2,
+              "explanation": "n+1 puntos control → grado n. 4 puntos → grado 3 (cúbica)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-4-5",
+      "title": "Matemáticas en Ciencias: Física, Biología, Economía, Computación",
+      "objective": "Física: mecánica (EDO), electromagnetismo (Maxwell), cuántica (Schrödinger). Biología: poblaciones, genética, epidemiología, neurociencia. Economía: optimización, equilibrio, teoría juegos. Computación: algoritmos, complejidad, criptografía, ML",
+      "type": "conceptual",
+      "durationMin": 9,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Física: F=ma (EDO 2º orden). Maxwell: 4 ecuaciones unifican electricidad/magnetismo/luz. Schrödinger: iℏ∂ψ/∂t = Hψ. Biología: Lotka-Volterra (depredador-presa), Hodgkin-Huxley (potencial acción). Economía: Nash equilibrium. Computación: P vs NP, backprop = regla cadena."
+        },
+        {
+          "type": "explanation",
+          "text": "Matemáticas como lenguaje universal:\n<strong>Física</strong>:\n- Mecánica: EDO (x''=F/m), Lagrangiano/Hamiltoniano (variacional)\n- Electromagnetismo: Maxwell ∇·E=ρ/ε₀, ∇×E=-∂B/∂t, ∇·B=0, ∇×B=μ₀J+μ₀ε₀∂E/∂t\n- Cuántica: Schrödinger iℏ∂ψ/∂t=Hψ, operadores, incertidumbre ΔxΔp≥ℏ/2\n- Relatividad: tensor métrica, geodésicas, E=mc²\n<strong>Biología</strong>:\n- Poblaciones: Malthus, Logístico, Lotka-Volterra (depredador-presa)\n- Genética: Hardy-Weinberg p²+2pq+q²=1, árboles filogenéticos\n- Epidemiología: SIR, SEIR, R₀, inmunidad colectiva\n- Neurociencia: Hodgkin-Huxley (canales ion, potencial acción), redes neuronales\n<strong>Economía</strong>:\n- Optimización: utilidad max s.t. restricción presupuestaria (Lagrange)\n- Equilibrio: Walras (oferta=demanda), Nash (juegos no cooperativos)\n- Teoría juegos: dilema prisionero, subasta, mecanismo diseño\n- Finanzas: Black-Scholes (EDP calor), CAPM, arbitraje\n<strong>Computación</strong>:\n- Algoritmos: complejidad O(n), P vs NP, reducciones\n- Criptografía: RSA, curvas elípticas, post-cuántico\n- ML: optimización convexa, gradiente descendente, generalización\n- Teoría información: entropía H(X)=-Σp log p, canal capacidad, compresión",
+          "latex": "Schrödinger: iℏ∂_tψ=Hψ \\quad | \\quad Maxwell: ∇×E=-∂_t B \\quad | \\quad Lotka-Volterra: \\dot{x}=αx-βxy, \\dot{y}=δxy-γy \\quad | \\quad Nash: ∀i, u_i(s_i^*,s_{-i}^*)≥u_i(s_i,s_{-i}^*)",
+          "visual": "assets/math-in-science.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Matemáticas = 'lenguaje universal de la ciencia'. Física = 'matemáticas con unidades'. Biología = 'matemáticas con ruido'. Economía = 'matemáticas con incentivos'. Computación = 'matemáticas ejecutables'. Cada campo aporta problemas, matemáticas da herramientas universales.",
+          "conceptId": "math-in-science"
+        },
+        {
+          "type": "interactive",
+          "component": "ScienceMathExplorer",
+          "description": "Mini-simuladores por campo:\n1. Física: péndulo (EDO no lineal vs linealizado), onda cuerda (EDP onda), órbita planeta (kepler/relatividad).\n2. Biología: SIR epidemia (R₀, vacuna), Lotka-Volterra (fases), Hodgkin-Huxley (potencial acción animado).\n3. Economía: equilibrio Nash (matriz pagos, mejor respuesta), Black-Scholes (precio opción, griegas), optimización cartera (frontera eficiente Markowitz).\n4. Computación: visualiza algoritmos (sort, pathfinding, backprop), complejidad (gráfico n vs tiempo), entropía (compresión Huffman).\nCada uno: sliders parámetros, gráficas tiempo/fase, explicación matemática subyacente."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-4-5-1",
+              "type": "multiple-choice",
+              "question": "Ecuación Schrödinger independiente tiempo: Hψ = Eψ. H es:",
+              "options": [
+                "Hamiltoniano (operador energía)",
+                "Momento",
+                "Posición",
+                "Potencial"
+              ],
+              "correct": 0,
+              "explanation": "Hamiltoniano = operador energía total (cinética + potencial). E = valores propios = niveles energía."
+            },
+            {
+              "id": "q6-4-5-2",
+              "type": "fill-in",
+              "question": "Equilibrio Nash: cada jugador elige estrategia óptima ___ las estrategias de los otros",
+              "answer": "dadas",
+              "explanation": "Nash: s*ᵢ es mejor respuesta a s*_{-i}. Nadie incentivo a desviarse unilateralmente."
+            },
+            {
+              "id": "q6-4-5-3",
+              "type": "multiple-choice",
+              "question": "Entropía Shannon H(X) = -Σ p(x) log p(x). Mide:",
+              "options": [
+                "Información promedio",
+                "Complejidad algorítmica",
+                "Energía libre",
+                "Capacidad canal"
+              ],
+              "correct": 0,
+              "explanation": "Entropía = incertidumbre promedio / información promedio por símbolo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-4-6",
+      "title": "Historia de las Matemáticas: Hitos, Figuras, Evolución Conceptos",
+      "objective": "Babilonia/Egipto (aritmética, geometría práctica). Grecia (demostración, Euclides, Arquímedes). India/China/Islam (cero, álgebra, trigonometría). Renacimiento/Ilustración (cálculo, análisis). S. XIX (formalización, conjuntos, no euclidiana). S. XX (abstracto, computación, demostración asistida)",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Babilonia: tablillas Plimpton 322 (tripletas pitagóricas 1800 a.C.). Euclides: Elementos (300 a.C.) - axiomatización. Al-Juarismi: Álgebra (siglo IX) - algoritmo, álgebra. Newton/Leibniz: cálculo (1680s). Gauss: 'princesa matemáticas'. Hilbert: 23 problemas (1900). Gödel: incompletitud (1931). Turing: computabilidad (1936). Wiles: Fermat (1994)."
+        },
+        {
+          "type": "explanation",
+          "text": "Hitos históricos clave:\n<strong>Antigüedad</strong>:\n- Babilonia/Egipto (2000-500 a.C.): aritmética base 60, geometría práctica (pirámides, Nilo), Plimpton 322\n- Grecia (600-300 a.C.): demostración deductiva, Euclides (Elementos, axiomas), Arquímedes (método exhaustión, π), Pitágoras, Apolonio (cónicas)\n<strong>Edad Media / Mundo Islámico / India / China</strong>:\n- India (500-1200): cero (śūnya), decimal positional, trigonometría (seno/verseno), series infinitas (Kerala)\n- China (200 a.C.-1300): Nueve Capítulos, método eliminación (Gauss), polinomios, triángulo Pascal (Jia Xian)\n- Islam (800-1400): Al-Juarismi (Al-Kitab al-mukhtasar - álgebra, algoritmo), Omar Jayyam (cúbicas geométricas), trigonometría esférica\n<strong>Renacimiento / Ilustración</strong>:\n- Descartes (geometría analítica), Fermat (teoría números, último teorema), Pascal (probabilidad, triángulo)\n- Newton/Leibniz (cálculo infinitesimal, 1680s), Euler (análisis, notación, identidad e^{iπ}+1=0)\n- Lagrange, Laplace (mecánica celeste, probabilidad), Gauss (teoría números, geometría diferencial, método mínimos cuadrados)\n<strong>Siglo XIX: Formalización y Abstracción</strong>:\n- Cauchy/Weierstrass (rigor análisis, ε-δ), Riemann (geometría diferencial, hipótesis), Cantor (teoría conjuntos, infinitos), Dedekind (cortes, reales)\n- Geometrías no euclidianas: Lobachevski, Bolyai, Riemann\n- Álgebra abstracta: Galois (ecuaciones, grupos), Lie (grupos continuos)\n<strong>Siglo XX: Abstracto, Computación, Fundamentos</strong>:\n- Hilbert (23 problemas, formalismo), Gödel (incompletitud 1931), Turing (computabilidad 1936), Von Neumann (juegos, arquitectura)\n- Bourbaki (estructuralismo), Grothendieck (geometría algebraica), Langlands (programa)\n- Demostración asistida: Four Color Theorem (1976), Kepler (1998), Feit-Thompson (2012)\n- Actualidad: Millennium Problems (P vs NP, Riemann, Navier-Stokes, Yang-Mills, Hodge, Birch-Swinnerton-Dyer, Poincaré ✓ Perelman 2003)",
+          "latex": "e^{iπ}+1=0 \\quad | \\quad \\text{Hipótesis Riemann: } ζ(s)=0 ⇒ ℜ(s)=1/2 \\quad | \\quad P \\text{ vs } NP \\quad | \\quad \\text{Gödel: sistema consistente } ⇒ ∃ \\text{ verdades no demostrables}",
+          "visual": "assets/math-history.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Historia matemáticas = 'construcción catedral infinita'. Cada generación añade piso usando piedras de anteriores. Euclides = cimientos. Newton/Leibniz = campanario (cálculo). Gauss = nave central. Gödel = 'ventana que muestra límites'. Turing = 'órgano que automatiza cálculo'. Actualidad = 'seguimos construyendo'.",
+          "conceptId": "math-history"
+        },
+        {
+          "type": "interactive",
+          "component": "MathHistoryTimeline",
+          "description": "Línea tiempo interactiva (2000 a.C. - presente):\n- Filtros: región, tema, periodo\n- Eventos clicables: descripción, figuras, legado, conexiones\n- Mapa mental conceptos: evolución 'número', 'función', 'demostración', 'infinito', 'espacio'\n- Biografías: 50 matemáticos clave (mini-bio, obra clave, cita, anécdota)\n- Problemas famosos: 23 Hilbert, 7 Millenium (1 resuelto: Poincaré), abiertos actuales\n- Simulador '¿qué pasaría si?': ¿sin cero? ¿sin cálculo? ¿sin teoría conjuntos?\n- Exporta: línea tiempo personalizada PDF, tarjetas didácticas (Anki)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-4-6-1",
+              "type": "multiple-choice",
+              "question": "¿Quién introdujo el símbolo ∫ para integral?",
+              "options": [
+                "Newton",
+                "Leibniz",
+                "Euler",
+                "Cauchy"
+              ],
+              "correct": 1,
+              "explanation": "Leibniz notación ∫ (suma alargada), dx, dy/dx. Newton usó notación punto (fluxiones)."
+            },
+            {
+              "id": "q6-4-6-2",
+              "type": "fill-in",
+              "question": "Problema Millennium resuelto: Conjetura Poincaré (topología 3D). Demostrado por ___ en 2003",
+              "answer": "Grigori Perelman",
+              "explanation": "Perelman demostró usando flujo Ricci (Hamilton). Rechazó medalla Fields y premio Millenium $1M."
+            },
+            {
+              "id": "q6-4-6-3",
+              "type": "multiple-choice",
+              "question": "Teorema incompletitud Gödel (1931): sistema formal consistente que incluye aritmética:",
+              "options": [
+                "Es completo y consistente",
+                "Es incompleto: hay verdades no demostrables",
+                "Es inconsistente",
+                "Puede demostrar su propia consistencia"
+              ],
+              "correct": 1,
+              "explanation": "1er Teorema: sistema consistente + aritmética ⇒ incompleto (∃ enunciado verdadero no demostrable). 2do: no puede demostrar su propia consistencia."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-4-7",
+      "title": "Ética Matemática: Sesgos Algorítmicos, Privacidad, Responsabilidad, IA",
+      "objective": "Sesgos en datos/modelos (fairness). Privacidad diferencial. Transparencia, explicabilidad (XAI). Responsabilidad decisiones automatizadas. Ética IA: alineamiento, riesgo existencial",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Algoritmo contratación: entrenado con datos históricos sesgados → discrimina mujeres/minorías. Privacidad diferencial: añade ruido calibrado para proteger individuos. Caja negra: modelo decide préstamo, nadie sabe por qué. XAI: explicaciones locales (SHAP, LIME)."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Sesgo algorítmico (fairness)</strong>:\n- Sesgo en datos: muestra no representativa, etiquetas históricas discriminatorias\n- Métricas: Demographic Parity (P(Ŷ=1|A=0)=P(Ŷ=1|A=1)), Equalized Odds (TPR/FPR igual por grupo), Calibration\n- Trade-off: accuracy vs fairness (imposible optimizar todo simultáneamente)\n<strong>Privacidad diferencial</strong>:\n- Definición: algoritmo M es (ε,δ)-DP si ∀D,D' vecinos, ∀S: P(M(D)∈S) ≤ e^ε P(M(D')∈S) + δ\n- Mecanismo Laplace: añade ruido Lap(Δf/ε) a consulta (sensibilidad Δf)\n- Composición: k consultas → ε_total = kε (básica) o √(2k log(1/δ))ε (avanzada)\n<strong>Explicabilidad (XAI)</strong>:\n- Global: feature importance, partial dependence, surrogate models\n- Local: SHAP (Shapley values), LIME (perturbación local), counterfactuals\n- Interpretabilidad nativa: árboles decisión, regresión lineal, GAM\n<strong>Responsabilidad y gobernanza</strong>:\n- Accountability: quién responde por decisión dañina\n- Transparencia: documentación modelo (Model Cards, Datasheets)\n- Auditoría: tercera parte, tests adversariales, red teaming\n<strong>Ética IA avanzada</strong>:\n- Alineamiento: objetivos IA = valores humanos (reward modeling, RLHF, constitutional AI)\n- Riesgo existencial: IA superinteligente mal alineada (paperclip maximizer)\n- Gobernanza global: regulación (EU AI Act), estándares (ISO/IEC 42001), pausa desarrollo",
+          "latex": "DP: P(M(D)∈S) ≤ e^ε P(M(D')∈S) + δ \\quad | \\quad \\text{Fairness: } P(Ŷ=1|A=0)=P(Ŷ=1|A=1) \\quad | \\quad \\text{SHAP: } ϕ_i = ∑_{S⊆F\\{i\\}} \\frac{|S|!(|F|-|S|-1)!}{|F|!}[f(S∪{i})-f(S)]",
+          "visual": "assets/math-ethics.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Fairness = 'repartir pastel equitativo entre grupos'. Privacidad diferencial = 'añade ruido para que no se identifique individuo, pero media poblacional se mantiene'. XAI = 'abre caja negra y muestra engranajes'. Responsabilidad = 'quien diseña, responde'. Alineamiento = 'genio lámpara que concede deseos SIN efectos colaterales'.",
+          "conceptId": "math-ethics"
+        },
+        {
+          "type": "interactive",
+          "component": "EthicsLab",
+          "description": "Casos prácticos interactivos:\n1. Sesgo: dataset préstamos (género/raza). Métricas: DP, EO, Calibration. Mitigación: reweighting, adversarial debiasing, threshold optimization. Trade-off accuracy-fairness.\n2. Privacidad: consulta media salarios. Añade ruido Laplace(Δ/ε). Varía ε: trade-off privacidad-utilidad. Composición: 10 consultas → ε_total.\n3. XAI: modelo árbol decisión vs red neuronal. SHAP values (waterfall plot). LIME explicación local. Counterfactual: '¿qué cambiar para decisión distinta?'\n4. Caso real: COMPAS (recidivism risk), Amazon hiring, Apple Card, facial recognition. Análisis: sesgo detectado, mitigación aplicada, resultado.\n5. Gobernanza: Model Card template, Datasheet, AI Impact Assessment. Checklist ético pre-despliegue."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-4-7-1",
+              "type": "multiple-choice",
+              "question": "Privacidad diferencial (ε,δ)-DP: ε pequeño significa:",
+              "options": [
+                "Más privacidad, menos utilidad",
+                "Menos privacidad, más utilidad",
+                "Más privacidad, más utilidad",
+                "No afecta utilidad"
+              ],
+              "correct": 0,
+              "explanation": "ε = presupuesto privacidad. ε→0 = máxima privacidad (ruido infinito) → utilidad → 0. Trade-off inevitable."
+            },
+            {
+              "id": "q6-4-7-2",
+              "type": "fill-in",
+              "question": "SHAP values se basan en: valor Shapley de teoría juegos = contribución marginal promedio de feature ___ todos los subconjuntos posibles",
+              "answer": "sobre",
+              "explanation": "SHAP: promedio ponderado contribución marginal feature i sobre todos 2^{n-1} subconjuntos. Propiedades: eficiencia, simetría, dummy, aditividad."
+            },
+            {
+              "id": "q6-4-7-3",
+              "type": "multiple-choice",
+              "question": "Model Card documenta:",
+              "options": [
+                "Solo accuracy",
+                "Uso previsto, métricas, limitaciones, consideraciones éticas, datos entrenamiento",
+                "Solo arquitectura",
+                "Solo hiperparámetros"
+              ],
+              "correct": 1,
+              "explanation": "Model Card (Google): documentación estandarizada: uso previsto, métricas performance, limitaciones, consideraciones éticas, datos, evaluación."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l6-4-8",
+      "title": "Proyecto Final Integrador: Modela un Problema Real de Tu Vida",
+      "objective": "Proyecto capstone: elige problema real (finanzas, salud, trabajo, hobby, comunidad). Ciclo completo: define → modela → resuelve → valida → comunica. Entregables: informe técnico, presentación, código, reflexión ética",
+      "type": "project",
+      "durationMin": 30,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Tu proyecto final: elige algo que TE IMPORTE. ¿Optimizar ruta trabajo? ¿Planificar jubilación? ¿Modelar contagio gripe en tu familia? ¿Optimizar recetas nutrición/coste? ¿Analizar datos tu deporte? ¿Predecir factura electricidad? Tú eliges, modelas, resuelves, comunicas."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Proyecto Capstone Integrador</strong>\nAplica TODO lo aprendido:\nFase 0-1: Aritmética, álgebra, funciones\nFase 2: Ecuaciones, sistemas, optimización\nFase 3: Geometría, trigonometría, visualización\nFase 4: Cálculo (límites, derivadas, integrales), optimización\nFase 5: Estadística, probabilidad, inferencia, simulaciones\nFase 6: Lógica, demostraciones, modelado, ética\n\n<strong>Entregables obligatorios</strong>:\n1. <strong>Informe técnico</strong> (PDF, 5-10 páginas):\n   - Planteamiento problema real + motivación personal\n   - Modelo matemático (variables, ecuaciones, supuestos)\n   - Solución (analítica/numérica/simulación) con código\n   - Validación (comparación realidad, sensibilidad, limitaciones)\n   - Análisis ético/sesgos/privacidad si aplica\n   - Conclusiones + trabajo futuro\n2. <strong>Código reproducible</strong> (GitHub repo / notebook):\n   - Datos (o generador sintético)\n   - Modelado, solución, visualizaciones\n   - Tests, documentación, requirements\n3. <strong>Presentación</strong> (10 min, 10-15 slides):\n   - Historia: problema → modelo → insight → acción\n   - Visualizaciones clave (máx 3)\n   - Limitaciones honestas\n4. <strong>Reflexión personal</strong> (1 página):\n   - Qué aprendiste de matemáticas Y de ti mismo\n   - Qué harías diferente\n   - Cómo aplicarás esto en tu vida/profesión\n\n<strong>Ideas proyecto</strong> (elige o inventa):\n- Finanzas: optimiza cartera (Markowitz), planifica jubilación (interés compuesto + inflación), simula hipoteca vs alquiler\n- Salud: modelo contagio familiar (SIR), optimiza dieta (programación lineal nutrientes/coste), trackea sueño/ejercicio (estadística)\n- Trabajo: optimiza ruta/horario (TSP, programación lineal), negocia salario (teoría juegos), automatiza tarea (script)\n- Hogar: optimiza compra semanal (knapsack), reforma energética (ROI, flujo caja), riego jardín (geometría + clima)\n- Comunidad: analiza datos abiertos ayuntamiento (transporte, calidad aire, ruido), diseña encuesta vecinal (muestreo, inferencia)\n- Creativo: genera arte fractal, compone música algoritmos, diseña teselado 3D imprimible\n\n<strong>Evaluación</strong> (auto + peer review opcional):\n- Rigor matemático (correcto, completo, justificado)\n- Relevancia personal (realmente te importa)\n- Calidad código (legible, documentado, reproducible)\n- Comunicación (claro, visual, honesto sobre limitaciones)\n- Ética (sesgos, privacidad, impacto social considerados)\n- Aprendizaje demostrado (usa conceptos de ≥4 fases)",
+          "latex": "Capstone: Problema Real \\xrightarrow{Modelado} Matemáticas \\xrightarrow{Solución} Interpretación \\xrightarrow{Validación} Acción \\quad | \\quad \\text{Entregables: Informe + Código + Presentación + Reflexión} \\quad | \\quad \\text{Evaluación: Rigor, Relevancia, Código, Com, Ética, Aprendizaje}",
+          "visual": "assets/capstone-project.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "CapstoneWorkbench",
+          "description": "Entorno guiado proyecto final:\n1. <strong>Selector problema</strong>: galería ideas + 'propón tu propio'. Validador: ¿tiene datos? ¿es modelable? ¿escala adecuada?\n2. <strong>Planificador</strong>: hito semanal (semana 1: definir + datos, semana 2: modelo, semana 3: resolver, semana 4: validar, semana 5: comunicar). Recordatorios.\n3. <strong>Cuaderno computacional</strong> (Jupyter-style integrado): celdas markdown + código (Python/JS). Librerías: numpy, pandas, matplotlib, scipy, sklearn, sympy, pytorch. Ejecución en navegador (Pyodide) o local.\n4. <strong>Plantilla informe</strong> (Markdown/LaTeX): estructura predefinida, auto-completa secciones desde cuaderno.\n5. <strong>Generador presentación</strong>: diapositivas auto desde informe (tesis, modelo, resultados, limitaciones, ética).\n6. <strong>Checklist entrega</strong>: rigor, código, presentación, reflexión, ética. Autoevaluación rúbrica.\n7. <strong>Publicación opcional</strong>: genera sitio web estático (GitHub Pages) con proyecto, comparte enlace.\n8. <strong>Certificado</strong>: al completar todo → DIPLOMA DE HONOR (hash verificable en web)."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q6-4-8-1",
+              "type": "multiple-choice",
+              "question": "Proyecto capstone debe usar conceptos de al menos cuántas fases:",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5"
+              ],
+              "correct": 2,
+              "explanation": "Mínimo 4 fases (de 6) para demostrar integración transversal del aprendizaje."
+            },
+            {
+              "id": "q6-4-8-2",
+              "type": "fill-in",
+              "question": "Entregables obligatorios capstone: Informe ___, C___ reproducible, Presentación ___, Reflexión ____",
+              "answer": "técnico, ódigo, 10 min, personal",
+              "explanation": "Informe técnico (PDF), Código reproducible (GitHub/notebook), Presentación (10 min), Reflexión personal (1 página)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

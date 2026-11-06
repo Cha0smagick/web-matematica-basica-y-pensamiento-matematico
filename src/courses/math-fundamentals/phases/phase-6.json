@@ -1,0 +1,20 @@
+{
+  "id": "phase-6",
+  "number": 6,
+  "title": "Pensador Matemático",
+  "subtitle": "Pensamiento Avanzado - Lógica, conjuntos, demostraciones, modelado, matemáticas en el mundo",
+  "description": "Piensa como matemático: lógica formal, conjuntos, demostraciones por inducción/contradicción, modelado real, criptografía básica, redes neuronales simples. 4 módulos, 20 lecciones.",
+  "icon": "🧠",
+  "color": "#ec4899",
+  "estimatedHours": 8,
+  "prerequisites": ["phase-5"],
+  "modules": ["m6-1", "m6-2", "m6-3", "m6-4"],
+  "projectIntegrator": {
+    "id": "phase6-project",
+    "title": "Modela un Problema Real de Tu Vida",
+    "description": "Proyecto final integrador: elige un problema real, modelalo matemáticamente, resuélvelo, presenta la solución.",
+    "estimatedMinutes": 120
+  },
+  "unlockCondition": "phase-5-complete",
+  "lessons": {}
+}

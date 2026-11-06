@@ -1,0 +1,448 @@
+{
+  "id": "m2-4",
+  "phaseId": "phase-2",
+  "number": "2.4",
+  "title": "Funciones",
+  "description": "Máquina entrada-salida, dominio/rango, composición, inversa, gráficas",
+  "lessons": [
+    {
+      "id": "l2-4-1",
+      "title": "Función: Máquina de Transformar",
+      "objective": "Entender función como regla que asigna a cada entrada EXACTAMENTE una salida",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Máquina: metes 2, sale 5. Metes 3, sale 7. Metes x, sale 2x+1. ¿Regla? f(x) = 2x+1. Cada input → UN output."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Función</strong> f: A → B asigna a cada x ∈ A (dominio) un ÚNICO y ∈ B (codominio). Notación: y = f(x).\n- x = variable independiente (entrada)\n- y = variable dependiente (salida)\n- f = nombre de la regla\n- f(x) = 'f de x' = valor de la función en x\nNO función: una entrada da dos salidas (ej: y² = x → x=4 da y=2 y y=-2).",
+          "latex": "f: A \\to B, \\quad x \\mapsto f(x) \\quad | \\quad \\text{Dominio} = A, \\text{ Rango} = \\{f(x) : x\\in A\\}",
+          "visual": "assets/function-machine.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Máquina expendedora: eliges botón (input) → sale UN producto (output). Botón A1 → siempre Coca-Cola. Si A1 diera a veces Coca-Cola y a veces Fanta, no es función (no determinista).",
+          "conceptId": "function-concept"
+        },
+        {
+          "type": "interactive",
+          "component": "FunctionMachine",
+          "description": "Input: arrastra números a 'entrada'. Regla editable (f(x)=...). Output calculado. Tabla valores. Test: ¿es función? (input repetido → output único?). Gráfica: test vertical."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-4-1-1",
+              "type": "multiple-choice",
+              "question": "¿Cuál NO es una función?",
+              "options": [
+                "f(x) = x²",
+                "f(x) = √x",
+                "y² = x",
+                "f(x) = 2x+1"
+              ],
+              "correct": 2,
+              "explanation": "y² = x: para x=4, y=2 o y=-2. Una entrada → dos salidas. No es función."
+            },
+            {
+              "id": "q2-4-1-2",
+              "type": "fill-in",
+              "question": "f(x) = 3x - 5. f(2) = ___, f(-1) = ___, f(0) = ___",
+              "answer": "1, -8, -5",
+              "explanation": "f(2)=6-5=1. f(-1)=-3-5=-8. f(0)=-5."
+            },
+            {
+              "id": "q2-4-1-3",
+              "type": "multiple-choice",
+              "question": "Test de la línea vertical en gráfica: si una vertical corta la gráfica en más de un punto, ¿es función?",
+              "options": [
+                "Sí",
+                "No",
+                "A veces",
+                "Solo si es parabola"
+              ],
+              "correct": 1,
+              "explanation": "Test vertical: más de un corte = un x tiene varios y = NO función."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-4-2",
+      "title": "Dominio y Rango: Dónde Vive la Función",
+      "objective": "Determinar dominio (entradas válidas) y rango (salidas posibles)",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "f(x) = 1/x. ¿Qué x NO puedes meter? 0. f(x) = √(x-2). ¿Qué x sí? x ≥ 2. Dominio = entradas permitidas."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Dominio</strong> = conjunto de x para los que f(x) tiene sentido (en ℝ).\nRestricciones comunes:\n- Denominador ≠ 0: 1/(x-2) → x ≠ 2\n- Raíz par (√, ⁴√...) ≥ 0: √(x-3) → x ≥ 3\n- Logaritmo > 0: log(x+1) → x > -1\n<strong>Rango</strong> = valores que f(x) puede tomar. Para hallar: despeja x en términos de y, ve qué y permiten x real.\nEj: f(x)=x², dominio ℝ, rango [0,∞). f(x)=1/x, dominio ℝ\\{0}, rango ℝ\\{0}.",
+          "latex": "Dom(f) = \\{x \\in \\mathbb{R} : f(x) \\text{ definido}\\} \\quad | \\quad Ran(f) = \\{f(x) : x \\in Dom(f)\\}",
+          "visual": "assets/domain-range.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Dominio = menú de ingredientes que acepta la máquina. Rango = platos que puede producir. Máquina √x: solo acepta ingredientes ≥ 0 (dominio). Solo produce platos ≥ 0 (rango).",
+          "conceptId": "domain-range"
+        },
+        {
+          "type": "interactive",
+          "component": "DomainRangeFinder",
+          "description": "Función input. Usuario identifica restricciones. Calcula dominio (intervalos). Para rango: opción 'despeja x' o 'analiza gráfica'. Visual: dominio en eje X, rango en eje Y."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-4-2-1",
+              "type": "multiple-choice",
+              "question": "Dominio de f(x) = √(5-x):",
+              "options": [
+                "x ≤ 5",
+                "x ≥ 5",
+                "x < 5",
+                "x > 5"
+              ],
+              "correct": 0,
+              "explanation": "Radicando ≥ 0: 5-x ≥ 0 → x ≤ 5. Dominio: (-∞, 5]."
+            },
+            {
+              "id": "q2-4-2-2",
+              "type": "fill-in",
+              "question": "Dominio de f(x) = 1/(x²-4): x ≠ ___, x ≠ ___",
+              "answer": "2, -2",
+              "explanation": "Denominador ≠ 0: x²-4=0 → x=±2. Dominio: ℝ \\ {-2, 2}."
+            },
+            {
+              "id": "q2-4-2-3",
+              "type": "multiple-choice",
+              "question": "Rango de f(x) = x² + 2:",
+              "options": [
+                "ℝ",
+                "[0, ∞)",
+                "[2, ∞)",
+                "(2, ∞)"
+              ],
+              "correct": 2,
+              "explanation": "x² ≥ 0 → x²+2 ≥ 2. Mínimo 2 (en x=0). Rango: [2, ∞)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-4-3",
+      "title": "Operaciones con Funciones: Suma, Resta, Producto, Cociente",
+      "objective": "Combinar funciones punto a punto: (f+g)(x) = f(x)+g(x), etc.",
+      "type": "procedural",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "f(x) = x², g(x) = 2x. (f+g)(x) = x²+2x. (f·g)(x) = 2x³. (f/g)(x) = x/2 (x≠0). Dominio = intersección dominios (y denominador ≠ 0 en cociente)."
+        },
+        {
+          "type": "explanation",
+          "text": "Dadas f, g:\n- (f+g)(x) = f(x) + g(x)\n- (f-g)(x) = f(x) - g(x)\n- (f·g)(x) = f(x) · g(x)\n- (f/g)(x) = f(x)/g(x),  g(x) ≠ 0\nDominio de f±g, f·g = Dom(f) ∩ Dom(g)\nDominio de f/g = Dom(f) ∩ Dom(g) ∩ {x: g(x)≠0}\nEvaluación: (f+g)(2) = f(2)+g(2).",
+          "latex": "(f\\pm g)(x)=f(x)\\pm g(x) \\quad | \\quad (fg)(x)=f(x)g(x) \\quad | \\quad (f/g)(x)=f(x)/g(x),\\,g(x)\\neq 0",
+          "visual": "assets/function-operations.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Dos máquinas en paralelo. Input x va a ambas. Outputs se combinan: suman, restan, multiplican, dividen. Resultado = nueva máquina combinada.",
+          "conceptId": "function-operations"
+        },
+        {
+          "type": "interactive",
+          "component": "FunctionOperations",
+          "description": "Dos funciones f, g (editables). Calcula f+g, f-g, f·g, f/g. Muestra dominios. Evalúa en puntos. Gráficas superpuestas."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-4-3-1",
+              "type": "fill-in",
+              "question": "f(x)=x+1, g(x)=x-1. (f·g)(x) = ___ . Dominio: ___",
+              "answer": "x²-1, ℝ",
+              "explanation": "(x+1)(x-1)=x²-1. Ambos dominio ℝ → intersección ℝ."
+            },
+            {
+              "id": "q2-4-3-2",
+              "type": "multiple-choice",
+              "question": "f(x)=√x, g(x)=x-4. Dominio de (f/g)(x):",
+              "options": [
+                "[0, ∞)",
+                "[0, ∞) \\ {4}",
+                "[4, ∞)",
+                "ℝ \\ {4}"
+              ],
+              "correct": 1,
+              "explanation": "Dom(f)=[0,∞), Dom(g)=ℝ. Intersección=[0,∞). Además g(x)≠0 → x≠4. Dominio=[0,∞)\\{4}."
+            },
+            {
+              "id": "q2-4-3-3",
+              "type": "fill-in",
+              "question": "f(x)=2x, g(x)=x². (f∘g)(x) = f(g(x)) = ___",
+              "answer": "2x²",
+              "explanation": "f(g(x)) = 2(g(x)) = 2x². (Ver composición en siguiente lección)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-4-4",
+      "title": "Composición de Funciones: f∘g(x) = f(g(x))",
+      "objective": "Aplicar una función al resultado de otra: máquina en serie",
+      "type": "procedural",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Máquina g: x → 2x. Máquina f: x → x+3. En serie: x → g → 2x → f → 2x+3. f∘g(x) = f(g(x)) = 2x+3."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Composición</strong> f∘g (se lee 'f círculo g' o 'f de g'):\n(f∘g)(x) = f(g(x))\nPrimero aplica g a x, luego f al resultado.\n<strong>Orden importa</strong>: f∘g ≠ g∘f en general.\nDominio: x ∈ Dom(g) tal que g(x) ∈ Dom(f).\nEjemplo: f(x)=√x, g(x)=x-1. f∘g(x) = √(x-1), dominio x≥1. g∘f(x) = √x - 1, dominio x≥0.",
+          "latex": "(f\\circ g)(x) = f(g(x)) \\quad | \\quad Dom(f\\circ g) = \\{x \\in Dom(g) : g(x) \\in Dom(f)\\}",
+          "visual": "assets/composition.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Fábrica: estación g (corta madera), estación f (pinta). Tronco → g → tablas → f → tablas pintadas. f∘g = proceso completo. g∘f = pintar tronco y luego cortar (distinto resultado).",
+          "conceptId": "composition"
+        },
+        {
+          "type": "interactive",
+          "component": "CompositionExplorer",
+          "description": "Dos funciones f, g. Calcula f∘g y g∘f paso a paso: g(x) → f(g(x)). Dominios. Gráficas: aplica g, luego f. Verifica f∘g ≠ g∘f."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-4-4-1",
+              "type": "fill-in",
+              "question": "f(x)=x², g(x)=x+1. (f∘g)(x) = ___, (g∘f)(x) = ___",
+              "answer": "(x+1)², x²+1",
+              "explanation": "f∘g = f(x+1) = (x+1)². g∘f = g(x²) = x²+1. Distintos."
+            },
+            {
+              "id": "q2-4-4-2",
+              "type": "multiple-choice",
+              "question": "f(x)=√x, g(x)=x-4. Dominio de f∘g:",
+              "options": [
+                "x ≥ 0",
+                "x ≥ 4",
+                "x ≤ 4",
+                "ℝ"
+              ],
+              "correct": 1,
+              "explanation": "f∘g(x) = √(x-4). Requiere x-4 ≥ 0 → x ≥ 4."
+            },
+            {
+              "id": "q2-4-4-3",
+              "type": "fill-in",
+              "question": "f(x)=1/x, g(x)=x+2. (f∘g)(2) = ___",
+              "answer": "1/4",
+              "explanation": "g(2)=4. f(4)=1/4."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-4-5",
+      "title": "Función Inversa: Deshacer la Máquina",
+      "objective": "Encontrar f⁻¹ tal que f⁻¹(f(x)) = x. Condición: función inyectiva (test horizontal)",
+      "type": "conceptual",
+      "durationMin": 8,
+      "content": [
+        {
+          "type": "hook",
+          "text": "f(x) = 2x+3. ¿Cómo recuperar x desde y? y=2x+3 → x=(y-3)/2. Inversa: f⁻¹(x) = (x-3)/2. Verifica: f⁻¹(f(x)) = x."
+        },
+        {
+          "type": "explanation",
+          "text": "<strong>Función inversa</strong> f⁻¹ 'deshace' a f:\nf⁻¹(f(x)) = x  y  f(f⁻¹(x)) = x\nExiste SI y SOLO SI f es <strong>biyectiva</strong> (inyectiva + sobreyectiva). En ℝ: inyectiva = test horizontal (ninguna horizontal corta gráfica más de una vez).\nPasos para hallar f⁻¹:\n1. y = f(x)\n2. Intercambia x e y: x = f(y)\n3. Despeja y\n4. y = f⁻¹(x)\nGráficamente: f⁻¹ es simétrica de f respecto a y=x.",
+          "latex": "f^{-1}(f(x))=x \\quad | \\quad \\text{Test horizontal: inyectiva} \\quad | \\quad \\text{Gráficas simétricas respecto a } y=x",
+          "visual": "assets/inverse-function.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Candado y llave. f = cerrar con llave. f⁻¹ = abrir con llave. Si dos llaves cierran igual (no inyectiva), no sabes cuál abre. f(x)=x²: 2 y -2 dan 4. No tiene inversa en ℝ (sí en x≥0).",
+          "conceptId": "inverse-function"
+        },
+        {
+          "type": "interactive",
+          "component": "InverseFunctionFinder",
+          "description": "Función f. Test horizontal (gráfica). Si pasa: calcula f⁻¹ paso a paso. Gráficas f y f⁻¹ simétricas en y=x. Verifica f(f⁻¹(x))=x."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-4-5-1",
+              "type": "multiple-choice",
+              "question": "¿Cuál función NO tiene inversa en ℝ?",
+              "options": [
+                "f(x)=2x+1",
+                "f(x)=x³",
+                "f(x)=x²",
+                "f(x)=√x"
+              ],
+              "correct": 2,
+              "explanation": "f(x)=x² no es inyectiva: f(2)=f(-2)=4. Test horizontal falla. (Tiene inversa restringiendo dominio x≥0)."
+            },
+            {
+              "id": "q2-4-5-2",
+              "type": "fill-in",
+              "question": "f(x) = 3x - 7. f⁻¹(x) = ___",
+              "answer": "(x+7)/3",
+              "explanation": "y=3x-7 → x=3y-7 → 3y=x+7 → y=(x+7)/3."
+            },
+            {
+              "id": "q2-4-5-3",
+              "type": "multiple-choice",
+              "question": "Gráfica de f⁻¹ es simétrica a f respecto a:",
+              "options": [
+                "Eje X",
+                "Eje Y",
+                "Recta y=x",
+                "Origen"
+              ],
+              "correct": 2,
+              "explanation": "Intercambiar x e y = reflejar en y=x."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-4-6",
+      "title": "Tipos de Funciones: Lineal, Cuadrática, Valor Absoluto, Parte Entera",
+      "objective": "Reconocer formas básicas: f(x)=ax+b, f(x)=ax²+bx+c, f(x)=|x|, f(x)=⌊x⌋",
+      "type": "conceptual",
+      "durationMin": 7,
+      "content": [
+        {
+          "type": "hook",
+          "text": "f(x)=2x+1 (recta), f(x)=x² (parábola), f(x)=|x| (V), f(x)=⌊x⌋ (escalones). Cada una tiene forma característica."
+        },
+        {
+          "type": "explanation",
+          "text": "Funciones básicas:\n1. <strong>Lineal</strong>: f(x)=ax+b. Recta. Pendiente a, corte b. Dominio ℝ, rango ℝ (a≠0).\n2. <strong>Cuadrática</strong>: f(x)=ax²+bx+c. Parábola. Vértice, eje, concavidad.\n3. <strong>Valor absoluto</strong>: f(x)=|x| = {x si x≥0, -x si x<0}. V en (0,0). Simétrica eje Y. Rango [0,∞).\n4. <strong>Parte entera (suelo)</strong>: f(x)=⌊x⌋ = mayor entero ≤ x. Escalones. Saltos en enteros.\n5. <strong>Parte fraccionaria</strong>: {x} = x - ⌊x⌋ ∈ [0,1). Diente de sierra.\nTransformaciones: f(x)+k (vertical), f(x-h) (horizontal), af(x) (estiramiento), f(bx) (compresión).",
+          "latex": "f(x)=ax+b \\quad | \\quad f(x)=ax^2+bx+c \\quad | \\quad f(x)=|x| \\quad | \\quad f(x)=\\lfloor x\\rfloor \\quad | \\quad f(x)=\\{x\\}",
+          "visual": "assets/basic-functions.svg"
+        },
+        {
+          "type": "analogy",
+          "text": "Lineal = rampa constante. Cuadrática = curva de lanzamiento. Valor absoluto = distancia al cero (siempre positiva). Parte entera = planta de edificio (piso 2.3 → planta 2).",
+          "conceptId": "basic-functions"
+        },
+        {
+          "type": "interactive",
+          "component": "FunctionGallery",
+          "description": "Galería de 8 funciones base. Sliders para transformaciones: a, b, h, k en a·f(b(x-h))+k. Ve efecto en gráfica, dominio, rango."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-4-6-1",
+              "type": "multiple-choice",
+              "question": "Gráfica de f(x) = |x-2| + 1: vértice en:",
+              "options": [
+                "(2,1)",
+                "(-2,1)",
+                "(2,-1)",
+                "(1,2)"
+              ],
+              "correct": 0,
+              "explanation": "|x-2| mueve V 2 derecha. +1 mueve 1 arriba. Vértice (2,1)."
+            },
+            {
+              "id": "q2-4-6-2",
+              "type": "fill-in",
+              "question": "⌊2.7⌋ = ___, ⌊-1.3⌋ = ___, {2.7} = ___, {-1.3} = ___",
+              "answer": "2, -2, 0.7, 0.7",
+              "explanation": "Suelo: mayor entero ≤ x. -1.3 → -2 (no -1). Fraccionaria: x - ⌊x⌋. -1.3 - (-2) = 0.7."
+            },
+            {
+              "id": "q2-4-6-3",
+              "type": "multiple-choice",
+              "question": "f(x) = -2|x+3|. Vértice: ___, Concavidad: ____",
+              "options": [
+                "(-3,0), abre abajo",
+                "(3,0), abre arriba",
+                "(-3,0), abre arriba",
+                "(0,-3), abre abajo"
+              ],
+              "correct": 0,
+              "explanation": "Vértice de |x+3| en (-3,0). -2 invierte y estira: abre abajo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l2-4-7",
+      "title": "Proyecto Módulo: Modelo de Ingresos y Costos (Funciones Reales)",
+      "objective": "Modelar negocio: C(x) = costos fijos + variables, I(x) = precio × cantidad, B(x) = I(x) - C(x). Punto de equilibrio, máximo beneficio",
+      "type": "project",
+      "durationMin": 15,
+      "content": [
+        {
+          "type": "hook",
+          "text": "Fabricas sillas. Coste fijo 1000€, variable 20€/silla. Vendes a 50€/silla. C(x)=1000+20x, I(x)=50x. ¿Cuántas para no perder? Punto equilibrio."
+        },
+        {
+          "type": "explanation",
+          "text": "Modelo de negocio:\n- <strong>Coste</strong>: C(x) = CF + CV·x (fijos + variables por unidad)\n- <strong>Ingreso</strong>: I(x) = p·x (precio × cantidad vendida)\n- <strong>Beneficio</strong>: B(x) = I(x) - C(x) = (p-CV)x - CF\n- <strong>Punto equilibrio</strong>: B(x)=0 → x = CF/(p-CV) (unidades para cubrir costes)\n- Si precio depende de cantidad: p(x) = a - bx → I(x) = ax - bx² (parábola). B(x) = -bx² + (a-CV)x - CF → vértice = máximo beneficio.\nAnálisis: dominio x≥0, punto muerto, beneficio máximo, sensibilidad.",
+          "latex": "C(x)=CF+CVx \\quad | \\quad I(x)=p(x)x \\quad | \\quad B(x)=I(x)-C(x) \\quad | \\quad x_{eq}=CF/(p-CV)",
+          "visual": "assets/business-model.svg"
+        },
+        {
+          "type": "interactive",
+          "component": "BusinessModelSimulator",
+          "description": "Sliders: CF, CV, precio (constante o función lineal). Gráficas C(x), I(x), B(x). Punto equilibrio marcado. Vértice beneficio. Tabla valores. Exporta reporte."
+        },
+        {
+          "type": "practice",
+          "questions": [
+            {
+              "id": "q2-4-7-1",
+              "type": "number-input",
+              "question": "CF=2000, CV=15, p=40. Punto equilibrio (unidades):",
+              "answer": 80,
+              "explanation": "x_eq = 2000/(40-15) = 2000/25 = 80 unidades."
+            },
+            {
+              "id": "q2-4-7-2",
+              "type": "multiple-choice",
+              "question": "Si p(x) = 100 - 2x, CV=20, CF=500. Ingreso I(x) = ",
+              "options": [
+                "100x - 2x²",
+                "80x - 2x²",
+                "100x - 2x",
+                "80x"
+              ],
+              "correct": 0,
+              "explanation": "I(x) = p(x)·x = (100-2x)x = 100x - 2x²."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "phase-3",
+  "number": 3,
+  "title": "Arquitecto de Formas",
+  "subtitle": "Geometría - Plana, analítica, transformaciones y trigonometría básica",
+  "description": "Geometría visual e interactiva: ángulos, triángulos, círculos, coordenadas GPS, simetrías, trigonometría con sombras y rampas. 4 módulos, 30 lecciones.",
+  "icon": "📐",
+  "color": "#ef4444",
+  "estimatedHours": 10,
+  "prerequisites": ["phase-2"],
+  "modules": ["m3-1", "m3-2", "m3-3", "m3-4"],
+  "projectIntegrator": {
+    "id": "phase3-project",
+    "title": "Arquitecto por un Día",
+    "description": "Diseña una casa completa: planta, alzados, cálculo de materiales, ángulos de techo, escaleras.",
+    "estimatedMinutes": 90
+  },
+  "unlockCondition": "phase-2-complete",
+  "lessons": {}
+}

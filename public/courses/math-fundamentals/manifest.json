@@ -3,11 +3,11 @@
   "title": "Matemática Básica y Pensamiento Matemático",
   "subtitle": "Curso Profesional Completo - De Cero a Nivel Universitario",
   "version": "1.0.0",
-  "description": "Fase 0 disponible: 4 módulos, 20 lecciones y 40 ejercicios. Las fases 1 a 6 están en desarrollo. Incluye fórmulas LaTeX con explicaciones al pasar el mouse y constancias de finalización.",
+  "description": "Curso completo: 7 fases (0 a 6), 28 módulos, 190 lecciones y más de 300 ejercicios. Incluye fórmulas LaTeX con explicaciones al pasar el mouse, constancias de finalización y bibliografía con libros universitarios en PDF.",
   "author": "Adeptus Vinictus II",
   "license": "CC-BY-SA-4.0",
   "language": "es",
-  "estimatedHours": 60,
+  "estimatedHours": 63,
   "phases": [
     {
       "id": "phase-0",
@@ -32,7 +32,7 @@
     {
       "id": "phase-1",
       "number": 1,
-      "available": false,
+      "available": true,
       "title": "El Lenguaje de los Patrones",
       "subtitle": "Fundamentos universitarios - Números, potencias, variables y ecuaciones lineales",
       "description": "Domina el lenguaje algebraico: enteros, potencias, raíces, expresiones, ecuaciones lineales como balanzas. 4 módulos, 30 lecciones.",
@@ -52,7 +52,7 @@
     {
       "id": "phase-2",
       "number": 2,
-      "available": false,
+      "available": true,
       "title": "Resolver Misterios",
       "subtitle": "Álgebra - Sistemas, polinomios, cuadráticas y funciones",
       "description": "Resuelve sistemas como intersecciones, factoriza polinomios como áreas, domina la fórmula general y entiende funciones como máquinas. 4 módulos, 30 lecciones.",
@@ -72,7 +72,7 @@
     {
       "id": "phase-3",
       "number": 3,
-      "available": false,
+      "available": true,
       "title": "Arquitecto de Formas",
       "subtitle": "Geometría - Plana, analítica, transformaciones y trigonometría básica",
       "description": "Geometría visual e interactiva: ángulos, triángulos, círculos, coordenadas GPS, simetrías, trigonometría con sombras y rampas. 4 módulos, 30 lecciones.",
@@ -92,7 +92,7 @@
     {
       "id": "phase-4",
       "number": 4,
-      "available": false,
+      "available": true,
       "title": "Navegante del Cambio",
       "subtitle": "Funciones y Cálculo Intuitivo - Límites, derivadas, integrales, optimización",
       "description": "Cálculo sin ε-δ intimidante: límites como 'acercarse', derivadas como velocímetros, integrales como odómetros, optimización real. 4 módulos, 35 lecciones.",
@@ -112,7 +112,7 @@
     {
       "id": "phase-5",
       "number": 5,
-      "available": false,
+      "available": true,
       "title": "Analista de Datos",
       "subtitle": "Estadística y Probabilidad - Descriptiva, inferencia, distribuciones, decisiones",
       "description": "Datos reales, no abstractos: detecta mentiras en gráficas, entiende riesgos, usa la campana de Gauss, aprende inferencia con tests A/B. 4 módulos, 25 lecciones.",
@@ -132,7 +132,7 @@
     {
       "id": "phase-6",
       "number": 6,
-      "available": false,
+      "available": true,
       "title": "Pensador Matemático",
       "subtitle": "Pensamiento Avanzado - Lógica, conjuntos, demostraciones, modelado, matemáticas en el mundo",
       "description": "Piensa como matemático: lógica formal, conjuntos, demostraciones por inducción/contradicción, modelado real, criptografía básica, redes neuronales simples. 4 módulos, 20 lecciones.",
@@ -187,9 +187,9 @@
     "course": { "name": "DIPLOMA DE HONOR", "description": "Completar 6 fases + evaluación final ≥85% + proyecto final", "icon": "🏅", "color": "#ffd700" }
   },
   "achievements": {
-    "totalLessons": 20,
-    "totalModules": 4,
-    "totalPhases": 1,
-    "estimatedTotalHours": 5
+    "totalLessons": 190,
+    "totalModules": 28,
+    "totalPhases": 7,
+    "estimatedTotalHours": 63
   }
 }
