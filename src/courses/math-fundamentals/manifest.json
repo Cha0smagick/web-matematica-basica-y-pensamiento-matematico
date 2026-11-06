@@ -187,7 +187,7 @@
     "course": { "name": "DIPLOMA DE HONOR", "description": "Completar 6 fases + evaluación final ≥85% + proyecto final", "icon": "🏅", "color": "#ffd700" }
   },
   "achievements": {
-    "totalLessons": 190,
+    "totalLessons": 205,
     "totalModules": 28,
     "totalPhases": 7,
     "estimatedTotalHours": 63
