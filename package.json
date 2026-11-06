@@ -29,7 +29,7 @@
     "dexie": "^4.0.7",
     "jspdf": "^4.2.1",
     "jszip": "^3.10.1",
-    "katex": "^0.16.9"
+    "katex": "^0.19.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.42.0",
