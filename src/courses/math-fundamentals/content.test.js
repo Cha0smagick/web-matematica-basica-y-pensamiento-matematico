@@ -8,7 +8,15 @@ import { fileURLToPath } from 'node:url';
 // .../src/courses/math-fundamentals -> raíz del proyecto (3 niveles arriba)
 const ROOT = resolve(fileURLToPath(new URL('../../..', import.meta.url)));
 const PHASES_DIR = resolve(ROOT, 'src/courses/math-fundamentals/phases');
-const MODULE_IDS = ['m0-1', 'm0-2', 'm0-3', 'm0-4'];
+const MODULE_IDS = [
+  'm0-1', 'm0-2', 'm0-3', 'm0-4',
+  'm1-1', 'm1-2', 'm1-3', 'm1-4',
+  'm2-1', 'm2-2', 'm2-3', 'm2-4',
+  'm3-1', 'm3-2', 'm3-3', 'm3-4',
+  'm4-1', 'm4-2', 'm4-3', 'm4-4',
+  'm5-1', 'm5-2', 'm5-3', 'm5-4',
+  'm6-1', 'm6-2', 'm6-3', 'm6-4'
+];
 
 const modules = Object.fromEntries(
   MODULE_IDS.map((id) => [id, JSON.parse(readFileSync(`${PHASES_DIR}/${id}.json`, 'utf8'))])

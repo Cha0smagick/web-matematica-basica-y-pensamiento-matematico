@@ -132,6 +132,7 @@ export class Sidebar extends HTMLElement {
             <li><a href="#/dashboard" class="nav-item" data-nav><span class="nav-icon">📊</span>Panel de control<span class="nav-progress"></span></a></li>
             <li><a href="#/practice/mixed" class="nav-item" data-nav><span class="nav-icon">🎯</span>Práctica mixta<span class="nav-progress"></span></a></li>
             <li><a href="#/profile" class="nav-item" data-nav><span class="nav-icon">👤</span>Mi perfil<span class="nav-progress"></span></a></li>
+            <li><a href="#/bibliografia" class="nav-item" data-nav><span class="nav-icon">📚</span>Bibliografía<span class="nav-progress"></span></a></li>
             <li><a href="#/settings" class="nav-item" data-nav><span class="nav-icon">⚙️</span>Configuración<span class="nav-progress"></span></a></li>
           </ul>
         </div>

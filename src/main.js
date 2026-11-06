@@ -39,6 +39,7 @@ import { SettingsPage } from './pages/SettingsPage.js';
 import { LatexRenderer } from './components/math/LatexRenderer.js';
 import { NotFoundPage } from './pages/NotFoundPage.js';
 import { LegalPage } from './pages/LegalPage.js';
+import { BibliographyPage } from './pages/BibliographyPage.js';
 import './styles/globals.css';
 
 console.log('Imports done');
@@ -74,6 +75,7 @@ registerComponent('page-settings', SettingsPage);
 registerComponent('latex-renderer', LatexRenderer);
 registerComponent('page-not-found', NotFoundPage);
 registerComponent('page-legal', LegalPage);
+registerComponent('page-bibliography', BibliographyPage);
 console.log('Pages registered');
 
 // Configurar rutas
@@ -89,6 +91,7 @@ const routes = [
   { path: '/profile', component: 'page-profile', title: 'Perfil', auth: true },
   { path: '/settings', component: 'page-settings', title: 'Configuración' },
   { path: '/legal', component: 'page-legal', title: 'Privacidad y Términos' },
+  { path: '/bibliografia', component: 'page-bibliography', title: 'Bibliografía' },
   { path: '/404', component: 'page-not-found', title: 'No encontrado' }
 ];
 

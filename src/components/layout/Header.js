@@ -91,6 +91,10 @@ export class Header extends HTMLElement {
         .btn-icon:hover { background: var(--bg-tertiary); color: var(--text-primary); }
         .btn-icon:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
         .user-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: var(--font-size-sm); cursor: pointer; }
+        .nav-link { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: var(--radius-md); color: var(--text-secondary); text-decoration: none; font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); transition: all var(--transition-fast); }
+        .nav-link:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+        .nav-text { display: none; }
+        @media (min-width: 900px) { .nav-text { display: inline; } }
       </style>
       
       <header class="header" role="banner">
@@ -105,6 +109,7 @@ export class Header extends HTMLElement {
           ${streak > 0 ? `<span class="streak-badge">🔥 ${streak} días</span>` : ''}
         </div>
         <div class="header-right">
+          <a href="#/bibliografia" class="nav-link" id="biblioLink" title="Bibliografía con libros PDF">📚<span class="nav-text">Bibliografía</span></a>
           <button class="btn-icon" id="themeBtn" aria-label="Cambiar tema" title="Tema: ${theme}">${themeIcons[theme] || '💻'}</button>
           <button class="user-avatar" id="profileBtn" aria-label="Mi perfil">${user.name?.[0]?.toUpperCase() || 'E'}</button>
         </div>
