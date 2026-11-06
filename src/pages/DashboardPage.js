@@ -22,10 +22,8 @@ export class DashboardPage extends HTMLElement {
     const phaseRows = phases.map((phase, i) => {
       const mods = getPhaseModules(phase.id);
       const available = mods.length > 0;
-      const doneCount = mods.filter(m => completedModules.includes(m.id)).length;
-      const pct = available && mods.length
-        ? Math.round((doneCount / mods.length) * 100)
-        : 0;
+      const doneCount = mods.filter((m) => completedModules.includes(m.id)).length;
+      const pct = available && mods.length ? Math.round((doneCount / mods.length) * 100) : 0;
       return { phase, i, available, doneCount, total: mods.length, pct };
     });
 
@@ -105,7 +103,9 @@ export class DashboardPage extends HTMLElement {
 
         <h2 class="section-title">🗺️ Mapa del Curso</h2>
         <div class="phases-grid">
-          ${phaseRows.map(({ phase, i, available, doneCount, total, pct }) => `
+          ${phaseRows
+            .map(
+              ({ phase, i, available, doneCount, total, pct }) => `
             <div class="phase-card ${available ? '' : 'unavailable'}">
               <div class="phase-header">
                 <div class="phase-number" style="background: ${available ? phase.color : 'var(--bg-quaternary)'}">${i + 1}</div>
@@ -124,7 +124,9 @@ export class DashboardPage extends HTMLElement {
                 </button>
               </div>
             </div>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
 
         <div class="next-lesson" style="margin-top: var(--spacing-xl);">

@@ -103,7 +103,12 @@
               "id": "q2-1-2-2",
               "type": "multiple-choice",
               "question": "En x + 2y = 7, 3x - y = 4, ¿qué variable es más fácil despejar primero?",
-              "options": ["x en la primera", "y en la primera", "x en la segunda", "y en la segunda"],
+              "options": [
+                "x en la primera",
+                "y en la primera",
+                "x en la segunda",
+                "y en la segunda"
+              ],
               "correct": 3,
               "explanation": "3x - y = 4 → y = 3x - 4 (coeficiente -1, fácil). La primera requeriría dividir por 2."
             },
@@ -159,7 +164,12 @@
               "id": "q2-1-3-2",
               "type": "multiple-choice",
               "question": "Sistema: 2x + y = 10, x - y = 2. Para igualación, despeja y en ambas:",
-              "options": ["y = 10-2x, y = x-2", "y = 2x-10, y = x+2", "y = 10+2x, y = 2-x", "No se puede"],
+              "options": [
+                "y = 10-2x, y = x-2",
+                "y = 2x-10, y = x+2",
+                "y = 10+2x, y = 2-x",
+                "No se puede"
+              ],
               "correct": 0,
               "explanation": "Primera: y = 10 - 2x. Segunda: -y = 2 - x → y = x - 2. Iguala: 10-2x = x-2."
             },
@@ -216,7 +226,12 @@
               "id": "q2-1-4-2",
               "type": "multiple-choice",
               "question": "Para eliminar y en: 2x + 3y = 7, 4x - 5y = 3. Multiplica la primera por 5, la segunda por 3. ¿Por qué?",
-              "options": ["Para que coeficientes de y sean 15 y -15", "Para que coeficientes de x sean 10 y 12", "Para simplificar", "Error, no se debe hacer"],
+              "options": [
+                "Para que coeficientes de y sean 15 y -15",
+                "Para que coeficientes de x sean 10 y 12",
+                "Para simplificar",
+                "Error, no se debe hacer"
+              ],
               "correct": 0,
               "explanation": "5×3y = 15y, 3×(-5y) = -15y. Suma: 15y + (-15y) = 0. Y eliminada."
             },
@@ -323,7 +338,12 @@
               "id": "q2-1-6-1",
               "type": "multiple-choice",
               "question": "Primer paso en Gauss para: x+y+z=6, 2x-y+z=3, x+2y-z=4:",
-              "options": ["Eliminar x de eq2 y eq3", "Eliminar y de todas", "Despejar z", "Sumar todas"],
+              "options": [
+                "Eliminar x de eq2 y eq3",
+                "Eliminar y de todas",
+                "Despejar z",
+                "Sumar todas"
+              ],
               "correct": 0,
               "explanation": "Usa eq1 como pivote. eq2 - 2×eq1: elimina x. eq3 - eq1: elimina x. Queda 2×2 en y,z."
             },
@@ -379,7 +399,12 @@
               "id": "q2-1-7-1",
               "type": "multiple-choice",
               "question": "Mezclar 20% y 50% ácido para 10L al 30%. Sistema:",
-              "options": ["x+y=10, 0.2x+0.5y=3", "x+y=10, 0.2x+0.5y=0.3", "x+y=3, 0.2x+0.5y=10", "0.2x+0.5y=10, x-y=3"],
+              "options": [
+                "x+y=10, 0.2x+0.5y=3",
+                "x+y=10, 0.2x+0.5y=0.3",
+                "x+y=3, 0.2x+0.5y=10",
+                "0.2x+0.5y=10, x-y=3"
+              ],
               "correct": 0,
               "explanation": "x+y=10 (volumen). 0.2x+0.5y = 0.3×10 = 3 (ácido puro)."
             },

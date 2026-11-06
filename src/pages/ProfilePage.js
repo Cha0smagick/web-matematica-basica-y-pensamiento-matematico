@@ -88,22 +88,31 @@ export class ProfilePage extends HTMLElement {
         <div class="achievements-section">
           <h2 class="section-title">🏆 Mis Logros</h2>
           <div class="achievements-grid">
-            ${unlocked.map(a => `
+            ${unlocked
+              .map(
+                (a) => `
               <div class="achievement-card unlocked">
                 <span class="achievement-icon">${a.icon}</span>
                 <div class="achievement-title">${a.title}</div>
                 <div class="achievement-desc">${a.description}</div>
                 <span class="tier-badge tier-${a.tier}">${a.tier}</span>
               </div>
-            `).join('')}
-            ${locked.slice(0, 6).map(a => `
+            `
+              )
+              .join('')}
+            ${locked
+              .slice(0, 6)
+              .map(
+                (a) => `
               <div class="achievement-card locked">
                 <span class="achievement-icon">❓</span>
                 <div class="achievement-title">???</div>
                 <div class="achievement-desc">Logro bloqueado</div>
                 <span class="tier-badge tier-${a.tier}">${a.tier}</span>
               </div>
-            `).join('')}
+            `
+              )
+              .join('')}
           </div>
         </div>
         
@@ -113,14 +122,18 @@ export class ProfilePage extends HTMLElement {
         </div>
       </div>
     `;
-    
+
     this._attachProfileListeners();
   }
 
   _attachProfileListeners() {
     window.__APP__ = window.__APP__ || {};
     window.__APP__.resetProgress = () => {
-      if (confirm('¿Estás seguro de que quieres reiniciar todo tu progreso? Esta acción no se puede deshacer.')) {
+      if (
+        confirm(
+          '¿Estás seguro de que quieres reiniciar todo tu progreso? Esta acción no se puede deshacer.'
+        )
+      ) {
         store.reset();
       }
     };

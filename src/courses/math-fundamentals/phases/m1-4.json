@@ -39,7 +39,12 @@
               "id": "q1-4-1-1",
               "type": "multiple-choice",
               "question": "Primer paso para resolver x - 5 = 12:",
-              "options": ["Sumar 5 a ambos lados", "Restar 5 a ambos lados", "Multiplicar por 5", "Dividir por 5"],
+              "options": [
+                "Sumar 5 a ambos lados",
+                "Restar 5 a ambos lados",
+                "Multiplicar por 5",
+                "Dividir por 5"
+              ],
               "correct": 0,
               "explanation": "x - 5 = 12. Para aislar x, suma 5 a ambos lados: x = 17."
             },
@@ -54,7 +59,12 @@
               "id": "q1-4-1-3",
               "type": "multiple-choice",
               "question": "Si multiplicas ambos lados de una ecuación por 0, ¿qué pasa?",
-              "options": ["Se resuelve", "Se mantiene igual", "Pierdes información (0=0)", "Cambia la solución"],
+              "options": [
+                "Se resuelve",
+                "Se mantiene igual",
+                "Pierdes información (0=0)",
+                "Cambia la solución"
+              ],
               "correct": 2,
               "explanation": "Multiplicar por 0 da 0=0, que es cierto pero no ayuda. Pierdes la ecuación original. Nunca multiplices/dividas por 0."
             }
@@ -159,7 +169,12 @@
               "id": "q1-4-3-2",
               "type": "multiple-choice",
               "question": "Error común en 3x + 5 = 2x - 7:",
-              "options": ["Restar 2x a ambos lados", "Sumar 2x al lado derecho", "Restar 3x al lado izquierdo", "Dividir por x"],
+              "options": [
+                "Restar 2x a ambos lados",
+                "Sumar 2x al lado derecho",
+                "Restar 3x al lado izquierdo",
+                "Dividir por x"
+              ],
               "correct": 1,
               "explanation": "Sumar 2x solo a un lado rompe la igualdad. Siempre misma operación en AMBOS lados."
             },

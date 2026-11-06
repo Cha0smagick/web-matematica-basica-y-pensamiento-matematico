@@ -9,13 +9,34 @@ import { fileURLToPath } from 'node:url';
 const ROOT = resolve(fileURLToPath(new URL('../../..', import.meta.url)));
 const PHASES_DIR = resolve(ROOT, 'src/courses/math-fundamentals/phases');
 const MODULE_IDS = [
-  'm0-1', 'm0-2', 'm0-3', 'm0-4',
-  'm1-1', 'm1-2', 'm1-3', 'm1-4',
-  'm2-1', 'm2-2', 'm2-3', 'm2-4',
-  'm3-1', 'm3-2', 'm3-3', 'm3-4',
-  'm4-1', 'm4-2', 'm4-3', 'm4-4',
-  'm5-1', 'm5-2', 'm5-3', 'm5-4',
-  'm6-1', 'm6-2', 'm6-3', 'm6-4'
+  'm0-1',
+  'm0-2',
+  'm0-3',
+  'm0-4',
+  'm1-1',
+  'm1-2',
+  'm1-3',
+  'm1-4',
+  'm2-1',
+  'm2-2',
+  'm2-3',
+  'm2-4',
+  'm3-1',
+  'm3-2',
+  'm3-3',
+  'm3-4',
+  'm4-1',
+  'm4-2',
+  'm4-3',
+  'm4-4',
+  'm5-1',
+  'm5-2',
+  'm5-3',
+  'm5-4',
+  'm6-1',
+  'm6-2',
+  'm6-3',
+  'm6-4',
 ];
 
 const modules = Object.fromEntries(
@@ -82,7 +103,9 @@ describe('Assets referenciados', () => {
         for (const block of lesson.content || []) {
           const refs = [block.visual, block.image, ...(block.questions || []).map((q) => q.image)];
           for (const ref of refs.filter(Boolean)) {
-            if (!existsSync(resolve(ROOT, 'public', ref))) {missing.push(ref);}
+            if (!existsSync(resolve(ROOT, 'public', ref))) {
+              missing.push(ref);
+            }
           }
         }
       }
@@ -99,7 +122,7 @@ describe('Manifest', () => {
   it('los totales coinciden con el contenido real en disco', () => {
     const real = {
       modules: Object.keys(modules).length,
-      lessons: Object.values(modules).reduce((s, m) => s + m.lessons.length, 0)
+      lessons: Object.values(modules).reduce((s, m) => s + m.lessons.length, 0),
     };
     expect(manifest.achievements.totalModules).toBe(real.modules);
     expect(manifest.achievements.totalLessons).toBe(real.lessons);

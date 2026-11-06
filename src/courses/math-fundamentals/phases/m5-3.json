@@ -39,12 +39,7 @@
               "id": "q5-3-1-1",
               "type": "multiple-choice",
               "question": "X ~ Uniforme(0, 10). P(2 < X < 5) = ",
-              "options": [
-                "0.3",
-                "0.5",
-                "0.2",
-                "0.7"
-              ],
+              "options": ["0.3", "0.5", "0.2", "0.7"],
               "correct": 0,
               "explanation": "Densidad = 1/10. Área = (5-2)×1/10 = 3/10 = 0.3."
             },
@@ -59,12 +54,7 @@
               "id": "q5-3-1-3",
               "type": "multiple-choice",
               "question": "Para variable continua, P(X = a) = ",
-              "options": [
-                "f(a)",
-                "F(a)",
-                "0",
-                "1"
-              ],
+              "options": ["f(a)", "F(a)", "0", "1"],
               "correct": 2,
               "explanation": "Probabilidad en un punto individual es 0 (área de línea = 0)."
             }
@@ -106,12 +96,7 @@
               "id": "q5-3-2-1",
               "type": "multiple-choice",
               "question": "X ~ N(100, 15²). P(85 < X < 115) ≈ ",
-              "options": [
-                "0.68",
-                "0.95",
-                "0.997",
-                "0.5"
-              ],
+              "options": ["0.68", "0.95", "0.997", "0.5"],
               "correct": 0,
               "explanation": "μ±σ = 100±15 = [85,115]. Regla empírica: 68%."
             },
@@ -126,12 +111,7 @@
               "id": "q5-3-2-3",
               "type": "multiple-choice",
               "question": "X ~ N(50, 10²). P(X > 70) = P(Z > ___) ≈ ___",
-              "options": [
-                "2, 0.0228",
-                "1.5, 0.0668",
-                "2, 0.0456",
-                "1, 0.1587"
-              ],
+              "options": ["2, 0.0228", "1.5, 0.0668", "2, 0.0456", "1, 0.1587"],
               "correct": 0,
               "explanation": "Z = (70-50)/10 = 2. P(Z>2) ≈ 0.0228."
             }
@@ -180,12 +160,7 @@
               "id": "q5-3-3-2",
               "type": "multiple-choice",
               "question": "Binomial(100, 0.5) ≈ N(50, 25). P(X ≤ 40) con corrección continuidad:",
-              "options": [
-                "Φ((40-50)/5)",
-                "Φ((40.5-50)/5)",
-                "Φ((39.5-50)/5)",
-                "Φ((40-50)/5)"
-              ],
+              "options": ["Φ((40-50)/5)", "Φ((40.5-50)/5)", "Φ((39.5-50)/5)", "Φ((40-50)/5)"],
               "correct": 1,
               "explanation": "P(X ≤ 40) ≈ P(X < 40.5) → Z = (40.5-50)/5 = -1.9. Φ(-1.9)."
             },
@@ -234,12 +209,7 @@
               "id": "q5-3-4-1",
               "type": "multiple-choice",
               "question": "Población μ=100, σ=15. Muestra n=36. Error estándar de la media = ",
-              "options": [
-                "15",
-                "2.5",
-                "5",
-                "0.417"
-              ],
+              "options": ["15", "2.5", "5", "0.417"],
               "correct": 1,
               "explanation": "SE = σ/√n = 15/√36 = 15/6 = 2.5."
             },
@@ -368,12 +338,7 @@
               "id": "q5-3-6-1",
               "type": "multiple-choice",
               "question": "Binomial(n=200, p=0.02). Mejor aproximación:",
-              "options": [
-                "Normal",
-                "Poisson(4)",
-                "Poisson(200)",
-                "t-Student"
-              ],
+              "options": ["Normal", "Poisson(4)", "Poisson(200)", "t-Student"],
               "correct": 1,
               "explanation": "n grande, p pequeño, np=4 moderado → Poisson(np=4). Normal requeriría np>5 (4<5)."
             },
@@ -435,24 +400,14 @@
               "id": "q5-3-7-1",
               "type": "multiple-choice",
               "question": "X ~ N(0,1). Y = X². Distribución Y:",
-              "options": [
-                "Normal",
-                "Chi-cuadrado 1 g.l.",
-                "Exponencial(1/2)",
-                "Gamma(1/2, 1/2)"
-              ],
+              "options": ["Normal", "Chi-cuadrado 1 g.l.", "Exponencial(1/2)", "Gamma(1/2, 1/2)"],
               "correct": 1,
               "explanation": "X² con X ~ N(0,1) ~ χ²_1 (chi-cuadrado 1 grado libertad)."
             },
             {
               "id": "q5-3-7-2",
               "question": "X ~ Uniforme(0,1). Y = -ln X. Distribución Y:",
-              "options": [
-                "Exponencial(1)",
-                "Normal",
-                "Beta",
-                "Gamma"
-              ],
+              "options": ["Exponencial(1)", "Normal", "Beta", "Gamma"],
               "correct": 0,
               "explanation": "P(Y>y) = P(-ln X > y) = P(X < e^{-y}) = e^{-y}. Función supervivencia exponencial(1)."
             },

@@ -71,21 +71,21 @@ export class Layout extends HTMLElement {
       <div class="l-main"><slot name="main"></slot></div>
       <div class="l-footer"><slot name="footer"></slot></div>
     `;
-    
+
     this._setupSidebarToggle();
   }
 
   _setupSidebarToggle() {
     const overlay = this.shadowRoot.getElementById('sidebarOverlay');
     const sidebar = this.shadowRoot.getElementById('sidebar');
-    
+
     // Listen for toggle events
     this.addEventListener('sidebar-toggle', () => {
       const isOpen = sidebar.classList.toggle('open');
       overlay.classList.toggle('visible', isOpen);
       this.store?.set('ui.sidebarOpen', isOpen);
     });
-    
+
     overlay.addEventListener('click', () => {
       sidebar.classList.remove('open');
       overlay.classList.remove('visible');

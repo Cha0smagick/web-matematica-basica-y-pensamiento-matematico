@@ -18,7 +18,7 @@ export class HomePage extends HTMLElement {
   _setupEvents() {
     const startBtn = this.shadowRoot.getElementById('btn-start');
     const demoBtn = this.shadowRoot.getElementById('btn-demo');
-    
+
     startBtn?.addEventListener('click', () => {
       // Iniciar usuario invitado si no existe
       if (!store.get('user.authenticated')) {
@@ -28,7 +28,7 @@ export class HomePage extends HTMLElement {
       }
       navigateTo('/lesson/l0-1-1');
     });
-    
+
     demoBtn?.addEventListener('click', () => {
       navigateTo('/lesson/l0-1-1');
     });

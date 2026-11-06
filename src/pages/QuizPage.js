@@ -26,12 +26,12 @@ export class QuizPage extends HTMLElement {
 
     this._moduleId = moduleId;
     this._module = getModule(moduleId);
-    this._questions = getQuizQuestions(moduleId).map(q => ({
+    this._questions = getQuizQuestions(moduleId).map((q) => ({
       id: q.id,
       question: q.question,
       options: q.options,
       correct: q.correct,
-      explanation: q.explanation || ''
+      explanation: q.explanation || '',
     }));
     this._currentQuestion = 0;
     this._answers = [];
@@ -54,7 +54,9 @@ export class QuizPage extends HTMLElement {
       return;
     }
 
-    if (this._finished) {return;} // la pantalla de resultado ya está renderizada
+    if (this._finished) {
+      return;
+    } // la pantalla de resultado ya está renderizada
 
     const q = this._questions[this._currentQuestion];
     const progress = (this._currentQuestion / this._questions.length) * 100;
@@ -109,22 +111,34 @@ export class QuizPage extends HTMLElement {
           <span class="question-counter">Pregunta ${this._currentQuestion + 1}</span>
           <div class="question-text">${q.question}</div>
           <div class="options">
-            ${q.options.map((opt, i) => `
+            ${q.options
+              .map(
+                (opt, i) => `
               <button class="option-btn ${answered ? this._getOptionClass(i, q.correct) : ''}" ${answered ? 'disabled' : ''} data-i="${i}">${opt}</button>
-            `).join('')}
+            `
+              )
+              .join('')}
           </div>
-          ${answered ? `<div class="feedback ${this._answers[this._currentQuestion] === q.correct ? 'correct' : 'wrong'}">
+          ${
+            answered
+              ? `<div class="feedback ${this._answers[this._currentQuestion] === q.correct ? 'correct' : 'wrong'}">
             ${this._answers[this._currentQuestion] === q.correct ? '✅ ¡Correcto!' : '❌ Incorrecto'} ${q.explanation || ''}
-          </div>` : ''}
+          </div>`
+              : ''
+          }
         </div>
 
         <div class="nav-bar">
           <button class="btn btn-ghost" ${this._currentQuestion === 0 ? 'disabled' : ''} data-prev>← Anterior</button>
-          ${this._currentQuestion < this._questions.length - 1 ? `
+          ${
+            this._currentQuestion < this._questions.length - 1
+              ? `
             <button class="btn btn-primary" ${!answered ? 'disabled' : ''} data-next>Siguiente →</button>
-          ` : `
+          `
+              : `
             <button class="btn btn-primary" ${!answered ? 'disabled' : ''} data-finish>Finalizar Evaluación</button>
-          `}
+          `
+          }
         </div>
       </div>
     `;
@@ -133,30 +147,42 @@ export class QuizPage extends HTMLElement {
   }
 
   _getOptionClass(index, correct) {
-    if (index === correct) {return 'correct';}
-    if (index === this._answers[this._currentQuestion]) {return 'wrong';}
+    if (index === correct) {
+      return 'correct';
+    }
+    if (index === this._answers[this._currentQuestion]) {
+      return 'wrong';
+    }
     return '';
   }
 
   _attachQuizListeners() {
     const root = this.shadowRoot;
-    root.querySelectorAll('.option-btn').forEach(btn => {
+    root.querySelectorAll('.option-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         this._answers[this._currentQuestion] = Number(btn.dataset.i);
         this.render();
       });
     });
     root.querySelector('[data-prev]')?.addEventListener('click', () => {
-      if (this._currentQuestion > 0) { this._currentQuestion--; this.render(); }
+      if (this._currentQuestion > 0) {
+        this._currentQuestion--;
+        this.render();
+      }
     });
     root.querySelector('[data-next]')?.addEventListener('click', () => {
-      if (this._currentQuestion < this._questions.length - 1) { this._currentQuestion++; this.render(); }
+      if (this._currentQuestion < this._questions.length - 1) {
+        this._currentQuestion++;
+        this.render();
+      }
     });
     root.querySelector('[data-finish]')?.addEventListener('click', () => this.finishQuiz());
   }
 
   async finishQuiz() {
-    const correctCount = this._answers.filter((ans, i) => ans === this._questions[i].correct).length;
+    const correctCount = this._answers.filter(
+      (ans, i) => ans === this._questions[i].correct
+    ).length;
     const score = Math.round((correctCount / this._questions.length) * 100);
     const passed = score >= 75;
     this._finished = true;
@@ -168,11 +194,15 @@ export class QuizPage extends HTMLElement {
       phaseId: this._module.phaseId,
       score,
       quizPassed: passed,
-      completed: passed && lessonsDone
+      completed: passed && lessonsDone,
     });
 
     const stats = await store.progress.getGlobalStats();
-    await store.achievements.checkAll(stats, { type: 'module-quiz', score, moduleId: this._moduleId });
+    await store.achievements.checkAll(stats, {
+      type: 'module-quiz',
+      score,
+      moduleId: this._moduleId,
+    });
 
     this._renderResult(score, passed);
   }
@@ -190,9 +220,11 @@ export class QuizPage extends HTMLElement {
       <div class="quiz-page">
         <div class="result-score">${score}%</div>
         <div class="${passed ? 'result-pass' : 'result-fail'}">${passed ? '🎉 ¡Aprobado! (≥75%)' : 'Necesitas 75% para aprobar'}</div>
-        <p style="color: var(--text-muted);">${passed
-    ? 'Has desbloqueado la constancia de este módulo.'
-    : 'Puedes reintentar cuando quieras: sin castigos, sin presión.'}</p>
+        <p style="color: var(--text-muted);">${
+          passed
+            ? 'Has desbloqueado la constancia de este módulo.'
+            : 'Puedes reintentar cuando quieras: sin castigos, sin presión.'
+        }</p>
         <div style="display: flex; gap: var(--spacing-md); justify-content: center; margin-top: var(--spacing-lg); flex-wrap: wrap;">
           <button class="btn btn-outline" data-retry>Reintentar</button>
           ${passed ? '<button class="btn btn-primary" data-diploma>Ver constancia</button>' : ''}
@@ -202,7 +234,9 @@ export class QuizPage extends HTMLElement {
     `;
     const root = this.shadowRoot;
     root.querySelector('[data-retry]').addEventListener('click', () => this._startQuiz());
-    root.querySelector('[data-diploma]')?.addEventListener('click', () => navigateTo(`/diploma/module/${this._moduleId}`));
+    root
+      .querySelector('[data-diploma]')
+      ?.addEventListener('click', () => navigateTo(`/diploma/module/${this._moduleId}`));
     root.querySelector('[data-home]').addEventListener('click', () => navigateTo('/'));
   }
 }

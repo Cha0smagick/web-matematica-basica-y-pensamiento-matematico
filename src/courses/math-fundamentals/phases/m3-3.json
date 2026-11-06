@@ -46,12 +46,7 @@
               "id": "q3-3-1-2",
               "type": "multiple-choice",
               "question": "Composición T(2,3) ∘ T(-1,4) = ",
-              "options": [
-                "T(1, 7)",
-                "T(3, -1)",
-                "T(1, -7)",
-                "T(-3, 7)"
-              ],
+              "options": ["T(1, 7)", "T(3, -1)", "T(1, -7)", "T(-3, 7)"],
               "correct": 0,
               "explanation": "Sumas componentes: (2-1, 3+4) = (1, 7)."
             },
@@ -59,12 +54,7 @@
               "id": "q3-3-1-3",
               "type": "multiple-choice",
               "question": "La inversa de T(a,b) es:",
-              "options": [
-                "T(-a, -b)",
-                "T(b, a)",
-                "T(-b, -a)",
-                "T(a, -b)"
-              ],
+              "options": ["T(-a, -b)", "T(b, a)", "T(-b, -a)", "T(a, -b)"],
               "correct": 0,
               "explanation": "T(a,b) ∘ T(-a,-b) = T(0,0) = identidad. Vector opuesto."
             }
@@ -113,12 +103,7 @@
               "id": "q3-3-2-2",
               "type": "multiple-choice",
               "question": "Rotación 180° respecto a origen es equivalente a:",
-              "options": [
-                "Reflexión en origen",
-                "Traslación",
-                "Dilatación 2",
-                "Identidad"
-              ],
+              "options": ["Reflexión en origen", "Traslación", "Dilatación 2", "Identidad"],
               "correct": 0,
               "explanation": "R_180(x,y) = (-x,-y) = simetría central (punto fijo origen)."
             },
@@ -174,12 +159,7 @@
               "id": "q3-3-3-2",
               "type": "multiple-choice",
               "question": "Composición S_X ∘ S_Y (refleja en Y, luego en X):",
-              "options": [
-                "Rotación 180° origen",
-                "Traslación",
-                "Reflexión en y=x",
-                "Identidad"
-              ],
+              "options": ["Rotación 180° origen", "Traslación", "Reflexión en y=x", "Identidad"],
               "correct": 0,
               "explanation": "S_Y: (x,y)→(-x,y). S_X: (-x,y)→(-x,-y). Resultado: (-x,-y) = rotación 180° (o simetría central)."
             },
@@ -241,12 +221,7 @@
               "id": "q3-3-4-2",
               "type": "multiple-choice",
               "question": "Triángulo área 6 cm². Homotecia k = -3. Área imagen = ",
-              "options": [
-                "18 cm²",
-                "54 cm²",
-                "-18 cm²",
-                "-54 cm²"
-              ],
+              "options": ["18 cm²", "54 cm²", "-18 cm²", "-54 cm²"],
               "correct": 1,
               "explanation": "Área × k² = 6 × 9 = 54 cm². Signo de k no afecta área (siempre positiva)."
             },
@@ -295,12 +270,7 @@
               "id": "q3-3-5-1",
               "type": "multiple-choice",
               "question": "Grupo de simetrías de un pentágono regular:",
-              "options": [
-                "D_5 (orden 10)",
-                "D_5 (orden 5)",
-                "C_5 (orden 5)",
-                "D_10 (orden 20)"
-              ],
+              "options": ["D_5 (orden 10)", "D_5 (orden 5)", "C_5 (orden 5)", "D_10 (orden 20)"],
               "correct": 0,
               "explanation": "Pentágono regular: 5 rotaciones + 5 reflexiones = D_5, orden 10."
             },
@@ -375,12 +345,7 @@
               "id": "q3-3-6-2",
               "type": "multiple-choice",
               "question": "Composición de reflexión en y=x y luego en y=-x:",
-              "options": [
-                "Rotación 90°",
-                "Rotación 180°",
-                "Traslación",
-                "Reflexión en origen"
-              ],
+              "options": ["Rotación 90°", "Rotación 180°", "Traslación", "Reflexión en origen"],
               "correct": 1,
               "explanation": "Ejes y=x e y=-x perpendiculares (ángulo 90°). Composición = rotación 2×90° = 180° en origen."
             },

@@ -111,7 +111,12 @@
               "id": "q1-1-2-3",
               "type": "multiple-choice",
               "question": "Si |a| > |b|, ¿qué sabemos?",
-              "options": ["a > b", "a está más lejos del cero que b", "a es positivo", "b es negativo"],
+              "options": [
+                "a > b",
+                "a está más lejos del cero que b",
+                "a es positivo",
+                "b es negativo"
+              ],
               "correct": 1,
               "explanation": "Valor absoluto compara distancias al cero, no valores con signo."
             }
@@ -275,7 +280,12 @@
               "id": "q1-1-5-2",
               "type": "multiple-choice",
               "question": "Diferencia entre -3² y (-3)²:",
-              "options": ["Son iguales: 9", "-3² = -9, (-3)² = 9", "-3² = 9, (-3)² = -9", "Ambos son -9"],
+              "options": [
+                "Son iguales: 9",
+                "-3² = -9, (-3)² = 9",
+                "-3² = 9, (-3)² = -9",
+                "Ambos son -9"
+              ],
               "correct": 1,
               "explanation": "-3² = -(3²) = -9. (-3)² = (-3)×(-3) = 9. Paréntesis cambian todo."
             },
@@ -432,7 +442,12 @@
               "id": "q1-1-8-1",
               "type": "multiple-choice",
               "question": "Dron en 0. Pedidos en -4, +6, -1. Ruta óptima (menor distancia):",
-              "options": ["0 → -4 → -1 → 6 (dist=15)", "0 → -1 → -4 → 6 (dist=11)", "0 → 6 → -1 → -4 (dist=17)", "0 → -1 → 6 → -4 (dist=15)"],
+              "options": [
+                "0 → -4 → -1 → 6 (dist=15)",
+                "0 → -1 → -4 → 6 (dist=11)",
+                "0 → 6 → -1 → -4 (dist=17)",
+                "0 → -1 → 6 → -4 (dist=15)"
+              ],
               "correct": 1,
               "explanation": "Ordenar de menor a mayor: -4, -1, 6. Pero empezando en 0, ir primero al más cercano (-1) ahorra: |0-(-1)|+|(-1)-(-4)|+|(-4)-6| = 1+3+10=14. Wait, recalcula: 0→-1→-4→6 = 1+3+10=14. 0→-4→-1→6 = 4+3+7=14. Empate. Mejor: 0→-1→6→-4 = 1+7+10=18. La óptima visita extremos ordenadamente."
             },

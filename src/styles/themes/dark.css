@@ -1,5 +1,5 @@
 /* Dark Theme */
-[data-theme="dark"] {
+[data-theme='dark'] {
   --bg-primary: var(--neutral-950);
   --bg-secondary: var(--neutral-900);
   --bg-tertiary: var(--neutral-800);
@@ -29,5 +29,9 @@
 }
 
 /* KaTeX dark mode adjustments */
-[data-theme="dark"] .katex { color: var(--text-primary); }
-[data-theme="dark"] .katex .katex-html { color: var(--text-primary); }
+[data-theme='dark'] .katex {
+  color: var(--text-primary);
+}
+[data-theme='dark'] .katex .katex-html {
+  color: var(--text-primary);
+}

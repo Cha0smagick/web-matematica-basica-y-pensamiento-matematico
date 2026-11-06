@@ -39,12 +39,7 @@
               "id": "q5-2-1-1",
               "type": "multiple-choice",
               "question": "Lanza dos dados. Ω tiene ___ resultados. Evento 'suma = 7' tiene ___ resultados.",
-              "options": [
-                "36, 6",
-                "12, 2",
-                "36, 5",
-                "18, 3"
-              ],
+              "options": ["36, 6", "12, 2", "36, 5", "18, 3"],
               "correct": 0,
               "explanation": "6×6=36 pares ordenados. Suma 7: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) → 6 casos."
             },
@@ -126,12 +121,7 @@
               "id": "q5-2-2-3",
               "type": "multiple-choice",
               "question": "Si A ⊆ B, entonces P(A) ___ P(B)",
-              "options": [
-                "≤",
-                "≥",
-                "=",
-                "No se puede saber"
-              ],
+              "options": ["≤", "≥", "=", "No se puede saber"],
               "correct": 0,
               "explanation": "Subconjunto tiene probabilidad menor o igual (B contiene A y posiblemente más)."
             }
@@ -173,12 +163,7 @@
               "id": "q5-2-3-1",
               "type": "multiple-choice",
               "question": "P(A)=0.3, P(B)=0.4, P(A∩B)=0.12. ¿A y B independientes?",
-              "options": [
-                "Sí",
-                "No",
-                "No se puede saber",
-                "Solo si P(A|B)=0.3"
-              ],
+              "options": ["Sí", "No", "No se puede saber", "Solo si P(A|B)=0.3"],
               "correct": 0,
               "explanation": "P(A)P(B) = 0.3×0.4 = 0.12 = P(A∩B). Sí, independientes."
             },
@@ -423,12 +408,7 @@
               "id": "q5-2-7-1",
               "type": "multiple-choice",
               "question": "Monte Carlo para estimar π: puntos aleatorios en [0,1]², cuenta en círculo cuarto. Estimador π̂ = 4 × (puntos_dentro / N). Error estándar ∝:",
-              "options": [
-                "1/N",
-                "1/√N",
-                "1/N²",
-                "Constante"
-              ],
+              "options": ["1/N", "1/√N", "1/N²", "Constante"],
               "correct": 1,
               "explanation": "Error estándar Monte Carlo ∝ 1/√N. Para 10× precisión necesitas 100× muestras."
             },

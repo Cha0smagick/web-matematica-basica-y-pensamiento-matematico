@@ -11,7 +11,7 @@ export class Footer extends HTMLElement {
 
   render() {
     const year = new Date().getFullYear();
-    
+
     this.shadowRoot.innerHTML = `
       <style>
         :host { display: block; }

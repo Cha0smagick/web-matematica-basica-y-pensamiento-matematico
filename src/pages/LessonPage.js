@@ -121,25 +121,35 @@ export class LessonPage extends HTMLElement {
 
         <div class="content-card">
           <span class="content-type">${this._getTypeLabel(currentContent.type)}</span>
-          ${currentContent.type === 'analogy'
-    ? `<div style="background: var(--warning-light); border-left: 4px solid var(--warning); padding: var(--spacing-md); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic;">"${currentContent.text}"</div>`
-    : `<div class="content-text">${currentContent.text || ''}</div>`}
+          ${
+            currentContent.type === 'analogy'
+              ? `<div style="background: var(--warning-light); border-left: 4px solid var(--warning); padding: var(--spacing-md); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic;">"${currentContent.text}"</div>`
+              : `<div class="content-text">${currentContent.text || ''}</div>`
+          }
           ${currentContent.latex ? `<div class="content-latex latex-renderer-wrap"><latex-renderer latex="${currentContent.latex}" display-mode size="lg"></latex-renderer></div>` : ''}
           ${currentContent.visual ? `<div class="content-visual"><img src="${currentContent.visual}" alt="Ilustración de la lección" onerror="this.outerHTML='<span class=visual-missing>Ilustración próximamente</span>'"></div>` : ''}
-          ${currentContent.type === 'interactive' ? `
+          ${
+            currentContent.type === 'interactive'
+              ? `
             <div class="interactive-box">
               <p style="margin: 0 0 var(--spacing-sm) 0;">🎮 ${currentContent.description || 'Actividad interactiva'}</p>
               <span style="color: var(--text-muted); font-size: var(--font-size-sm);">(Interactivo en desarrollo — la práctica te espera abajo)</span>
             </div>
-          ` : ''}
+          `
+              : ''
+          }
         </div>
 
-        ${currentContent.type === 'practice' ? `
+        ${
+          currentContent.type === 'practice'
+            ? `
           <div class="practice-section">
             <div class="practice-title">✅ Práctica Guiada</div>
-            ${(currentContent.questions || []).map(q => this._renderQuestion(q)).join('')}
+            ${(currentContent.questions || []).map((q) => this._renderQuestion(q)).join('')}
           </div>
-        ` : ''}
+        `
+            : ''
+        }
 
         <div class="nav-bar">
           <button class="btn btn-ghost" ${this._currentContentIndex === 0 ? 'disabled' : ''} onclick="window.__APP__.prevContent()">
@@ -161,9 +171,13 @@ export class LessonPage extends HTMLElement {
     if (Array.isArray(q.options)) {
       body = `
         <div class="options">
-          ${q.options.map((opt, oi) => `
+          ${q.options
+            .map(
+              (opt, oi) => `
             <button class="option-btn" data-q="${q.id}" data-i="${oi}">${opt}</button>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>`;
     } else if (q.answer !== undefined) {
       body = `
@@ -172,15 +186,17 @@ export class LessonPage extends HTMLElement {
           <button class="btn btn-primary btn-sm" data-check="${q.id}">Comprobar</button>
         </div>`;
     } else if (q.items && q.targets) {
-      body = q.items.map(item => `
+      body = q.items.map(
+        (item) => `
         <div class="match-row">
           <span style="min-width: 80px;">${item}</span>
           <select class="match-select" data-match="${q.id}" data-item="${item}" aria-label="Empareja ${item}">
             <option value="">— elige —</option>
-            ${q.targets.map(t => `<option value="${t}">${t}</option>`).join('')}
+            ${q.targets.map((t) => `<option value="${t}">${t}</option>`).join('')}
           </select>
         </div>
-        <button class="btn btn-primary btn-sm" data-check="${q.id}">Comprobar</button>`);
+        <button class="btn btn-primary btn-sm" data-check="${q.id}">Comprobar</button>`
+      );
     }
     return `
       <div class="question-card" id="qcard-${q.id}">
@@ -198,7 +214,7 @@ export class LessonPage extends HTMLElement {
       explanation: '💡 Explicación',
       analogy: '🔗 Analogía',
       interactive: '🎮 Interactivo',
-      practice: '✅ Práctica'
+      practice: '✅ Práctica',
     };
     return labels[type] || type;
   }
@@ -208,14 +224,16 @@ export class LessonPage extends HTMLElement {
     const root = this.shadowRoot;
 
     // Opciones: delegación por pregunta (cada tarjeta es su propio ámbito)
-    root.querySelectorAll('.option-btn').forEach(btn => {
+    root.querySelectorAll('.option-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         const qid = btn.dataset.q;
         const qi = Number(btn.dataset.i);
         const card = root.getElementById(`qcard-${qid}`);
         const q = this._findQuestion(qid);
-        if (!q || !card) {return;}
-        card.querySelectorAll('.option-btn').forEach(b => (b.disabled = true));
+        if (!q || !card) {
+          return;
+        }
+        card.querySelectorAll('.option-btn').forEach((b) => (b.disabled = true));
         const correct = q.correct;
         const fb = card.querySelector('.feedback') || root.getElementById(`feedback-${qid}`);
         if (qi === correct) {
@@ -231,12 +249,14 @@ export class LessonPage extends HTMLElement {
     });
 
     // Fill-in
-    root.querySelectorAll('[data-check]').forEach(btn => {
+    root.querySelectorAll('[data-check]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const qid = btn.dataset.check;
         const card = root.getElementById(`qcard-${qid}`);
         const q = this._findQuestion(qid);
-        if (!q || !card) {return;}
+        if (!q || !card) {
+          return;
+        }
         const input = card.querySelector(`[data-fill="${qid}"]`);
         const selects = card.querySelectorAll(`[data-match="${qid}"]`);
         const fb = root.getElementById(`feedback-${qid}`);
@@ -244,7 +264,7 @@ export class LessonPage extends HTMLElement {
         if (input) {
           ok = String(input.value).trim().toLowerCase() === String(q.answer).trim().toLowerCase();
         } else if (selects.length) {
-          ok = q.correct.every(pair => {
+          ok = q.correct.every((pair) => {
             const [item, target] = pair.split('-');
             const sel = card.querySelector(`[data-match="${qid}"][data-item="${item}"]`);
             return sel && sel.value === target;
@@ -277,7 +297,9 @@ export class LessonPage extends HTMLElement {
   _findQuestion(qid) {
     for (const block of this._currentLesson.content || []) {
       for (const q of block.questions || []) {
-        if (q.id === qid) {return q;}
+        if (q.id === qid) {
+          return q;
+        }
       }
     }
     return null;
@@ -288,7 +310,7 @@ export class LessonPage extends HTMLElement {
       await store.progress.recordPracticeAttempt({
         questionId,
         correct: isCorrect,
-        type: 'lesson-practice'
+        type: 'lesson-practice',
       });
     } catch (e) {
       console.warn('No se pudo registrar la práctica:', e);
@@ -300,7 +322,7 @@ export class LessonPage extends HTMLElement {
       phaseId: this._module.phaseId,
       moduleId: this._module.id,
       score: 100,
-      timeSpent: 0
+      timeSpent: 0,
     });
 
     const stats = await store.progress.getGlobalStats();

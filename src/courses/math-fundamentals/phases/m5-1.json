@@ -59,12 +59,7 @@
               "id": "q5-1-1-3",
               "type": "multiple-choice",
               "question": "Para agrupar variable continua en intervalos, nº clases recomendado (Sturges):",
-              "options": [
-                "k = 1 + 3.322 log₁₀(n)",
-                "k = √n",
-                "k = n/10",
-                "k = 5 siempre"
-              ],
+              "options": ["k = 1 + 3.322 log₁₀(n)", "k = √n", "k = n/10", "k = 5 siempre"],
               "correct": 0,
               "explanation": "Regla Sturges: k = 1 + 3.322 log₁₀(n). Raíz cuadrada es alternativa simple."
             }
@@ -235,12 +230,7 @@
               "id": "q5-1-4-2",
               "type": "multiple-choice",
               "question": "En boxplot, bigote superior llega hasta:",
-              "options": [
-                "Máximo dato",
-                "Q₃ + 1.5·IQR",
-                "Q₃ + 3·IQR",
-                "P₉₅"
-              ],
+              "options": ["Máximo dato", "Q₃ + 1.5·IQR", "Q₃ + 3·IQR", "P₉₅"],
               "correct": 1,
               "explanation": "Bigote Tukey: hasta Q₃ + 1.5·IQR o último dato dentro de ese límite, lo que sea menor."
             },
@@ -423,12 +413,7 @@
               "id": "q5-1-7-1",
               "type": "multiple-choice",
               "question": "Gráfico barras empieza en 90 (valores 92 y 95). Diferencia visual parece 3x real. Truco:",
-              "options": [
-                "Eje Y truncado",
-                "Escala logarítmica",
-                "Cherry-picking",
-                "Áreas 3D"
-              ],
+              "options": ["Eje Y truncado", "Escala logarítmica", "Cherry-picking", "Áreas 3D"],
               "correct": 0,
               "explanation": "Eje Y no empieza en 0 → exagera diferencias relativas."
             },
@@ -485,12 +470,7 @@
               "id": "q5-1-8-1",
               "type": "multiple-choice",
               "question": "Variable 'Edad' tiene 15% nulos. Mejor imputación si distribución asimétrica:",
-              "options": [
-                "Media",
-                "Mediana",
-                "Moda",
-                "Eliminar filas"
-              ],
+              "options": ["Media", "Mediana", "Moda", "Eliminar filas"],
               "correct": 1,
               "explanation": "Mediana robusta a asimetría/outliers. Media se sesga."
             },

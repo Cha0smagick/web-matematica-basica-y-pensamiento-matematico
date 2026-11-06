@@ -39,12 +39,7 @@
               "id": "q6-1-1-1",
               "type": "multiple-choice",
               "question": "p → q es FALSO solo cuando:",
-              "options": [
-                "p=V, q=V",
-                "p=V, q=F",
-                "p=F, q=V",
-                "p=F, q=F"
-              ],
+              "options": ["p=V, q=V", "p=V, q=F", "p=F, q=V", "p=F, q=F"],
               "correct": 1,
               "explanation": "Implicación solo falsa si antecedente V y consecuente F. 'Si llueve me mojo' es falso si llueve (V) y NO me mojo (F)."
             },
@@ -59,12 +54,7 @@
               "id": "q6-1-1-3",
               "type": "multiple-choice",
               "question": "(p → q) ∧ (q → p) es equivalente a:",
-              "options": [
-                "p ∨ q",
-                "p ↔ q",
-                "p ∧ q",
-                "¬p ∨ ¬q"
-              ],
+              "options": ["p ∨ q", "p ↔ q", "p ∧ q", "¬p ∨ ¬q"],
               "correct": 1,
               "explanation": "Bicondicional = implicación doble sentido. p ↔ q ≡ (p→q)∧(q→p)."
             }
@@ -173,12 +163,7 @@
               "id": "q6-1-3-1",
               "type": "multiple-choice",
               "question": "Premisas: p → q, ¬q. Conclusión válida:",
-              "options": [
-                "p",
-                "¬p",
-                "q",
-                "¬q"
-              ],
+              "options": ["p", "¬p", "q", "¬q"],
               "correct": 1,
               "explanation": "Modus Tollens: p→q, ¬q ⊢ ¬p."
             },
@@ -240,12 +225,7 @@
               "id": "q6-1-4-1",
               "type": "multiple-choice",
               "question": "'No escuches a Juan, es vegetariano, su opinión sobre carne no vale' es:",
-              "options": [
-                "Ad hominem",
-                "Hombre de paja",
-                "Falso dilema",
-                "Apelación autoridad"
-              ],
+              "options": ["Ad hominem", "Hombre de paja", "Falso dilema", "Apelación autoridad"],
               "correct": 0,
               "explanation": "Ataca a la persona (ser vegetariano) en lugar de refutar su argumento sobre la carne."
             },
@@ -253,12 +233,7 @@
               "id": "q6-1-4-2",
               "type": "multiple-choice",
               "question": "'O nos dejas subir impuestos o la economía colapsa' es:",
-              "options": [
-                "Ad hominem",
-                "Hombre de paja",
-                "Falso dilema",
-                "Pendiente resbaladiza"
-              ],
+              "options": ["Ad hominem", "Hombre de paja", "Falso dilema", "Pendiente resbaladiza"],
               "correct": 2,
               "explanation": "Presenta solo 2 opciones extremas (subir impuestos O colapso), ignorando alternativas intermedias."
             },
@@ -307,12 +282,7 @@
               "id": "q6-1-5-1",
               "type": "multiple-choice",
               "question": "Solo buscas noticias que confirman tu opinión política. Sesgo:",
-              "options": [
-                "Disponibilidad",
-                "Confirmación",
-                "Anclaje",
-                "Supervivencia"
-              ],
+              "options": ["Disponibilidad", "Confirmación", "Anclaje", "Supervivencia"],
               "correct": 1,
               "explanation": "Sesgo confirmación: busca/recuerda info que confirma creencias previas."
             },
@@ -327,12 +297,7 @@
               "id": "q6-1-5-3",
               "type": "multiple-choice",
               "question": "Solo ves emprendedores exitosos en revistas. Crees 'emprender es fácil'. Sesgo:",
-              "options": [
-                "Confirmación",
-                "Disponibilidad",
-                "Supervivencia",
-                "Anclaje"
-              ],
+              "options": ["Confirmación", "Disponibilidad", "Supervivencia", "Anclaje"],
               "correct": 2,
               "explanation": "Sesgo supervivencia: solo ves 'supervivientes' (éxitos), no los que fracasaron y no salen en revistas."
             }
@@ -441,12 +406,7 @@
               "id": "q6-1-7-1",
               "type": "multiple-choice",
               "question": "En JavaScript/Python: !(!a && !b) equivale a:",
-              "options": [
-                "a && b",
-                "a || b",
-                "!a || !b",
-                "!a && !b"
-              ],
+              "options": ["a && b", "a || b", "!a || !b", "!a && !b"],
               "correct": 1,
               "explanation": "De Morgan: !(!a && !b) = !!a || !!b = a || b."
             },
@@ -461,12 +421,7 @@
               "id": "q6-1-7-3",
               "type": "multiple-choice",
               "question": "Invariante de bucle while (i < n) { i++; sum += a[i]; }:",
-              "options": [
-                "i < n",
-                "sum = suma a[0..i-1]",
-                "i > 0",
-                "sum = 0"
-              ],
+              "options": ["i < n", "sum = suma a[0..i-1]", "i > 0", "sum = 0"],
               "correct": 1,
               "explanation": "Invariante: 'sum es suma de elementos a[0] hasta a[i-1]'. Verdadero antes, durante, después cada iteración."
             }

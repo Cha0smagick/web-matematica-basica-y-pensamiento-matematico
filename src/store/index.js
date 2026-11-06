@@ -11,27 +11,27 @@ export class Store {
         name: '',
         email: '',
         authenticated: false,
-        preferences: {}
+        preferences: {},
       },
       course: {
         currentPhase: null,
         currentModule: null,
         currentLesson: null,
-        phases: {}
+        phases: {},
       },
       ui: {
         theme: 'system',
         sidebarOpen: false,
         modalOpen: null,
         notifications: [],
-        loading: false
+        loading: false,
       },
       session: {
         startTime: Date.now(),
         lastActivity: Date.now(),
         streak: 0,
-        lastVisitDate: null
-      }
+        lastVisitDate: null,
+      },
     };
 
     this._subscribers = new Map();
@@ -40,7 +40,7 @@ export class Store {
         target[prop] = value;
         this._notify(prop, value);
         return true;
-      }
+      },
     });
 
     // Inicializar sub-stores
@@ -50,10 +50,10 @@ export class Store {
 
     // Cargar estado persistido
     this._loadPersisted();
-    
+
     // Auto-save en cambios
     this._setupAutoSave();
-    
+
     // Track actividad
     this._setupActivityTracking();
   }
@@ -62,7 +62,9 @@ export class Store {
     const keys = path.split('.');
     let value = this._proxiedState;
     for (const key of keys) {
-      if (value === undefined || value === null) {return undefined;}
+      if (value === undefined || value === null) {
+        return undefined;
+      }
       value = value[key];
     }
     return value;
@@ -73,7 +75,9 @@ export class Store {
     const lastKey = keys.pop();
     let target = this._proxiedState;
     for (const key of keys) {
-      if (!(key in target)) {target[key] = {};}
+      if (!(key in target)) {
+        target[key] = {};
+      }
       target = target[key];
     }
     target[lastKey] = value;
@@ -86,11 +90,13 @@ export class Store {
       this._subscribers.set(path, new Set());
     }
     this._subscribers.get(path).add(callback);
-    
+
     // Return unsubscribe function
     return () => {
       const subs = this._subscribers.get(path);
-      if (subs) {subs.delete(callback);}
+      if (subs) {
+        subs.delete(callback);
+      }
     };
   }
 
@@ -98,7 +104,7 @@ export class Store {
     // Notify exact path subscribers
     const exactSubs = this._subscribers.get(path);
     if (exactSubs) {
-      exactSubs.forEach(cb => cb(value, path));
+      exactSubs.forEach((cb) => cb(value, path));
     }
     // Notify parent path subscribers (e.g., 'user' for 'user.name')
     const parts = path.split('.');
@@ -107,13 +113,13 @@ export class Store {
       const parentSubs = this._subscribers.get(parentPath);
       if (parentSubs) {
         const parentValue = this.get(parentPath);
-        parentSubs.forEach(cb => cb(parentValue, parentPath));
+        parentSubs.forEach((cb) => cb(parentValue, parentPath));
       }
     }
     // Root subscribers ('' / autosave) receive every nested change
     const rootSubs = this._subscribers.get('');
     if (rootSubs) {
-      rootSubs.forEach(cb => cb(this._state, ''));
+      rootSubs.forEach((cb) => cb(this._state, ''));
     }
   }
 
@@ -134,7 +140,9 @@ export class Store {
   _deepMerge(target, source) {
     for (const key of Object.keys(source)) {
       if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
-        if (!target[key]) {target[key] = {};}
+        if (!target[key]) {
+          target[key] = {};
+        }
         this._deepMerge(target[key], source[key]);
       } else {
         target[key] = source[key];
@@ -164,7 +172,7 @@ export class Store {
     const updateActivity = () => {
       this._state.session.lastActivity = Date.now();
     };
-    ['click', 'keydown', 'scroll', 'mousemove'].forEach(evt => {
+    ['click', 'keydown', 'scroll', 'mousemove'].forEach((evt) => {
       document.addEventListener(evt, updateActivity, { passive: true });
     });
   }

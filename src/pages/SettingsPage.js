@@ -148,7 +148,7 @@ export class SettingsPage extends HTMLElement {
         </div>
       </div>
     `;
-    
+
     this._attachSettingsListeners();
   }
 
@@ -170,7 +170,7 @@ export class SettingsPage extends HTMLElement {
       highContrast: 'toggleHighContrast',
       dyslexiaFont: 'toggleDyslexia',
       dailyReminder: 'toggleReminder',
-      soundEnabled: 'toggleSound'
+      soundEnabled: 'toggleSound',
     };
 
     Object.entries(toggles).forEach(([key, id]) => {
@@ -187,7 +187,7 @@ export class SettingsPage extends HTMLElement {
     });
 
     window.__APP_SETTINGS__ = window.__APP_SETTINGS__ || {};
-    
+
     window.__APP_SETTINGS__.exportData = async () => {
       const data = await store.progress.exportData();
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -198,9 +198,13 @@ export class SettingsPage extends HTMLElement {
       a.click();
       URL.revokeObjectURL(url);
     };
-    
+
     window.__APP_SETTINGS__.resetProgress = () => {
-      if (confirm('¿Estás seguro de que quieres reiniciar todo tu progreso? Esta acción no se puede deshacer.')) {
+      if (
+        confirm(
+          '¿Estás seguro de que quieres reiniciar todo tu progreso? Esta acción no se puede deshacer.'
+        )
+      ) {
         store.reset();
       }
     };

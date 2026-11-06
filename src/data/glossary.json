@@ -6,12 +6,7 @@
     "long": "El límite de una función f(x) cuando x se acerca a a es el valor L al que f(x) se aproxima arbitrariamente, sin necesidad de que f(a) exista o sea igual a L. Es la base del cálculo diferencial e integral.",
     "analogy": "Como acercarte a una pared: puedes estar a 1 metro, 10 cm, 1 mm, 0.1 mm... pero nunca la tocas. El límite es 'dónde estarías si pudieras tocarla'.",
     "visual": "assets/limit-animation.svg",
-    "related": [
-      "epsilon-delta",
-      "continuity",
-      "derivative",
-      "infinity"
-    ],
+    "related": ["epsilon-delta", "continuity", "derivative", "infinity"],
     "level": "phase-4",
     "commonMisconceptions": [
       "El límite es el valor de la función en el punto",
@@ -26,13 +21,7 @@
     "long": "La derivada mide cómo cambia una función en un punto exacto. Es el límite del cociente (f(x+h)-f(x))/h cuando h→0. Reglas: potencia (nxⁿ⁻¹), producto, cociente, cadena. Aplicaciones: máximos/mínimos, velocidad, aceleración, optimización.",
     "analogy": "Velocímetro vs odómetro. La derivada es el velocímetro (velocidad AHORA). La integral es el odómetro (distancia total).",
     "visual": "assets/derivative-tangent.svg",
-    "related": [
-      "limit",
-      "tangent",
-      "differentiation",
-      "optimization",
-      "velocity"
-    ],
+    "related": ["limit", "tangent", "differentiation", "optimization", "velocity"],
     "level": "phase-4"
   },
   "integral": {
@@ -42,13 +31,7 @@
     "long": "La integral definida ∫ₐᵇ f(x)dx es el área neta bajo f(x) entre a y b. La integral indefinida ∫f(x)dx = F(x)+C donde F'=f. Teorema Fundamental: ∫ₐᵇ f(x)dx = F(b)-F(a). Técnicas: sustitución, partes, fracciones parciales.",
     "analogy": "Sumar rectángulos infinitesimalmente finos bajo la curva. Como calcular distancia sumando velocidad × tiempo infinitesimal.",
     "visual": "assets/integral-riemann.svg",
-    "related": [
-      "antiderivative",
-      "riemann-sum",
-      "fundamental-theorem",
-      "area",
-      "substitution"
-    ],
+    "related": ["antiderivative", "riemann-sum", "fundamental-theorem", "area", "substitution"],
     "level": "phase-4"
   },
   "function": {
@@ -58,13 +41,7 @@
     "long": "Una función es una relación entre dos conjuntos (dominio y codominio) donde cada elemento del dominio se corresponde con exactamente un elemento del codominio. Es una 'máquina' que transforma entradas en salidas de forma determinista.",
     "analogy": "Como una máquina expendedora: pones un código (entrada) y SIEMPRE sale el mismo producto (salida). No puede darte refresco y agua a la vez con el mismo botón.",
     "visual": "assets/function-machine.svg",
-    "related": [
-      "domain",
-      "range",
-      "composition",
-      "inverse",
-      "graph"
-    ],
+    "related": ["domain", "range", "composition", "inverse", "graph"],
     "level": "phase-1",
     "commonMisconceptions": [
       "Toda ecuación es una función",
@@ -79,12 +56,7 @@
     "long": "En matemáticas, una variable es un símbolo (generalmente una letra) que representa un valor que puede variar o que es desconocido. Permite generalizar patrones y resolver problemas sin conocer los números exactos.",
     "analogy": "Como una 'caja misteriosa' con una etiqueta 'x'. No sabes qué hay dentro, pero sabes que lo que sea, se comporta igual en toda la ecuación. Si x = 3, entonces 2x = 6.",
     "visual": "assets/variable-box.svg",
-    "related": [
-      "constant",
-      "coefficient",
-      "expression",
-      "equation"
-    ],
+    "related": ["constant", "coefficient", "expression", "equation"],
     "level": "phase-0",
     "commonMisconceptions": [
       "x siempre es el número que buscas",
@@ -99,13 +71,7 @@
     "long": "Una ecuación es una igualdad que se cumple solo para ciertos valores de las variables (soluciones). Resolver una ecuación significa encontrar todos los valores que la hacen verdadera. Es como una balanza: lo que hagas a un lado, debes hacerlo al otro para mantener el equilibrio.",
     "analogy": "Una balanza perfectamente equilibrada. Si quitas 3 kg del plato izquierdo, debes quitar 3 kg del derecho. La 'x' es el peso desconocido que equilibra la balanza.",
     "visual": "assets/equation-balance.svg",
-    "related": [
-      "solution",
-      "linear-equation",
-      "quadratic-equation",
-      "system",
-      "identity"
-    ],
+    "related": ["solution", "linear-equation", "quadratic-equation", "system", "identity"],
     "level": "phase-1",
     "commonMisconceptions": [
       "El signo = significa 'la respuesta es'",
@@ -120,13 +86,7 @@
     "long": "Una fracción representa una parte de una unidad dividida en partes iguales. El numerador (arriba) indica cuántas partes tomamos; el denominador (abajo) indica en cuántas partes se dividió el todo. Es una forma de escribir divisiones que no son exactas.",
     "analogy": "Una pizza cortada en 8 rebanadas. Si comes 3, comiste 3/8 de la pizza. El 8 (denominador) son las partes totales; el 3 (numerador) son las que comiste.",
     "visual": "assets/fraction-pizza.svg",
-    "related": [
-      "numerator",
-      "denominator",
-      "equivalent-fractions",
-      "decimal",
-      "percentage"
-    ],
+    "related": ["numerator", "denominator", "equivalent-fractions", "decimal", "percentage"],
     "level": "phase-0",
     "commonMisconceptions": [
       "El denominador más grande significa fracción más grande",
@@ -141,19 +101,9 @@
     "long": "Una potencia aⁿ significa multiplicar la base 'a' por sí misma 'n' veces (el exponente). Permite escribir multiplicaciones largas de forma compacta. Las leyes de los exponentes (producto, cociente, potencia de potencia) simplifican cálculos enormemente.",
     "analogy": "Como doblar un papel: 1 doble = 2 capas (2¹), 2 dobles = 4 capas (2²), 3 dobles = 8 capas (2³)... Cada doble multiplica por 2. 10 dobles = 1024 capas.",
     "visual": "assets/power-folding.svg",
-    "related": [
-      "exponent",
-      "base",
-      "laws-of-exponents",
-      "scientific-notation",
-      "roots"
-    ],
+    "related": ["exponent", "base", "laws-of-exponents", "scientific-notation", "roots"],
     "level": "phase-1",
-    "commonMisconceptions": [
-      "2³ = 2 × 3 = 6",
-      "a⁰ = 0",
-      "(-2)² = -4"
-    ]
+    "commonMisconceptions": ["2³ = 2 × 3 = 6", "a⁰ = 0", "(-2)² = -4"]
   },
   "root": {
     "term": "Raíz",
@@ -162,13 +112,7 @@
     "long": "La raíz n-ésima de un número 'a' es el número que elevado a 'n' da 'a'. La raíz cuadrada (√) es la más común: √a = b significa b² = a. Las raíces permiten 'deshacer' potencias y aparecen en fórmulas geométricas (teorema de Pitágoras, fórmula general).",
     "analogy": "Si 3² = 9, entonces √9 = 3. Es la pregunta: '¿Qué número multiplicado por sí mismo da 9?'. Como preguntar: '¿Qué lado tiene un cuadrado de área 9?'.",
     "visual": "assets/root-square.svg",
-    "related": [
-      "square-root",
-      "cube-root",
-      "radical",
-      "rationalizing",
-      "quadratic-formula"
-    ],
+    "related": ["square-root", "cube-root", "radical", "rationalizing", "quadratic-formula"],
     "level": "phase-1",
     "commonMisconceptions": [
       "√(a+b) = √a + √b",
@@ -199,13 +143,7 @@
     "long": "Un vector tiene magnitud (longitud), dirección (línea) y sentido (hacia dónde). En ℝⁿ es una n-tupla ordenada. Operaciones: suma (paralelogramo), producto escalar (ángulo), producto vectorial (perpendicular en ℝ³). Base de la geometría analítica y física.",
     "analogy": "Como una instrucción de GPS: 'camina 5 km al norte'. La magnitud es 5 km, la dirección es norte. Sumar vectores = seguir instrucciones en secuencia.",
     "visual": "assets/vector-arrow.svg",
-    "related": [
-      "magnitude",
-      "direction",
-      "dot-product",
-      "cross-product",
-      "linear-combination"
-    ],
+    "related": ["magnitude", "direction", "dot-product", "cross-product", "linear-combination"],
     "level": "phase-2"
   },
   "probability": {
@@ -215,14 +153,7 @@
     "long": "La probabilidad cuantifica la incertidumbre. P(A) = casos favorables / casos posibles (equiprobables). Propiedades: 0 ≤ P ≤ 1, P(seguro)=1, P(imposible)=0. Regla suma: P(A∪B)=P(A)+P(B)-P(A∩B). Independencia: P(A∩B)=P(A)P(B).",
     "analogy": "Lanzar un dado: 6 caras equiprobables. P(sacar 3) = 1/6 ≈ 16.7%. P(sacar par) = 3/6 = 50%. La probabilidad NO predice el siguiente lanzamiento, describe tendencia a largo plazo.",
     "visual": "assets/probability-dice.svg",
-    "related": [
-      "sample-space",
-      "event",
-      "independence",
-      "conditional",
-      "bayes",
-      "distribution"
-    ],
+    "related": ["sample-space", "event", "independence", "conditional", "bayes", "distribution"],
     "level": "phase-5"
   },
   "normal-distribution": {
@@ -232,13 +163,7 @@
     "long": "Distribución continua simétrica definida por media μ y desviación σ. 68% datos en μ±σ, 95% en μ±2σ, 99.7% en μ±3σ (regla empírica). Central en estadística: Teorema Límite Central dice que medias muestrales tienden a normal.",
     "analogy": "Alturas de personas: la mayoría cerca del promedio, pocas muy altas/bajas. Notas de examen: campana centrada en la media. Errores de medición: se distribuyen normalmente alrededor de 0.",
     "visual": "assets/normal-curve.svg",
-    "related": [
-      "mean",
-      "standard-deviation",
-      "z-score",
-      "central-limit",
-      "confidence-interval"
-    ],
+    "related": ["mean", "standard-deviation", "z-score", "central-limit", "confidence-interval"],
     "level": "phase-5"
   },
   "set": {
@@ -284,13 +209,7 @@
     "long": "Principio de inducción: Si P(1) es verdadero (base) y P(k) ⇒ P(k+1) para todo k (paso inductivo), entonces P(n) es verdadero para todo n∈ℕ. Es como derribar fichas de dominó: si la primera cae y cada una derriba a la siguiente, todas caen.",
     "analogy": "Escalera infinita: (1) Puedes subir al primer peldaño. (2) Si estás en el peldaño k, puedes subir al k+1. Conclusión: puedes subir a CUALQUIER peldaño.",
     "visual": "assets/induction-domino.svg",
-    "related": [
-      "base-case",
-      "inductive-step",
-      "strong-induction",
-      "well-ordering",
-      "recursion"
-    ],
+    "related": ["base-case", "inductive-step", "strong-induction", "well-ordering", "recursion"],
     "level": "phase-6"
   },
   "eigenvalue": {

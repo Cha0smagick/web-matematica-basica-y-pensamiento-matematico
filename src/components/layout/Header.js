@@ -26,11 +26,11 @@ export class Header extends HTMLElement {
     const menuBtn = this.shadowRoot.getElementById('menuBtn');
     const themeBtn = this.shadowRoot.getElementById('themeBtn');
     const profileBtn = this.shadowRoot.getElementById('profileBtn');
-    
+
     menuBtn?.addEventListener('click', () => {
       this.dispatchEvent(new CustomEvent('sidebar-toggle', { bubbles: true, composed: true }));
     });
-    
+
     themeBtn?.addEventListener('click', () => this._cycleTheme());
     profileBtn?.addEventListener('click', () => this._showProfileMenu());
   }
@@ -46,7 +46,9 @@ export class Header extends HTMLElement {
     const btn = this.shadowRoot.getElementById('themeBtn');
     const theme = store.get('ui.theme') || 'system';
     const icons = { light: '☀️', dark: '🌙', system: '💻' };
-    if (btn) {btn.textContent = icons[theme] || icons.system;}
+    if (btn) {
+      btn.textContent = icons[theme] || icons.system;
+    }
   }
 
   _showProfileMenu() {

@@ -20,7 +20,7 @@ export class AchievementsStore {
         title: 'Primer Paso',
         description: 'Completaste tu primera lección',
         icon: '👣',
-        condition: (stats) => stats.lessonsCompleted >= 1
+        condition: (stats) => stats.lessonsCompleted >= 1,
       },
       'lesson-10': {
         id: 'lesson-10',
@@ -29,7 +29,7 @@ export class AchievementsStore {
         title: 'Estudiante Dedicado',
         description: 'Completaste 10 lecciones',
         icon: '📚',
-        condition: (stats) => stats.lessonsCompleted >= 10
+        condition: (stats) => stats.lessonsCompleted >= 10,
       },
       'lesson-50': {
         id: 'lesson-50',
@@ -38,7 +38,7 @@ export class AchievementsStore {
         title: 'Aprendiz Constante',
         description: 'Completaste 50 lecciones',
         icon: '🎓',
-        condition: (stats) => stats.lessonsCompleted >= 50
+        condition: (stats) => stats.lessonsCompleted >= 50,
       },
       'lesson-100': {
         id: 'lesson-100',
@@ -47,7 +47,7 @@ export class AchievementsStore {
         title: 'Centurión Matemático',
         description: 'Completaste 100 lecciones',
         icon: '💯',
-        condition: (stats) => stats.lessonsCompleted >= 100
+        condition: (stats) => stats.lessonsCompleted >= 100,
       },
       'lesson-all': {
         id: 'lesson-all',
@@ -56,7 +56,7 @@ export class AchievementsStore {
         title: 'Maestro de Lecciones',
         description: 'Completaste todas las lecciones disponibles del curso',
         icon: '🏆',
-        condition: (stats) => stats.lessonsCompleted >= getCourseStats().lessons
+        condition: (stats) => stats.lessonsCompleted >= getCourseStats().lessons,
       },
 
       // Módulos
@@ -67,7 +67,7 @@ export class AchievementsStore {
         title: 'Módulo Completado',
         description: 'Completaste tu primer módulo',
         icon: '📦',
-        condition: (stats) => stats.modulesCompleted >= 1
+        condition: (stats) => stats.modulesCompleted >= 1,
       },
       'module-phase0': {
         id: 'module-phase0',
@@ -78,8 +78,8 @@ export class AchievementsStore {
         icon: '🧱',
         condition: (stats, progress) => {
           const phase0Modules = ['m0-1', 'm0-2', 'm0-3', 'm0-4'];
-          return phase0Modules.every(m => progress.modulesCompleted?.includes(m));
-        }
+          return phase0Modules.every((m) => progress.modulesCompleted?.includes(m));
+        },
       },
 
       // Fases
@@ -90,7 +90,7 @@ export class AchievementsStore {
         title: 'Puente Cruzado',
         description: 'Completaste la Fase 0: Los Números Son Tus Amigos',
         icon: '🌉',
-        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-0')
+        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-0'),
       },
       'phase-1': {
         id: 'phase-1',
@@ -99,7 +99,7 @@ export class AchievementsStore {
         title: 'Lenguaje de Patrones',
         description: 'Completaste la Fase 1: Fundamentos',
         icon: '🔤',
-        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-1')
+        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-1'),
       },
       'phase-2': {
         id: 'phase-2',
@@ -108,7 +108,7 @@ export class AchievementsStore {
         title: 'Resolvedor de Misterios',
         description: 'Completaste la Fase 2: Álgebra',
         icon: '🔍',
-        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-2')
+        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-2'),
       },
       'phase-3': {
         id: 'phase-3',
@@ -117,7 +117,7 @@ export class AchievementsStore {
         title: 'Arquitecto de Formas',
         description: 'Completaste la Fase 3: Geometría',
         icon: '📐',
-        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-3')
+        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-3'),
       },
       'phase-4': {
         id: 'phase-4',
@@ -126,7 +126,7 @@ export class AchievementsStore {
         title: 'Navegante del Cambio',
         description: 'Completaste la Fase 4: Funciones y Cálculo',
         icon: '📈',
-        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-4')
+        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-4'),
       },
       'phase-5': {
         id: 'phase-5',
@@ -135,7 +135,7 @@ export class AchievementsStore {
         title: 'Analista de Datos',
         description: 'Completaste la Fase 5: Estadística y Probabilidad',
         icon: '📊',
-        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-5')
+        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-5'),
       },
       'phase-6': {
         id: 'phase-6',
@@ -144,7 +144,7 @@ export class AchievementsStore {
         title: 'Pensador Matemático',
         description: 'Completaste la Fase 6: Pensamiento Matemático Avanzado',
         icon: '🧠',
-        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-6')
+        condition: (stats, progress) => progress.phasesCompleted?.includes('phase-6'),
       },
 
       // Rachas
@@ -155,7 +155,7 @@ export class AchievementsStore {
         title: 'En Rachita',
         description: '3 días consecutivos estudiando',
         icon: '🔥',
-        condition: (stats) => stats.currentStreak >= 3
+        condition: (stats) => stats.currentStreak >= 3,
       },
       'streak-7': {
         id: 'streak-7',
@@ -164,7 +164,7 @@ export class AchievementsStore {
         title: 'Semana de Fuego',
         description: '7 días consecutivos estudiando',
         icon: '🔥🔥',
-        condition: (stats) => stats.currentStreak >= 7
+        condition: (stats) => stats.currentStreak >= 7,
       },
       'streak-30': {
         id: 'streak-30',
@@ -173,7 +173,7 @@ export class AchievementsStore {
         title: 'Hábito de Acero',
         description: '30 días consecutivos estudiando',
         icon: '🔥🔥🔥',
-        condition: (stats) => stats.currentStreak >= 30
+        condition: (stats) => stats.currentStreak >= 30,
       },
       'streak-100': {
         id: 'streak-100',
@@ -182,7 +182,7 @@ export class AchievementsStore {
         title: 'Leyenda Viviente',
         description: '100 días consecutivos estudiando',
         icon: '🌟',
-        condition: (stats) => stats.currentStreak >= 100
+        condition: (stats) => stats.currentStreak >= 100,
       },
 
       // Perfección
@@ -193,7 +193,7 @@ export class AchievementsStore {
         title: 'Perfeccionista',
         description: 'Obtuviste 100% en un quiz de módulo',
         icon: '💎',
-        condition: (stats, progress, event) => event?.type === 'module-quiz' && event.score === 100
+        condition: (stats, progress, event) => event?.type === 'module-quiz' && event.score === 100,
       },
       'perfect-phase': {
         id: 'perfect-phase',
@@ -202,7 +202,7 @@ export class AchievementsStore {
         title: 'Impecable',
         description: 'Obtuviste 100% en una evaluación de fase',
         icon: '💎💎',
-        condition: (stats, progress, event) => event?.type === 'phase-eval' && event.score === 100
+        condition: (stats, progress, event) => event?.type === 'phase-eval' && event.score === 100,
       },
 
       // Especial
@@ -213,7 +213,8 @@ export class AchievementsStore {
         title: 'Velocista',
         description: 'Completaste un módulo en menos de la mitad del tiempo estimado',
         icon: '⚡',
-        condition: (stats, progress, event) => event?.type === 'module-complete' && event.timeRatio < 0.5
+        condition: (stats, progress, event) =>
+          event?.type === 'module-complete' && event.timeRatio < 0.5,
       },
       'night-owl': {
         id: 'night-owl',
@@ -225,7 +226,7 @@ export class AchievementsStore {
         condition: (_stats, _progress, _event) => {
           const hour = new Date().getHours();
           return hour >= 0 && hour < 5;
-        }
+        },
       },
       'early-bird': {
         id: 'early-bird',
@@ -237,7 +238,7 @@ export class AchievementsStore {
         condition: (_stats, _progress, _event) => {
           const hour = new Date().getHours();
           return hour >= 4 && hour < 6;
-        }
+        },
       },
       'weekend-warrior': {
         id: 'weekend-warrior',
@@ -246,7 +247,7 @@ export class AchievementsStore {
         title: 'Guerrero de Fin de Semana',
         description: 'Completaste 5 lecciones en un fin de semana',
         icon: '⚔️',
-        condition: (stats, progress, event) => event?.type === 'weekend-burst' && event.count >= 5
+        condition: (stats, progress, event) => event?.type === 'weekend-burst' && event.count >= 5,
       },
 
       // CURSO COMPLETO - Diploma de Honor
@@ -257,8 +258,10 @@ export class AchievementsStore {
         title: 'DIPLOMA DE HONOR - Curso Completo',
         description: 'Completaste todas las fases disponibles del curso',
         icon: '🏅',
-        condition: (stats, progress) => (progress.phasesCompleted?.length || 0) >= getCourseStats().phases && getCourseStats().phases > 1
-      }
+        condition: (stats, progress) =>
+          (progress.phasesCompleted?.length || 0) >= getCourseStats().phases &&
+          getCourseStats().phases > 1,
+      },
     };
   }
 
@@ -277,21 +280,24 @@ export class AchievementsStore {
 
   _saveUnlocked() {
     try {
-      localStorage.setItem('math-course-achievements', JSON.stringify({
-        unlocked: [...this._unlocked],
-        notified: [...this._notified]
-      }));
+      localStorage.setItem(
+        'math-course-achievements',
+        JSON.stringify({
+          unlocked: [...this._unlocked],
+          notified: [...this._notified],
+        })
+      );
     } catch (e) {
       // Cuota llena o modo privado: los logros viven solo en memoria
     }
   }
 
   async checkAll(progressStats = null, event = {}) {
-    const stats = progressStats || await this.store.progress.getGlobalStats();
+    const stats = progressStats || (await this.store.progress.getGlobalStats());
     // Las condiciones de logros esperan snapshots de progreso (ids completados)
     const progressData = {
       modulesCompleted: await this.store.progress.getCompletedModuleIds(),
-      phasesCompleted: await this.store.progress.getCompletedPhaseIds()
+      phasesCompleted: await this.store.progress.getCompletedPhaseIds(),
     };
     const newlyUnlocked = [];
     for (const [id, def] of Object.entries(this.definitions)) {
@@ -317,7 +323,7 @@ export class AchievementsStore {
     const stats = await this.store.progress.getGlobalStats();
     const progressData = {
       modulesCompleted: await this.store.progress.getCompletedModuleIds(),
-      phasesCompleted: await this.store.progress.getCompletedPhaseIds()
+      phasesCompleted: await this.store.progress.getCompletedPhaseIds(),
     };
     const event = { type: eventType, ...eventData };
     const newlyUnlocked = [];
@@ -343,7 +349,7 @@ export class AchievementsStore {
   }
 
   _notify(achievements) {
-    achievements.forEach(a => {
+    achievements.forEach((a) => {
       if (!this._notified.has(a.id)) {
         this.store.set('ui.notifications', [
           ...(this.store.get('ui.notifications') || []),
@@ -354,8 +360,8 @@ export class AchievementsStore {
             message: a.description,
             icon: a.icon,
             tier: a.tier,
-            timestamp: Date.now()
-          }
+            timestamp: Date.now(),
+          },
         ]);
         this._notified.add(a.id);
       }
@@ -363,9 +369,9 @@ export class AchievementsStore {
   }
 
   getUnlocked() {
-    return [...this._unlocked].map(id => ({
+    return [...this._unlocked].map((id) => ({
       ...this.definitions[id],
-      unlocked: true
+      unlocked: true,
     }));
   }
 
@@ -378,7 +384,7 @@ export class AchievementsStore {
   getAll() {
     return Object.entries(this.definitions).map(([id, def]) => ({
       ...def,
-      unlocked: this._unlocked.has(id)
+      unlocked: this._unlocked.has(id),
     }));
   }
 
@@ -387,40 +393,45 @@ export class AchievementsStore {
   }
 
   getByTier(tier) {
-    return this.getAll().filter(a => a.tier === tier);
+    return this.getAll().filter((a) => a.tier === tier);
   }
 
   getByType(type) {
-    return this.getAll().filter(a => a.type === type);
+    return this.getAll().filter((a) => a.type === type);
   }
 
   // Generar diploma
   async generateDiplomaData(type, id) {
     const user = this.store.get('user');
     const stats = await this.store.progress.getGlobalStats();
-    
+
     const diplomaTypes = {
       lesson: { title: 'Certificado de Lección', subtitle: 'Lección completada con éxito' },
       module: { title: 'Insignia de Módulo', subtitle: 'Módulo completado con éxito' },
       phase: { title: 'Certificado de Fase', subtitle: 'Fase completada con éxito' },
-      course: { title: 'DIPLOMA DE HONOR', subtitle: 'Curso Profesional Completo de Matemática Básica y Pensamiento Matemático' }
+      course: {
+        title: 'DIPLOMA DE HONOR',
+        subtitle: 'Curso Profesional Completo de Matemática Básica y Pensamiento Matemático',
+      },
     };
 
     const config = diplomaTypes[type] || diplomaTypes.lesson;
     const achievement = this.definitions[id];
-    
+
     return {
       type,
       id,
       title: config.title,
       subtitle: config.subtitle,
       recipient: user.name || 'Estudiante',
-      achievement: achievement ? {
-        title: achievement.title,
-        description: achievement.description,
-        icon: achievement.icon,
-        tier: achievement.tier
-      } : null,
+      achievement: achievement
+        ? {
+            title: achievement.title,
+            description: achievement.description,
+            icon: achievement.icon,
+            tier: achievement.tier,
+          }
+        : null,
       date: new Date().toISOString().split('T')[0],
       verificationHash: this._generateHash(user, id, type),
       stats: {
@@ -428,8 +439,8 @@ export class AchievementsStore {
         modulesCompleted: stats.modulesCompleted,
         phasesCompleted: stats.phasesCompleted,
         averageScore: stats.averageScore,
-        currentStreak: stats.currentStreak
-      }
+        currentStreak: stats.currentStreak,
+      },
     };
   }
 
@@ -439,7 +450,7 @@ export class AchievementsStore {
     let hash = 0;
     for (let i = 0; i < data.length; i++) {
       const char = data.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
+      hash = (hash << 5) - hash + char;
       hash = hash & hash;
     }
     return Math.abs(hash).toString(36).toUpperCase();

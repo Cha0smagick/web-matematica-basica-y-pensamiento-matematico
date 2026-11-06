@@ -14,19 +14,24 @@ export class Sidebar extends HTMLElement {
     this.render();
     this._setupEvents();
     // Progreso real (async) -> re-render cuando llegue
-    store.progress.getGlobalStats().then(s => {
-      this._stats = s;
-      this.render();
-      this._setupEvents();
-    }).catch(() => {});
+    store.progress
+      .getGlobalStats()
+      .then((s) => {
+        this._stats = s;
+        this.render();
+        this._setupEvents();
+      })
+      .catch(() => {});
   }
 
   _setupEvents() {
-    this.shadowRoot.querySelectorAll('[data-nav]').forEach(el => {
+    this.shadowRoot.querySelectorAll('[data-nav]').forEach((el) => {
       el.addEventListener('click', (e) => {
         e.preventDefault();
         const href = el.getAttribute('href');
-        if (href) {navigateTo(href);}
+        if (href) {
+          navigateTo(href);
+        }
         // Close sidebar on mobile
         this.dispatchEvent(new CustomEvent('sidebar-close', { bubbles: true }));
       });
@@ -38,7 +43,7 @@ export class Sidebar extends HTMLElement {
     const currentPhase = store.get('course.currentPhase');
     const stats = this._stats || {};
     const streak = store.get('session.streak') || 0;
-    const availablePhases = this._phases.filter(p => isPhaseAvailable(p.id)).length;
+    const availablePhases = this._phases.filter((p) => isPhaseAvailable(p.id)).length;
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -98,15 +103,22 @@ export class Sidebar extends HTMLElement {
         <div class="sidebar-section">
           <h2 class="sidebar-title">Fases del Curso</h2>
           <div class="nav-list">
-            ${this._phases.map((phase, i) => {
-    const phaseStat = stats[phase.id] || {};
-    const progress = phaseStat.score || 0;
-    const isCurrent = currentPhase === phase.id;
-    const isCompleted = phaseStat.completed;
-    const available = isPhaseAvailable(phase.id);
-    const bgColor = !available ? 'var(--bg-quaternary)' : isCompleted ? 'var(--success)' : (isCurrent ? 'var(--primary)' : 'var(--bg-quaternary)');
-    const textColor = !available ? 'var(--text-muted)' : 'white';
-    return `
+            ${this._phases
+              .map((phase, i) => {
+                const phaseStat = stats[phase.id] || {};
+                const progress = phaseStat.score || 0;
+                const isCurrent = currentPhase === phase.id;
+                const isCompleted = phaseStat.completed;
+                const available = isPhaseAvailable(phase.id);
+                const bgColor = !available
+                  ? 'var(--bg-quaternary)'
+                  : isCompleted
+                    ? 'var(--success)'
+                    : isCurrent
+                      ? 'var(--primary)'
+                      : 'var(--bg-quaternary)';
+                const textColor = !available ? 'var(--text-muted)' : 'white';
+                return `
                 <a href="#/phase/${phase.id}" class="phase-card" data-nav>
                   <div class="phase-header">
                     <div class="phase-number" style="background: ${bgColor}; color: ${textColor};">${available ? i + 1 : '🔒'}</div>
@@ -122,7 +134,8 @@ export class Sidebar extends HTMLElement {
                   </div>
                 </a>
               `;
-  }).join('')}
+              })
+              .join('')}
           </div>
         </div>
 

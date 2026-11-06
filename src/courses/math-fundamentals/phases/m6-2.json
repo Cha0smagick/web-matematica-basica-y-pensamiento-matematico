@@ -39,12 +39,7 @@
               "id": "q6-2-1-1",
               "type": "multiple-choice",
               "question": "{1,2} ⊆ {1,2,3} es:",
-              "options": [
-                "Verdadera",
-                "Falsa",
-                "Indefinida",
-                "Depende"
-              ],
+              "options": ["Verdadera", "Falsa", "Indefinida", "Depende"],
               "correct": 0,
               "explanation": "Todos elementos de {1,2} están en {1,2,3}. Inclusión verdadera."
             },
@@ -59,10 +54,7 @@
               "id": "q6-2-1-3",
               "type": "multiple-choice",
               "question": "ℚ ⊂ ℝ es:",
-              "options": [
-                "Verdadera",
-                "Falsa"
-              ],
+              "options": ["Verdadera", "Falsa"],
               "correct": 0,
               "explanation": "Todo racional es real, pero hay reales que no son racionales (irracionales como √2, π). Inclusión estricta verdadera."
             }
@@ -104,12 +96,7 @@
               "id": "q6-2-2-1",
               "type": "multiple-choice",
               "question": "A = {1,2,3}, B = {3,4,5}. A ∩ B = ",
-              "options": [
-                "{3}",
-                "{1,2,3,4,5}",
-                "{1,2}",
-                "{4,5}"
-              ],
+              "options": ["{3}", "{1,2,3,4,5}", "{1,2}", "{4,5}"],
               "correct": 0,
               "explanation": "Intersección = elementos comunes = {3}."
             },
@@ -124,12 +111,7 @@
               "id": "q6-2-2-3",
               "type": "multiple-choice",
               "question": "(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ es:",
-              "options": [
-                "Ley De Morgan",
-                "Distributiva",
-                "Absorción",
-                "Idempotencia"
-              ],
+              "options": ["Ley De Morgan", "Distributiva", "Absorción", "Idempotencia"],
               "correct": 0,
               "explanation": "Ley De Morgan: complemento de unión = intersección de complementos."
             }
@@ -252,12 +234,7 @@
               "id": "q6-2-4-3",
               "type": "multiple-choice",
               "question": "Matriz relación reflexiva en A={1,2,3}: diagonal principal:",
-              "options": [
-                "Todos 0",
-                "Todos 1",
-                "Algunos 1",
-                "Alternados"
-              ],
+              "options": ["Todos 0", "Todos 1", "Algunos 1", "Alternados"],
               "correct": 1,
               "explanation": "Reflexiva ⇒ (a,a)∈R para todo a ⇒ diagonal principal toda 1s."
             }
@@ -319,12 +296,7 @@
               "id": "q6-2-5-3",
               "type": "multiple-choice",
               "question": "En orden total, todo elemento máximal es:",
-              "options": [
-                "Máximo",
-                "Mínimo",
-                "No comparable",
-                "No existe"
-              ],
+              "options": ["Máximo", "Mínimo", "No comparable", "No existe"],
               "correct": 0,
               "explanation": "En orden total, todos comparables ⇒ máximal = máximo, mínimal = mínimo."
             }
@@ -366,12 +338,7 @@
               "id": "q6-2-6-1",
               "type": "multiple-choice",
               "question": "f: {1,2,3} → {a,b} definida f(1)=a, f(2)=a, f(3)=b. Es:",
-              "options": [
-                "Inyectiva",
-                "Sobreyectiva",
-                "Biyectiva",
-                "Ninguna"
-              ],
+              "options": ["Inyectiva", "Sobreyectiva", "Biyectiva", "Ninguna"],
               "correct": 1,
               "explanation": "No inyectiva (1 y 2 mapean a a). Sí sobreyectiva (a y b alcanzados). No biyectiva."
             },
@@ -433,12 +400,7 @@
               "id": "q6-2-7-1",
               "type": "multiple-choice",
               "question": "Cardinalidad de ℚ (racionales):",
-              "options": [
-                "Finita",
-                "ℵ₀ (numerable)",
-                "𝔠 (continuo)",
-                "ℵ₁"
-              ],
+              "options": ["Finita", "ℵ₀ (numerable)", "𝔠 (continuo)", "ℵ₁"],
               "correct": 1,
               "explanation": "ℚ es numerable: bijección con ℕ (zigzag diagonales en matriz p/q)."
             },
@@ -495,12 +457,7 @@
               "id": "q6-2-8-1",
               "type": "multiple-choice",
               "question": "SQL INNER JOIN entre tablas R y S equivale a:",
-              "options": [
-                "R ∪ S",
-                "R ∩ S",
-                "π(σ_{R.key=S.key}(R × S))",
-                "R - S"
-              ],
+              "options": ["R ∪ S", "R ∩ S", "π(σ_{R.key=S.key}(R × S))", "R - S"],
               "correct": 2,
               "explanation": "JOIN = producto cartesiano + filtro igualdad claves + proyección. Equivalente a intersección filtrada."
             },

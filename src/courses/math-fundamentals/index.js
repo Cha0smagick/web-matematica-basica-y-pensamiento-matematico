@@ -52,13 +52,34 @@ import m63 from './phases/m6-3.json';
 import m64 from './phases/m6-4.json';
 
 const moduleFiles = {
-  'm0-1': m01, 'm0-2': m02, 'm0-3': m03, 'm0-4': m04,
-  'm1-1': m11, 'm1-2': m12, 'm1-3': m13, 'm1-4': m14,
-  'm2-1': m21, 'm2-2': m22, 'm2-3': m23, 'm2-4': m24,
-  'm3-1': m31, 'm3-2': m32, 'm3-3': m33, 'm3-4': m34,
-  'm4-1': m41, 'm4-2': m42, 'm4-3': m43, 'm4-4': m44,
-  'm5-1': m51, 'm5-2': m52, 'm5-3': m53, 'm5-4': m54,
-  'm6-1': m61, 'm6-2': m62, 'm6-3': m63, 'm6-4': m64
+  'm0-1': m01,
+  'm0-2': m02,
+  'm0-3': m03,
+  'm0-4': m04,
+  'm1-1': m11,
+  'm1-2': m12,
+  'm1-3': m13,
+  'm1-4': m14,
+  'm2-1': m21,
+  'm2-2': m22,
+  'm2-3': m23,
+  'm2-4': m24,
+  'm3-1': m31,
+  'm3-2': m32,
+  'm3-3': m33,
+  'm3-4': m34,
+  'm4-1': m41,
+  'm4-2': m42,
+  'm4-3': m43,
+  'm4-4': m44,
+  'm5-1': m51,
+  'm5-2': m52,
+  'm5-3': m53,
+  'm5-4': m54,
+  'm6-1': m61,
+  'm6-2': m62,
+  'm6-3': m63,
+  'm6-4': m64,
 };
 
 const phaseFiles = {
@@ -68,14 +89,16 @@ const phaseFiles = {
   'phase-3': phase3,
   'phase-4': phase4,
   'phase-5': phase5,
-  'phase-6': phase6
+  'phase-6': phase6,
 };
 
 export const courseManifest = manifest;
 
 export function getPhase(phaseId) {
-  const phase = manifest.phases.find(p => p.id === phaseId);
-  if (!phase) {return null;}
+  const phase = manifest.phases.find((p) => p.id === phaseId);
+  if (!phase) {
+    return null;
+  }
   return { ...phase, ...(phaseFiles[phaseId] || {}) };
 }
 
@@ -89,15 +112,17 @@ export function getLessons(moduleId) {
 
 export function getLesson(lessonId) {
   for (const mod of Object.values(moduleFiles)) {
-    const lesson = (mod.lessons || []).find(l => l.id === lessonId);
-    if (lesson) {return { lesson, module: mod };}
+    const lesson = (mod.lessons || []).find((l) => l.id === lessonId);
+    if (lesson) {
+      return { lesson, module: mod };
+    }
   }
   return null;
 }
 
 export function getPhaseModules(phaseId) {
-  const phase = manifest.phases.find(p => p.id === phaseId);
-  return (phase?.modules || []).map(id => moduleFiles[id]).filter(Boolean);
+  const phase = manifest.phases.find((p) => p.id === phaseId);
+  return (phase?.modules || []).map((id) => moduleFiles[id]).filter(Boolean);
 }
 
 export function isPhaseAvailable(phaseId) {
@@ -106,25 +131,27 @@ export function isPhaseAvailable(phaseId) {
 
 export function getQuizQuestions(moduleId) {
   const mod = moduleFiles[moduleId];
-  if (!mod) {return [];}
-  return (mod.lessons || []).flatMap(lesson =>
-    (lesson.content || []).flatMap(block =>
-      (block.questions || []).filter(q => Array.isArray(q.options))
+  if (!mod) {
+    return [];
+  }
+  return (mod.lessons || []).flatMap((lesson) =>
+    (lesson.content || []).flatMap((block) =>
+      (block.questions || []).filter((q) => Array.isArray(q.options))
     )
   );
 }
 
 export function getCourseStats() {
   const modules = Object.values(moduleFiles);
-  const lessons = modules.flatMap(m => m.lessons || []);
-  const questions = modules.flatMap(m =>
-    (m.lessons || []).flatMap(l => (l.content || []).flatMap(c => c.questions || []))
+  const lessons = modules.flatMap((m) => m.lessons || []);
+  const questions = modules.flatMap((m) =>
+    (m.lessons || []).flatMap((l) => (l.content || []).flatMap((c) => c.questions || []))
   );
-  const availablePhases = new Set(modules.map(m => m.phaseId));
+  const availablePhases = new Set(modules.map((m) => m.phaseId));
   return {
     phases: availablePhases.size,
     modules: modules.length,
     lessons: lessons.length,
-    questions: questions.length
+    questions: questions.length,
   };
 }

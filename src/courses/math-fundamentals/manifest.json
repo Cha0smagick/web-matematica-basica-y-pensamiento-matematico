@@ -151,40 +151,256 @@
     }
   ],
   "modules": {
-    "m0-1": { "id": "m0-1", "phaseId": "phase-0", "number": "0.1", "title": "Conteo y Cantidad", "lessons": 5, "description": "Subitizing, correspondencia 1-a-1, cardinalidad, comparar, ordinales" },
-    "m0-2": { "id": "m0-2", "phaseId": "phase-0", "number": "0.2", "title": "Operaciones Básicas", "lessons": 5, "description": "Significado de suma/resta/multiplicación/división, no solo algoritmos" },
-    "m0-3": { "id": "m0-3", "phaseId": "phase-0", "number": "0.3", "title": "Fracciones y Partes", "lessons": 5, "description": "Fracciones visuales (área, recta, conjunto), equivalentes, comparar" },
-    "m0-4": { "id": "m0-4", "phaseId": "phase-0", "number": "0.4", "title": "Decimales y Porcentajes", "lessons": 5, "description": "Dinero, medidas, regla de 3, descuentos, intereses simples" },
-    "m1-1": { "id": "m1-1", "phaseId": "phase-1", "number": "1.1", "title": "Números Enteros y Recta Numérica", "lessons": 8, "description": "Negativos, valor absoluto, distancia, orden, operaciones con signos" },
-    "m1-2": { "id": "m1-2", "phaseId": "phase-1", "number": "1.2", "title": "Potencias y Raíces", "lessons": 8, "description": "Crecimiento exponencial, notación científica, raíces como inversas, leyes" },
-    "m1-3": { "id": "m1-3", "phaseId": "phase-1", "number": "1.3", "title": "Expresiones Algebraicas", "lessons": 7, "description": "Variables= cajas, coeficientes, términos semejantes, evaluar, simplificar" },
-    "m1-4": { "id": "m1-4", "phaseId": "phase-1", "number": "1.4", "title": "Ecuaciones Lineales", "lessons": 7, "description": "Balanza, aislar variable, casos especiales, problemas de palabras" },
-    "m2-1": { "id": "m2-1", "phaseId": "phase-2", "number": "2.1", "title": "Sistemas de Ecuaciones", "lessons": 8, "description": "Gráficas (intersección), sustitución, igualación, reducción, 3×3 intro" },
-    "m2-2": { "id": "m2-2", "phaseId": "phase-2", "number": "2.2", "title": "Polinomios y Factorización", "lessons": 8, "description": "Suma/resta/multiplicación, factor común, diferencia cuadrados, trinomios" },
-    "m2-3": { "id": "m2-3", "phaseId": "phase-2", "number": "2.3", "title": "Ecuaciones Cuadráticas", "lessons": 7, "description": "Fórmula general, discriminante, vértice, gráfica parábola, problemas" },
-    "m2-4": { "id": "m2-4", "phaseId": "phase-2", "number": "2.4", "title": "Funciones", "lessons": 7, "description": "Máquina entrada-salida, dominio/rango, composición, inversa, gráficas" },
-    "m3-1": { "id": "m3-1", "phaseId": "phase-3", "number": "3.1", "title": "Geometría Plana", "lessons": 8, "description": "Ángulos, triángulos (clasificación, desigualdad), cuadriláteros, círculos" },
-    "m3-2": { "id": "m3-2", "phaseId": "phase-3", "number": "3.2", "title": "Geometría Analítica", "lessons": 7, "description": "Plano cartesiano, distancia, pendiente, ecuación recta, paralelas/perpendiculares" },
-    "m3-3": { "id": "m3-3", "phaseId": "phase-3", "number": "3.3", "title": "Transformaciones", "lessons": 8, "description": "Traslación, rotación, reflexión, dilatación, simetría, teselados, arte" },
-    "m3-4": { "id": "m3-4", "phaseId": "phase-3", "number": "3.4", "title": "Trigonometría Básica", "lessons": 7, "description": "Sen, cos, tan en triángulo rectángulo, círculo unitario, alturas, navegación" },
-    "m4-1": { "id": "m4-1", "phaseId": "phase-4", "number": "4.1", "title": "Tipos de Funciones", "lessons": 9, "description": "Lineal, cuadrática, exponencial, logarítmica, potencial, racional, trigonométrica" },
-    "m4-2": { "id": "m4-2", "phaseId": "phase-4", "number": "4.2", "title": "Límites Intuitivos", "lessons": 9, "description": "Acercarse sin tocar, lateral, infinito, indeterminaciones, continuidad" },
-    "m4-3": { "id": "m4-3", "phaseId": "phase-4", "number": "4.3", "title": "Derivada = Velocidad Instantánea", "lessons": 9, "description": "Tangente, reglas derivación, optimización, relacionados, física" },
-    "m4-4": { "id": "m4-4", "phaseId": "phase-4", "number": "4.4", "title": "Integral = Área Acumulada", "lessons": 8, "description": "Riemann, Teorema Fundamental, técnicas básicas, aplicaciones físicas" },
-    "m5-1": { "id": "m5-1", "phaseId": "phase-5", "number": "5.1", "title": "Estadística Descriptiva", "lessons": 7, "description": "Media, mediana, moda, desviación, cuartiles, boxplots, detectar mentiras" },
-    "m5-2": { "id": "m5-2", "phaseId": "phase-5", "number": "5.2", "title": "Probabilidad", "lessons": 6, "description": "Espacio muestral, eventos, reglas, condicional, Bayes, independencia" },
-    "m5-3": { "id": "m5-3", "phaseId": "phase-5", "number": "5.3", "title": "Distribuciones", "lessons": 6, "description": "Binomial, normal (campana), estandarización, Teorema Límite Central" },
-    "m5-4": { "id": "m5-4", "phaseId": "phase-5", "number": "5.4", "title": "Inferencia Básica", "lessons": 6, "description": "Muestreo, intervalos confianza, test hipótesis, correlación ≠ causalidad" },
-    "m6-1": { "id": "m6-1", "phaseId": "phase-6", "number": "6.1", "title": "Lógica y Argumentación", "lessons": 5, "description": "Proposiciones, conectivos, tablas verdad, falacias, pensamiento crítico" },
-    "m6-2": { "id": "m6-2", "phaseId": "phase-6", "number": "6.2", "title": "Conjuntos y Relaciones", "lessons": 5, "description": "Operaciones, diagramas Venn, relaciones, funciones como relaciones, cardinales" },
-    "m6-3": { "id": "m6-3", "phaseId": "phase-6", "number": "6.3", "title": "Demostraciones", "lessons": 5, "description": "Directa, contrapositiva, contradicción, inducción, contraejemplo" },
-    "m6-4": { "id": "m6-4", "phaseId": "phase-6", "number": "6.4", "title": "Matemáticas en el Mundo", "lessons": 5, "description": "Modelado, criptografía RSA, redes neuronales simples, arte matemático" }
+    "m0-1": {
+      "id": "m0-1",
+      "phaseId": "phase-0",
+      "number": "0.1",
+      "title": "Conteo y Cantidad",
+      "lessons": 5,
+      "description": "Subitizing, correspondencia 1-a-1, cardinalidad, comparar, ordinales"
+    },
+    "m0-2": {
+      "id": "m0-2",
+      "phaseId": "phase-0",
+      "number": "0.2",
+      "title": "Operaciones Básicas",
+      "lessons": 5,
+      "description": "Significado de suma/resta/multiplicación/división, no solo algoritmos"
+    },
+    "m0-3": {
+      "id": "m0-3",
+      "phaseId": "phase-0",
+      "number": "0.3",
+      "title": "Fracciones y Partes",
+      "lessons": 5,
+      "description": "Fracciones visuales (área, recta, conjunto), equivalentes, comparar"
+    },
+    "m0-4": {
+      "id": "m0-4",
+      "phaseId": "phase-0",
+      "number": "0.4",
+      "title": "Decimales y Porcentajes",
+      "lessons": 5,
+      "description": "Dinero, medidas, regla de 3, descuentos, intereses simples"
+    },
+    "m1-1": {
+      "id": "m1-1",
+      "phaseId": "phase-1",
+      "number": "1.1",
+      "title": "Números Enteros y Recta Numérica",
+      "lessons": 8,
+      "description": "Negativos, valor absoluto, distancia, orden, operaciones con signos"
+    },
+    "m1-2": {
+      "id": "m1-2",
+      "phaseId": "phase-1",
+      "number": "1.2",
+      "title": "Potencias y Raíces",
+      "lessons": 8,
+      "description": "Crecimiento exponencial, notación científica, raíces como inversas, leyes"
+    },
+    "m1-3": {
+      "id": "m1-3",
+      "phaseId": "phase-1",
+      "number": "1.3",
+      "title": "Expresiones Algebraicas",
+      "lessons": 7,
+      "description": "Variables= cajas, coeficientes, términos semejantes, evaluar, simplificar"
+    },
+    "m1-4": {
+      "id": "m1-4",
+      "phaseId": "phase-1",
+      "number": "1.4",
+      "title": "Ecuaciones Lineales",
+      "lessons": 7,
+      "description": "Balanza, aislar variable, casos especiales, problemas de palabras"
+    },
+    "m2-1": {
+      "id": "m2-1",
+      "phaseId": "phase-2",
+      "number": "2.1",
+      "title": "Sistemas de Ecuaciones",
+      "lessons": 8,
+      "description": "Gráficas (intersección), sustitución, igualación, reducción, 3×3 intro"
+    },
+    "m2-2": {
+      "id": "m2-2",
+      "phaseId": "phase-2",
+      "number": "2.2",
+      "title": "Polinomios y Factorización",
+      "lessons": 8,
+      "description": "Suma/resta/multiplicación, factor común, diferencia cuadrados, trinomios"
+    },
+    "m2-3": {
+      "id": "m2-3",
+      "phaseId": "phase-2",
+      "number": "2.3",
+      "title": "Ecuaciones Cuadráticas",
+      "lessons": 7,
+      "description": "Fórmula general, discriminante, vértice, gráfica parábola, problemas"
+    },
+    "m2-4": {
+      "id": "m2-4",
+      "phaseId": "phase-2",
+      "number": "2.4",
+      "title": "Funciones",
+      "lessons": 7,
+      "description": "Máquina entrada-salida, dominio/rango, composición, inversa, gráficas"
+    },
+    "m3-1": {
+      "id": "m3-1",
+      "phaseId": "phase-3",
+      "number": "3.1",
+      "title": "Geometría Plana",
+      "lessons": 8,
+      "description": "Ángulos, triángulos (clasificación, desigualdad), cuadriláteros, círculos"
+    },
+    "m3-2": {
+      "id": "m3-2",
+      "phaseId": "phase-3",
+      "number": "3.2",
+      "title": "Geometría Analítica",
+      "lessons": 7,
+      "description": "Plano cartesiano, distancia, pendiente, ecuación recta, paralelas/perpendiculares"
+    },
+    "m3-3": {
+      "id": "m3-3",
+      "phaseId": "phase-3",
+      "number": "3.3",
+      "title": "Transformaciones",
+      "lessons": 8,
+      "description": "Traslación, rotación, reflexión, dilatación, simetría, teselados, arte"
+    },
+    "m3-4": {
+      "id": "m3-4",
+      "phaseId": "phase-3",
+      "number": "3.4",
+      "title": "Trigonometría Básica",
+      "lessons": 7,
+      "description": "Sen, cos, tan en triángulo rectángulo, círculo unitario, alturas, navegación"
+    },
+    "m4-1": {
+      "id": "m4-1",
+      "phaseId": "phase-4",
+      "number": "4.1",
+      "title": "Tipos de Funciones",
+      "lessons": 9,
+      "description": "Lineal, cuadrática, exponencial, logarítmica, potencial, racional, trigonométrica"
+    },
+    "m4-2": {
+      "id": "m4-2",
+      "phaseId": "phase-4",
+      "number": "4.2",
+      "title": "Límites Intuitivos",
+      "lessons": 9,
+      "description": "Acercarse sin tocar, lateral, infinito, indeterminaciones, continuidad"
+    },
+    "m4-3": {
+      "id": "m4-3",
+      "phaseId": "phase-4",
+      "number": "4.3",
+      "title": "Derivada = Velocidad Instantánea",
+      "lessons": 9,
+      "description": "Tangente, reglas derivación, optimización, relacionados, física"
+    },
+    "m4-4": {
+      "id": "m4-4",
+      "phaseId": "phase-4",
+      "number": "4.4",
+      "title": "Integral = Área Acumulada",
+      "lessons": 8,
+      "description": "Riemann, Teorema Fundamental, técnicas básicas, aplicaciones físicas"
+    },
+    "m5-1": {
+      "id": "m5-1",
+      "phaseId": "phase-5",
+      "number": "5.1",
+      "title": "Estadística Descriptiva",
+      "lessons": 7,
+      "description": "Media, mediana, moda, desviación, cuartiles, boxplots, detectar mentiras"
+    },
+    "m5-2": {
+      "id": "m5-2",
+      "phaseId": "phase-5",
+      "number": "5.2",
+      "title": "Probabilidad",
+      "lessons": 6,
+      "description": "Espacio muestral, eventos, reglas, condicional, Bayes, independencia"
+    },
+    "m5-3": {
+      "id": "m5-3",
+      "phaseId": "phase-5",
+      "number": "5.3",
+      "title": "Distribuciones",
+      "lessons": 6,
+      "description": "Binomial, normal (campana), estandarización, Teorema Límite Central"
+    },
+    "m5-4": {
+      "id": "m5-4",
+      "phaseId": "phase-5",
+      "number": "5.4",
+      "title": "Inferencia Básica",
+      "lessons": 6,
+      "description": "Muestreo, intervalos confianza, test hipótesis, correlación ≠ causalidad"
+    },
+    "m6-1": {
+      "id": "m6-1",
+      "phaseId": "phase-6",
+      "number": "6.1",
+      "title": "Lógica y Argumentación",
+      "lessons": 5,
+      "description": "Proposiciones, conectivos, tablas verdad, falacias, pensamiento crítico"
+    },
+    "m6-2": {
+      "id": "m6-2",
+      "phaseId": "phase-6",
+      "number": "6.2",
+      "title": "Conjuntos y Relaciones",
+      "lessons": 5,
+      "description": "Operaciones, diagramas Venn, relaciones, funciones como relaciones, cardinales"
+    },
+    "m6-3": {
+      "id": "m6-3",
+      "phaseId": "phase-6",
+      "number": "6.3",
+      "title": "Demostraciones",
+      "lessons": 5,
+      "description": "Directa, contrapositiva, contradicción, inducción, contraejemplo"
+    },
+    "m6-4": {
+      "id": "m6-4",
+      "phaseId": "phase-6",
+      "number": "6.4",
+      "title": "Matemáticas en el Mundo",
+      "lessons": 5,
+      "description": "Modelado, criptografía RSA, redes neuronales simples, arte matemático"
+    }
   },
   "diplomas": {
-    "lesson": { "name": "Medalla de Lección", "description": "Completar una lección con ≥70% en práctica", "icon": "🥉", "color": "#cd7f32" },
-    "module": { "name": "Insignia de Módulo", "description": "Completar todas las lecciones + quiz módulo ≥75%", "icon": "🥈", "color": "#c0c0c0" },
-    "phase": { "name": "Certificado de Fase", "description": "Completar módulos + evaluación fase ≥80% + proyecto", "icon": "🥇", "color": "#ffd700" },
-    "course": { "name": "DIPLOMA DE HONOR", "description": "Completar 6 fases + evaluación final ≥85% + proyecto final", "icon": "🏅", "color": "#ffd700" }
+    "lesson": {
+      "name": "Medalla de Lección",
+      "description": "Completar una lección con ≥70% en práctica",
+      "icon": "🥉",
+      "color": "#cd7f32"
+    },
+    "module": {
+      "name": "Insignia de Módulo",
+      "description": "Completar todas las lecciones + quiz módulo ≥75%",
+      "icon": "🥈",
+      "color": "#c0c0c0"
+    },
+    "phase": {
+      "name": "Certificado de Fase",
+      "description": "Completar módulos + evaluación fase ≥80% + proyecto",
+      "icon": "🥇",
+      "color": "#ffd700"
+    },
+    "course": {
+      "name": "DIPLOMA DE HONOR",
+      "description": "Completar 6 fases + evaluación final ≥85% + proyecto final",
+      "icon": "🏅",
+      "color": "#ffd700"
+    }
   },
   "achievements": {
     "totalLessons": 205,

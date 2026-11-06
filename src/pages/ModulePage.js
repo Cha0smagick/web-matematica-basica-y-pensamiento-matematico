@@ -37,13 +37,16 @@ export class ModulePage extends HTMLElement {
 
     // Estado de progreso real (async -> pinta después)
     this._paint(mod, lessons, quizCount, []);
-    store.progress.getModuleLessonsProgress(moduleId).then(done => {
-      this._paint(mod, lessons, quizCount, done);
-    }).catch(() => {});
+    store.progress
+      .getModuleLessonsProgress(moduleId)
+      .then((done) => {
+        this._paint(mod, lessons, quizCount, done);
+      })
+      .catch(() => {});
   }
 
   _paint(mod, lessons, quizCount, progressRows) {
-    const done = new Map(progressRows.filter(r => r.completed).map(r => [r.id, r]));
+    const done = new Map(progressRows.filter((r) => r.completed).map((r) => [r.id, r]));
     const completedCount = done.size;
     const pct = lessons.length ? Math.round((completedCount / lessons.length) * 100) : 0;
     // Una lección se desbloquea si la anterior está completada (la primera siempre)
@@ -99,11 +102,14 @@ export class ModulePage extends HTMLElement {
         <div class="lessons-section">
           <h2 class="section-title">📚 Lecciones del Módulo</h2>
           <div class="lessons-list">
-            ${lessons.map((lesson, i) => {
-    const isCompleted = done.has(lesson.id);
-    const isLocked = !isCompleted && !prevDone;
-    if (!isCompleted) {prevDone = false;}
-    return `
+            ${lessons
+              .map((lesson, i) => {
+                const isCompleted = done.has(lesson.id);
+                const isLocked = !isCompleted && !prevDone;
+                if (!isCompleted) {
+                  prevDone = false;
+                }
+                return `
                 <div class="lesson-row ${isCompleted ? 'completed' : ''} ${isLocked ? 'lesson-locked' : ''}"
                      ${!isLocked ? `onclick="window.__APP_ROUTER__.navigate('/lesson/${lesson.id}')"` : ''}
                      role="link" tabindex="0">
@@ -115,7 +121,8 @@ export class ModulePage extends HTMLElement {
                   <span>${isCompleted ? '✅' : isLocked ? '🔒' : '▶'}</span>
                 </div>
               `;
-  }).join('')}
+              })
+              .join('')}
           </div>
         </div>
 

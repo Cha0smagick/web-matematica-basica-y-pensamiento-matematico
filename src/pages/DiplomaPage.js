@@ -25,7 +25,13 @@ export class DiplomaPage extends HTMLElement {
   }
 
   render() {
-    const d = this._diplomaData || { title: 'Constancia', recipient: 'Estudiante', date: '', verificationHash: '', stats: {} };
+    const d = this._diplomaData || {
+      title: 'Constancia',
+      recipient: 'Estudiante',
+      date: '',
+      verificationHash: '',
+      stats: {},
+    };
 
     this.shadowRoot.innerHTML = `
       <style>${baseStyles}</style>
@@ -134,7 +140,7 @@ export class DiplomaPage extends HTMLElement {
         navigator.share({
           title: d.title,
           text: `¡Completé: ${d.title}!`,
-          url: window.location.href
+          url: window.location.href,
         });
       } else {
         navigator.clipboard.writeText(window.location.href).then(() => {

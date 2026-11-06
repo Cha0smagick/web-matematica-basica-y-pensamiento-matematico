@@ -3,21 +3,21 @@ export class SettingsStore {
   constructor(mainStore) {
     this.store = mainStore;
     this.defaults = {
-      theme: 'system',           // 'light', 'dark', 'system'
-      language: 'es',            // 'es', 'en' (future)
-      fontSize: 'medium',        // 'small', 'medium', 'large', 'xl'
-      reducedMotion: false,      // Respeta prefers-reduced-motion
-      highContrast: false,       // Modo alto contraste
-      dyslexiaFont: false,       // Fuente dislexia-friendly
-      soundEnabled: true,        // Sonidos de feedback
-      hapticEnabled: true,       // Vibración en móvil
-      autoPlayVideo: false,      // Auto-play videos/animaciones
-      showHints: true,           // Mostrar pistas automáticas
-      spacedRepetition: true,    // Práctica espaciada activa
-      dailyReminder: false,      // Recordatorio diario
-      reminderTime: '19:00',     // Hora recordatorio
-      analytics: true,           // Permitir analíticas anónimas
-      shareProgress: false       // Compartir progreso (futuro social)
+      theme: 'system', // 'light', 'dark', 'system'
+      language: 'es', // 'es', 'en' (future)
+      fontSize: 'medium', // 'small', 'medium', 'large', 'xl'
+      reducedMotion: false, // Respeta prefers-reduced-motion
+      highContrast: false, // Modo alto contraste
+      dyslexiaFont: false, // Fuente dislexia-friendly
+      soundEnabled: true, // Sonidos de feedback
+      hapticEnabled: true, // Vibración en móvil
+      autoPlayVideo: false, // Auto-play videos/animaciones
+      showHints: true, // Mostrar pistas automáticas
+      spacedRepetition: true, // Práctica espaciada activa
+      dailyReminder: false, // Recordatorio diario
+      reminderTime: '19:00', // Hora recordatorio
+      analytics: true, // Permitir analíticas anónimas
+      shareProgress: false, // Compartir progreso (futuro social)
     };
     this._load();
   }
@@ -47,7 +47,7 @@ export class SettingsStore {
 
   _applySettings() {
     const root = document.documentElement;
-    
+
     // Theme
     this.store.set('ui.theme', this.settings.theme);
     if (this.settings.theme === 'system') {
@@ -67,13 +67,17 @@ export class SettingsStore {
 
     // Media query listener for system theme
     if (this._mediaQueryListener) {
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', this._mediaQueryListener);
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .removeEventListener('change', this._mediaQueryListener);
     }
     if (this.settings.theme === 'system') {
       this._mediaQueryListener = (e) => {
         root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
       };
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', this._mediaQueryListener);
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', this._mediaQueryListener);
     }
   }
 
@@ -82,7 +86,7 @@ export class SettingsStore {
       small: '14px',
       medium: '16px',
       large: '18px',
-      xl: '20px'
+      xl: '20px',
     };
     return sizes[this.settings.fontSize] || sizes.medium;
   }

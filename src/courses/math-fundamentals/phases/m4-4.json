@@ -39,12 +39,7 @@
               "id": "q4-4-1-1",
               "type": "multiple-choice",
               "question": "∫₀² x dx = ",
-              "options": [
-                "2",
-                "4",
-                "1",
-                "0"
-              ],
+              "options": ["2", "4", "1", "0"],
               "correct": 0,
               "explanation": "Área triángulo base 2, altura 2: ½·2·2 = 2. O antiderivada: x²/2 |₀² = 4/2 - 0 = 2."
             },
@@ -59,12 +54,7 @@
               "id": "q4-4-1-3",
               "type": "multiple-choice",
               "question": "Si v(t) = 3t² (m/s), distancia t∈[0,2] = ",
-              "options": [
-                "8 m",
-                "12 m",
-                "24 m",
-                "4 m"
-              ],
+              "options": ["8 m", "12 m", "24 m", "4 m"],
               "correct": 0,
               "explanation": "∫₀² 3t² dt = t³|₀² = 8 - 0 = 8 m."
             }
@@ -113,12 +103,7 @@
               "id": "q4-4-2-2",
               "type": "multiple-choice",
               "question": "∫ cos(2x) dx = ",
-              "options": [
-                "sen(2x) + C",
-                "½ sen(2x) + C",
-                "2 sen(2x) + C",
-                "-½ sen(2x) + C"
-              ],
+              "options": ["sen(2x) + C", "½ sen(2x) + C", "2 sen(2x) + C", "-½ sen(2x) + C"],
               "correct": 1,
               "explanation": "Cadena inversa: ∫cos(ax) dx = 1/a sen(ax) + C. Aquí a=2 → ½ sen(2x) + C."
             },
@@ -167,12 +152,7 @@
               "id": "q4-4-3-1",
               "type": "multiple-choice",
               "question": "∫₁³ 2x dx = ",
-              "options": [
-                "4",
-                "8",
-                "6",
-                "12"
-              ],
+              "options": ["4", "8", "6", "12"],
               "correct": 1,
               "explanation": "Antiderivada: x². F(3)-F(1) = 9 - 1 = 8."
             },
@@ -187,12 +167,7 @@
               "id": "q4-4-3-3",
               "type": "multiple-choice",
               "question": "∫₀^π cos x dx = ",
-              "options": [
-                "1",
-                "0",
-                "2",
-                "-1"
-              ],
+              "options": ["1", "0", "2", "-1"],
               "correct": 1,
               "explanation": "Antiderivada: sen x. sen π - sen 0 = 0 - 0 = 0."
             }
@@ -241,12 +216,7 @@
               "id": "q4-4-4-2",
               "type": "multiple-choice",
               "question": "∫₀¹ 2x/(x²+1) dx = ",
-              "options": [
-                "ln 2",
-                "½ ln 2",
-                "ln 2 / 2",
-                "1"
-              ],
+              "options": ["ln 2", "½ ln 2", "ln 2 / 2", "1"],
               "correct": 0,
               "explanation": "u=x²+1, du=2x dx. Límites: x=0→u=1, x=1→u=2. ∫₁² du/u = ln|u|₁² = ln 2 - ln 1 = ln 2."
             },
@@ -437,12 +407,7 @@
               "id": "q4-4-7-3",
               "type": "multiple-choice",
               "question": "Resorte k=100 N/m. Trabajo estirar de 0 a 0.2m:",
-              "options": [
-                "2 J",
-                "4 J",
-                "10 J",
-                "20 J"
-              ],
+              "options": ["2 J", "4 J", "10 J", "20 J"],
               "correct": 0,
               "explanation": "W = ∫₀⁰·² 100x dx = 50x²|₀⁰·² = 50·0.04 = 2 J."
             }

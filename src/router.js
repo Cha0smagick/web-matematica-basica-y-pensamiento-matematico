@@ -7,7 +7,7 @@ export class Router {
     this.currentRoute = null;
     this.currentParams = {};
     this.currentMatch = null;
-    
+
     this._bindEvents();
   }
 
@@ -19,7 +19,9 @@ export class Router {
   _handleHashChange() {
     const hash = window.location.hash.slice(1) || '/';
     // Evitar re-render duplicado cuando el propio navigate() cambia el hash
-    if (hash === this._lastEmitted) {return;}
+    if (hash === this._lastEmitted) {
+      return;
+    }
     this.navigate(hash, false);
   }
 
@@ -40,9 +42,7 @@ export class Router {
   }
 
   _pathToRegex(path) {
-    const regexStr = path
-      .replace(/\//g, '\\/')
-      .replace(/:([^/]+)/g, '([^/]+)');
+    const regexStr = path.replace(/\//g, '\\/').replace(/:([^/]+)/g, '([^/]+)');
     return new RegExp(`^${regexStr}$`);
   }
 
@@ -67,7 +67,7 @@ export class Router {
   }
 
   _emit(event, data) {
-    this.listeners.forEach(cb => cb(data));
+    this.listeners.forEach((cb) => cb(data));
   }
 
   navigate(path, pushState = true) {
@@ -102,7 +102,11 @@ export class Router {
   }
 
   _notFound(path, pushState) {
-    const fallback = this.routes.find(r => r.path === '/404') || { path: '/404', component: 'page-not-found', title: 'No encontrado' };
+    const fallback = this.routes.find((r) => r.path === '/404') || {
+      path: '/404',
+      component: 'page-not-found',
+      title: 'No encontrado',
+    };
     this.currentRoute = fallback;
     this.currentParams = { path };
     this.currentMatch = null;
@@ -110,7 +114,13 @@ export class Router {
     if (pushState && window.location.hash.slice(1) !== '/404') {
       window.location.hash = '/404';
     }
-    this._emit('route', { component: fallback.component, params: { path }, match: null, route: fallback, path: '/404' });
+    this._emit('route', {
+      component: fallback.component,
+      params: { path },
+      match: null,
+      route: fallback,
+      path: '/404',
+    });
   }
 
   start() {
@@ -127,8 +137,10 @@ export class Router {
 
   // Helper para generar URLs
   urlFor(routePath, params = {}) {
-    const route = this.routes.find(r => r.path === routePath);
-    if (!route) {return '#';}
+    const route = this.routes.find((r) => r.path === routePath);
+    if (!route) {
+      return '#';
+    }
     const path = this._generatePath(route, params);
     return `#${path}`;
   }

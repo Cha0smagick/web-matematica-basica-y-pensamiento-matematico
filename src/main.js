@@ -9,11 +9,13 @@ window.addEventListener('error', function (e) {
     banner = document.createElement('div');
     banner.id = 'error-banner';
     banner.setAttribute('role', 'alert');
-    banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#dc2626;color:#fff;padding:10px 16px;font:14px sans-serif;display:flex;gap:12px;align-items:center;';
+    banner.style.cssText =
+      'position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#dc2626;color:#fff;padding:10px 16px;font:14px sans-serif;display:flex;gap:12px;align-items:center;';
     banner.innerHTML = '<span>⚠️ Ocurrió un error inesperado.</span>';
     const dismiss = document.createElement('button');
     dismiss.textContent = 'Cerrar';
-    dismiss.style.cssText = 'margin-left:auto;background:transparent;color:#fff;border:1px solid #fff;border-radius:4px;padding:2px 8px;cursor:pointer;';
+    dismiss.style.cssText =
+      'margin-left:auto;background:transparent;color:#fff;border:1px solid #fff;border-radius:4px;padding:2px 8px;cursor:pointer;';
     dismiss.onclick = () => banner.remove();
     banner.appendChild(dismiss);
     document.body.appendChild(banner);
@@ -92,7 +94,7 @@ const routes = [
   { path: '/settings', component: 'page-settings', title: 'Configuración' },
   { path: '/legal', component: 'page-legal', title: 'Privacidad y Términos' },
   { path: '/bibliografia', component: 'page-bibliography', title: 'Bibliografía' },
-  { path: '/404', component: 'page-not-found', title: 'No encontrado' }
+  { path: '/404', component: 'page-not-found', title: 'No encontrado' },
 ];
 
 // Inicializar router

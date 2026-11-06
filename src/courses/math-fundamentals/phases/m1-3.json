@@ -382,7 +382,12 @@
               "id": "q1-3-7-2",
               "type": "multiple-choice",
               "question": "Expresión expandida de P(1-d/100)(1+i/100):",
-              "options": ["P(1 + (i-d)/100 - di/10000)", "P(1 + (d-i)/100 + di/10000)", "P(1 - (i+d)/100)", "P(1 + i/100 - d/100)"],
+              "options": [
+                "P(1 + (i-d)/100 - di/10000)",
+                "P(1 + (d-i)/100 + di/10000)",
+                "P(1 - (i+d)/100)",
+                "P(1 + i/100 - d/100)"
+              ],
               "correct": 0,
               "explanation": "(1-d/100)(1+i/100) = 1 + i/100 - d/100 - di/10000 = 1 + (i-d)/100 - di/10000."
             }

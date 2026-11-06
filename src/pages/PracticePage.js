@@ -21,19 +21,21 @@ export class PracticePage extends HTMLElement {
     const typeLabels = {
       mixed: 'Práctica Mixta',
       review: 'Repaso Espaciado',
-      weak: 'Refuerzo de Áreas Débiles'
+      weak: 'Refuerzo de Áreas Débiles',
     };
 
-    this._loadQuestions().then(questions => {
+    this._loadQuestions().then((questions) => {
       this._paint(typeLabels[this._type] || 'Práctica', questions);
     });
   }
 
   async _loadQuestions() {
-    if (this._questions) {return this._questions;}
+    if (this._questions) {
+      return this._questions;
+    }
     const { getQuizQuestions } = await import('../courses/math-fundamentals/index.js');
     const mods = ['m0-1', 'm0-2', 'm0-3', 'm0-4'];
-    this._questions = mods.flatMap(id => getQuizQuestions(id));
+    this._questions = mods.flatMap((id) => getQuizQuestions(id));
     return this._questions;
   }
 
@@ -42,9 +44,10 @@ export class PracticePage extends HTMLElement {
       this.shadowRoot.innerHTML = `<style>${baseStyles}</style><div style="padding:var(--spacing-xl)"><p>No hay preguntas disponibles todavía.</p></div>`;
       return;
     }
-    this._current = this._current && questions.includes(this._current)
-      ? this._current
-      : questions[Math.floor(Math.random() * questions.length)];
+    this._current =
+      this._current && questions.includes(this._current)
+        ? this._current
+        : questions[Math.floor(Math.random() * questions.length)];
     const q = this._current;
     const answered = this._lastAnswer === q.id;
 
@@ -100,9 +103,13 @@ export class PracticePage extends HTMLElement {
         <div class="practice-card">
           <div class="practice-question">${q.question}</div>
           <div class="practice-options">
-            ${q.options.map((opt, i) => `
+            ${q.options
+              .map(
+                (opt, i) => `
               <button class="practice-option ${answered ? (i === q.correct ? 'correct' : '') : ''}" data-i="${i}" ${answered ? 'disabled' : ''}>${opt}</button>
-            `).join('')}
+            `
+              )
+              .join('')}
           </div>
           <div id="practice-feedback">
             ${answered && this._lastCorrect ? '<div class="practice-feedback correct">✅ ¡Correcto! ' + (q.explanation || '') + '</div>' : ''}
@@ -121,13 +128,13 @@ export class PracticePage extends HTMLElement {
 
   _attachListeners(questions) {
     const root = this.shadowRoot;
-    root.querySelectorAll('.mode-tab').forEach(tab => {
+    root.querySelectorAll('.mode-tab').forEach((tab) => {
       tab.addEventListener('click', () => {
         this._type = tab.dataset.mode;
         this.render();
       });
     });
-    root.querySelectorAll('.practice-option').forEach(btn => {
+    root.querySelectorAll('.practice-option').forEach((btn) => {
       btn.addEventListener('click', async () => {
         const i = Number(btn.dataset.i);
         const q = this._current;
@@ -137,15 +144,24 @@ export class PracticePage extends HTMLElement {
         // Marcar estados
         root.querySelectorAll('.practice-option').forEach((b, bi) => {
           b.disabled = true;
-          if (bi === q.correct) {b.classList.add('correct');}
-          else if (bi === i) {b.classList.add('wrong');}
+          if (bi === q.correct) {
+            b.classList.add('correct');
+          } else if (bi === i) {
+            b.classList.add('wrong');
+          }
         });
         root.getElementById('practice-feedback').innerHTML = correct
           ? `<div class="practice-feedback correct">✅ ¡Correcto! ${q.explanation || ''}</div>`
           : `<div class="practice-feedback wrong">❌ Incorrecto. ${q.explanation || ''}</div>`;
         try {
-          await store.progress.recordPracticeAttempt({ questionId: q.id, correct, type: 'practice-mixed' });
-        } catch (e) { /* sin bloquear la práctica */ }
+          await store.progress.recordPracticeAttempt({
+            questionId: q.id,
+            correct,
+            type: 'practice-mixed',
+          });
+        } catch (e) {
+          /* sin bloquear la práctica */
+        }
       });
     });
     root.querySelector('[data-next]').addEventListener('click', () => {

@@ -25,27 +25,46 @@ export class LatexRenderer extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldVal, newVal) {
-    if (oldVal === newVal) {return;}
+    if (oldVal === newVal) {
+      return;
+    }
     const targets = {
-      'latex': '_latex',
+      latex: '_latex',
       'display-mode': '_displayMode',
-      'interactive': '_interactive',
-      'size': '_size'
+      interactive: '_interactive',
+      size: '_size',
     };
     const target = targets[name];
-    if (!target) {return;}
+    if (!target) {
+      return;
+    }
     this[target] = name === 'display-mode' || name === 'interactive' ? newVal !== null : newVal;
     this.render();
   }
 
-  get latex() { return this._latex; }
-  set latex(val) { this._latex = val; this.setAttribute('latex', val); }
+  get latex() {
+    return this._latex;
+  }
+  set latex(val) {
+    this._latex = val;
+    this.setAttribute('latex', val);
+  }
 
-  get displayMode() { return this._displayMode; }
-  set displayMode(val) { this._displayMode = val; this.setAttribute('display-mode', val); }
+  get displayMode() {
+    return this._displayMode;
+  }
+  set displayMode(val) {
+    this._displayMode = val;
+    this.setAttribute('display-mode', val);
+  }
 
-  get interactive() { return this._interactive; }
-  set interactive(val) { this._interactive = val; this.setAttribute('interactive', val); }
+  get interactive() {
+    return this._interactive;
+  }
+  set interactive(val) {
+    this._interactive = val;
+    this.setAttribute('interactive', val);
+  }
 
   render() {
     if (!this._latex) {
@@ -59,11 +78,11 @@ export class LatexRenderer extends HTMLElement {
         throwOnError: false,
         strict: false,
         trust: true,
-        globalGroup: true
+        globalGroup: true,
       });
 
       let processedHtml = html;
-      
+
       if (this._interactive) {
         processedHtml = this._injectTooltips(html);
       }
@@ -112,7 +131,8 @@ export class LatexRenderer extends HTMLElement {
   _injectTooltips(html) {
     // KaTeX genera spans con clases como .mord, .mop, .mbin, .mrel, .mpunct, .minner, .mopen, .mclose
     // Se anotan los spans existentes (sin envolver, para no romper el layout de KaTeX)
-    const tokenRegex = /<span class="([^"]*(?:mord|mop|mbin|mrel|mpunct|minner|mopen|mclose)[^"]*)"([^>]*)>([^<]+)<\/span>/g;
+    const tokenRegex =
+      /<span class="([^"]*(?:mord|mop|mbin|mrel|mpunct|minner|mopen|mclose)[^"]*)"([^>]*)>([^<]+)<\/span>/g;
 
     return html.replace(tokenRegex, (match, className, attrs, content) => {
       const token = this._normalizeToken(content);
@@ -130,12 +150,15 @@ export class LatexRenderer extends HTMLElement {
   _normalizeToken(token) {
     // Normalizar tokens LaTeX comunes
     const normalized = token
-      .replace(/^\\(?:operatorname|mathrm|mathit|mathbf|boldsymbol|mathcal|mathbb|mathfrak|mathscr)\{([^}]+)\}$/, '$1')
+      .replace(
+        /^\\(?:operatorname|mathrm|mathit|mathbf|boldsymbol|mathcal|mathbb|mathfrak|mathscr)\{([^}]+)\}$/,
+        '$1'
+      )
       .replace(/^\\?([a-zA-Z]+)$/, '$1')
       .replace(/[{}]/g, '')
       .trim()
       .toLowerCase();
-    
+
     // Mapeos comunes
     const mappings = {
       '+': 'addition',
@@ -147,90 +170,93 @@ export class LatexRenderer extends HTMLElement {
       '>': 'greater-than',
       '<': 'less-than',
       '%': 'percentage',
-      'lim': 'limit',
-      'sum': 'summation',
-      'int': 'integral',
-      'partial': 'partial-derivative',
-      'infty': 'infinity',
-      'to': 'arrow',
-      'rightarrow': 'arrow',
-      'leftarrow': 'arrow',
-      'leftrightarrow': 'arrow',
-      'leq': 'less-equal',
-      'geq': 'greater-equal',
-      'neq': 'not-equal',
-      'approx': 'approximately',
-      'sim': 'similar',
-      'equiv': 'equivalent',
-      'propto': 'proportional',
-      'in': 'element-of',
-      'notin': 'not-element-of',
-      'subset': 'subset',
-      'supset': 'superset',
-      'cup': 'union',
-      'cap': 'intersection',
-      'setminus': 'set-difference',
-      'emptyset': 'empty-set',
-      'forall': 'for-all',
-      'exists': 'exists',
-      'nexists': 'not-exists',
-      'Rightarrow': 'implies',
-      'Leftarrow': 'implied-by',
-      'Leftrightarrow': 'iff',
-      'neg': 'not',
-      'land': 'and',
-      'lor': 'or',
-      'lnot': 'not',
-      'cdot': 'multiply',
-      'times': 'multiply',
-      'div': 'divide',
-      'frac': 'fraction',
-      'sqrt': 'root',
+      lim: 'limit',
+      sum: 'summation',
+      int: 'integral',
+      partial: 'partial-derivative',
+      infty: 'infinity',
+      to: 'arrow',
+      rightarrow: 'arrow',
+      leftarrow: 'arrow',
+      leftrightarrow: 'arrow',
+      leq: 'less-equal',
+      geq: 'greater-equal',
+      neq: 'not-equal',
+      approx: 'approximately',
+      sim: 'similar',
+      equiv: 'equivalent',
+      propto: 'proportional',
+      in: 'element-of',
+      notin: 'not-element-of',
+      subset: 'subset',
+      supset: 'superset',
+      cup: 'union',
+      cap: 'intersection',
+      setminus: 'set-difference',
+      emptyset: 'empty-set',
+      forall: 'for-all',
+      exists: 'exists',
+      nexists: 'not-exists',
+      Rightarrow: 'implies',
+      Leftarrow: 'implied-by',
+      Leftrightarrow: 'iff',
+      neg: 'not',
+      land: 'and',
+      lor: 'or',
+      lnot: 'not',
+      cdot: 'multiply',
+      times: 'multiply',
+      div: 'divide',
+      frac: 'fraction',
+      sqrt: 'root',
       '^': 'power',
-      '_': 'subscript',
-      'prime': 'derivative',
-      'dot': 'derivative',
-      'ddot': 'second-derivative',
-      'vec': 'vector',
-      'hat': 'unit-vector',
-      'bar': 'mean',
-      'tilde': 'approx',
-      'overline': 'conjugate',
-      'underline': 'underline',
-      'alpha': 'alpha',
-      'beta': 'beta',
-      'gamma': 'gamma',
-      'delta': 'delta',
-      'epsilon': 'epsilon',
-      'zeta': 'zeta',
-      'eta': 'eta',
-      'theta': 'theta',
-      'iota': 'iota',
-      'kappa': 'kappa',
-      'lambda': 'lambda',
-      'mu': 'mu',
-      'nu': 'nu',
-      'xi': 'xi',
-      'pi': 'pi',
-      'rho': 'rho',
-      'sigma': 'sigma',
-      'tau': 'tau',
-      'upsilon': 'upsilon',
-      'phi': 'phi',
-      'chi': 'chi',
-      'psi': 'psi',
-      'omega': 'omega'
+      _: 'subscript',
+      prime: 'derivative',
+      dot: 'derivative',
+      ddot: 'second-derivative',
+      vec: 'vector',
+      hat: 'unit-vector',
+      bar: 'mean',
+      tilde: 'approx',
+      overline: 'conjugate',
+      underline: 'underline',
+      alpha: 'alpha',
+      beta: 'beta',
+      gamma: 'gamma',
+      delta: 'delta',
+      epsilon: 'epsilon',
+      zeta: 'zeta',
+      eta: 'eta',
+      theta: 'theta',
+      iota: 'iota',
+      kappa: 'kappa',
+      lambda: 'lambda',
+      mu: 'mu',
+      nu: 'nu',
+      xi: 'xi',
+      pi: 'pi',
+      rho: 'rho',
+      sigma: 'sigma',
+      tau: 'tau',
+      upsilon: 'upsilon',
+      phi: 'phi',
+      chi: 'chi',
+      psi: 'psi',
+      omega: 'omega',
     };
-    
+
     return mappings[normalized] || normalized;
   }
 
   _escapeHtml(str) {
-    return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
+    return String(str).replace(
+      /[&<>"']/g,
+      (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]
+    );
   }
 
   _attachTokenListeners() {
-    this.shadowRoot.querySelectorAll('.latex-token').forEach(token => {
+    this.shadowRoot.querySelectorAll('.latex-token').forEach((token) => {
       token.addEventListener('click', (e) => {
         e.stopPropagation();
         this._openFormulaExplorer(token.dataset.token);
@@ -248,7 +274,7 @@ export class LatexRenderer extends HTMLElement {
     const event = new CustomEvent('formula-explore', {
       bubbles: true,
       composed: true,
-      detail: { token, latex: this._latex }
+      detail: { token, latex: this._latex },
     });
     this.dispatchEvent(event);
   }
@@ -266,7 +292,7 @@ export function renderLatex(latex, options = {}) {
       displayMode,
       throwOnError: false,
       strict: false,
-      trust: true
+      trust: true,
     });
   } catch (e) {
     return `<span class="katex-error">Error: ${e.message}</span>`;

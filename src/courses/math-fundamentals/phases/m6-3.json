@@ -39,12 +39,7 @@
               "id": "q6-3-1-1",
               "type": "multiple-choice",
               "question": "En demostración, cada paso debe estar:",
-              "options": [
-                "Justificado",
-                "Intuitivo",
-                "Obvio",
-                "Abreviado"
-              ],
+              "options": ["Justificado", "Intuitivo", "Obvio", "Abreviado"],
               "correct": 0,
               "explanation": "Cada afirmación debe tener justificación explícita (definición, axioma, teorema previo, manipulación algebraica válida)."
             },
@@ -59,12 +54,7 @@
               "id": "q6-3-1-3",
               "type": "multiple-choice",
               "question": "Símbolo tradicional fin de demostración:",
-              "options": [
-                "■",
-                "★",
-                "♥",
-                "◆"
-              ],
+              "options": ["■", "★", "♥", "◆"],
               "correct": 0,
               "explanation": "■ (QED, quod erat demonstrandum). También ∎ o Q.E.D."
             }
@@ -187,12 +177,7 @@
               "id": "q6-3-3-3",
               "type": "multiple-choice",
               "question": "Cuándo es recomendable usar contrapositiva:",
-              "options": [
-                "Siempre",
-                "Cuando ¬Q es más simple que P",
-                "Solo en paridad",
-                "Nunca"
-              ],
+              "options": ["Siempre", "Cuando ¬Q es más simple que P", "Solo en paridad", "Nunca"],
               "correct": 1,
               "explanation": "Útil cuando la negación de la tesis (¬Q) es más manejable que la hipótesis original (P)."
             }
@@ -241,12 +226,7 @@
               "id": "q6-3-4-2",
               "type": "multiple-choice",
               "question": "Infinitud primos por contradicción: asume finitos p₁...pₙ. Define N = p₁...pₙ + 1. N es:",
-              "options": [
-                "Primo",
-                "Compuesto",
-                "O primo o tiene divisor primo no en lista",
-                "Par"
-              ],
+              "options": ["Primo", "Compuesto", "O primo o tiene divisor primo no en lista", "Par"],
               "correct": 2,
               "explanation": "N no divisible por ningún pᵢ (resto 1). Si N primo → nuevo primo. Si N compuesto → tiene divisor primo ≠ pᵢ. En ambos casos, contradice finitud."
             },
@@ -356,12 +336,7 @@
               "id": "q6-3-6-1",
               "type": "multiple-choice",
               "question": "Contraejemplo a '∀x∈ℝ, x² ≥ x':",
-              "options": [
-                "x = 2",
-                "x = 0.5",
-                "x = -1",
-                "x = 10"
-              ],
+              "options": ["x = 2", "x = 0.5", "x = -1", "x = 10"],
               "correct": 1,
               "explanation": "x=0.5: 0.25 ≥ 0.5 es FALSO. Un solo contraejemplo basta."
             },
@@ -423,12 +398,7 @@
               "id": "q6-3-7-1",
               "type": "multiple-choice",
               "question": "En tablero 8×8, quitas 2 esquinas opuestas. ¿Se puede cubrir con dominós 2×1? Invarianza: cada dominó cubre 1 blanco + 1 negro. Esquinas opuestas = mismo color. Quedan 32 de un color, 30 del otro. ¿Posible?",
-              "options": [
-                "Sí",
-                "No",
-                "Depende orientación",
-                "Solo si rotas tablero"
-              ],
+              "options": ["Sí", "No", "Depende orientación", "Solo si rotas tablero"],
               "correct": 1,
               "explanation": "Imposible. Cada dominó cubre 1 blanco + 1 negro. Quedan 32 de un color, 30 del otro → imposible emparejar todos."
             },

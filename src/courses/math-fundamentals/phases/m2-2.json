@@ -46,7 +46,12 @@
               "id": "q2-2-1-2",
               "type": "multiple-choice",
               "question": "(x + 3)(x² - 2x + 1) = ?",
-              "options": ["x³ + x² - 5x + 3", "x³ + x² - 5x + 3", "x³ - x² - 5x + 3", "x³ + 3x² - 5x + 3"],
+              "options": [
+                "x³ + x² - 5x + 3",
+                "x³ + x² - 5x + 3",
+                "x³ - x² - 5x + 3",
+                "x³ + 3x² - 5x + 3"
+              ],
               "correct": 0,
               "explanation": "x·x²=x³, x·(-2x)=-2x², x·1=x. 3·x²=3x², 3·(-2x)=-6x, 3·1=3. Suma: x³ + x² -5x +3."
             },
@@ -159,7 +164,12 @@
               "id": "q2-2-3-2",
               "type": "multiple-choice",
               "question": "Factoriza: 15x⁴y - 25x³y² + 10x²y³ = ",
-              "options": ["5x²y(3x² - 5xy + 2y²)", "5xy(3x³ - 5x²y + 2xy²)", "5x²y(3x² - 5xy + 2y²)", "5x²y²(3x² - 5x + 2y)"],
+              "options": [
+                "5x²y(3x² - 5xy + 2y²)",
+                "5xy(3x³ - 5x²y + 2xy²)",
+                "5x²y(3x² - 5xy + 2y²)",
+                "5x²y²(3x² - 5x + 2y)"
+              ],
               "correct": 0,
               "explanation": "MCD(15,25,10)=5. x mín exp 2, y mín exp 1. 5x²y(3x² - 5xy + 2y²)."
             },

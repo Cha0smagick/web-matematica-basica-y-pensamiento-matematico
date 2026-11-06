@@ -1,5 +1,5 @@
 /* High Contrast Theme - WCAG 2.1 AAA */
-[data-theme="high-contrast"] {
+[data-theme='high-contrast'] {
   --bg-primary: #000000;
   --bg-secondary: #000000;
   --bg-tertiary: #1a1a1a;
@@ -51,45 +51,49 @@
 }
 
 /* Force focus styles in high contrast */
-[data-theme="high-contrast"] *:focus-visible {
+[data-theme='high-contrast'] *:focus-visible {
   outline: 3px solid #ffff00 !important;
   outline-offset: 2px !important;
 }
 
 /* Ensure all interactive elements have visible borders */
-[data-theme="high-contrast"] button,
-[data-theme="high-contrast"] .btn,
-[data-theme="high-contrast"] .card,
-[data-theme="high-contrast"] .input-field,
-[data-theme="high-contrast"] select,
-[data-theme="high-contrast"] textarea {
+[data-theme='high-contrast'] button,
+[data-theme='high-contrast'] .btn,
+[data-theme='high-contrast'] .card,
+[data-theme='high-contrast'] .input-field,
+[data-theme='high-contrast'] select,
+[data-theme='high-contrast'] textarea {
   border: 2px solid currentColor !important;
 }
 
-[data-theme="high-contrast"] .btn-primary {
+[data-theme='high-contrast'] .btn-primary {
   background: #00ffff !important;
   color: #000000 !important;
   border-color: #00ffff !important;
 }
 
-[data-theme="high-contrast"] .btn-secondary {
+[data-theme='high-contrast'] .btn-secondary {
   background: #000000 !important;
   color: #ffffff !important;
   border-color: #ffffff !important;
 }
 
-[data-theme="high-contrast"] .nav-item.active {
+[data-theme='high-contrast'] .nav-item.active {
   background: #00ffff !important;
   color: #000000 !important;
   border-color: #00ffff !important;
 }
 
 /* KaTeX high contrast */
-[data-theme="high-contrast"] .katex { color: #ffffff !important; }
-[data-theme="high-contrast"] .katex .katex-html { color: #ffffff !important; }
+[data-theme='high-contrast'] .katex {
+  color: #ffffff !important;
+}
+[data-theme='high-contrast'] .katex .katex-html {
+  color: #ffffff !important;
+}
 
 /* Graphs high contrast */
-[data-theme="high-contrast"] .function-plot path,
-[data-theme="high-contrast"] .function-plot line {
+[data-theme='high-contrast'] .function-plot path,
+[data-theme='high-contrast'] .function-plot line {
   stroke-width: 3px !important;
 }

@@ -106,12 +106,7 @@
               "id": "q5-4-2-1",
               "type": "multiple-choice",
               "question": "MLE de μ en Normal(μ, σ² conocida):",
-              "options": [
-                "Media muestral X̄",
-                "Mediana",
-                "Moda",
-                "Promedio recortado"
-              ],
+              "options": ["Media muestral X̄", "Mediana", "Moda", "Promedio recortado"],
               "correct": 0,
               "explanation": "Log-verosimilitud: ∑-(xᵢ-μ)²/(2σ²). Derivada → μ̂ = X̄."
             },
@@ -126,12 +121,7 @@
               "id": "q5-4-2-3",
               "type": "multiple-choice",
               "question": "Estimador consistente significa:",
-              "options": [
-                "E[θ̂]=θ",
-                "Var(θ̂) mínima",
-                "θ̂_n → θ cuando n→∞",
-                "θ̂ suficiente"
-              ],
+              "options": ["E[θ̂]=θ", "Var(θ̂) mínima", "θ̂_n → θ cuando n→∞", "θ̂ suficiente"],
               "correct": 2,
               "explanation": "Consistencia: converge en probabilidad al parámetro verdadero al crecer muestra."
             }
@@ -240,12 +230,7 @@
               "id": "q5-4-4-1",
               "type": "multiple-choice",
               "question": "p-valor = 0.03, α = 0.05. Decisión:",
-              "options": [
-                "Rechazar H₀",
-                "No rechazar H₀",
-                "Aceptar H₀",
-                "Repetir test"
-              ],
+              "options": ["Rechazar H₀", "No rechazar H₀", "Aceptar H₀", "Repetir test"],
               "correct": 0,
               "explanation": "p < α → rechazar H₀. Hay evidencia significativa contra H₀."
             },

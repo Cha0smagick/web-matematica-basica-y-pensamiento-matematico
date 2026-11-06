@@ -1,5 +1,10 @@
 // PhasePage - Vista de una fase con sus módulos reales
-import { getPhase, getPhaseModules, getLessons, isPhaseAvailable } from '../courses/math-fundamentals/index.js';
+import {
+  getPhase,
+  getPhaseModules,
+  getLessons,
+  isPhaseAvailable,
+} from '../courses/math-fundamentals/index.js';
 import baseStyles from '../styles/shadow-base.css?inline';
 
 export class PhasePage extends HTMLElement {
@@ -78,18 +83,23 @@ export class PhasePage extends HTMLElement {
           </div>
         </div>
 
-        ${available ? `
+        ${
+          available
+            ? `
           <div class="modules-grid">
-            ${modules.map(mod => {
-    const lessons = getLessons(mod.id);
-    return `
+            ${modules
+              .map((mod) => {
+                const lessons = getLessons(mod.id);
+                return `
                 <div class="module-card">
                   <div class="module-header">
                     <div class="module-title">${mod.number}. ${mod.title}</div>
                     <div class="module-lessons">${lessons.length} lecciones</div>
                   </div>
                   <div style="padding: var(--spacing-lg); display: flex; flex-direction: column; gap: var(--spacing-sm); flex: 1;">
-                    ${lessons.map((lesson, j) => `
+                    ${lessons
+                      .map(
+                        (lesson, j) => `
                       <div class="lesson-item" onclick="window.__APP_ROUTER__.navigate('/lesson/${lesson.id}')">
                         <div class="lesson-info">
                           <span class="lesson-number">L${j + 1}</span>
@@ -97,22 +107,27 @@ export class PhasePage extends HTMLElement {
                         </div>
                         <span>▶</span>
                       </div>
-                    `).join('')}
+                    `
+                      )
+                      .join('')}
                   </div>
                   <div class="module-footer">
                     <button class="btn btn-primary btn-block" onclick="window.__APP_ROUTER__.navigate('/module/${mod.id}')">Entrar al Módulo</button>
                   </div>
                 </div>
               `;
-  }).join('')}
+              })
+              .join('')}
           </div>
-        ` : `
+        `
+            : `
           <div class="coming-soon">
             <div style="font-size: var(--font-size-4xl); margin-bottom: var(--spacing-md);">🚧</div>
             <p>Las fases 1 a 6 están en desarrollo. ¡La fase 0 ya está completa y disponible!</p>
             <button class="btn btn-primary" onclick="window.__APP_ROUTER__.navigate('/phase/phase-0')">Ir a la Fase 0</button>
           </div>
-        `}
+        `
+        }
       </div>
     `;
   }

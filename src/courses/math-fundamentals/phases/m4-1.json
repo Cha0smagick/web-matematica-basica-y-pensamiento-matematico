@@ -39,12 +39,7 @@
               "id": "q4-1-1-1",
               "type": "multiple-choice",
               "question": "f(x) = -3x + 7. Pendiente y corte con eje Y:",
-              "options": [
-                "m=-3, b=7",
-                "m=3, b=7",
-                "m=-3, b=-7",
-                "m=7, b=-3"
-              ],
+              "options": ["m=-3, b=7", "m=3, b=7", "m=-3, b=-7", "m=7, b=-3"],
               "correct": 0,
               "explanation": "Forma y = mx + b. m = -3 (pendiente), b = 7 (corte Y)."
             },
@@ -120,12 +115,7 @@
               "id": "q4-1-2-3",
               "type": "multiple-choice",
               "question": "Pelota: h(t) = -5t² + 20t + 2. Tiempo vuelo total (h=0):",
-              "options": [
-                "4 s",
-                "2 s",
-                "4.1 s",
-                "8 s"
-              ],
+              "options": ["4 s", "2 s", "4.1 s", "8 s"],
               "correct": 2,
               "explanation": "-5t²+20t+2=0 → 5t²-20t-2=0. t = (20±√(400+40))/10 = (20±√440)/10. t₁≈4.1s (positiva), t₂≈-0.1s. Vuelo ≈ 4.1s."
             }
@@ -228,12 +218,7 @@
               "id": "q4-1-4-1",
               "type": "multiple-choice",
               "question": "log₂(32) = ",
-              "options": [
-                "5",
-                "4",
-                "6",
-                "16"
-              ],
+              "options": ["5", "4", "6", "16"],
               "correct": 0,
               "explanation": "2⁵ = 32 → log₂(32) = 5."
             },
@@ -248,12 +233,7 @@
               "id": "q4-1-4-3",
               "type": "multiple-choice",
               "question": "Sonido 60 dB vs 40 dB. Intensidad relativa:",
-              "options": [
-                "2×",
-                "10×",
-                "100×",
-                "1000×"
-              ],
+              "options": ["2×", "10×", "100×", "1000×"],
               "correct": 2,
               "explanation": "dB = 10 log₁₀(I/I₀). ΔdB = 20 → 10 log₁₀(ratio) = 20 → ratio = 10² = 100×."
             }
@@ -295,12 +275,7 @@
               "id": "q4-1-5-1",
               "type": "multiple-choice",
               "question": "f(x) = x^{-2}. f(3) = ",
-              "options": [
-                "1/9",
-                "9",
-                "-9",
-                "-1/9"
-              ],
+              "options": ["1/9", "9", "-9", "-1/9"],
               "correct": 0,
               "explanation": "3^{-2} = 1/3² = 1/9."
             },
@@ -315,12 +290,7 @@
               "id": "q4-1-5-3",
               "type": "multiple-choice",
               "question": "En gráfico log-log, y = 5x³ aparece como:",
-              "options": [
-                "Recta pendiente 3",
-                "Recta pendiente 5",
-                "Parábola",
-                "Hipérbola"
-              ],
+              "options": ["Recta pendiente 3", "Recta pendiente 5", "Parábola", "Hipérbola"],
               "correct": 0,
               "explanation": "log y = log 5 + 3 log x. Recta pendiente 3, corte log 5."
             }
@@ -382,12 +352,7 @@
               "id": "q4-1-6-3",
               "type": "multiple-choice",
               "question": "f(x) = (x²+1)/x. Asíntota oblicua:",
-              "options": [
-                "y = x",
-                "y = 1/x",
-                "y = 0",
-                "x = 0"
-              ],
+              "options": ["y = x", "y = 1/x", "y = 0", "x = 0"],
               "correct": 0,
               "explanation": "Divide: x²+1 = x·x + 1 → f(x) = x + 1/x. Asíntota oblicua y = x. Vertical x=0."
             }
@@ -429,12 +394,7 @@
               "id": "q4-1-7-1",
               "type": "multiple-choice",
               "question": "f(x) = 3 sen(2x - π/2). Amplitud = ___, Periodo = ___, Fase = ___",
-              "options": [
-                "3, π, π/4",
-                "3, 2π, π/2",
-                "2, π, π/4",
-                "3, π, -π/4"
-              ],
+              "options": ["3, π, π/4", "3, 2π, π/2", "2, π, π/4", "3, π, -π/4"],
               "correct": 0,
               "explanation": "A=3, ω=2 → T=2π/2=π. Fase = -φ/ω = -(-π/2)/2 = π/4."
             },
@@ -449,12 +409,7 @@
               "id": "q4-1-7-3",
               "type": "multiple-choice",
               "question": "tan x tiene período:",
-              "options": [
-                "π",
-                "2π",
-                "π/2",
-                "4π"
-              ],
+              "options": ["π", "2π", "π/2", "4π"],
               "correct": 0,
               "explanation": "tan(x+π) = tan x. Período π."
             }
@@ -491,12 +446,7 @@
               "id": "q4-1-8-1",
               "type": "multiple-choice",
               "question": "Datos: log(y) vs x forma recta. Modelo adecuado:",
-              "options": [
-                "Lineal",
-                "Exponencial",
-                "Potencial",
-                "Logarítmica"
-              ],
+              "options": ["Lineal", "Exponencial", "Potencial", "Logarítmica"],
               "correct": 1,
               "explanation": "log(y) = log(a) + x·log(b) → recta. Modelo exponencial y = a·bˣ."
             },

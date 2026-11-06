@@ -1,5 +1,6 @@
 /* Light Theme - Explicit overrides if needed */
-:root, [data-theme="light"] {
+:root,
+[data-theme='light'] {
   --bg-primary: var(--neutral-50);
   --bg-secondary: var(--neutral-0);
   --bg-tertiary: var(--neutral-100);

@@ -39,7 +39,12 @@
               "id": "q0-3-1-1",
               "type": "multiple-choice",
               "question": "En 3/8, el 8 es:",
-              "options": ["Partes tomadas", "Partes totales iguales", "El resultado", "El numerador"],
+              "options": [
+                "Partes tomadas",
+                "Partes totales iguales",
+                "El resultado",
+                "El numerador"
+              ],
               "correct": 1,
               "explanation": "El denominador (8) indica en cuántas partes iguales se dividió el todo."
             },

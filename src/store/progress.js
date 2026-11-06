@@ -11,7 +11,7 @@ class ProgressDB extends Dexie {
       phases: 'id, completed, score, evaluationPassed, projectCompleted',
       evaluations: 'id, phaseId, score, passed, answers, timestamp',
       practice: 'id, type, questionId, correct, timestamp, responseTime',
-      analytics: 'date, lessonsCompleted, timeSpent, streak'
+      analytics: 'date, lessonsCompleted, timeSpent, streak',
     });
   }
 }
@@ -26,7 +26,9 @@ export class ProgressStore {
   }
 
   async init() {
-    if (this._initialized) {return;}
+    if (this._initialized) {
+      return;
+    }
     await db.open();
     this._initialized = true;
     await this._syncFromLocalStorage();
@@ -62,7 +64,7 @@ export class ProgressStore {
       attempts: (data.attempts || 0) + 1,
       timeSpent: data.timeSpent || 0,
       lastAttempt: Date.now(),
-      ...data
+      ...data,
     };
     await db.lessons.put(record);
     this._invalidateCache('lesson', lessonId);
@@ -76,7 +78,9 @@ export class ProgressStore {
       return this._cache.get(`lesson:${lessonId}`);
     }
     const record = await db.lessons.get(lessonId);
-    if (record) {this._cache.set(`lesson:${lessonId}`, record);}
+    if (record) {
+      this._cache.set(`lesson:${lessonId}`, record);
+    }
     return record || { id: lessonId, completed: false, score: 0, attempts: 0 };
   }
 
@@ -95,11 +99,16 @@ export class ProgressStore {
       score: data.score ?? existing?.score ?? 0,
       quizPassed: data.quizPassed ?? existing?.quizPassed ?? false,
       projectCompleted: data.projectCompleted ?? existing?.projectCompleted ?? false,
-      completedAt: (data.completed ?? existing?.completed) ? (existing?.completedAt || Date.now()) : existing?.completedAt
+      completedAt:
+        (data.completed ?? existing?.completed)
+          ? existing?.completedAt || Date.now()
+          : existing?.completedAt,
     };
     await db.modules.put(record);
     this._invalidateCache('module', moduleId);
-    if (record.completed) {await this._checkPhaseCompletion(record.phaseId);}
+    if (record.completed) {
+      await this._checkPhaseCompletion(record.phaseId);
+    }
     this.store.achievements.checkModuleAchievements(moduleId);
     return record;
   }
@@ -109,7 +118,9 @@ export class ProgressStore {
       return this._cache.get(`module:${moduleId}`);
     }
     const record = await db.modules.get(moduleId);
-    if (record) {this._cache.set(`module:${moduleId}`, record);}
+    if (record) {
+      this._cache.set(`module:${moduleId}`, record);
+    }
     return record || { id: moduleId, completed: false, score: 0 };
   }
 
@@ -121,7 +132,7 @@ export class ProgressStore {
       score: data.score || 0,
       evaluationPassed: data.evaluationPassed || false,
       projectCompleted: data.projectCompleted || false,
-      completedAt: Date.now()
+      completedAt: Date.now(),
     };
     await db.phases.put(record);
     this._invalidateCache('phase', phaseId);
@@ -134,7 +145,9 @@ export class ProgressStore {
       return this._cache.get(`phase:${phaseId}`);
     }
     const record = await db.phases.get(phaseId);
-    if (record) {this._cache.set(`phase:${phaseId}`, record);}
+    if (record) {
+      this._cache.set(`phase:${phaseId}`, record);
+    }
     return record || { id: phaseId, completed: false, score: 0 };
   }
 
@@ -150,7 +163,7 @@ export class ProgressStore {
       score: data.score,
       passed: data.passed,
       answers: data.answers,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
     await db.evaluations.put(record);
     return record;
@@ -165,7 +178,7 @@ export class ProgressStore {
     const record = {
       id: `practice-${Date.now()}-${Math.random().toString(36).slice(2)}`,
       ...data,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
     await db.practice.put(record);
     return record;
@@ -183,35 +196,33 @@ export class ProgressStore {
       date: today,
       lessonsCompleted: (existing?.lessonsCompleted || 0) + (data.lessonsCompleted || 0),
       timeSpent: (existing?.timeSpent || 0) + (data.timeSpent || 0),
-      streak: data.streak || existing?.streak || 0
+      streak: data.streak || existing?.streak || 0,
     };
     await db.analytics.put(record);
     return record;
   }
 
   async getAnalytics(days = 30) {
-    const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000)
-      .toISOString()
-      .split('T')[0];
+    const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
     return db.analytics.where('date').aboveOrEqual(cutoff).toArray();
   }
 
   // Verificaciones de completitud
   async _checkModuleCompletion(moduleId) {
-    if (!moduleId) {return false;}
+    if (!moduleId) {
+      return false;
+    }
     const lessons = await this.getModuleLessonsProgress(moduleId);
     const expected = getModule(moduleId)?.lessons?.length || 0;
     const allCompleted =
-      expected > 0 &&
-      lessons.length >= expected &&
-      lessons.every(l => l.completed);
+      expected > 0 && lessons.length >= expected && lessons.every((l) => l.completed);
     if (allCompleted) {
       const module = await this.getModuleProgress(moduleId);
       if (!module.completed) {
         await this.completeModule(moduleId, {
           phaseId: lessons[0]?.phaseId,
           completed: true,
-          score: Math.round(lessons.reduce((s, l) => s + l.score, 0) / lessons.length)
+          score: Math.round(lessons.reduce((s, l) => s + l.score, 0) / lessons.length),
         });
       }
     }
@@ -219,15 +230,19 @@ export class ProgressStore {
   }
 
   async _checkPhaseCompletion(phaseId) {
-    if (!phaseId) {return false;}
+    if (!phaseId) {
+      return false;
+    }
     const modules = getPhaseModules(phaseId);
-    if (!modules.length) {return false;}
+    if (!modules.length) {
+      return false;
+    }
     const completed = await this.getCompletedModuleIds();
-    const allCompleted = modules.every(m => completed.includes(m.id));
+    const allCompleted = modules.every((m) => completed.includes(m.id));
     if (allCompleted) {
       const phase = await this.getPhaseProgress(phaseId);
       if (!phase.completed) {
-        const records = await Promise.all(modules.map(m => this.getModuleProgress(m.id)));
+        const records = await Promise.all(modules.map((m) => this.getModuleProgress(m.id)));
         const score = Math.round(
           records.reduce((sum, r) => sum + (r.score || 0), 0) / records.length
         );
@@ -239,34 +254,34 @@ export class ProgressStore {
 
   async getCompletedModuleIds() {
     const modules = await db.modules.toArray();
-    return modules.filter(m => m.completed).map(m => m.id);
+    return modules.filter((m) => m.completed).map((m) => m.id);
   }
 
   async getCompletedPhaseIds() {
     const phases = await db.phases.toArray();
-    return phases.filter(p => p.completed).map(p => p.id);
+    return phases.filter((p) => p.completed).map((p) => p.id);
   }
 
   async isModuleLessonsComplete(moduleId) {
     const lessons = await this.getModuleLessonsProgress(moduleId);
     const expected = getModule(moduleId)?.lessons?.length || 0;
-    return expected > 0 && lessons.length >= expected && lessons.every(l => l.completed);
+    return expected > 0 && lessons.length >= expected && lessons.every((l) => l.completed);
   }
 
   async _updateStreak() {
     const today = new Date().toISOString().split('T')[0];
     const lastVisit = this.store.get('session.lastVisitDate');
-    
+
     if (lastVisit !== today) {
       let streak = this.store.get('session.streak') || 0;
-      const yesterday = new Date(Date.now() - 24*60*60*1000).toISOString().split('T')[0];
-      
+      const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
       if (lastVisit === yesterday) {
         streak += 1;
       } else if (lastVisit !== today) {
         streak = 1;
       }
-      
+
       this.store.set('session.streak', streak);
       this.store.set('session.lastVisitDate', today);
       await this.recordDailyAnalytics({ streak });
@@ -287,24 +302,26 @@ export class ProgressStore {
       db.lessons.toArray(),
       db.modules.toArray(),
       db.phases.toArray(),
-      db.practice.toArray()
+      db.practice.toArray(),
     ]);
 
-    const completedLessons = lessons.filter(l => l.completed).length;
+    const completedLessons = lessons.filter((l) => l.completed).length;
     const totalTime = lessons.reduce((s, l) => s + (l.timeSpent || 0), 0);
-    const avgScore = lessons.length ? 
-      Math.round(lessons.reduce((s, l) => s + (l.score || 0), 0) / lessons.length) : 0;
+    const avgScore = lessons.length
+      ? Math.round(lessons.reduce((s, l) => s + (l.score || 0), 0) / lessons.length)
+      : 0;
 
     return {
       lessonsCompleted: completedLessons,
-      modulesCompleted: modules.filter(m => m.completed).length,
-      phasesCompleted: phases.filter(p => p.completed).length,
+      modulesCompleted: modules.filter((m) => m.completed).length,
+      phasesCompleted: phases.filter((p) => p.completed).length,
       totalTimeSpent: totalTime,
       averageScore: avgScore,
       practiceQuestions: practice.length,
-      practiceAccuracy: practice.length ?
-        Math.round(practice.filter(p => p.correct).length / practice.length * 100) : 0,
-      currentStreak: this.store.get('session.streak') || 0
+      practiceAccuracy: practice.length
+        ? Math.round((practice.filter((p) => p.correct).length / practice.length) * 100)
+        : 0,
+      currentStreak: this.store.get('session.streak') || 0,
     };
   }
 
@@ -315,7 +332,7 @@ export class ProgressStore {
       db.phases.toArray(),
       db.evaluations.toArray(),
       db.practice.toArray(),
-      db.analytics.toArray()
+      db.analytics.toArray(),
     ]);
     return { lessons, modules, phases, evaluations, practice, analytics, exportedAt: Date.now() };
   }

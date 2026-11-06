@@ -39,12 +39,7 @@
               "id": "q4-3-1-1",
               "type": "multiple-choice",
               "question": "f(x) = x². f'(3) = ",
-              "options": [
-                "3",
-                "6",
-                "9",
-                "2"
-              ],
+              "options": ["3", "6", "9", "2"],
               "correct": 1,
               "explanation": "f'(x) = 2x. f'(3) = 6. Pendiente tangente en (3,9) es 6."
             },
@@ -113,12 +108,7 @@
               "id": "q4-3-2-2",
               "type": "multiple-choice",
               "question": "(√x)' = ",
-              "options": [
-                "1/(2√x)",
-                "2√x",
-                "1/√x",
-                "√x/2"
-              ],
+              "options": ["1/(2√x)", "2√x", "1/√x", "√x/2"],
               "correct": 0,
               "explanation": "√x = x^{1/2}. (x^{1/2})' = ½x^{-1/2} = 1/(2√x)."
             },
@@ -235,12 +225,7 @@
               "id": "q4-3-4-2",
               "type": "multiple-choice",
               "question": "f(x) = ln(sen x). f'(x) = ",
-              "options": [
-                "cot x",
-                "tan x",
-                "1/sen x",
-                "cos x"
-              ],
+              "options": ["cot x", "tan x", "1/sen x", "cos x"],
               "correct": 0,
               "explanation": "Exterior ln → 1/u. Interior sen x → cos x. (1/sen x)·cos x = cot x."
             },
@@ -309,12 +294,7 @@
               "id": "q4-3-5-3",
               "type": "multiple-choice",
               "question": "f(x) = arctan(√x). f'(x) = ",
-              "options": [
-                "1/(2√x(1+x))",
-                "1/(1+x)",
-                "1/(2√x(1-x))",
-                "√x/(1+x)"
-              ],
+              "options": ["1/(2√x(1+x))", "1/(1+x)", "1/(2√x(1-x))", "√x/(1+x)"],
               "correct": 0,
               "explanation": "(arctan u)' = u'/(1+u²). u=√x, u'=1/(2√x). f' = (1/(2√x))/(1+x) = 1/(2√x(1+x))."
             }
@@ -370,12 +350,7 @@
               "id": "q4-3-6-3",
               "type": "multiple-choice",
               "question": "f(x) = x³ - 3x. Punto crítico x=1: f''(1)=6>0 → ",
-              "options": [
-                "Máximo local",
-                "Mínimo local",
-                "Punto de inflexión",
-                "No es crítico"
-              ],
+              "options": ["Máximo local", "Mínimo local", "Punto de inflexión", "No es crítico"],
               "correct": 1,
               "explanation": "f'(x)=3x²-3=0 → x=±1. f''(x)=6x. f''(1)=6>0 → mínimo local en x=1. f''(-1)=-6<0 → máximo local en x=-1."
             }
@@ -431,12 +406,7 @@
               "id": "q4-3-7-3",
               "type": "multiple-choice",
               "question": "Coche A va N a 60 km/h, B va E a 80 km/h. Cuando A a 30km, B a 40km, dz/dt = ",
-              "options": [
-                "100 km/h",
-                "140 km/h",
-                "50 km/h",
-                "70 km/h"
-              ],
+              "options": ["100 km/h", "140 km/h", "50 km/h", "70 km/h"],
               "correct": 0,
               "explanation": "z²=x²+y². z=50. z·dz/dt = x·dx/dt + y·dy/dt = 30·60 + 40·80 = 1800+3200=5000. dz/dt = 5000/50 = 100 km/h."
             }
